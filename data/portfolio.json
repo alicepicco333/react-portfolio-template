@@ -50,13 +50,8 @@
         "url": "https://alicepicco333.github.io/wipEU/"
       }
     ],
-    "services": [
-      {"id": "1", "title": "Art Direction", "description": "We help with the creation and development of online advertising ideas, with particular focus on their visual appearance."},
-      {"id": "2", "title": "Branding", "description": "We design key brand elements such as the logo, color scheme, typography, and other design components that make your brand stand out from competitors."},
-      {"id": "3", "title": "Web Design", "description": "We build and optimize your online presence. Website is the digital entry point into your business and a powerful revenue channel."},
-      {"id": "4", "title": "3D Design", "description": "We combine creative design and technical skills to build striking 3D visualizations that bring your project to life."}
-    ],
-    "aboutpara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    
+    "aboutpara": "I am an Anthropology graduate, Digital Humanities student and Design enthusiast. Passionate about the intersection of technology and culture and interested in new media, computer graphics, usability, cultural analytics, creative coding. I like to apply visual methodologies, computational methods and interactivity to cultural scenarios, artifacts, domains.",
     "resume": {
       "tagline": "👋  I'm a software engineer, product designer.",
       "description": "I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
