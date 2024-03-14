@@ -1,59 +1,79 @@
-{"name":"",
-"headerTaglineOne":"Hello ",
-"headerTaglineTwo":"I'm Alice,",
-"headerTaglineThree":"researcher and developer"
-,"headerTaglineFour":" based in Amsterdam, NL.",
-"showCursor":true,"showBlog":false,
-"darkMode":true,"showResume":true,
-"socials":[{"id":"1","title":"Github","link":"https://github.com/chetanverma16"},
-{"id":"2","title":"LinkedIn","link":"https://www.linkedin.com/in/chetanverma7/"},
-{"id":"3","title":"Twitter","link":"https://twitter.com/realchetanverma"},
-{"id":"4","title":"Blog","link":"https://blog.chetanverma.com/"},
-{"id":"5","title":"Email","link":"mailto:hello@chetanverma.com"}],
-"projects":[{"id":"1","title":"Project One Test",
-"description":"Web Design",
-"imageSrc":"https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njl8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-"url":"http://chetanverma.com/"},
-{"id":"2","title":"Project Two"
-,"description":"Web Development",
-"imageSrc":"https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
-"url":"http://chetanverma.com/"},
-{"id":"3","title":"Project Three",
-"description":"Design",
-"imageSrc":"https://images.unsplash.com/photo-1504083898675-c896ecdae86e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-"url":"http://chetanverma.com/"},
-{"id":"4","title":"Project Four",
-"description":"Marketing",
-"imageSrc":"https://images.unsplash.com/photo-1492171983775-a51717616c0d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjB8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-"url":"http://chetanverma.com/"},
-{"id":"5","title":"Project Five",
-"description":"Development",
-"imageSrc":"https://images.unsplash.com/photo-1534239143101-1b1c627395c5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
-"url":"http://chetanverma.com/"},
-{"id":"6","title":"Project Six",
-"description":"Design & Development",
-"imageSrc":"https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTAyfHxwYXN0ZWx8ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
-"url":"http://chetanverma.com/"}],
-"services":[{"id":"1","title":"Art Direction",
-"description":"We help with the creation and development of online advertising ideas, with particular focus on their visual appearance."},
-{"id":"2","title":"Branding","description":"We design key brand elements such as the logo, color scheme, typography, and other design components that makes your brand stand out from competitors."},
-{"id":"3","title":"Web Design","description":"We build and optimize your online presence.  Website is the digital entry point into your business and a powerful revenue channel."},
-{"id":"4","title":"3D Design","description":"We combine creative design and technical skills to build striking 3D visualisations that bring your project to life."}],
-"aboutpara":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-"resume":{"tagline":"👋  I'm a software engineer, product designer.","description":"I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
-"experiences"
-:[{"id":"1",
-"dates":"March 2022 - Present",
-"type":"Full Time",
-"position":"Frontend Engineer at X",
-"bullets":"Bullet One, Bullet Two"},
-{"id":"d495c23b-4f65-479a-9b8a-cfbc1c089725",
-"dates":"July 2020 - March 2022",
-"type":"Full Time",
-"position":"Frontend Engineer at X",
-"bullets":"Worked on the frontend of a React application, Worked on the frontend of a React application"}],
-"education":{"universityName":"University X","universityDate":"2016-2020",
-"universityPara":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"},
-"languages":["Javascript","HTML5","CSS","Python","Go"],
-"frameworks":["React","Typescript","NodeJs"],
-"others":["Figma","AdobeXD","AWS"]}}
+{
+    "name": "",
+    "headerTaglineOne": "Hello ",
+    "headerTaglineTwo": "I'm Alice,",
+    "headerTaglineThree": "researcher and developer",
+    "headerTaglineFour": " based in Amsterdam, NL.",
+    "showCursor": true,
+    "showBlog": false,
+    "darkMode": true,
+    "showResume": false,
+    "socials": [
+      {"id": "1", "title": "Github", "link": "https://github.com/alicepicco333"},
+      {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/chetanverma7/"},
+      {"id": "3", "title": "Twitter", "link": "https://twitter.com/realchetanverma"},
+      {"id": "4", "title": "Blog", "link": "https://blog.chetanverma.com/"},
+      {"id": "5", "title": "Email", "link": "mailto:hello@chetanverma.com"}
+    ],
+    "projects": [
+      {
+        "id": "1",
+        "title": "The Meme Project",
+        "description": "The Meme Project is the project I am currently working on at Institute of Network Cultures. It is a multidisciplinary research on viral images, using cultural analytics practices, visual methodologies and practice-based research to develop an RDF-based ontology for memes. Click to access the Github repository.",
+        "imageSrc": "https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njl8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+        "url": "https://github.com/alicepicco333/The-Meme-Archive"
+      },
+      {
+        "id": "2",
+        "title": "Digitalian Folktales",
+        "description": "Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
+        "imageSrc": "https://images.unsplash.com/photo-1605153864431-a2795a1b2f95?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwyNTY3ODl8fGVufDB8fHw%3D&auto=format&fit=crop&w=400&q=60",
+        "url": "https://n1kg0r.github.io/digitalian-folktales/"
+      },
+      {
+        "id": "3",
+        "title": "MONINGA Onlus Instagram Filter",
+        "description": "I developed an Instagram filter to promote Vitamina, a music festival organized by the benefit event organization crew MONINGA Onlus in Modena, Italy. The filter uses face-tracking and changes in three variants when the user touches the screen.",
+        "imageSrc": "https://images.unsplash.com/photo-1504083898675-c896ecdae86e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+        "url": "https://www.instagram.com/ar/971249920767640"
+      },
+      {
+        "id": "4",
+        "title": "I Grandi Oggetti",
+        "description": "I Grandi Oggetti is the final project of the 3D animation course organized by Future Film Festival and financed by the European Social Fund. The short film is inspired by The Big Lebowski and aims to be a trailer of the movie seen through its iconic objects.",
+        "imageSrc": "https://images.unsplash.com/photo-1492171983775-a51717616c0d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NjB8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+        "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione"
+      },
+      {
+        "id": "5",
+        "title": "wipEU",
+        "description": "wipEU is an academic open data project focused on analyzing the correlation between the representation of women in diverse positions across the European Union and its evolution over time. The project aims to examine factors influencing the presence of women in positions of Power & Decision Making in the EU.",
+        "imageSrc": "https://images.unsplash.com/photo-1534239143101-1b1c627395c5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzZ8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
+        "url": "https://alicepicco333.github.io/wipEU/"
+      }
+    ],
+    "services": [
+      {"id": "1", "title": "Art Direction", "description": "We help with the creation and development of online advertising ideas, with particular focus on their visual appearance."},
+      {"id": "2", "title": "Branding", "description": "We design key brand elements such as the logo, color scheme, typography, and other design components that make your brand stand out from competitors."},
+      {"id": "3", "title": "Web Design", "description": "We build and optimize your online presence. Website is the digital entry point into your business and a powerful revenue channel."},
+      {"id": "4", "title": "3D Design", "description": "We combine creative design and technical skills to build striking 3D visualizations that bring your project to life."}
+    ],
+    "aboutpara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "resume": {
+      "tagline": "👋  I'm a software engineer, product designer.",
+      "description": "I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
+      "experiences": [
+        {"id": "1", "dates": "March 2022 - Present", "type": "Full Time", "position": "Frontend Engineer at X", "bullets": "Bullet One, Bullet Two"},
+        {"id": "d495c23b-4f65-479a-9b8a-cfbc1c089725", "dates": "July 2020 - March 2022", "type": "Full Time", "position": "Frontend Engineer at X", "bullets": "Worked on the frontend of a React application, Worked on the frontend of a React application"}
+      ],
+      "education": {
+        "universityName": "University X",
+        "universityDate": "2016-2020",
+        "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+      },
+      "languages": ["Javascript", "HTML5", "CSS", "Python", "Go"],
+      "frameworks": ["React", "Typescript", "NodeJs"],
+      "others": ["Figma", "AdobeXD", "AWS"]
+    }
+  }
+  
