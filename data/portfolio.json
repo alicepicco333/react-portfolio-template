@@ -7,7 +7,7 @@
     "showCursor": true,
     "showBlog": false,
     "darkMode": true,
-    "showResume": true,
+    "showResume": false,
     "socials": [
       {"id": "1", "title": "Github", "link": "https://github.com/alicepicco333"},
       {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/"},
@@ -56,8 +56,11 @@
       "tagline": "👋  I am an Anthropologist and Digital Humanist",
       "description": "I research digital culture through quantitative, qualitative and visual methodologies.",
       "experiences": [
-        {"id": "1", "dates": "March 2024 - Present", "type": "Full Time", "position": "Research and Development Intern at Institute of Network Cultures", "bullets": "Bullet One, Bullet Two"},
-        {"id": "2", "dates": "July 2020 - March 2022", "type": "Full Time", "position": "Frontend Engineer at X", "bullets": "Worked on the frontend of a React application, Worked on the frontend of a React application"}
+        {"id": "1", "dates": "March 2024 - Present", "type": "Full Time", "position": "Research and Development Intern at Institute of Network Cultures", "bullets": "Practice-based research on digital cultures with cultural analytics and visualizationmethods, Engaged in the development of an ontology of memes within the research project Viral Image Cultures, Design and development of an interactive interface to visualize the dataset and the ontology"},
+        {"id": "2", "dates": "March 2024 - Present", "type": "Funded Program", "position": "Digital Maker at The Hmm, DEN", "bullets": "Selected to participate to the funded program Voices of Makers in collaboration with DEN Cultural Knowledge Institute - the program consists of four sessions that aim to map cultural digital spaces for digital transformation in the Netherlands"},
+        {"id": "3", "dates": "September 2023 - January 2024", "type": "Part Time", "position": "Digital Literacy Educator at NINA", "bullets": "I served as an educator for the digital literacy of elderly individuals, conducting home visits to enhance their understanding of technology"},
+        {"id": "4", "dates": "August 2023 - September 2023", "type": "Freelance", "position": "Digital Designer at MONINGA", "bullets": "Creator of the Vitamina Festival Instagram filter for Moninga Onlus using Blender and Meta Spark AR"},
+        {"id": "5", "dates": "May 2022 - October 2022", "type": "Full Time", "position": "Customer Service Agent at Concentrix", "bullets": "Managed customer support and issue resolution, troubleshooting on Meta social media e-commerce platforms"}
       ],
       "education": {
         "universityName": "University X",
