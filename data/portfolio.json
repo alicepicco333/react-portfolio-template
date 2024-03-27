@@ -7,7 +7,7 @@
     "showCursor": true,
     "showBlog": false,
     "darkMode": true,
-    "showResume": false,
+    "showResume": true,
     "socials": [
       {"id": "1", "title": "Github", "link": "https://github.com/alicepicco333"},
       {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/"},
