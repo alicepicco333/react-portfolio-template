@@ -53,8 +53,8 @@
     
     "aboutpara": "I am an Anthropology graduate, Digital Humanities student and Design enthusiast. Passionate about the intersection of technology and culture and interested in new media, computer graphics, usability, cultural analytics, creative coding. I like to apply visual methodologies, computational methods and interactivity to cultural scenarios, artifacts, domains.",
     "resume": {
-      "tagline": "👋  I am an Anthropologist and Digital Humanist",
-      "description": "I research digital culture through quantitative, qualitative and visual methodologies.",
+      "tagline": "Anthropology / Digital Humanitites / Design",
+      "description": "Passionate about the intersection of technology and culture, anthropology and the digital humanities shape my research and practice. Interested in new media, computer graphics, usability, cultural analytics, creative coding. Researcher and developer with a focus on crafting impactful, user-centric digital experiences, I love to bring ideas to life in the digital realm. Open to collaborative opportunities.",
       "experiences": [
         {"id": "1", "dates": "March 2024 - Present", "type": "Full Time", "position": "Research and Development Intern at Institute of Network Cultures", "bullets": "Practice-based research on digital cultures with cultural analytics and visualizationmethods, Engaged in the development of an ontology of memes within the research project Viral Image Cultures, Design and development of an interactive interface to visualize the dataset and the ontology"},
         {"id": "2", "dates": "March 2024 - Present", "type": "Funded Program", "position": "Digital Maker at The Hmm, DEN", "bullets": "Selected to participate to the funded program Voices of Makers in collaboration with DEN Cultural Knowledge Institute - the program consists of four sessions that aim to map cultural digital spaces for digital transformation in the Netherlands"},
