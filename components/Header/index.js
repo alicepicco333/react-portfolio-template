@@ -72,7 +72,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   {showResume && (
                     <Button
                       onClick={() =>
-                        window.open("mailto:alice.picco@studio.unibo.it")
+                        window.open("mailto:awlicepicco@gmail.com")
                       }
                     >
                       Resume
@@ -80,7 +80,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:alice.picco@studio.unibo.it")}
+                    onClick={() => window.open("mailto:awlicepicco@gmail.com")}
                   >
                     Contact
                   </Button>
@@ -103,7 +103,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:alice.picco@studio.unibo.it")}
+                    onClick={() => window.open("mailto:awlicepicco@gmail.com")}
                   >
                     Contact
                   </Button>
@@ -140,7 +140,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:alice.picco@studio.unibo.it")}>
+            <Button onClick={() => window.open("mailto:awlicepicco@gmail.com")}>
               Contact
             </Button>
             {mounted && theme && data.darkMode && (
@@ -169,7 +169,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:alice.picco@studio.unibo.it")}>
+            <Button onClick={() => window.open("mailto:awlicepicco@gmail.com")}>
               Contact
             </Button>
 
