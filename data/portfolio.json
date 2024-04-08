@@ -63,18 +63,17 @@
         {"id": "5", "dates": "May 2022 - October 2022", "type": "Full Time", "position": "Customer Service Agent at Concentrix", "bullets": "Managed customer support and issue resolution on Meta social media e-commerce platforms"}
       ],
       "education": {
-        "universityName": "University X",
-        "universityDate": "2016-2020",
-        "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        "universityName": "International Masters Degree - Digital Humanitites and Digital Knowledge at University of Bologna ",
+        "universityDate": "2022-2025",
+        "universityPara": "Master's Degree in Digital Humanities and Applied Computer Science to Cultural Heritage. Specific Focus on UX and Interaction Design and Web Development. Among the curricular subjects: Data Science, Semantic Web, Text Retrieval, Analysis, and Mining; Digital Scholarly Editing, Knowledge Organization, Open Access, and Digital Ethics, Data Storytelling, Information Visualization, Computer Graphics."
       },
       "education2": {
-        "universityName": "University X",
-        "universityDate": "2016-2020",
-        "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+        "universityName": "Bachelor Degree - Cultural Anthropology at University of Bologna",
+        "universityDate": "2018-2022",
+        "universityPara": "My thesis was a digital etnography focusing on queer muslim youth with two case studies: Berlin’s queer club scene and Indonesian queer community on online forums and social media."
       },
       "languages": ["Javascript", "HTML5", "CSS", "Python"],
-      "frameworks": ["React", "Typescript", "NodeJs"],
-      "others": ["Figma"]
+            "others": ["Figma, Adobe Photoshop, Autodesk Maya, Blender, Meta Spark AR, Hydra Video Synth"]
     }
   }
   
