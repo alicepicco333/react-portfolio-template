@@ -21,13 +21,7 @@
         "imageSrc": "https://i.ibb.co/nrbcZGr/memeproject-final.png",
         "url": "https://github.com/alicepicco333/The-Meme-Archive"
       },
-      {
-        "id": "2",
-        "title": "Digitalian Folktales",
-        "description": "Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
-        "imageSrc": "https://i.ibb.co/r22WjzW/digidefdef.png",
-        "url": "https://n1kg0r.github.io/digitalian-folktales/"
-      },
+
       {
         "id": "3",
         "title": "Instagram Filter x MONINGA ",
@@ -35,6 +29,7 @@
         "imageSrc": "https://i.ibb.co/9txGmqB/mondef.png",
         "url": "https://www.instagram.com/ar/971249920767640"
       },
+
       {
         "id": "4",
         "title": "I Grandi Oggetti",
@@ -42,6 +37,14 @@
         "imageSrc": "https://i.ibb.co/Tg5xYsR/defigo.png",
         "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione"
       },
+      {
+        "id": "2",
+        "title": "Digitalian Folktales",
+        "description": "Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
+        "imageSrc": "https://i.ibb.co/r22WjzW/digidefdef.png",
+        "url": "https://n1kg0r.github.io/digitalian-folktales/"
+      },
+
       {
         "id": "5",
         "title": "wipEU",
