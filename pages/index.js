@@ -63,17 +63,18 @@ const Home = () => {
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
           <h1 className="text-2xl text-bold">Work</h1>
           {Object.entries(projectsByCategory).map(([category, projects]) => (
-            <div key={category}>
+            <div key={category} className="mt-5">
               <h2>{category}</h2>
-              <div className="mt-5 laptop:mt-10 grid grid-cols-2 tablet:grid-cols-2 gap-4">
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {projects.map((project) => (
-                  <WorkCard
-                    key={project.id}
-                    img={project.imageSrc}
-                    name={project.title}
-                    description={project.description}
-                    onClick={() => window.open(project.url)}
-                  />
+                  <div key={project.id}>
+                    <WorkCard
+                      img={project.imageSrc}
+                      name={project.title}
+                      description={project.description}
+                      onClick={() => window.open(project.url)}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
