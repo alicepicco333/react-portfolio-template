@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Socials from "../components/Socials";
 import Footer from "../components/Footer";
 import Cursor from "../components/Cursor";
+import WorkCard from "../components/WorkCard";
 import portfolioData from "../data/portfolio.json";
 
 const Home = () => {
@@ -16,7 +17,16 @@ const Home = () => {
     });
   };
 
-  // Group projects by category
+  const handleAboutScroll = () => {
+    const aboutSection = document.getElementById("about-section");
+    if (aboutSection) {
+      window.scrollTo({
+        top: aboutSection.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const projectsByCategory = portfolioData.projects.reduce((acc, project) => {
     if (!acc[project.category]) {
       acc[project.category] = [];
@@ -36,7 +46,7 @@ const Home = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Header handleWorkScroll={handleWorkScroll} />
+        <Header handleWorkScroll={handleWorkScroll} handleAboutScroll={handleAboutScroll} />
 
         <div className="laptop:mt-20 mt-10">
           {[portfolioData.headerTaglineOne, portfolioData.headerTaglineTwo, portfolioData.headerTaglineThree, portfolioData.headerTaglineFour].map((tagline, index) => (
@@ -55,19 +65,15 @@ const Home = () => {
           {Object.entries(projectsByCategory).map(([category, projects]) => (
             <div key={category}>
               <h2>{category}</h2>
-              <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
+              <div className="mt-5 laptop:mt-10 grid grid-cols-2 tablet:grid-cols-2 gap-4">
                 {projects.map((project) => (
-                  <div key={project.id} className="overflow-hidden rounded-lg p-2 laptop:p-4 first:ml-0 link" onClick={() => window.open(project.url)}>
-                    <div className="relative rounded-md overflow-hidden transition-all ease-out duration-300 h-100 md:h-auto">
-                      <img
-                        alt={project.title}
-                        className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
-                        src={project.imageSrc}
-                      />
-                    </div>
-                    <h1 className="mt-5 text-3xl font-medium">{project.title}</h1>
-                    <h2 className="text-md opacity-60">{project.description}</h2>
-                  </div>
+                  <WorkCard
+                    key={project.id}
+                    img={project.imageSrc}
+                    name={project.title}
+                    description={project.description}
+                    onClick={() => window.open(project.url)}
+                  />
                 ))}
               </div>
             </div>
@@ -75,7 +81,7 @@ const Home = () => {
         </div>
 
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
-          <h1 className="tablet:m-10 text-2xl text-bold">About</h1>
+          <h1 id="about-section" className="tablet:m-10 text-2xl text-bold">About</h1>
           <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
             {portfolioData.aboutpara}
           </p>
