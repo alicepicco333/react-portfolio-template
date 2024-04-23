@@ -16,10 +16,11 @@
     "projects": [
       {
         "id": "1",
-        "title": "The Meme Project",
-        "description": "The Meme Project is the project I am currently working on at Institute of Network Cultures. It is a multidisciplinary research on viral images, using cultural analytics practices, visual methodologies and practice-based research to develop an ontology for memes.",
+        "title": "The Meme Index",
+        "description": "The Meme Index is the project I am currently working on at Institute of Network Cultures. It is a multidisciplinary research on viral images, using cultural analytics practices, visual methodologies and practice-based research to develop an ontology for memes.",
         "imageSrc": "https://i.ibb.co/nrbcZGr/memeproject-final.png",
-        "url": "https://github.com/alicepicco333/The-Meme-Archive"
+        "url": "https://github.com/alicepicco333/The-Meme-Archive",
+        "category": "Academic Projects"
       },
 
       {
@@ -27,7 +28,9 @@
         "title": "Instagram Filter x MONINGA ",
         "description": "I developed an Instagram filter to promote Vitamina, a music festival organized by the benefit event organization crew MONINGA Onlus in Modena, Italy. The filter uses face-tracking and changes in three variants when the user touches the screen.",
         "imageSrc": "https://i.ibb.co/9txGmqB/mondef.png",
-        "url": "https://www.instagram.com/ar/971249920767640"
+        "url": "https://www.instagram.com/ar/971249920767640",
+        "category": "Client Projects"
+    
       },
 
       {
@@ -35,14 +38,17 @@
         "title": "I Grandi Oggetti",
         "description": "I Grandi Oggetti is the final project of the 3D animation course organized by Future Film Festival and financed by the European Social Fund. The short film is inspired by The Big Lebowski and aims to be a trailer of the movie seen through its iconic objects.",
         "imageSrc": "https://i.ibb.co/Tg5xYsR/defigo.png",
-        "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione"
+        "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
+        "category": "Artistic Research"
+
       },
       {
         "id": "4",
         "title": "Digitalian Folktales",
         "description": "Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
         "imageSrc": "https://i.ibb.co/r22WjzW/digidefdef.png",
-        "url": "https://n1kg0r.github.io/digitalian-folktales/"
+        "url": "https://n1kg0r.github.io/digitalian-folktales/",
+        "category": "Academic Projects"
       },
 
       {
@@ -50,7 +56,8 @@
         "title": "wipEU",
         "description": "wipEU is an academic open data project focused on analyzing the correlation between the representation of women in diverse positions across the European Union and its evolution over time. The project aims to examine factors influencing the presence of women in positions of Power & Decision Making in the EU.",
         "imageSrc": "https://i.ibb.co/M7MXj8F/Group-1-1.png",
-        "url": "https://alicepicco333.github.io/wipEU/"
+        "url": "https://alicepicco333.github.io/wipEU/",
+        "category": "Academic Projects"
       }
     ],
     
