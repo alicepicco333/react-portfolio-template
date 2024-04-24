@@ -9,11 +9,11 @@ const WorkCard = ({ img, name, description, category, tags, onClick }) => {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ width: '100%', maxWidth: '600px' }} // Limit max width to 600px
+      style={{ width: '100%', maxWidth: '650px' }} // Limit max width to 600px
     >
       <div
         className="relative rounded-md overflow-hidden transition-all ease-out duration-300"
-        style={{ width: '100%', height: '60%' }}
+        style={{ width: '100%', height: '100%' }}
       >
         <img
           alt={name}
@@ -26,7 +26,7 @@ const WorkCard = ({ img, name, description, category, tags, onClick }) => {
             {tags.map((tag, index) => (
               <p
                 key={index}
-                className="bg-gray-200 text-gray-700 px-2 py-1 rounded mr-2 mb-2 mt-4 inline-block"
+                className="bg-green-200 text-gray-700 px-2 py-1 rounded mr-2 mb-2 mt-4 inline-block"
               >
                 {tag}
               </p>
