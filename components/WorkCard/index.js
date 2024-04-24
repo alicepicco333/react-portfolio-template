@@ -21,19 +21,19 @@ const WorkCard = ({ img, name, description, category, tags, onClick }) => {
           src={img}
           style={{ width: '100%', height: '100%' }}
         />
+        {isHovered && (
+          <div className="absolute bottom-0 right-0 p-2">
+            {tags.map((tag, index) => (
+              <p
+                key={index}
+                className="bg-gray-200 text-gray-700 px-2 py-1 rounded mr-2 mb-2 mt-4 inline-block"
+              >
+                {tag}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
-      {isHovered && (
-        <div className="absolute right-0 top-0 p-2">
-          {tags.map((tag, index) => (
-            <p
-              key={index}
-              className="bg-gray-200 text-gray-700 px-2 py-1 rounded mr-2 mb-2 inline-block"
-            >
-              {tag}
-            </p>
-          ))}
-        </div>
-      )}
       <h1 className="mt-5 text-3xl font-medium">{name ? name : "Project Name"}</h1>
       <h2 className="text-md opacity-60">{description ? description : "Description"}</h2>
       {category && <p className="text-sm">{category}</p>}
