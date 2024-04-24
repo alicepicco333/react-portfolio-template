@@ -20,15 +20,17 @@
         "description": "The Meme Index is the project I am currently working on at Institute of Network Cultures. It is a multidisciplinary research on viral images, using cultural analytics practices, visual methodologies and practice-based research to develop an ontology for memes.",
         "imageSrc": "https://i.ibb.co/nrbcZGr/memeproject-final.png",
         "url": "https://github.com/alicepicco333/The-Meme-Archive",
-        "category": "Academic Projects"
+        "category": "Academic Projects",
+        "tags": ["Media Studies", "Research", "Digital Humanities"]
       },
       {
-        "id": "9",
+        "id": "2",
         "title": "Glitching Materiality - Live Coding Performance @THEVOID",
         "description": "Together with artist Karolis Lasys, I perfomed a live visual set on Hydra Video Synth at Experimental Publishing Fest #2, event organized by Institute of Network Cultures and Nero Editions at OT301, Amsterdam.",
         "imageSrc": "https://i.ibb.co/8rDs1vL/Screenshot-2024-04-23-202723.png", 
         "url": "https://www.twitch.tv/videos/2124024013?t=2h40m19s",
-        "category": "Artistic Research"
+        "category": "Artistic Research",
+        "tags": ["Live Coding", "Creative Coding", "Performance"]
       },
       {
         "id": "3",
@@ -36,66 +38,74 @@
         "description": "I Grandi Oggetti is the final project of the 3D animation course organized by Future Film Festival and financed by the European Social Fund. The short film is inspired by The Big Lebowski and aims to be a trailer of the movie seen through its iconic objects.",
         "imageSrc": "https://i.ibb.co/Tg5xYsR/defigo.png",
         "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
-        "category": "Artistic Research"
+        "category": "Artistic Research",
+        "tags": ["3D", "Animation"]
 
       },
       {
-        "id": "2",
+        "id": "4",
         "title": "Instagram Filter x MONINGA ",
         "description": "I developed an Instagram filter to promote Vitamina, a music festival organized by the benefit event organization crew MONINGA Onlus in Modena, Italy. The filter uses face-tracking and changes in three variants when the user touches the screen.",
         "imageSrc": "https://i.ibb.co/9txGmqB/mondef.png",
         "url": "https://www.instagram.com/ar/971249920767640",
-        "category": "Client Projects"
+        "category": "Client Projects",
+        "tags": ["Augmented Reality", "3D", "Interaction Design"]
     
       },
       {
-        "id": "4",
+        "id": "5",
         "title": "Digitalian Folktales",
         "description": "Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
         "imageSrc": "https://i.ibb.co/r22WjzW/digidefdef.png",
         "url": "https://n1kg0r.github.io/digitalian-folktales/",
-        "category": "Academic Projects"
+        "category": "Academic Projects",
+        "tags": ["Digital Edition", "Textual Research"]
       },
 
       {
-        "id": "5",
+        "id": "6",
         "title": "wipEU",
         "description": "wipEU is an academic open data project focused on analyzing the correlation between the representation of women in diverse positions across the European Union and its evolution over time. The project aims to examine factors influencing the presence of women in positions of Power & Decision Making in the EU.",
         "imageSrc": "https://i.ibb.co/M7MXj8F/Group-1-1.png",
         "url": "https://alicepicco333.github.io/wipEU/",
-        "category": "Academic Projects"
+        "category": "Academic Projects",
+        "tags":["Data Visualization", "Open Data"]
       },
       {
-        "id": "9",
+        "id": "7",
         "title": "CAPPellini",
         "description": "CAPPellini is the final project of the course Interaction Media Design at University of Bologna. It's an interactive video guide and quiz game for the geological museum Giovanni Capellini.",
         "imageSrc": "https://i.ibb.co/kc2nCVt/CAPPellini-redesign-4-page-0014.jpg", 
         "url": "",
-        "category": "Academic Projects"
+        "category": "Academic Projects",
+        "tags": ["Interaction Design", "UX"]
       },
       {
-        "id": "6",
+        "id": "8",
         "title": "Sustainability Randomizer",
         "description": "Sustainability Randomizer is the workshop I created and facilitated at Hackers & Designers Summer Camp 2023. This workshop focuses on promoting food sustainability and zero-waste practices by encouraging participants to think about local, seasonal ingredients and challenging them to create delicious dishes using a food randomizer.",
         "imageSrc": "https://wiki.hackersanddesigners.nl//images/7/7b/19_sustainability_randomiser.jpg",
         "url": "https://hackersanddesigners.nl/sustainability-randomizer",
-        "category": "Workshops"
+        "category": "Workshops",
+        "tags":["Workshop Facilitation", "Education"]
       },
       {
-        "id": "7",
+        "id": "9",
         "title": "Quello che succede quando non riesco ad avere un'idea veramente originale",
         "description": "I had the pleasure to contribute to Davide di Lorenzo's short film inspired by the essay Consider the Lobster by David Foster Wallace.",
         "imageSrc": "https://i.ibb.co/Nt5X4H7/Screenshot-2024-04-23-191349.png", 
         "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
-        "category": "Artistic Research"
+        "category": "Artistic Research",
+        "tags":["2D Animation", "Short Film"]
       },
       {
-        "id": "8",
+        "id": "10",
         "title": "Cognitive Bias Ontology",
         "description": "This gitbook serves as a platform to show the progress of one of the groups in charge of developing an ontology for cognitive biases for the project of the course Knowledge Representation and Extraction at University of Bologna.",
         "imageSrc": "https://the-bias-project.gitbook.io/~gitbook/image?url=https:%2F%2F3715292082-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F69TpXcnhHK5qcm12xmil%252Fuploads%252FIQvAYofzi8QMD9jMtoaj%252FCognitive_Bias_Codex_-_180%252B_biases%252C_designed_by_John_Manoogian_III_%28jm3%29.jpg%3Falt=media%26token=d355d388-93e0-4c7f-a24b-0cf4156ebff8&width=400&dpr=3&quality=100&sign=afa82c7cf880e1c902c0abf153d715b32cff14f294b8e5215b36a43102efe545", 
         "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
-        "category": "Academic Projects"
+        "category": "Academic Projects",
+        "tags": ["Ontology Engineering", "Semantic Web", "Psychology"]
       }
 
 
