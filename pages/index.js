@@ -1,3 +1,4 @@
+// Home component
 import React, { useRef } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
@@ -35,6 +36,10 @@ const Home = () => {
     return acc;
   }, {});
 
+  const handleProjectClick = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <div className={`relative ${portfolioData.showCursor && "cursor-none"}`}>
       {portfolioData.showCursor && <Cursor />}
@@ -62,23 +67,24 @@ const Home = () => {
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
           <h1 className="text-2xl text-bold">Work</h1>
-          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4 laptop:gap-8">
-            {Object.entries(projectsByCategory).map(([category, projects]) => (
-              <div key={category}>
-                <h2>{category}</h2>
+          {Object.entries(projectsByCategory).map(([category, projects]) => (
+            <div key={category} className="mt-5">
+              <h2>{category}</h2>
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {projects.map((project) => (
                   <div key={project.id}>
                     <WorkCard
                       img={project.imageSrc}
                       name={project.title}
                       description={project.description}
-                      tags={project.tags} /* Ensure that the tags array is passed */
+                      tags={project.tags}
+                      onClick={() => handleProjectClick(project.url)} // Add onClick handler
                     />
                   </div>
                 ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
