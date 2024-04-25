@@ -8,10 +8,11 @@
     "showBlog": false,
     "darkMode": true,
     "showResume": true,
+    "email": "awlicepicco@gmail.com",
     "socials": [
       {"id": "1", "title": "Github", "link": "https://github.com/alicepicco333"},
       {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/"},
-      {"id": "3", "title": "Email", "link": "mailto:alice.picco@studio.unibo.it"}
+      {"id": "3", "title": "Email", "link": "mailto:awlicepicco@gmail.com"}
     ],
     "projects": [
       {

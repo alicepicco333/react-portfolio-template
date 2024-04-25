@@ -1,4 +1,3 @@
-// Home component
 import React, { useRef } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
@@ -62,6 +61,7 @@ const Home = () => {
               {tagline}
             </h1>
           ))}
+          <p className="text-lg mt-4 ml-4">{portfolioData.email}</p>
           <Socials className="mt-2 laptop:mt-5" />
         </div>
 
@@ -87,12 +87,16 @@ const Home = () => {
           ))}
         </div>
 
+        
+
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
           <h1 id="about-section" className="tablet:m-10 text-2xl text-bold">About</h1>
           <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
             {portfolioData.aboutpara}
           </p>
         </div>
+
+        <p className="text-lg mt-4 ml-10">{portfolioData.email}</p>
 
         <Footer />
       </div>
