@@ -50,7 +50,7 @@ const Home = () => {
           <meta property="og:title" content="Alice Picco - portfolio" />
           <meta property="og:description" content="This website contains all my latest projects as well as my resume and contact information." />
           <meta property="og:image" content="https://i.ibb.co/m4CxQBW/Screenshot-2024-04-25-140857.png" />
-          <meta property="og:url" content="alicexpicco.netlify.app" />
+          <meta property="og:url" content="https://alicexpicco.netlify.app" />
           <meta property="og:type" content="website" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
