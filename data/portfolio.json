@@ -1,126 +1,92 @@
-{
+{"headerTaglineOne":"Hello!","headerTaglineTwo":"I'm Alice,","headerTaglineThree":"researcher+developer","headerTaglineFour":"based in Amsterdam.",
+"showCursor":true,"showBlog":false,"darkMode":true,"showResume":true,
+"email":"awlicepicco@gmail.com",
+"socials":[{"id":"1","title":"Github","link":"https://github.com/alicepicco333"},
+{"id":"2","title":"LinkedIn","link":"https://www.linkedin.com/in/alice-picco-791157114/"},
+{"id":"3","title":"Email","link":"mailto:awlicepicco@gmail.com"}],
+
+"projects":
+
+[
     
-    "headerTaglineOne": "Hello ",
-    "headerTaglineTwo": "I'm Alice,",
-    "headerTaglineThree": "researcher and developer",
-    "headerTaglineFour": " based in Amsterdam, NL.",
-    "showCursor": true,
-    "showBlog": false,
-    "darkMode": true,
-    "showResume": true,
-    "email": "awlicepicco@gmail.com",
-    "socials": [
-      {"id": "1", "title": "Github", "link": "https://github.com/alicepicco333"},
-      {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/"},
-      {"id": "3", "title": "Email", "link": "mailto:awlicepicco@gmail.com"}
-    ],
-    "projects": [
+    {"id":"1","title":"Digitalian Folktales",
+"description":"Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
+"imageSrc":"https://s9.gifyu.com/images/SZyM1.gif",
+"url":"https://n1kg0r.github.io/digitalian-folktales/",
+"category":"Academic Projects",
+"tags":["Digital Edition","Textual Research"]},
 
-      {
-        "id": "2",
-        "title": "Glitching Materiality - @THEVOID",
-        "description": "Together with artist Karolis Lasys, I perfomed a live visual set on Hydra Video Synth at Experimental Publishing Fest #2, event organized by Institute of Network Cultures and Nero Editions at OT301, Amsterdam.",
-        "imageSrc": "https://s9.gifyu.com/images/SZBqM.gif", 
-        "url": "https://www.twitch.tv/videos/2124024013?t=2h40m19s",
-        "category": "Creative Projects",
-        "tags": ["Live Coding", "Performance"]
-      },
-      {
-        "id": "3",
-        "title": "I Grandi Oggetti",
-        "description": "I Grandi Oggetti is the final project of the 3D animation course organized by Future Film Festival and financed by the European Social Fund. The short film is inspired by The Big Lebowski and aims to be a trailer of the movie seen through its iconic objects.",
-        "imageSrc": "https://s9.gifyu.com/images/SZBwp.gif",
-        "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
-        "category": "Creative Projects",
-        "tags": ["3D Modeling", "3D Animation"]
+{"id":"2","title":"Cognitive Bias Ontology",
+"description":"This gitbook serves as a platform to show the progress of one of the groups in charge of developing an ontology for cognitive biases for the project of the course Knowledge Representation and Extraction at University of Bologna.",
+"imageSrc":"https://s9.gifyu.com/images/SZybG.gif",
+"url":"https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
+"category":"Academic Projects",
+"tags":["Ontology Engineering","Psychology"]},
 
-      },
-      {
-        "id": "4",
-        "title": "Instagram Filter x MONINGA ",
-        "description": "I developed an Instagram filter to promote Vitamina, a music festival organized by the benefit event organization crew MONINGA Onlus in Modena, Italy. The filter uses face-tracking and changes in three variants when the user touches the screen.",
-        "imageSrc": "https://s12.gifyu.com/images/SZBNS.gif",
-        "url": "https://www.instagram.com/ar/971249920767640",
-        "category": "Client Projects",
-        "tags": ["Augmented Reality", "Interaction Design"]
+{"id":"3","title":"wipEU",
+"description":"wipEU is an academic open data project focused on analyzing the correlation between the representation of women in diverse positions across the European Union and its evolution over time. The project aims to examine factors influencing the presence of women in positions of Power & Decision Making in the EU.",
+"imageSrc":"https://s9.gifyu.com/images/SZyMw.gif",
+"url":"https://alicepicco333.github.io/wipEU/",
+"category":"Academic Projects",
+"tags":["Data Visualization","Digital Ethics"]},
+
+
+{"id":"4","title":"Mary Shelley HRT",
+"description":"This website serves as a repository for the Semantic Digital Libraries course project at University of Bologna. It's a AI handwritten-text-recognition campaign with Transkribus to recognize Mary Shelley's manuscript of the classic Frankenstein or the modern Prometheus.",
+"imageSrc":"https://i.ibb.co/p2XXCRN/Screenshot-2024-06-19-at-18-17-12.png",
+"url":"https://maryshelleyhtr.netlify.app",
+"category":"Academic Projects",
+"tags":["Textual Research","Digital Humanities"]},
     
-      },
-      {
-        "id": "5",
-        "title": "Digitalian Folktales",
-        "description": "Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
-        "imageSrc": "https://s9.gifyu.com/images/SZyM1.gif",
-        "url": "https://n1kg0r.github.io/digitalian-folktales/",
-        "category": "Academic Projects",
-        "tags": ["Digital Edition", "Textual Research"]
-      },
+    {"id":"5","title":"Glitching Materiality - @THEVOID",
+"description":"Together with artist Karolis Lasys, I perfomed a live visual set on Hydra Video Synth at Experimental Publishing Fest #2, event organized by Institute of Network Cultures and Nero Editions at OT301, Amsterdam.",
+"imageSrc":"https://s9.gifyu.com/images/SZBqM.gif",
+"url":"https://www.twitch.tv/videos/2124024013?t=2h40m19s",
+"category":"Creative Projects",
+"tags":["Live Coding","Performance"]},
 
-      {
-        "id": "6",
-        "title": "wipEU",
-        "description": "wipEU is an academic open data project focused on analyzing the correlation between the representation of women in diverse positions across the European Union and its evolution over time. The project aims to examine factors influencing the presence of women in positions of Power & Decision Making in the EU.",
-        "imageSrc": "https://s9.gifyu.com/images/SZyMw.gif",
-        "url": "https://alicepicco333.github.io/wipEU/",
-        "category": "Academic Projects",
-        "tags":["Data Visualization", "Digital Ethics"]
-      },
-          {
-        "id": "8",
-        "title": "Sustainability Randomizer @H&D Summer Camp",
-        "description": "Sustainability Randomizer is the workshop I created and facilitated at Hackers & Designers Summer Camp 2023. This workshop focuses on promoting food sustainability and zero-waste practices by encouraging participants to think about local, seasonal ingredients and challenging them to create delicious dishes using a food randomizer.",
-        "imageSrc": "https://s9.gifyu.com/images/SZB3c.gif",
-        "url": "https://hackersanddesigners.nl/sustainability-randomizer",
-        "category": "Workshops",
-        "tags":["Workshop Facilitation", "Education"]
-      },
-      {
-        "id": "9",
-        "title": "Quello che succede quando non riesco ad avere un'idea veramente originale",
-        "description": "I had the pleasure to contribute to Davide di Lorenzo's short film inspired by the essay Consider the Lobster by David Foster Wallace.",
-        "imageSrc": "https://s9.gifyu.com/images/SZBTy.gif", 
-        "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
-        "category": "Creative Projects",
-        "tags":["2D Animation"]
-      },
-      {
-        "id": "10",
-        "title": "Cognitive Bias Ontology",
-        "description": "This gitbook serves as a platform to show the progress of one of the groups in charge of developing an ontology for cognitive biases for the project of the course Knowledge Representation and Extraction at University of Bologna.",
-        "imageSrc": "https://s9.gifyu.com/images/SZybG.gif", 
-        "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
-        "category": "Academic Projects",
-        "tags": ["Ontology Engineering", "Psychology"]
-      }
+{"id":"6","title":"I Grandi Oggetti",
+"description":"I Grandi Oggetti is the final project of the 3D animation course organized by Future Film Festival and financed by the European Social Fund. The short film is inspired by The Big Lebowski and aims to be a trailer of the movie seen through its iconic objects.",
+"imageSrc":"https://s9.gifyu.com/images/SZBwp.gif",
+"url":"https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
+"category":"Creative Projects",
+"tags":["3D Modeling","3D Animation"]},
+
+{"id":"7","title":"Instagram Filter x MONINGA ",
+"description":"I developed an Instagram filter to promote Vitamina, a music festival organized by the benefit event organization crew MONINGA Onlus in Modena, Italy. The filter uses face-tracking and changes in three variants when the user touches the screen.",
+"imageSrc":"https://s12.gifyu.com/images/SZBNS.gif",
+"url":"https://www.instagram.com/ar/971249920767640",
+"category":"Creative Projects",
+"tags":["Augmented Reality","Interaction Design"]},
 
 
 
 
 
-    ],
-    
-    "aboutpara": "I am an Anthropology graduate, Digital Humanities student and Design enthusiast. Passionate about the intersection of technology and culture and interested in new media, computer graphics, usability, cultural analytics, creative coding. I like to apply visual methodologies, computational methods and interactivity to cultural scenarios, artifacts, domains.",
-    "resume": {
-      "tagline": "Anthropology / Digital Humanitites / Design",
-      "description": "Passionate about the intersection of technology and culture, anthropology and the digital humanities shape my research and practice. Interested in new media, computer graphics, usability, cultural analytics, creative coding. Researcher and developer with a focus on crafting impactful, user-centric digital experiences, I love to bring ideas to life in the digital realm. Open to collaborative opportunities.",
-      "experiences": [
-        {"id": "1", "dates": "March 2024 - Present", "type": "Full Time", "position": "Research and Development Intern at Institute of Network Cultures", "bullets": "Practice-based research on digital cultures with cultural analytics and visualization methods"},
-        {"id": "2", "dates": "March 2024 - Present", "type": "Funded Program", "position": "Digital Maker at The Hmm, DEN", "bullets": "Selected to participate to the funded program Voices of Makers in collaboration with DEN Cultural Knowledge Institute - the program consists of four sessions that aim to map cultural digital spaces for digital transformation in the Netherlands"},
-        {"id": "3", "dates": "September 2023 - January 2024", "type": "Part Time", "position": "Digital Literacy Educator at NINA", "bullets": "I served as an educator for the digital literacy of elderly individuals conducting home visits to enhance their understanding of technology"},
-        {"id": "4", "dates": "August 2023 - September 2023", "type": "Freelance", "position": "Digital Designer at MONINGA", "bullets": "Creator of the Vitamina Festival Instagram filter for Moninga Onlus using Blender and Meta Spark AR"},
-        {"id": "5", "dates": "May 2022 - October 2022", "type": "Full Time", "position": "Customer Service Agent at Concentrix", "bullets": "Managed customer support and issue resolution on Meta social media e-commerce platforms"}
-      ],
-      "education": {
-        "universityName": "International Master's Degree - Digital Humanitites and Digital Knowledge at University of Bologna ",
-        "universityDate": "2022-2025",
-        "universityPara": "Master's Degree in Digital Humanities and Applied Computer Science to Cultural Heritage. Specific Focus on UX and Interaction Design and Web Development. Among the curricular subjects: Data Science, Semantic Web, Text Retrieval, Analysis, and Mining; Digital Scholarly Editing, Knowledge Organization, Open Access, and Digital Ethics, Data Storytelling, Information Visualization, Computer Graphics."
-      },
-      "education2": {
-        "universityName": "Bachelor's Degree - Cultural Anthropology at University of Bologna",
-        "universityDate": "2018-2022",
-        "universityPara": "My thesis was a digital etnography focusing on queer muslim youth with two case studies: Berlin’s queer club scene and Indonesian queer community on online forums and social media."
-      },
-      "languages": ["Javascript", "HTML5", "CSS", "Python"],
-            "others": ["Figma", "Adobe Photoshop", "Autodesk Maya", "Blender", "Meta Spark AR", "Hydra Video Synth"]
-    }
-  }
-  
+
+{"id":"8","title":"Sustainability Randomizer @H&D Summer Camp",
+"description":"Sustainability Randomizer is the workshop I created and facilitated at Hackers & Designers Summer Camp 2023. This workshop focuses on promoting food sustainability and zero-waste practices by encouraging participants to think about local, seasonal ingredients and challenging them to create delicious dishes using a food randomizer.",
+"imageSrc":"https://s9.gifyu.com/images/SZB3c.gif",
+"url":"https://hackersanddesigners.nl/sustainability-randomizer",
+"category":"Workshops",
+"tags":["Workshop Facilitation","Education"]},
+
+
+{"id":"9","title":"Quello che succede quando non riesco ad avere un'idea veramente originale",
+"description":"I had the pleasure to contribute to Davide di Lorenzo's short film inspired by the essay Consider the Lobster by David Foster Wallace.",
+"imageSrc":"https://s9.gifyu.com/images/SZBTy.gif",
+"url":"https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
+"category":"Creative Projects",
+"tags":["2D Animation"]}],
+
+
+
+
+"aboutpara":"I am an Anthropology graduate, Digital Humanities student and Design enthusiast. Passionate about the intersection of technology and culture and interested in new media, computer graphics, usability, cultural analytics, creative coding. I like to apply visual methodologies, computational methods and interactivity to cultural scenarios, artifacts, domains.",
+
+
+
+
+
+"resume":{"tagline":"Anthropology / Digital Humanitites / Design",
+"description":"Passionate about the intersection of technology and culture, anthropology and the digital humanities shape my research and practice. Researcher and developer with a focus on crafting impactful, user-centric digital experiences, I love to bring ideas to life in the digital realm. Open to collaborative opportunities.","experiences":[{"id":"1","dates":"March 2024 - Present","type":"Full Time","position":"Research and Development Intern at Institute of Network Cultures","bullets":"Practice-based research on digital cultures with cultural analytics and visualization methods"},{"id":"2","dates":"March 2024 - Present","type":"Funded Program","position":"Digital Maker at The Hmm, DEN","bullets":"Selected to participate to the funded program Voices of Makers in collaboration with DEN Cultural Knowledge Institute - the program consists of four sessions that aim to map cultural digital spaces for digital transformation in the Netherlands"},{"id":"3","dates":"September 2023 - January 2024","type":"Part Time","position":"Digital Literacy Educator at NINA","bullets":"I served as an educator for the digital literacy of elderly individuals conducting home visits to enhance their understanding of technology"},{"id":"4","dates":"August 2023 - September 2023","type":"Freelance","position":"Digital Designer at MONINGA","bullets":"Creator of the Vitamina Festival Instagram filter for Moninga Onlus using Blender and Meta Spark AR"},{"id":"5","dates":"May 2022 - October 2022","type":"Full Time","position":"Customer Service Agent at Concentrix","bullets":"Managed customer support and issue resolution on Meta social media e-commerce platforms"}],"education":{"universityName":"International Master's Degree - Digital Humanitites and Digital Knowledge at University of Bologna ","universityDate":"2022-2025","universityPara":"Master's Degree in Digital Humanities and Applied Computer Science to Cultural Heritage. Specific Focus on UX and Interaction Design and Web Development. Among the curricular subjects: Data Science, Semantic Web, Text Retrieval, Analysis, and Mining; Digital Scholarly Editing, Knowledge Organization, Open Access, and Digital Ethics, Data Storytelling, Information Visualization, Computer Graphics."},"education2":{"universityName":"Bachelor's Degree - Cultural Anthropology at University of Bologna","universityDate":"2018-2022","universityPara":"My thesis was a digital etnography focusing on queer muslim youth with two case studies: Berlin’s queer club scene and Indonesian queer community on online forums and social media."},"languages":["Javascript","HTML5","CSS","Python"],"others":["Figma","Adobe Photoshop","Autodesk Maya","Blender","Meta Spark AR","Hydra Video Synth"]}}

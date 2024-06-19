@@ -66,7 +66,7 @@ const Home = () => {
               {tagline}
             </h1>
           ))}
-          <p className="text-lg mt-4 ml-4">{portfolioData.email}</p>
+          <p className="text-md mt-4 ml-4">{portfolioData.email}</p>
           <Socials className="mt-2 laptop:mt-5" />
         </div>
 
@@ -75,7 +75,7 @@ const Home = () => {
           {Object.entries(projectsByCategory).map(([category, projects]) => (
             <div key={category} className="mt-5">
               <h2>{category}</h2>
-              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="mt-5 grid grid-cols-2 sm:grid-cols-1 gap-2">
                 {projects.map((project) => (
                   <div key={project.id}>
                     <WorkCard
