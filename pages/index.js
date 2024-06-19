@@ -90,7 +90,7 @@ const Home = () => {
           {Object.entries(projectsByCategory).map(([category, projects]) => (
             <div key={category} className="mt-5">
               <h2 className="text-xl">{category}</h2>
-              <div className="mt-5 grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="mt-5 grid grid-cols-1 laptop:grid-cols-2 gap-4">
                 {projects.map((project) => (
                   <div key={project.id}>
                     <WorkCard
