@@ -86,7 +86,7 @@ const Home = () => {
         </div>
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl font-bold">Work</h1>
+          <h1 className="text-2xl ">Work</h1>
           {Object.entries(projectsByCategory).map(([category, projects]) => (
             <div key={category} className="mt-5">
               <h2 className="text-xl">{category}</h2>
@@ -108,7 +108,7 @@ const Home = () => {
         </div>
 
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
-          <h1 id="about-section" className="text-2xl font-bold">About</h1>
+          <h1 id="about-section" className="text-2xl">About</h1>
           <p className="mt-2 text-lg laptop:text-xl">
             {portfolioData.aboutpara}
           </p>
