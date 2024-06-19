@@ -109,7 +109,7 @@ const Home = () => {
 
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
           <h1 id="about-section" className="text-2xl">About</h1>
-          <p className="mt-2 text-lg laptop:text-xl">
+          <p className="mt-2 text-lg  text-justifylaptop:text-xl">
             {portfolioData.aboutpara}
           </p>
         </div>
