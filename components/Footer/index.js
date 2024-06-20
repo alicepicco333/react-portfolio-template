@@ -14,6 +14,12 @@ const Footer = ({}) => {
             <div className="mt-10">
               <Socials />
             </div>
+         <div className="mt-20 lg:mt-40"></div>
+        
+         <p className="text-xs mt-40 lg:mt-80">
+          alicepicco / e.else_if ｡◕‿‿◕｡-`♡´-✧˖°.☾ 2024
+         
+         </p>
           </div>
         </div>
       </div>

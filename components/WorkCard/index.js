@@ -5,14 +5,14 @@ const WorkCard = ({ img, name, description, category, tags, onClick }) => {
 
   return (
     <div
-      className="relative overflow-hidden rounded-lg p-2 laptop:p-4 first:ml-0 link"
+      className="relative overflow-hidden rounded-lg p-2 laptop:p-2 first:ml-0 link h-150"
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ width: '100%', maxWidth: '650px' }} // Limit max width to 600px
+      style={{ width: '100%', maxWidth: '700px', heigth: '120%' }} // Limit max width to 600px
     >
       <div
-        className="relative rounded-md overflow-hidden transition-all ease-out duration-300"
+        className="relative rounded-s overflow-hidden transition-all ease-out duration-300"
         style={{ width: '100%', height: '100%' }}
       >
         <img
@@ -35,7 +35,7 @@ const WorkCard = ({ img, name, description, category, tags, onClick }) => {
         )}
       </div>
       <h1 className="mt-5 text-3xl font-medium">{name ? name : "Project Name"}</h1>
-      <h2 className="text-md opacity-60">{description ? description : "Description"}</h2>
+      <h2 className="text-sm text-justify opacity-60">{description ? description : "Description"}</h2>
       {category && <p className="text-sm">{category}</p>}
     </div>
   );

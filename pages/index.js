@@ -47,35 +47,50 @@ const Home = () => {
         <Head>
           <title>Alice Picco - portfolio</title>
           <meta name="description" content="My portfolio website" />
-          <meta property="og:title" content="Alice Picco - portfolio" />
-          <meta property="og:description" content="This website contains all my latest projects as well as my resume and contact information." />
-          <meta property="og:image" content="https://i.ibb.co/phST7kC/Screenshot-2024-04-25-140857.png" />
-          <meta property="og:url" content="https://alicexpicco.netlify.app" />
+          <meta
+            property="og:title"
+            content="Alice Picco - portfolio"
+          />
+          <meta
+            property="og:description"
+            content="This website contains all my latest projects as well as my resume and contact information."
+          />
+          <meta
+            property="og:image"
+            content="https://i.ibb.co/phST7kC/Screenshot-2024-04-25-140857.png"
+          />
+          <meta
+            property="og:url"
+            content="https://alicexpicco.netlify.app"
+          />
           <meta property="og:type" content="website" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Header handleWorkScroll={handleWorkScroll} handleAboutScroll={handleAboutScroll} />
+        <Header
+          handleWorkScroll={handleWorkScroll}
+          handleAboutScroll={handleAboutScroll}
+        />
 
-        <div className="laptop:mt-20 mt-10">
+        <div className="mt-10 laptop:mt-20">
           {[portfolioData.headerTaglineOne, portfolioData.headerTaglineTwo, portfolioData.headerTaglineThree, portfolioData.headerTaglineFour].map((tagline, index) => (
             <h1
               key={index}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
+              className="text-3xl tablet:text-5xl laptop:text-6xl p-1"
             >
               {tagline}
             </h1>
           ))}
-          <p className="text-lg mt-4 ml-4">{portfolioData.email}</p>
+          <p className="text-md mt-4 ml-4">{portfolioData.email}</p>
           <Socials className="mt-2 laptop:mt-5" />
         </div>
 
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Work</h1>
+          <h1 className="text-2xl ">Work</h1>
           {Object.entries(projectsByCategory).map(([category, projects]) => (
             <div key={category} className="mt-5">
-              <h2>{category}</h2>
-              <div className="mt-5 grid grid-cols-2 sm:grid-cols-1 gap-4">
+              <h2 className="text-xl">{category}</h2>
+              <div className="mt-5 grid grid-cols-1 laptop:grid-cols-2 gap-4">
                 {projects.map((project) => (
                   <div key={project.id}>
                     <WorkCard
@@ -83,7 +98,7 @@ const Home = () => {
                       name={project.title}
                       description={project.description}
                       tags={project.tags}
-                      onClick={() => handleProjectClick(project.url)} // Add onClick handler
+                      onClick={() => handleProjectClick(project.url)}
                     />
                   </div>
                 ))}
@@ -93,13 +108,13 @@ const Home = () => {
         </div>
 
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
-          <h1 id="about-section" className="tablet:m-10 text-2xl text-bold">About</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
+          <h1 id="about-section" className="text-2xl">About</h1>
+          <p className="mt-2 text-lg  text-justifylaptop:text-xl">
             {portfolioData.aboutpara}
           </p>
         </div>
 
-        <p className="text-lg mt-4 ml-10">{portfolioData.email}</p>
+        <p className="text-lg mt-4 ml-4">{portfolioData.email}</p>
 
         <Footer />
       </div>
