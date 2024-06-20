@@ -6,7 +6,7 @@
 @import "./markdown.css";
 
 * {
-  margin-left: 0.5vw;
+  margin-left: 0vw;
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: normal;
