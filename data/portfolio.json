@@ -64,7 +64,7 @@
 
 
 
-{"id":"8","title":"Sustainability Randomizer @H&D Summer Camp",
+{"id":"8","title":"Sustainability Randomizer",
 "description":"Sustainability Randomizer is the workshop I created and facilitated at Hackers & Designers Summer Camp 2023. This workshop focuses on promoting food sustainability and zero-waste practices by encouraging participants to think about local, seasonal ingredients and challenging them to create delicious dishes using a food randomizer.",
 "imageSrc":"https://s9.gifyu.com/images/SZB3c.gif",
 "url":"https://hackersanddesigners.nl/sustainability-randomizer",
@@ -78,6 +78,14 @@
 "url":"https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
 "category":"Creative Projects",
 "tags":["2D Animation"]}],
+
+
+{"id":"10","title":"Collective Live Coding Jam with Hydra Video Synth",
+"description":"I created and facilitated this workshop at multiple events, including /etc 2024 in Berlin and Hackers & Designers Summer Camp 2024 - Unruly Currents and Everyday Piracy. This workshop focuses on explaining the basics of live coding using Hydra Video Synth and through a collective and collaborative final live coding performance.",
+"imageSrc":"https://hydra.ojack.xyz/docs/images/hydra.png",
+"url":"https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
+"category":"Workshops",
+"tags":["Workshop Facilitation","Education"]},
 
 
 
