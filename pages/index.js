@@ -72,7 +72,7 @@ const Home = () => {
           handleAboutScroll={handleAboutScroll}
         />
 
-        <div className="mt-10 ml-10 md:ml-0 laptop:mt-20">
+        <div className="mt-10 ml-10 mr-10 md:mr-0 md:ml-0 laptop:mt-20">
           {[portfolioData.headerTaglineOne, portfolioData.headerTaglineTwo, portfolioData.headerTaglineThree, portfolioData.headerTaglineFour].map((tagline, index) => (
             <h1
               key={index}
