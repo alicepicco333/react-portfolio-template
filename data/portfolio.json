@@ -85,7 +85,15 @@
 "imageSrc":"https://i.ibb.co/nDmksb6/thumbbb.png",
 "url":"https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
 "category":"Workshops",
-"tags":["Workshop Facilitation","Education"]}],
+"tags":["Workshop Facilitation","Education"]},
+
+
+{"id":"11","title":"Culture4All",
+"description":"Culture4All is the final project of the course Information Visualization at the University of Bologna. Utilizing a blend of datasets, the project provides a comprehensive overview of habits, preferences, and regional disparities in cultural engagement across Italy. ",
+"imageSrc":"https://i.ibb.co/vL4W7MH/infviz.png",
+"url":"https://alicepicco333.github.io/culture4all/",
+"category":"Research Projects",
+"tags":["Data Visualization","Data Storytelling"]}],
 
 
 
