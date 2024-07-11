@@ -69,7 +69,7 @@
 "imageSrc":"https://s9.gifyu.com/images/SZB3c.gif",
 "url":"https://hackersanddesigners.nl/sustainability-randomizer",
 "category":"Workshops",
-"tags":["Workshop Facilitation","Education"]},
+"tags":["Workshop Facilitation"]},
 
 
 {"id":"9","title":"Quello che succede quando non riesco ad avere un'idea veramente originale",
@@ -80,12 +80,12 @@
 "tags":["2D Animation"]},
 
 
-{"id":"10","title":"Collective Live Coding Jam with Hydra Video Synth",
+{"id":"10","title":"Collaboratory Creative Coding Jam with Hydra Video Synth",
 "description":"I created and facilitated this workshop at multiple events, including /etc 2024 in Berlin and Hackers & Designers Summer Camp 2024 - Unruly Currents and Everyday Piracy. This workshop focuses on explaining the basics of live coding using Hydra Video Synth and through a collective and collaborative final live coding performance.",
 "imageSrc":"https://i.ibb.co/nDmksb6/thumbbb.png",
 "url":"https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
 "category":"Workshops",
-"tags":["Workshop Facilitation","Education"]}],
+"tags":["Workshop Facilitation","Live Coding"]}],
 
 
 
