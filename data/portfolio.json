@@ -1,116 +1,211 @@
-{"headerTaglineOne":"Hello!","headerTaglineTwo":"I'm Alice,","headerTaglineThree":"anthropologist and digital humanities expert","headerTaglineFour":"based in Amsterdam.",
-"showCursor":true,"showBlog":true,"darkMode":true,"showResume":true,
-"email":"awlicepicco@gmail.com",
-"socials":[{"id":"1","title":"Github","link":"https://github.com/alicepicco333"},
-{"id":"2","title":"LinkedIn","link":"https://www.linkedin.com/in/alice-picco-791157114/"},
-{"id":"3","title":"Email","link":"mailto:awlicepicco@gmail.com"}],
+{
+  "headerTaglineOne": "Hello!",
+  "headerTaglineTwo": "I'm Alice,",
+  "headerTaglineThree": "anthropologist and digital humanities expert",
+  "headerTaglineFour": "based in Amsterdam.",
+  "showCursor": true,
+  "showBlog": true,
+  "darkMode": true,
+  "showResume": true,
+  "email": "awlicepicco@gmail.com",
+  "socials": [
+    { "id": "1", "title": "Github", "link": "https://github.com/alicepicco333" },
+    { "id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/" },
+    { "id": "3", "title": "Email", "link": "mailto:awlicepicco@gmail.com" }
+  ],
+  "projects": [
+    {
+      "id": "0",
+      "title": "The Stolen Archive",
+      "description": "A customizable fictional museum showcasing looted colonial artifacts.",
+      "introText": "Introductory paragraph for The Stolen Archive...",
+      "gridImages": ["/images/tsa-1.jpg", "/images/tsa-2.jpg", "/images/tsa-3.jpg", "/images/tsa-4.jpg", "/images/tsa-5.jpg", "/images/tsa-6.jpg", "/images/tsa-7.jpg", "/images/tsa-8.jpg", "/images/tsa-9.jpg", "/images/tsa-10.jpg", "/images/tsa-11.jpg", "/images/tsa-12.jpg", "/images/tsa-13.jpg", "/images/tsa-14.jpg", "/images/tsa-15.jpg", "/images/tsa-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/tsa-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for The Stolen Archive.",
+      "imageSrc": "https://s13.gifyu.com/images/b2dJ0.png",
+      "url": "https://marcolamorte.github.io/Looted-items-collection/",
+      "category": "Research Projects",
+      "tags": ["UX Design", "Web Development"]
+    },
+    {
+      "id": "1",
+      "title": "Digitalian Folktales",
+      "description": "A digital edition of Calvino's Fiabe Italiane, with regional language comparison.",
+      "introText": "Introductory paragraph for Digitalian Folktales...",
+      "gridImages": ["/images/df-1.jpg", "/images/df-2.jpg", "/images/df-3.jpg", "/images/df-4.jpg", "/images/df-5.jpg", "/images/df-6.jpg", "/images/df-7.jpg", "/images/df-8.jpg", "/images/df-9.jpg", "/images/df-10.jpg", "/images/df-11.jpg", "/images/df-12.jpg", "/images/df-13.jpg", "/images/df-14.jpg", "/images/df-15.jpg", "/images/df-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/df-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for Digitalian Folktales.",
+      "imageSrc": "https://s9.gifyu.com/images/SZyM1.gif",
+      "url": "https://n1kg0r.github.io/digitalian-folktales/",
+      "category": "Research Projects",
+      "tags": ["Digital Edition", "Textual Research"]
+    },
+    {
+      "id": "2",
+      "title": "Cognitive Bias Ontology",
+      "description": "Ontology development for cognitive biases.",
+      "introText": "Introductory paragraph for Cognitive Bias Ontology...",
+      "gridImages": ["/images/cbo-1.jpg", "/images/cbo-2.jpg", "/images/cbo-3.jpg", "/images/cbo-4.jpg", "/images/cbo-5.jpg", "/images/cbo-6.jpg", "/images/cbo-7.jpg", "/images/cbo-8.jpg", "/images/cbo-9.jpg", "/images/cbo-10.jpg", "/images/cbo-11.jpg", "/images/cbo-12.jpg", "/images/cbo-13.jpg", "/images/cbo-14.jpg", "/images/cbo-15.jpg", "/images/cbo-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/cbo-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for Cognitive Bias Ontology.",
+      "imageSrc": "https://s9.gifyu.com/images/SZybG.gif",
+      "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
+      "category": "Research Projects",
+      "tags": ["Ontology Engineering", "Psychology"]
+    },
+    {
+      "id": "3",
+      "title": "wipEU",
+      "description": "Analyzing women's representation in EU decision-making roles.",
+      "introText": "Introductory paragraph for wipEU...",
+      "gridImages": ["/images/weu-1.jpg", "/images/weu-2.jpg", "/images/weu-3.jpg", "/images/weu-4.jpg", "/images/weu-5.jpg", "/images/weu-6.jpg", "/images/weu-7.jpg", "/images/weu-8.jpg", "/images/weu-9.jpg", "/images/weu-10.jpg", "/images/weu-11.jpg", "/images/weu-12.jpg", "/images/weu-13.jpg", "/images/weu-14.jpg", "/images/weu-15.jpg", "/images/weu-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/weu-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for wipEU.",
+      "imageSrc": "https://s9.gifyu.com/images/SZyMw.gif",
+      "url": "https://alicepicco333.github.io/wipEU/",
+      "category": "Research Projects",
+      "tags": ["Data Visualization", "Digital Ethics"]
+    },
+    {
+      "id": "4",
+      "title": "Mary Shelley HTR",
+      "description": "Handwriting recognition for Frankenstein manuscripts.",
+      "introText": "Introductory paragraph for Mary Shelley HTR...",
+      "gridImages": ["/images/mshtr-1.jpg", "/images/mshtr-2.jpg", "/images/mshtr-3.jpg", "/images/mshtr-4.jpg", "/images/mshtr-5.jpg", "/images/mshtr-6.jpg", "/images/mshtr-7.jpg", "/images/mshtr-8.jpg", "/images/mshtr-9.jpg", "/images/mshtr-10.jpg", "/images/mshtr-11.jpg", "/images/mshtr-12.jpg", "/images/mshtr-13.jpg", "/images/mshtr-14.jpg", "/images/mshtr-15.jpg", "/images/mshtr-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/mshtr-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for Mary Shelley HTR.",
+      "imageSrc": "https://i.ibb.co/p2XXCRN/Screenshot-2024-06-19-at-18-17-12.png",
+      "url": "https://maryshelleyhtr.netlify.app",
+      "category": "Research Projects",
+      "tags": ["Textual Research", "Digital Humanities"]
+    },
+    {
+      "id": "5",
+      "title": "Glitching Materiality - @THEVOID",
+      "description": "Live performance using Hydra Video Synth.",
+      "introText": "Introductory paragraph for Glitching Materiality...",
+      "gridImages": ["/images/gm-1.jpg", "/images/gm-2.jpg", "/images/gm-3.jpg", "/images/gm-4.jpg", "/images/gm-5.jpg", "/images/gm-6.jpg", "/images/gm-7.jpg", "/images/gm-8.jpg", "/images/gm-9.jpg", "/images/gm-10.jpg", "/images/gm-11.jpg", "/images/gm-12.jpg", "/images/gm-13.jpg", "/images/gm-14.jpg", "/images/gm-15.jpg", "/images/gm-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/gm-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for Glitching Materiality.",
+      "imageSrc": "https://s9.gifyu.com/images/SZBqM.gif",
+      "url": "https://player.vimeo.com/video/980415428?loop=1&mute=1",
+      "category": "Creative Projects",
+      "tags": ["Live Coding", "Performance"]
+    },
+    {
+      "id": "6",
+      "title": "I Grandi Oggetti",
+      "description": "3D animated short inspired by The Big Lebowski.",
+      "introText": "Introductory paragraph for I Grandi Oggetti...",
+      "gridImages": ["/images/igo-1.jpg", "/images/igo-2.jpg", "/images/igo-3.jpg", "/images/igo-4.jpg", "/images/igo-5.jpg", "/images/igo-6.jpg", "/images/igo-7.jpg", "/images/igo-8.jpg", "/images/igo-9.jpg", "/images/igo-10.jpg", "/images/igo-11.jpg", "/images/igo-12.jpg", "/images/igo-13.jpg", "/images/igo-14.jpg", "/images/igo-15.jpg", "/images/igo-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/igo-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for I Grandi Oggetti.",
+      "imageSrc": "https://s9.gifyu.com/images/SZBwp.gif",
+      "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
+      "category": "Creative Projects",
+      "tags": ["3D Modeling", "3D Animation"]
+    },
+    {
+      "id": "7",
+      "title": "Instagram Filter x MONINGA",
+      "description": "Interactive AR Instagram filter using Meta Spark.",
+      "introText": "Introductory paragraph for MONINGA Instagram Filter...",
+      "gridImages": ["/images/moninga-1.jpg", "/images/moninga-2.jpg", "/images/moninga-3.jpg", "/images/moninga-4.jpg", "/images/moninga-5.jpg", "/images/moninga-6.jpg", "/images/moninga-7.jpg", "/images/moninga-8.jpg", "/images/moninga-9.jpg", "/images/moninga-10.jpg", "/images/moninga-11.jpg", "/images/moninga-12.jpg", "/images/moninga-13.jpg", "/images/moninga-14.jpg", "/images/moninga-15.jpg", "/images/moninga-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/moninga-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for MONINGA Instagram Filter.",
+      "imageSrc": "https://s12.gifyu.com/images/SZBNS.gif",
+      "url": "https://www.instagram.com/ar/971249920767640",
+      "category": "Creative Projects",
+      "tags": ["Augmented Reality", "Interaction Design"]
+    },
 
-"projects":
-
-[
-    {"id":"0","title":"The Stolen Archive",
-    "description":"The Stolen Archive is the final project of the course Information Modeling and Web Technologies at University of Bologna. It is a collection of customizable tours for a fictional museum displaying artifacts stolen during colonization in different times in history. It is meant to be used by users with different complexity and text lenght needs and it is fully customizable at any time.",
-    "imageSrc":"https://s13.gifyu.com/images/b2dJ0.png",
-    "url":"https://marcolamorte.github.io/Looted-items-collection/",
-    "category":"Research Projects",
-    "tags":["UX Design","Web Development"]},
-
-    
-    {"id":"00","title":"The Stolen Archive - Prototype",
-    "description":"Click here to see the Figma prototypes for The Stolen Archive, including discarded design proposals.",
-    "imageSrc":"https://s13.gifyu.com/images/b2dJZ.png",
-    "url": "https://www.figma.com/design/q36Ndmq8i0unoqVYXBwCAz/stolenarchive?node-id=0-1&t=uASXELqum5murDYu-1",
-    "category":"Research Projects",
-    "tags":["UX Design","UI Design"]},
-    
-    
-    {"id":"1","title":"Digitalian Folktales",
-"description":"Digitalian Folktales is the final project of the course Digital Scholarly Editing at University of Bologna. It is a tool that aims to be a critical edition of Calvino's Fiabe Italiane, a collection of different regional folktales. It allows to compare stories with the original, dialectal version, as well as to visualize a computational analysis of the language used.",
-"imageSrc":"https://s9.gifyu.com/images/SZyM1.gif",
-"url":"https://n1kg0r.github.io/digitalian-folktales/",
-"category":"Research Projects",
-"tags":["Digital Edition","Textual Research"]},
-
-{"id":"2","title":"Cognitive Bias Ontology",
-"description":"This gitbook serves as a platform to show the progress of one of the groups in charge of developing an ontology for cognitive biases for the project of the course Knowledge Representation and Extraction at University of Bologna.",
-"imageSrc":"https://s9.gifyu.com/images/SZybG.gif",
-"url":"https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
-"category":"Research Projects",
-"tags":["Ontology Engineering","Psychology"]},
-
-{"id":"3","title":"wipEU",
-"description":"wipEU is an Research open data project focused on analyzing the correlation between the representation of women in diverse positions across the European Union and its evolution over time. The project aims to examine factors influencing the presence of women in positions of Power & Decision Making in the EU.",
-"imageSrc":"https://s9.gifyu.com/images/SZyMw.gif",
-"url":"https://alicepicco333.github.io/wipEU/",
-"category":"Research Projects",
-"tags":["Data Visualization","Digital Ethics"]},
-
-
-{"id":"4","title":"Mary Shelley HTR",
-"description":"This website serves as a repository for the Semantic Digital Libraries course project at University of Bologna. It's an AI handwritten-text-recognition campaign with Transkribus to recognize Mary Shelley's manuscript of the classic Frankenstein or the modern Prometheus.",
-"imageSrc":"https://i.ibb.co/p2XXCRN/Screenshot-2024-06-19-at-18-17-12.png",
-"url":"https://maryshelleyhtr.netlify.app",
-"category":"Research Projects",
-"tags":["Textual Research","Digital Humanities"]},
-    
-    {"id":"5","title":"Glitching Materiality - @THEVOID",
-"description":"Together with artist Karolis Lasys, I perfomed a live visual set on Hydra Video Synth at Experimental Publishing Fest #2, event organized by Institute of Network Cultures and Nero Editions at OT301, Amsterdam.",
-"imageSrc":"https://s9.gifyu.com/images/SZBqM.gif",
-"url":"https://player.vimeo.com/video/980415428?loop=1&mute=1",
-"category":"Creative Projects",
-"tags":["Live Coding","Performance"]},
-
-{"id":"6","title":"I Grandi Oggetti",
-"description":"I Grandi Oggetti is the final project of the 3D animation course organized by Future Film Festival and financed by the European Social Fund. The short film is inspired by The Big Lebowski and aims to be a trailer of the movie seen through its iconic objects.",
-"imageSrc":"https://s9.gifyu.com/images/SZBwp.gif",
-"url":"https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
-"category":"Creative Projects",
-"tags":["3D Modeling","3D Animation"]},
-
-{"id":"7","title":"Instagram Filter x MONINGA ",
-"description":"I developed an Instagram filter to promote Vitamina, a music festival organized by the benefit event organization crew MONINGA Onlus in Modena, Italy. The filter uses face-tracking and changes in three variants when the user touches the screen.",
-"imageSrc":"https://s12.gifyu.com/images/SZBNS.gif",
-"url":"https://www.instagram.com/ar/971249920767640",
-"category":"Creative Projects",
-"tags":["Augmented Reality","Interaction Design"]},
-
-
-
-
-
-
-{"id":"8","title":"Sustainability Randomizer",
-"description":"Sustainability Randomizer is the workshop I created and facilitated at Hackers & Designers Summer Camp 2023. This workshop focuses on promoting food sustainability and zero-waste practices by encouraging participants to think about local, seasonal ingredients and challenging them to create delicious dishes using a food randomizer.",
-"imageSrc":"https://s9.gifyu.com/images/SZB3c.gif",
-"url":"https://hackersanddesigners.nl/sustainability-randomizer",
-"category":"Workshops",
-"tags":["Workshop Facilitation"]},
-
-
-{"id":"9","title":"Quello che succede quando non riesco ad avere un'idea veramente originale",
-"description":"I had the pleasure to contribute to Davide di Lorenzo's short film inspired by the essay Consider the Lobster by David Foster Wallace.",
-"imageSrc":"https://s9.gifyu.com/images/SZBTy.gif",
-"url":"https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
-"category":"Creative Projects",
-"tags":["2D Animation"]},
-
-
-{"id":"10","title":"Collaboratory Creative Coding Jam with Hydra Video Synth",
-"description":"I created and facilitated this workshop at multiple events, including /etc 2024 in Berlin and Hackers & Designers Summer Camp 2024 - Unruly Currents and Everyday Piracy. This workshop focuses on explaining the basics of live coding using Hydra Video Synth and through a collective and collaborative final live coding performance.",
-"imageSrc":"https://i.ibb.co/nDmksb6/thumbbb.png",
-"url":"https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
-"category":"Workshops",
-"tags":["Workshop Facilitation","Live Coding"]}],
-
-
-
-
-
-"aboutpara":"I am an Anthropology graduate, Digital Humanities student and Design enthusiast. Passionate about the intersection of technology and culture and interested in new media, computer graphics, usability, cultural analytics, creative coding. I like to apply visual methodologies, computational methods and interactivity to cultural scenarios, artifacts, domains.",
-
-
-
-
-
-"resume":{"tagline":"Anthropology / Digital Humanitites / Design",
-"description":"Passionate about the intersection of technology and culture, anthropology and the digital humanities shape my research and practice. Researcher and developer with a focus on crafting impactful, user-centric digital experiences, I love to bring ideas to life in the digital realm. Open to collaborative opportunities.","experiences":[{"id":"1","dates":"March 2024 - June 2024","type":"Full Time Internship","position":"Research and Development Intern at Institute of Network Cultures","bullets":"Practice-based research on digital cultures with cultural analytics and visualization methods"},{"id":"2","dates":"March 2024 - Present","type":"Funded Program","position":"Digital Maker at The Hmm, DEN","bullets":"Selected to participate to the funded program Voices of Makers in collaboration with DEN Cultural Knowledge Institute - the program consists of four sessions that aim to map cultural digital spaces for digital transformation in the Netherlands"},{"id":"3","dates":"September 2023 - January 2024","type":"Part Time","position":"Digital Literacy Educator at NINA","bullets":"I served as an educator for the digital literacy of elderly individuals conducting home visits to enhance their understanding of technology"},{"id":"4","dates":"August 2023 - September 2023","type":"Freelance","position":"Digital Designer at MONINGA","bullets":"Creator of the Vitamina Festival Instagram filter for Moninga Onlus using Blender and Meta Spark AR"},{"id":"5","dates":"May 2022 - October 2022","type":"Full Time","position":"Customer Service Agent at Concentrix","bullets":"Managed customer support and issue resolution on Meta social media e-commerce platforms"}],"education":{"universityName":"International Master's Degree - Digital Humanitites and Digital Knowledge at University of Bologna ","universityDate":"2022-2025","universityPara":"Master's Degree in Digital Humanities and Applied Computer Science to Cultural Heritage. Specific Focus on UX and Interaction Design and Web Development. Among the curricular subjects: Data Science, Semantic Web, Text Retrieval, Analysis, and Mining; Digital Scholarly Editing, Knowledge Organization, Open Access, and Digital Ethics, Data Storytelling, Information Visualization, Computer Graphics."},"education2":{"universityName":"Bachelor's Degree - Cultural Anthropology at University of Bologna","universityDate":"2018-2022","universityPara":"My thesis was a digital etnography focusing on queer muslim youth with two case studies: Berlin’s queer club scene and Indonesian queer community on online forums and social media."},"languages":["Javascript","HTML5","CSS","Python"],"others":["Figma","Adobe Photoshop","Autodesk Maya","Blender","Meta Spark AR","Hydra Video Synth"]}}
+    {
+      "id": "9",
+      "title": "Quello che succede quando...",
+      "description": "Animated film contribution based on Foster Wallace’s essay.",
+      "introText": "Introductory paragraph for Quello che succede...",
+      "gridImages": ["/images/qks-1.jpg", "/images/qks-2.jpg", "/images/qks-3.jpg", "/images/qks-4.jpg", "/images/qks-5.jpg", "/images/qks-6.jpg", "/images/qks-7.jpg", "/images/qks-8.jpg", "/images/qks-9.jpg", "/images/qks-10.jpg", "/images/qks-11.jpg", "/images/qks-12.jpg", "/images/qks-13.jpg", "/images/qks-14.jpg", "/images/qks-15.jpg", "/images/qks-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/qks-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for this short film project.",
+      "imageSrc": "https://s9.gifyu.com/images/SZBTy.gif",
+      "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
+      "category": "Creative Projects",
+      "tags": ["2D Animation"]
+    },
+    {
+      "id": "10",
+      "title": "Collaboratory Creative Coding Jam",
+      "description": "Hydra live coding workshop and collective performance.",
+      "introText": "Introductory paragraph for Collaboratory Creative Coding Jam...",
+      "gridImages": ["/images/cccj-1.jpg", "/images/cccj-2.jpg", "/images/cccj-3.jpg", "/images/cccj-4.jpg", "/images/cccj-5.jpg", "/images/cccj-6.jpg", "/images/cccj-7.jpg", "/images/cccj-8.jpg", "/images/cccj-9.jpg", "/images/cccj-10.jpg", "/images/cccj-11.jpg", "/images/cccj-12.jpg", "/images/cccj-13.jpg", "/images/cccj-14.jpg", "/images/cccj-15.jpg", "/images/cccj-16.jpg"],
+      "middleText": "Middle explanatory section of the project.",
+      "highlightImage": "/images/cccj-highlight.jpg",
+      "conclusionText": "Closing summary or reflections for CCC Jam.",
+      "imageSrc": "https://i.ibb.co/nDmksb6/thumbbb.png",
+      "url": "https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
+      "category": "Workshops",
+      "tags": ["Workshop Facilitation", "Live Coding"]
+    }
+  ],
+  "aboutpara": "I am an Anthropology graduate, Digital Humanities student and Design enthusiast...",
+  "resume": {
+    "tagline": "Anthropology / Digital Humanitites / Design",
+    "description": "Passionate about the intersection of technology and culture...",
+    "experiences": [
+      {
+        "id": "1",
+        "dates": "March 2024 - June 2024",
+        "type": "Full Time Internship",
+        "position": "Research and Development Intern at Institute of Network Cultures",
+        "bullets": "Practice-based research on digital cultures with cultural analytics and visualization methods"
+      },
+      {
+        "id": "2",
+        "dates": "March 2024 - Present",
+        "type": "Funded Program",
+        "position": "Digital Maker at The Hmm, DEN",
+        "bullets": "Mapping cultural digital spaces for digital transformation in the Netherlands"
+      },
+      {
+        "id": "3",
+        "dates": "September 2023 - January 2024",
+        "type": "Part Time",
+        "position": "Digital Literacy Educator at NINA",
+        "bullets": "Home visits to enhance elderly digital literacy"
+      },
+      {
+        "id": "4",
+        "dates": "August 2023 - September 2023",
+        "type": "Freelance",
+        "position": "Digital Designer at MONINGA",
+        "bullets": "Created Instagram filter for Vitamina Festival using Blender and Meta Spark AR"
+      },
+      {
+        "id": "5",
+        "dates": "May 2022 - October 2022",
+        "type": "Full Time",
+        "position": "Customer Service Agent at Concentrix",
+        "bullets": "Customer support and issue resolution on Meta social media platforms"
+      }
+    ],
+    "education": {
+      "universityName": "International Master's Degree - Digital Humanitites and Digital Knowledge at University of Bologna",
+      "universityDate": "2022-2025",
+      "universityPara": "Focus on UX and Web Dev, courses in Data Science, Semantic Web, Visualization, etc."
+    },
+    "education2": {
+      "universityName": "Bachelor's Degree - Cultural Anthropology at University of Bologna",
+      "universityDate": "2018-2022",
+      "universityPara": "Thesis on queer Muslim youth through ethnography on social media"
+    }
+  }
+}

@@ -5,6 +5,7 @@ import Socials from "../components/Socials";
 import Footer from "../components/Footer";
 import Cursor from "../components/Cursor";
 import WorkCard from "../components/WorkCard";
+import Link from "next/link";  // Import Link here
 import portfolioData from "../data/portfolio.json";
 
 const Home = () => {
@@ -35,10 +36,6 @@ const Home = () => {
     return acc;
   }, {});
 
-  const handleProjectClick = (url) => {
-    window.open(url, "_blank");
-  };
-
   return (
     <div className={`relative ${portfolioData.showCursor && "cursor-none"}`}>
       {portfolioData.showCursor && <Cursor />}
@@ -47,10 +44,7 @@ const Home = () => {
         <Head>
           <title>Alice Picco - portfolio</title>
           <meta name="description" content="My portfolio website" />
-          <meta
-            property="og:title"
-            content="Alice Picco - portfolio"
-          />
+          <meta property="og:title" content="Alice Picco - portfolio" />
           <meta
             property="og:description"
             content="This website contains all my latest projects as well as my resume and contact information."
@@ -59,10 +53,7 @@ const Home = () => {
             property="og:image"
             content="https://i.ibb.co/phST7kC/Screenshot-2024-04-25-140857.png"
           />
-          <meta
-            property="og:url"
-            content="https://alicexpicco.netlify.app"
-          />
+          <meta property="og:url" content="https://alicexpicco.netlify.app" />
           <meta property="og:type" content="website" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -92,15 +83,16 @@ const Home = () => {
               <h2 className="text-xl">{category}</h2>
               <div className="mt-5 grid grid-cols-1 laptop:grid-cols-2 gap-4">
                 {projects.map((project) => (
-                  <div key={project.id}>
-                    <WorkCard
-                      img={project.imageSrc}
-                      name={project.title}
-                      description={project.description}
-                      tags={project.tags}
-                      onClick={() => handleProjectClick(project.url)}
-                    />
-                  </div>
+                  <Link key={project.id} href={`/projects/${project.id}`}>
+                    
+                      <WorkCard
+                        img={project.imageSrc}
+                        name={project.title}
+                        description={project.description}
+                        tags={project.tags}
+                      />
+                    
+                  </Link>
                 ))}
               </div>
             </div>
@@ -109,7 +101,7 @@ const Home = () => {
 
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0">
           <h1 id="about-section" className="text-2xl">About</h1>
-          <p className="mt-2 text-lg  text-justifylaptop:text-xl">
+          <p className="mt-2 text-lg laptop:text-xl text-justify">
             {portfolioData.aboutpara}
           </p>
         </div>
