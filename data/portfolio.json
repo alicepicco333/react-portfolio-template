@@ -4,14 +4,13 @@
   "headerTaglineThree": "anthropologist and digital humanities expert",
   "headerTaglineFour": "based in Amsterdam.",
   "showCursor": true,
-  "showBlog": true,
+  "showBlog": false,
   "darkMode": true,
   "showResume": true,
   "email": "awlicepicco@gmail.com",
   "socials": [
     { "id": "1", "title": "Github", "link": "https://github.com/alicepicco333" },
-    { "id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/" },
-    { "id": "3", "title": "Email", "link": "mailto:awlicepicco@gmail.com" }
+    { "id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/alice-picco-791157114/" }
   ],
   "projects": [
     {
@@ -21,9 +20,9 @@
       "introText": "Introductory paragraph for The Stolen Archive...",
       "gridImages": ["/images/tsa-1.jpg", "/images/tsa-2.jpg", "/images/tsa-3.jpg", "/images/tsa-4.jpg", "/images/tsa-5.jpg", "/images/tsa-6.jpg", "/images/tsa-7.jpg", "/images/tsa-8.jpg", "/images/tsa-9.jpg", "/images/tsa-10.jpg", "/images/tsa-11.jpg", "/images/tsa-12.jpg", "/images/tsa-13.jpg", "/images/tsa-14.jpg", "/images/tsa-15.jpg", "/images/tsa-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/tsa-highlight.jpg",
+      "highlightImage": "https://postimg.cc/p5dM6hFt",
       "conclusionText": "Closing summary or reflections for The Stolen Archive.",
-      "imageSrc": "https://s13.gifyu.com/images/b2dJ0.png",
+      "imageSrc": "https://i.postimg.cc/vTr8D58D/Slide-4-3-1.png",
       "url": "https://marcolamorte.github.io/Looted-items-collection/",
       "category": "Research Projects",
       "tags": ["UX Design", "Web Development"]
@@ -37,10 +36,10 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/df-highlight.jpg",
       "conclusionText": "Closing summary or reflections for Digitalian Folktales.",
-      "imageSrc": "https://s9.gifyu.com/images/SZyM1.gif",
+      "imageSrc": "",
       "url": "https://n1kg0r.github.io/digitalian-folktales/",
       "category": "Research Projects",
-      "tags": ["Digital Edition", "Textual Research"]
+      "tags": ["Digital Edition"]
     },
     {
       "id": "2",
@@ -51,7 +50,7 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/cbo-highlight.jpg",
       "conclusionText": "Closing summary or reflections for Cognitive Bias Ontology.",
-      "imageSrc": "https://s9.gifyu.com/images/SZybG.gif",
+      "imageSrc": "",
       "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
       "category": "Research Projects",
       "tags": ["Ontology Engineering", "Psychology"]
@@ -65,25 +64,12 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/weu-highlight.jpg",
       "conclusionText": "Closing summary or reflections for wipEU.",
-      "imageSrc": "https://s9.gifyu.com/images/SZyMw.gif",
+      "imageSrc": "",
       "url": "https://alicepicco333.github.io/wipEU/",
       "category": "Research Projects",
       "tags": ["Data Visualization", "Digital Ethics"]
     },
-    {
-      "id": "4",
-      "title": "Mary Shelley HTR",
-      "description": "Handwriting recognition for Frankenstein manuscripts.",
-      "introText": "Introductory paragraph for Mary Shelley HTR...",
-      "gridImages": ["/images/mshtr-1.jpg", "/images/mshtr-2.jpg", "/images/mshtr-3.jpg", "/images/mshtr-4.jpg", "/images/mshtr-5.jpg", "/images/mshtr-6.jpg", "/images/mshtr-7.jpg", "/images/mshtr-8.jpg", "/images/mshtr-9.jpg", "/images/mshtr-10.jpg", "/images/mshtr-11.jpg", "/images/mshtr-12.jpg", "/images/mshtr-13.jpg", "/images/mshtr-14.jpg", "/images/mshtr-15.jpg", "/images/mshtr-16.jpg"],
-      "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/mshtr-highlight.jpg",
-      "conclusionText": "Closing summary or reflections for Mary Shelley HTR.",
-      "imageSrc": "https://i.ibb.co/p2XXCRN/Screenshot-2024-06-19-at-18-17-12.png",
-      "url": "https://maryshelleyhtr.netlify.app",
-      "category": "Research Projects",
-      "tags": ["Textual Research", "Digital Humanities"]
-    },
+  
     {
       "id": "5",
       "title": "Glitching Materiality - @THEVOID",
@@ -93,7 +79,7 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/gm-highlight.jpg",
       "conclusionText": "Closing summary or reflections for Glitching Materiality.",
-      "imageSrc": "https://s9.gifyu.com/images/SZBqM.gif",
+      "imageSrc": "",
       "url": "https://player.vimeo.com/video/980415428?loop=1&mute=1",
       "category": "Creative Projects",
       "tags": ["Live Coding", "Performance"]
@@ -107,7 +93,7 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/igo-highlight.jpg",
       "conclusionText": "Closing summary or reflections for I Grandi Oggetti.",
-      "imageSrc": "https://s9.gifyu.com/images/SZBwp.gif",
+      "imageSrc": "",
       "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
       "category": "Creative Projects",
       "tags": ["3D Modeling", "3D Animation"]
@@ -121,7 +107,7 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/moninga-highlight.jpg",
       "conclusionText": "Closing summary or reflections for MONINGA Instagram Filter.",
-      "imageSrc": "https://s12.gifyu.com/images/SZBNS.gif",
+      "imageSrc": "",
       "url": "https://www.instagram.com/ar/971249920767640",
       "category": "Creative Projects",
       "tags": ["Augmented Reality", "Interaction Design"]
@@ -129,14 +115,14 @@
 
     {
       "id": "9",
-      "title": "Quello che succede quando...",
+      "title": "Quello che succede quando non riesco ad avere unídea veramente interessante",
       "description": "Animated film contribution based on Foster Wallace’s essay.",
       "introText": "Introductory paragraph for Quello che succede...",
       "gridImages": ["/images/qks-1.jpg", "/images/qks-2.jpg", "/images/qks-3.jpg", "/images/qks-4.jpg", "/images/qks-5.jpg", "/images/qks-6.jpg", "/images/qks-7.jpg", "/images/qks-8.jpg", "/images/qks-9.jpg", "/images/qks-10.jpg", "/images/qks-11.jpg", "/images/qks-12.jpg", "/images/qks-13.jpg", "/images/qks-14.jpg", "/images/qks-15.jpg", "/images/qks-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/qks-highlight.jpg",
       "conclusionText": "Closing summary or reflections for this short film project.",
-      "imageSrc": "https://s9.gifyu.com/images/SZBTy.gif",
+      "imageSrc": "",
       "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
       "category": "Creative Projects",
       "tags": ["2D Animation"]
@@ -150,16 +136,18 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/cccj-highlight.jpg",
       "conclusionText": "Closing summary or reflections for CCC Jam.",
-      "imageSrc": "https://i.ibb.co/nDmksb6/thumbbb.png",
+      "imageSrc": "",
       "url": "https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
       "category": "Workshops",
       "tags": ["Workshop Facilitation", "Live Coding"]
     }
   ],
-  "aboutpara": "I am an Anthropology graduate, Digital Humanities student and Design enthusiast...",
-  "resume": {
+  "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design."
+,
+
+"resume": {
     "tagline": "Anthropology / Digital Humanitites / Design",
-    "description": "Passionate about the intersection of technology and culture...",
+    "description": "I work at the intersection of culture, technology, and design, weaving together critical research and creative experimentation. With a background in cultural anthropology and a strong foundation in digital humanities, my projects range from interactive archives and feminist data visualizations to live-coded performances and augmented reality design. Whether I’m mapping digital territories, building ontologies of cognitive bias, or glitching visual narratives in real time, I’m driven by curiosity and a commitment to inclusive, ethical tech. I enjoy working across media and disciplines — from semantic web development to storytelling with code — always with a reflexive, research-oriented approach.",
     "experiences": [
       {
         "id": "1",

@@ -47,7 +47,7 @@ const Resume = () => {
             >
               <h1 className="text-3xl font-bold">{name}</h1>
               <h2 className="text-xl mt-5">{resume.tagline}</h2>
-              <h2 className="w-4/5 text-xl mt-5 opacity-50">
+              <h2 className="w-4/5 text-m mt-5 opacity-50">
                 {resume.description}
               </h2>
               <div className="mt-2">

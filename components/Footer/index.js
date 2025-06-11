@@ -16,7 +16,7 @@ const Footer = ({}) => {
             </div>
          <div className="mt-20 lg:mt-40"></div>
         
-         <p className="text-xs mt-40 lg:mt-80 text-align-justify">
+         <p className="text-xs mt-40 lg:mt-80 text-center">
          -`♡´-✧˖°.☾ ｡◕‿‿◕｡ alicepicco / e.else_if ｡◕‿‿◕｡-`♡´-✧˖°.☾ 2024
          
          </p>

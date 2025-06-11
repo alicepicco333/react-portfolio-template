@@ -106,7 +106,18 @@ const Home = () => {
           </p>
         </div>
 
+        
+
         <p className="text-lg mt-4 ml-4">{portfolioData.email}</p>
+        <div className="flex justify-center mt-20">
+  <iframe
+    src="https://practices.tools"
+    frameBorder="0"
+    width="320"
+    height="320"
+    className=" rounded-md"
+  />
+</div>
 
         <Footer />
       </div>

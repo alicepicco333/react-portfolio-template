@@ -12,7 +12,7 @@ const WorkCard = ({ img, name, description, category, tags, onClick }) => {
       style={{ width: '100%', maxWidth: '700px', heigth: '120%' }} // Limit max width to 600px
     >
       <div
-        className="relative rounded-s overflow-hidden transition-all ease-out duration-300"
+        className="relative rounded-s overflow-hidden bg-gray-300 transition-all ease-out duration-300"
         style={{ width: '100%', height: '100%' }}
       >
         <img
