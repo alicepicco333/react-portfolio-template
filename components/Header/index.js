@@ -126,17 +126,17 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
 
       {/* Desktop Header */}
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
+        className={`mt-5 hidden flex-row items-center justify-between sticky w-full rounded-full ${
           theme === "light" && "bg-white"
         } dark:text-white top-0 z-10 tablet:flex`}
       >
         {/* Initial home button */}
         <div
           onClick={() => router.push("/")}
-          className="text-6xl font-bold cursor-pointer mob:p-2 laptop:p-0 ml-10"
-          style={{ fontFamily: "'Rubik Doodle Shadow', cursive" }}
+          className="text-black dark:text-white rounded-full text-6xl cursor-pointer mob:p-2 laptop:p-0 ml-10"
+          style={{ fontFamily: "'helvetica', cursive" }}
         >
-          a*
+          *
         </div>
 
            

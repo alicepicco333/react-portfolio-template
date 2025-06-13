@@ -33,3 +33,10 @@ body {
  
   @apply dark:bg-black dark:text-white;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* optional: prevent accidental horizontal scroll */
+}
+
