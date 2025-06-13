@@ -42,8 +42,8 @@ const Home = () => {
 
       <div className="container mx-auto mb-10">
         <Head>
-          <title>Alice Picco - portfolio</title>
-          <meta name="description" content="My portfolio website" />
+          <title>alice picco</title>
+          <meta name="description" content="portfolio website" />
           <meta property="og:title" content="Alice Picco - portfolio" />
           <meta
             property="og:description"
@@ -52,6 +52,7 @@ const Home = () => {
           <meta
             property="og:image"
             content="https://i.ibb.co/phST7kC/Screenshot-2024-04-25-140857.png"
+            //anteprima 
           />
           <meta property="og:url" content="https://alicexpicco.netlify.app" />
           <meta property="og:type" content="website" />
