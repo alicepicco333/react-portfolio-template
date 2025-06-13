@@ -1,42 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-const WorkCard = ({ img, name, description, category, tags, onClick }) => {
+const getRandomPastelColor = () => {
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 85%, 95%)`; // pastel color
+};
+
+const WorkCard = ({ img, name, description, tags }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [bgColor, setBgColor] = useState("transparent");
+  const animationRef = useRef(null);
+
+  useEffect(() => {
+    if (isHovered) {
+      setBgColor(getRandomPastelColor());
+      animationRef.current = setInterval(() => {
+        setBgColor(getRandomPastelColor());
+      }, 2000);
+    } else {
+      clearInterval(animationRef.current);
+      setBgColor("transparent");
+    }
+    return () => clearInterval(animationRef.current);
+  }, [isHovered]);
 
   return (
     <div
-      className="relative overflow-hidden rounded-lg p-2 laptop:p-2 first:ml-0 link h-150"
-      onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ width: '100%', maxWidth: '700px', heigth: '120%' }} // Limit max width to 600px
+      className="relative rounded-lg cursor-pointer overflow-hidden flex flex-col transition-colors duration-1000"
+      style={{
+        backgroundColor: bgColor,
+        minHeight: "380px",
+        maxHeight: "380px",
+        width: "100%",
+      }}
     >
-      <div
-        className="relative rounded-s overflow-hidden bg-gray-300 transition-all ease-out duration-300"
-        style={{ width: '100%', height: '100%' }}
-      >
+      {/* Image */}
+      <div className="w-full h-[220px] overflow-hidden rounded-t-lg flex-shrink-0">
         <img
-          alt={name}
-          className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
           src={img}
-          style={{ width: '100%', height: '100%' }}
+          alt={name}
+          className="w-full h-full object-cover"
+          draggable={false}
         />
-        {isHovered && (
-          <div className="absolute bottom-0 right-0 p-2">
-            {tags.map((tag, index) => (
-              <p
-                key={index}
-                className="bg-green-200 text-gray-700 px-2 py-1 rounded mr-2 mb-2 mt-4 inline-block"
-              >
-                {tag}
-              </p>
-            ))}
-          </div>
-        )}
       </div>
-      <h1 className="mt-5 text-3xl font-medium">{name ? name : "Project Name"}</h1>
-      <h2 className="text-sm text-justify opacity-60">{description ? description : "Description"}</h2>
-      {category && <p className="text-sm">{category}</p>}
+
+      {/* Content */}
+      <div className="flex flex-col flex-grow px-4 py-3 text-center">
+        <h2 className="text-lg font-semibold mb-2">{name}</h2>
+        <p className="text-sm text-gray-700 mb-3 flex-grow">{description}</p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {tags?.map((tag, i) => (
+            <span
+              key={i}
+              className="bg-black text-white text-xs px-2 py-1 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
