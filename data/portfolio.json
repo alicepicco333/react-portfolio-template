@@ -20,11 +20,11 @@
       "introText": "Introductory paragraph for The Stolen Archive...",
       "gridImages": ["/images/tsa-1.jpg", "/images/tsa-2.jpg", "/images/tsa-3.jpg", "/images/tsa-4.jpg", "/images/tsa-5.jpg", "/images/tsa-6.jpg", "/images/tsa-7.jpg", "/images/tsa-8.jpg", "/images/tsa-9.jpg", "/images/tsa-10.jpg", "/images/tsa-11.jpg", "/images/tsa-12.jpg", "/images/tsa-13.jpg", "/images/tsa-14.jpg", "/images/tsa-15.jpg", "/images/tsa-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://postimg.cc/p5dM6hFt",
+      "highlightImage": "https://i.postimg.cc/vTr8D58D/Slide-4-3-1.png",
       "conclusionText": "Closing summary or reflections for The Stolen Archive.",
       "imageSrc": "https://i.postimg.cc/vTr8D58D/Slide-4-3-1.png",
       "url": "https://marcolamorte.github.io/Looted-items-collection/",
-      "category": "Research Projects",
+      "category": "Design and Development",
       "tags": ["UX Design", "Web Development"]
     },
     {
@@ -34,9 +34,9 @@
       "introText": "Introductory paragraph for Digitalian Folktales...",
       "gridImages": ["/images/df-1.jpg", "/images/df-2.jpg", "/images/df-3.jpg", "/images/df-4.jpg", "/images/df-5.jpg", "/images/df-6.jpg", "/images/df-7.jpg", "/images/df-8.jpg", "/images/df-9.jpg", "/images/df-10.jpg", "/images/df-11.jpg", "/images/df-12.jpg", "/images/df-13.jpg", "/images/df-14.jpg", "/images/df-15.jpg", "/images/df-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/df-highlight.jpg",
+      "highlightImage": "https://i.postimg.cc/Jh69xsqh/Screenshot-2025-06-19-at-17-21-30.png",
       "conclusionText": "Closing summary or reflections for Digitalian Folktales.",
-      "imageSrc": "",
+      "imageSrc": "https://i.postimg.cc/Jh69xsqh/Screenshot-2025-06-19-at-17-21-30.png",
       "url": "https://n1kg0r.github.io/digitalian-folktales/",
       "category": "Research Projects",
       "tags": ["Digital Edition"]
@@ -48,9 +48,9 @@
       "introText": "Introductory paragraph for Cognitive Bias Ontology...",
       "gridImages": ["/images/cbo-1.jpg", "/images/cbo-2.jpg", "/images/cbo-3.jpg", "/images/cbo-4.jpg", "/images/cbo-5.jpg", "/images/cbo-6.jpg", "/images/cbo-7.jpg", "/images/cbo-8.jpg", "/images/cbo-9.jpg", "/images/cbo-10.jpg", "/images/cbo-11.jpg", "/images/cbo-12.jpg", "/images/cbo-13.jpg", "/images/cbo-14.jpg", "/images/cbo-15.jpg", "/images/cbo-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/cbo-highlight.jpg",
+      "highlightImage": "https://the-bias-project.gitbook.io/~gitbook/image?url=https%3A%2F%2F3715292082-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F69TpXcnhHK5qcm12xmil%252Fuploads%252FIQvAYofzi8QMD9jMtoaj%252FCognitive_Bias_Codex_-_180%252B_biases%252C_designed_by_John_Manoogian_III_%28jm3%29.jpg%3Falt%3Dmedia%26token%3Dd355d388-93e0-4c7f-a24b-0cf4156ebff8&width=400&dpr=3&quality=100&sign=6cc4dc15&sv=2",
       "conclusionText": "Closing summary or reflections for Cognitive Bias Ontology.",
-      "imageSrc": "",
+      "imageSrc": "https://the-bias-project.gitbook.io/~gitbook/image?url=https%3A%2F%2F3715292082-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F69TpXcnhHK5qcm12xmil%252Fuploads%252FIQvAYofzi8QMD9jMtoaj%252FCognitive_Bias_Codex_-_180%252B_biases%252C_designed_by_John_Manoogian_III_%28jm3%29.jpg%3Falt%3Dmedia%26token%3Dd355d388-93e0-4c7f-a24b-0cf4156ebff8&width=400&dpr=3&quality=100&sign=6cc4dc15&sv=2",
       "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
       "category": "Research Projects",
       "tags": ["Ontology Engineering", "Psychology"]
@@ -62,9 +62,9 @@
       "introText": "Introductory paragraph for wipEU...",
       "gridImages": ["/images/weu-1.jpg", "/images/weu-2.jpg", "/images/weu-3.jpg", "/images/weu-4.jpg", "/images/weu-5.jpg", "/images/weu-6.jpg", "/images/weu-7.jpg", "/images/weu-8.jpg", "/images/weu-9.jpg", "/images/weu-10.jpg", "/images/weu-11.jpg", "/images/weu-12.jpg", "/images/weu-13.jpg", "/images/weu-14.jpg", "/images/weu-15.jpg", "/images/weu-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/weu-highlight.jpg",
+      "highlightImage": "https://i.postimg.cc/fRkfDRdG/wip.png",
       "conclusionText": "Closing summary or reflections for wipEU.",
-      "imageSrc": "",
+      "imageSrc": "https://i.postimg.cc/fRkfDRdG/wip.png",
       "url": "https://alicepicco333.github.io/wipEU/",
       "category": "Research Projects",
       "tags": ["Data Visualization", "Digital Ethics"]
@@ -77,9 +77,9 @@
       "introText": "Introductory paragraph for Glitching Materiality...",
       "gridImages": ["/images/gm-1.jpg", "/images/gm-2.jpg", "/images/gm-3.jpg", "/images/gm-4.jpg", "/images/gm-5.jpg", "/images/gm-6.jpg", "/images/gm-7.jpg", "/images/gm-8.jpg", "/images/gm-9.jpg", "/images/gm-10.jpg", "/images/gm-11.jpg", "/images/gm-12.jpg", "/images/gm-13.jpg", "/images/gm-14.jpg", "/images/gm-15.jpg", "/images/gm-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/gm-highlight.jpg",
+      "highlightImage": "https://i.postimg.cc/pdFkpmnn/Screenshot-2025-06-19-at-19-24-48-Expanded-Publishing-Fest-2-Space-in-Space-out-Live-coding-perfor.png",
       "conclusionText": "Closing summary or reflections for Glitching Materiality.",
-      "imageSrc": "",
+      "imageSrc": "https://i.postimg.cc/pdFkpmnn/Screenshot-2025-06-19-at-19-24-48-Expanded-Publishing-Fest-2-Space-in-Space-out-Live-coding-perfor.png",
       "url": "https://player.vimeo.com/video/980415428?loop=1&mute=1",
       "category": "Creative Projects",
       "tags": ["Live Coding", "Performance"]
@@ -115,7 +115,7 @@
 
     {
       "id": "9",
-      "title": "QCS QNRAA UIVI",
+      "title": "Consider the Lobster",
       "description": "Animated film contribution based on Foster Wallace’s essay.",
       "introText": "Introductory paragraph for Quello che succede...",
       "gridImages": ["/images/qks-1.jpg", "/images/qks-2.jpg", "/images/qks-3.jpg", "/images/qks-4.jpg", "/images/qks-5.jpg", "/images/qks-6.jpg", "/images/qks-7.jpg", "/images/qks-8.jpg", "/images/qks-9.jpg", "/images/qks-10.jpg", "/images/qks-11.jpg", "/images/qks-12.jpg", "/images/qks-13.jpg", "/images/qks-14.jpg", "/images/qks-15.jpg", "/images/qks-16.jpg"],
@@ -134,9 +134,9 @@
       "introText": "Introductory paragraph for Collaboratory Creative Coding Jam...",
       "gridImages": ["/images/cccj-1.jpg", "/images/cccj-2.jpg", "/images/cccj-3.jpg", "/images/cccj-4.jpg", "/images/cccj-5.jpg", "/images/cccj-6.jpg", "/images/cccj-7.jpg", "/images/cccj-8.jpg", "/images/cccj-9.jpg", "/images/cccj-10.jpg", "/images/cccj-11.jpg", "/images/cccj-12.jpg", "/images/cccj-13.jpg", "/images/cccj-14.jpg", "/images/cccj-15.jpg", "/images/cccj-16.jpg"],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/cccj-highlight.jpg",
+      "highlightImage": "https://wiki.hackersanddesigners.nl//images/c/c5/DSC06089.JPG",
       "conclusionText": "Closing summary or reflections for CCC Jam.",
-      "imageSrc": "",
+      "imageSrc": "https://wiki.hackersanddesigners.nl//images/c/c5/DSC06089.JPG",
       "url": "https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
       "category": "Workshops",
       "tags": ["Workshop Facilitation", "Live Coding"]

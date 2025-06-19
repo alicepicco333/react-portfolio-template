@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "../components/Header";
 import Socials from "../components/Socials";
 import Footer from "../components/Footer";
+import Cursor from "../components/Cursor"
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { gsap } from "gsap";
@@ -49,7 +50,7 @@ const Home = () => {
       : portfolioData.projects.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className={`relative min-h-screen overflow-x-hidden ${portfolioData.showCursor ? "cursor-none" : ""}`}>
+    <div className={`relative min-h-screen overflow-x-hidden ${portfolioData.showCursor ? "cursor-" : ""}`}>
       <Head>
         <title>Alice Picco</title>
         <meta name="description" content="Portfolio website of Alice Picco" />
