@@ -16,9 +16,9 @@ const WorkCard = ({ img, name, description, tags }) => {
 
   return (
     <div
-      className="relative rounded-lg cursor-pointer overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105"
+      className="relative rounded-lg cursor-pointer overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 bg-gray-200"
       style={{
-        backgroundColor: bgColor,
+       border: "1px solid black",
         minHeight: "380px",
         maxHeight: "380px",
         width: "100%",

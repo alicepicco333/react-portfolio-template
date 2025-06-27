@@ -87,7 +87,7 @@ const Home = () => {
                 key={category}
                 className={`cursor-pointer px-4 py-2 rounded-full border text-sm transition ${
                   selectedCategory === category
-                    ? "bg-black text-white"
+                    ? "bg-gray-200 text-black border-black"
                     : "bg-white text-black border-black"
                 }`}
               >
@@ -106,15 +106,15 @@ const Home = () => {
 
           {/* Container with margin on sides, no gaps between grid items */}
           <div
-            className="flex flex-wrap justify-center"
-            style={{ marginLeft: "20px", marginRight: "20px" }}
+            className="flex flex-wrap justify-center mb-4"
+            style={{ marginLeft: "10px", marginRight: "10px" }}
           >
             {filteredProjects.map((project) => (
               <Link
                 key={project.id}
                 href={`/projects/${project.id}`}
-                className="mb-0"
-                style={{ margin: "5px 10px 5px 10px", flex: "0 0 300px" }}
+                className="mb-2"
+                style={{ margin: "10px 10px 10px 10px", flex: "0 0 300px" }}
               >
                 <WorkCard
                   img={project.imageSrc}
