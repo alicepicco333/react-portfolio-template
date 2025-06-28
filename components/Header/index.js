@@ -37,10 +37,10 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               
               <div
                 onClick={() => router.push("/")}
-                className="text-4xl font-bold cursor-pointer"
+                className="position-fixed text-4xl font-bold cursor-pointer"
                 style={{ fontFamily: "'Rubik Doodle Shadow', cursive" }}
               >
-                A
+                *
               </div>
 
               <div className="flex items-center">
