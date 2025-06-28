@@ -98,20 +98,7 @@
       "category": "Creative Projects",
       "tags": ["3D Modeling", "3D Animation"]
     },
-    {
-      "id": "7",
-      "title": "Instagram Filter x MONINGA",
-      "description": "Interactive AR Instagram filter using Meta Spark.",
-      "introText": "Introductory paragraph for MONINGA Instagram Filter...",
-      "gridImages": ["/images/moninga-1.jpg", "/images/moninga-2.jpg", "/images/moninga-3.jpg", "/images/moninga-4.jpg", "/images/moninga-5.jpg", "/images/moninga-6.jpg", "/images/moninga-7.jpg", "/images/moninga-8.jpg", "/images/moninga-9.jpg", "/images/moninga-10.jpg", "/images/moninga-11.jpg", "/images/moninga-12.jpg", "/images/moninga-13.jpg", "/images/moninga-14.jpg", "/images/moninga-15.jpg", "/images/moninga-16.jpg"],
-      "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "/images/moninga-highlight.jpg",
-      "conclusionText": "Closing summary or reflections for MONINGA Instagram Filter.",
-      "imageSrc": "",
-      "url": "https://www.instagram.com/ar/971249920767640",
-      "category": "Creative Projects",
-      "tags": ["Augmented Reality", "Interaction Design"]
-    },
+   
 
     {
       "id": "9",
