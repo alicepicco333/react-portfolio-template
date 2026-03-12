@@ -1,10 +1,8 @@
 {
   "headerTaglineOne": "Hello!",
   "headerTaglineTwo": "I'm Alice,",
-  "headerTaglineThree": "anthropologist, researcher and designer",
+  "headerTaglineThree": "researcher and designer",
   "headerTaglineFour": "based in Amsterdam.",
-  "showCursor": true,
-  "showBlog": false,
   "darkMode": false,
   "showResume": true,
   "email": "awlicepicco@gmail.com",

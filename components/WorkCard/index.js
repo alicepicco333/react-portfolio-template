@@ -16,16 +16,14 @@ const WorkCard = ({ img, name, description, tags }) => {
 
   return (
     <div
-      className="relative rounded-lg cursor-pointer overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 bg-white"
+      className="relative rounded-lg cursor-pointer overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 bg-white aspect-square"
       style={{
        border: "1px solid black",
-        minHeight: "380px",
-        maxHeight: "380px",
         width: "100%",
       }}
     >
       {/* Image */}
-      <div className="w-full h-[220px] overflow-hidden rounded-t-lg flex-shrink-0">
+      <div className="w-full flex-grow overflow-hidden rounded-t-lg">
         <img
           src={img}
           alt={name}
@@ -35,9 +33,9 @@ const WorkCard = ({ img, name, description, tags }) => {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow px-4 py-3 text-center">
+      <div className="flex flex-col flex-shrink-0 px-4 py-3 text-center">
         <h2 className="text-lg font-semibold mb-2 text-black">{name}</h2>
-        <p className="text-sm text-gray-700 mb-3 flex-grow">{description}</p>
+        <p className="text-sm text-gray-700 mb-3 line-clamp-2">{description}</p>
         <div className="flex flex-wrap justify-center gap-2">
           {tags?.map((tag, i) => (
             <span

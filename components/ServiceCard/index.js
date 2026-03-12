@@ -1,3 +1,4 @@
+  "hover:bg-slate-50"
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 

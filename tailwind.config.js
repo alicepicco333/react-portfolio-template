@@ -12,7 +12,11 @@ module.exports = {
       desktop: "1280px",
       laptopl: "1440px",
     },
-    extend: {},
+    extend: {
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+      },
+    },
   },
   plugins: [],
 };

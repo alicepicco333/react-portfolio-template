@@ -1,14 +1,17 @@
+  // ...existing code...
+
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Socials from "../components/Socials";
 import Footer from "../components/Footer";
-import Cursor from "../components/Cursor"
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { gsap } from "gsap";
 import portfolioData from "../data/portfolio.json";
 import WorkCard from "../components/WorkCard";
+import HeroGraph from "../components/HeroGraph";
+import ScrambleText from "../components/ScrambleText";
 
 const scrollWithOffset = (el, offset = -80) => {
   const y = el.getBoundingClientRect().top + window.scrollY + offset;
@@ -19,7 +22,8 @@ const Home = () => {
   const workRef = useRef(null);
   const headerRefs = useRef([]);
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Design and Development");
+  const [heroHovered, setHeroHovered] = useState(false);
 
   const handleWorkScroll = () => {
     if (workRef.current) scrollWithOffset(workRef.current);
@@ -43,11 +47,8 @@ const Home = () => {
     return () => ctx.revert();
   }, [router.asPath]);
 
-  const allCategories = ["All", ...new Set(portfolioData.projects.map((p) => p.category))];
-  const filteredProjects =
-    selectedCategory === "All"
-      ? portfolioData.projects
-      : portfolioData.projects.filter((p) => p.category === selectedCategory);
+  const allCategories = [...new Set(portfolioData.projects.map((p) => p.category))];
+  const filteredProjects = portfolioData.projects.filter((p) => p.category === selectedCategory);
 
   return (
     <div className={`relative min-h-screen overflow-x-hidden ${portfolioData.showCursor ? "cursor-" : ""}`}>
@@ -60,20 +61,42 @@ const Home = () => {
       <Header handleWorkScroll={handleWorkScroll} handleAboutScroll={handleAboutScroll} />
 
       <main className="px-6 py-16 mx-auto max-w-7xl">
-        <section className="mb-16 text-center">
-          {[portfolioData.headerTaglineOne, portfolioData.headerTaglineTwo, portfolioData.headerTaglineThree, portfolioData.headerTaglineFour].map(
-            (line, i) => (
-              <h1
-                key={i}
-                ref={(el) => (headerRefs.current[i] = el)}
-                className="text-3xl md:text-5xl lg:text-6xl font-bold mb-5"
-              >
-                {line}
-              </h1>
-            )
-          )}
-          <p className="text-md mt-8 text-gray-600 dark:text-gray-300">{portfolioData.email}</p>
-          <div className="mt-4">
+        <section 
+          className="mb-16 text-center relative min-h-[650px]"
+          onMouseEnter={() => setHeroHovered(true)}
+          onMouseLeave={() => setHeroHovered(false)}
+        >
+          <HeroGraph hovered={heroHovered} />
+          <div 
+            className={`relative transition-all duration-300 ${heroHovered ? 'blur-sm z-0' : 'z-10'}`}
+          >
+            <h1
+              ref={(el) => (headerRefs.current[0] = el)}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5"
+            >
+              {portfolioData.headerTaglineOne}
+            </h1>
+            <h1
+              ref={(el) => (headerRefs.current[1] = el)}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5"
+            >
+              I'm <ScrambleText text="Alice" delay={400} />,
+            </h1>
+            <h1
+              ref={(el) => (headerRefs.current[2] = el)}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5"
+            >
+              {portfolioData.headerTaglineThree}
+            </h1>
+            <h1
+              ref={(el) => (headerRefs.current[3] = el)}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5"
+            >
+              based in <ScrambleText text="Amsterdam" delay={800} />.
+            </h1>
+            <p className="text-md mt-8 text-gray-600 dark:text-gray-300">{portfolioData.email}</p>
+          </div>
+          <div className="mt-[7.5rem] relative z-20">
             <Socials />
           </div>
         </section>
@@ -81,7 +104,7 @@ const Home = () => {
         <section ref={workRef} className="mb-20 mt-10">
           <h2 className="text-2xl font-semibold text-center mb-6">Work</h2>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-4 mb-8 max-w-4xl mx-auto">
             {allCategories.map((category) => (
               <label
                 key={category}
@@ -104,17 +127,12 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Container with margin on sides, no gaps between grid items */}
-          <div
-            className="flex flex-wrap justify-center mb-4"
-            style={{ marginLeft: "10px", marginRight: "10px" }}
-          >
+          {/* Container matching chip width */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {filteredProjects.map((project) => (
               <Link
                 key={project.id}
                 href={`/projects/${project.id}`}
-                className="mb-2"
-                style={{ margin: "10px 10px 10px 10px", flex: "0 0 300px" }}
               >
                 <WorkCard
                   img={project.imageSrc}

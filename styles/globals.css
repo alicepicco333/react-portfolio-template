@@ -3,13 +3,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./markdown.css";
 
 * {
   margin: 0vw;
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: normal;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 @keyframes scroll {
