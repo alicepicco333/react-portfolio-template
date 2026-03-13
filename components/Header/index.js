@@ -18,7 +18,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
       {/* Fixed Home Button - visible on all screen sizes */}
       <div
         onClick={() => router.push("/")}
-        className="fixed top-16 left-5 w-10 h-10 tablet:w-12 tablet:h-12 flex items-center justify-center rounded-full bg-[#B6F5C6] cursor-pointer z-50 animate-spin-slow shadow-lg"
+        className="fixed top-16 left-5 w-10 h-10 tablet:w-12 tablet:h-12 flex items-center justify-center rounded-full bg-[#B6F5C6] cursor-pointer z-50 animate-spin-slow"
         style={{ fontFamily: "'Space Mono', monospace" }}
       >
         <span className="text-lg tablet:text-xl font-bold text-[#4A4A4A]">*</span>
