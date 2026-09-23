@@ -222,7 +222,7 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/igo-highlight.jpg",
       "conclusionText": "Closing summary or reflections for I Grandi Oggetti.",
-      "imageSrc": "",
+      "imageSrc": "/images/projects/6.jpg",
       "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
       "category": "Past Projects",
       "tags": [
@@ -256,7 +256,7 @@
       "middleText": "Middle explanatory section of the project.",
       "highlightImage": "/images/qks-highlight.jpg",
       "conclusionText": "Closing summary or reflections for this short film project.",
-      "imageSrc": "",
+      "imageSrc": "/images/projects/9.jpg",
       "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
       "category": "Past Projects",
       "tags": [
@@ -306,7 +306,7 @@
       "middleText": "",
       "highlightImage": "",
       "conclusionText": "",
-      "imageSrc": "",
+      "imageSrc": "/images/projects/11.jpg",
       "url": "",
       "category": "Design",
       "tags": [
@@ -323,7 +323,7 @@
       "middleText": "",
       "highlightImage": "",
       "conclusionText": "",
-      "imageSrc": "",
+      "imageSrc": "/images/projects/12.jpg",
       "url": "",
       "category": "Research",
       "tags": [
@@ -351,17 +351,18 @@
     {
       "id": "14",
       "title": "5PIC3 live at Fullfillment Music Center",
-      "description": "Live visuals set at Fullfillment Music Center.",
+      "description": "Live-coded, audio-reactive visuals in Hydra at Fullfillment Music Center.",
       "introText": "",
       "gridImages": [],
       "middleText": "",
       "highlightImage": "",
       "conclusionText": "",
-      "imageSrc": "",
+      "imageSrc": "/images/projects/14.jpg",
       "url": "",
       "category": "Live Coding",
       "tags": [
         "Live Coding",
+        "Hydra",
         "Performance"
       ]
     }

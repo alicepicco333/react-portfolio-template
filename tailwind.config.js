@@ -28,9 +28,9 @@ module.exports = {
         signal: "#D7FF3C",
       },
       fontFamily: {
-        sans: ["Grotesk", "system-ui", "sans-serif"],
-        mono: ["Sligoil", "monospace"],
-        display: ["Le Murmure", "sans-serif"],
+        sans: ["Space Grotesk", "system-ui", "sans-serif"],
+        mono: ["Space Mono", "monospace"],
+        display: ["Big Shoulders Display", "sans-serif"],
       },
       gridTemplateColumns: {
         13: "repeat(13, minmax(0, 1fr))",

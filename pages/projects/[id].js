@@ -5,7 +5,7 @@ import Link from "next/link";
 import portfolioData from "../../data/portfolio.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { categoryMeta } from "../../utils";
+import { categoryMeta, withBase } from "../../utils";
 
 // Template filler ("Introductory paragraph for…") is hidden until real copy is written.
 const PLACEHOLDER = /^(Introductory paragraph|Middle explanatory section|Closing summary)/;
@@ -93,7 +93,7 @@ export default function ProjectPage({ project, number, next }) {
 
         {project.highlightImage && (
           <figure className="fu-card border-b border-ink">
-            <img src={project.highlightImage} alt={project.title} className="max-h-[80vh] w-full object-cover" />
+            <img src={withBase(project.highlightImage)} alt={project.title} className="max-h-[80vh] w-full object-cover" />
           </figure>
         )}
 
@@ -111,7 +111,7 @@ export default function ProjectPage({ project, number, next }) {
           <section className="grid grid-cols-2 gap-4 border-b border-ink px-4 py-10 tablet:grid-cols-4 tablet:px-10">
             {project.gridImages.map((src, index) => (
               <div key={src} className="fu-card aspect-square overflow-hidden border border-ink">
-                <img src={src} alt={`${project.title} — image ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
+                <img src={withBase(src)} alt={`${project.title} — image ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
               </div>
             ))}
           </section>

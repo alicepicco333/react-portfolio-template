@@ -255,11 +255,11 @@ const Home = () => {
               <defs>
                 <path id="fu-ring" d="M110,110 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0" />
               </defs>
-              <text fontFamily="Sligoil, monospace" fontSize="12.5" letterSpacing="2.5" fill="#151613">
+              <text fontFamily="Space Mono, monospace" fontSize="12.5" letterSpacing="2.5" fill="#151613">
                 <textPath href="#fu-ring">ANTHROPOLOGY ■ DIGITAL HUMANITIES ■ DESIGN ■ HCI ■</textPath>
               </text>
               <rect x="80" y="80" width="60" height="60" fill="#151613" />
-              <text x="110" y="119" textAnchor="middle" fontFamily="Le Murmure, sans-serif" fontSize="30" fill="#F2C4CE">
+              <text x="110" y="119" textAnchor="middle" fontFamily="Big Shoulders Display, sans-serif" fontSize="30" fontWeight="800" fill="#F2C4CE">
                 AP
               </text>
             </svg>

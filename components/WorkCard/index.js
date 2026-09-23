@@ -1,5 +1,5 @@
 import React from "react";
-import { categoryMeta } from "../../utils";
+import { categoryMeta, withBase } from "../../utils";
 
 const WorkCard = ({ img, name, description, tags, category, cardNumber }) => {
   const { short, tone } = categoryMeta(category);
@@ -8,7 +8,7 @@ const WorkCard = ({ img, name, description, tags, category, cardNumber }) => {
     <article className="flex h-full flex-col border border-ink bg-paper">
       <div className="relative flex h-[260px] items-center justify-center overflow-hidden border-b border-ink bg-concrete tablet:h-[340px]">
         {img ? (
-          <img src={img} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
+          <img src={withBase(img)} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
         ) : (
           <span className="fu-display px-6 text-center text-[48px] leading-[0.85] text-ink/25 tablet:text-phi3">{name}</span>
         )}

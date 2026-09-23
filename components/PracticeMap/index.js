@@ -163,7 +163,7 @@ const PracticeMap = ({ stats = [] }) => {
                   x={pt.x + (right ? 11 : -11)}
                   y={pt.y + 4}
                   textAnchor={right ? "start" : "end"}
-                  fontFamily="Sligoil, monospace"
+                  fontFamily="Space Mono, monospace"
                   fontSize={10 + 2.5 * (pt.scale - 0.7)}
                   fontWeight={isActive ? 700 : 400}
                   fill={isActive ? "#D7FF3C" : "#E8E4DA"}

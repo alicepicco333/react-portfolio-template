@@ -11,6 +11,11 @@ const CATEGORY_META = {
   "Past Projects": { short: "Past projects", tone: "#A89F7E" },
 };
 
+// Prefix local /public paths with the deploy base path (GitHub Pages serves from a sub-folder).
+export function withBase(src) {
+  return src && src.startsWith("/") ? `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${src}` : src;
+}
+
 export function categoryMeta(category) {
   return CATEGORY_META[category] || { short: category, tone: "#BDB8AC" };
 }
