@@ -69,12 +69,12 @@ export default function ProjectPage({ project, number, next }) {
                 {number} · {short}
               </span>
             </div>
-            <h1 className="fu-display text-[72px] tablet:text-phi4 laptopl:text-phi5">{project.title}</h1>
+            <h1 className="fu-display text-[56px] tablet:text-phi3 laptopl:text-phi4">{project.title}</h1>
             <p className="max-w-[640px] text-xl leading-snug tablet:text-phi1">{project.introText}</p>
           </div>
 
           <aside className="flex flex-col justify-between gap-8 px-4 py-12 tablet:px-10 laptop:py-[68px]">
-            <span className="fu-display self-end text-phi4 text-ink/15 laptop:text-phi5" aria-hidden="true">
+            <span className="fu-display self-end text-phi3 text-ink/15 laptop:text-phi4" aria-hidden="true">
               {number}
             </span>
             <dl className="fu-meta grid grid-cols-[110px_1fr] gap-y-3 border-t border-ink pt-4">

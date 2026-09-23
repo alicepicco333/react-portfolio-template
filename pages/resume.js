@@ -33,7 +33,7 @@ const Resume = () => {
 
       <main className="px-4 tablet:px-10">
         <div className="grid gap-8 py-14 laptop:grid-cols-golden laptop:py-[110px]">
-          <h1 className="fu-display text-[110px] tablet:text-phi5">
+          <h1 className="fu-display text-[72px] tablet:text-phi4">
             Record
           </h1>
           <div className="flex flex-col justify-end gap-5">

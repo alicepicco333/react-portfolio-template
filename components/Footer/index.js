@@ -14,10 +14,10 @@ const Footer = () => {
       </div>
 
       <a href={`mailto:${email}`} className="group flex flex-col">
-        <span className="fu-display relative text-[120px] tablet:text-[200px] laptop:text-phi6">
+        <span className="fu-display relative text-[88px] tablet:text-phi5">
           Write<span className="text-pink transition-colors group-hover:text-signal">_</span>
         </span>
-        <span className="break-all pt-6 font-mono text-xl tablet:text-[32px] laptop:text-phi2">{email} ↗</span>
+        <span className="break-all pt-6 font-mono text-lg tablet:text-phi1">{email} ↗</span>
       </a>
 
       <div className="fu-meta flex flex-col gap-4 border-t border-[#3A3B35] pt-4 tablet:flex-row tablet:items-center tablet:justify-between">

@@ -81,38 +81,34 @@ const Home = () => {
       <Header />
 
       <main>
-        {/* ——— Hero: 61.8 / 38.2 ——— */}
-        <section id="top" className="grid border-b border-ink laptop:h-[calc(100svh-56px)] laptop:max-h-[900px] laptop:min-h-[760px] laptop:grid-cols-golden">
-          <div className="relative flex flex-col justify-between gap-12 overflow-hidden px-4 py-10 tablet:px-10 laptop:border-r laptop:border-ink laptop:py-10 laptop:pl-24 laptop:pr-10">
-            <span className="fu-meta fu-vertical absolute left-9 top-10 hidden text-[11px] tracking-[0.3em] laptop:block">Research · Design · Creative technology</span>
-            <span className="absolute bottom-10 left-11 hidden h-[260px] w-px bg-ink laptop:block" />
+        {/* ——— Hero: 38.2 intro / 61.8 practice map ——— */}
+        <section id="top" className="grid border-b border-ink laptop:h-[calc(100svh-56px)] laptop:max-h-[860px] laptop:min-h-[700px] laptop:grid-cols-golden-rev">
+          <div className="relative flex flex-col justify-between gap-12 px-4 py-10 tablet:px-10 laptop:border-r laptop:border-ink laptop:py-[68px] laptop:pl-24 laptop:pr-10">
+            <span className="fu-meta fu-vertical absolute left-9 top-[68px] hidden text-[11px] tracking-[0.3em] text-fieldgrey laptop:block">
+              Research · Design · Creative technology
+            </span>
 
-            <div className="fu-meta fu-hero-fade flex justify-between gap-4">
-              <span>{portfolioData.headerTaglineOne} — Unit 01</span>
-              <span className="hidden text-fieldgrey tablet:inline">Fig. 00 / Portrait of a practice</span>
+            <div className="flex flex-col gap-6">
+              <h1 className="fu-display text-[72px] tablet:text-phi4">
+                <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
+                  <span className="fu-hero-line block">Alice</span>
+                </span>
+                <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
+                  <span className="fu-hero-line block">Picco</span>
+                </span>
+              </h1>
+              <div className="fu-hero-fade flex items-center gap-3 font-mono text-base uppercase tablet:text-lg">
+                <ScrambleText words={roles} delay={900} className="bg-ink px-3 py-1 text-bone" />
+                <span className="fu-blink h-5 w-2 bg-ink" aria-hidden="true" />
+              </div>
             </div>
 
-            <h1 className="fu-display relative text-[34vw] tablet:text-[200px] laptopl:text-phi6">
-              <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
-                <span className="fu-hero-line block">Alice</span>
-              </span>
-              <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
-                <span className="fu-hero-line block">
-                  Picco
-                </span>
-              </span>
-            </h1>
-
-            <div className="fu-hero-fade flex flex-col gap-4">
-              <div className="flex items-center gap-4 font-mono text-lg uppercase tablet:text-phi1">
-                <ScrambleText words={roles} delay={900} className="bg-ink px-3 py-1 text-bone" />
-                <span className="fu-blink h-7 w-3 bg-ink" aria-hidden="true" />
-              </div>
-              <p className="max-w-[620px] text-xl leading-snug tablet:text-phi1">
+            <div className="fu-hero-fade flex flex-col gap-6">
+              <p className="max-w-[440px] text-lg leading-relaxed tablet:text-xl">
                 I&apos;m Alice, {portfolioData.headerTaglineThree} {portfolioData.headerTaglineFour.replace(/\.$/, "")} —
                 working between culture, code and interfaces.
               </p>
-              <div className="flex flex-wrap gap-2 pt-2">
+              <div className="flex flex-wrap gap-2">
                 <Link href="#work" className="fu-btn fu-btn-primary">
                   See the work ↓
                 </Link>
@@ -121,17 +117,10 @@ const Home = () => {
                 </a>
               </div>
             </div>
-
           </div>
 
-          <div className="h-[620px] border-t border-ink laptop:h-auto laptop:border-t-0">
-            <PracticeMap
-              stats={[
-                `${String(projects.length).padStart(2, "0")} works`,
-                `${String(resume.experiences.length).padStart(2, "0")} posts`,
-                "02 degrees",
-              ]}
-            />
+          <div className="h-[560px] border-t border-ink tablet:h-[640px] laptop:h-auto laptop:border-t-0">
+            <PracticeMap projects={projects} />
           </div>
         </section>
 
@@ -139,7 +128,7 @@ const Home = () => {
         <div className="border-b border-ink">
           <Marquee
             className="bg-ink py-3 text-bone"
-            itemClassName="fu-display text-[34px] leading-none tablet:text-phi2"
+            itemClassName="fu-display text-[26px] leading-none tablet:text-[34px]"
             separator={<span className="text-signal">■</span>}
             items={[
               "Human–Computer Interaction",
@@ -160,7 +149,7 @@ const Home = () => {
         <section id="work" className="scroll-mt-14 px-4 pb-16 pt-20 tablet:px-10 laptop:pb-[68px] laptop:pt-[110px]">
           <div className="fu-reveal grid items-end gap-6 border-b border-ink pb-7 laptop:grid-cols-13 laptop:gap-x-4">
             <span className="fu-meta fu-vertical hidden text-[11px] tracking-[0.3em] laptop:col-span-1 laptop:block">Selected · 2022—now</span>
-            <h2 className="fu-display relative text-[110px] tablet:text-phi5 laptop:col-span-7">
+            <h2 className="fu-display relative text-[72px] tablet:text-phi4 laptop:col-span-7">
               Works
               <sup className="align-top font-mono text-base font-normal">
                 ({String(ordered.length - archive.length).padStart(2, "0")})
@@ -220,7 +209,7 @@ const Home = () => {
           <div className="grid gap-8 laptop:grid-cols-13 laptop:gap-x-4">
             <div className="fu-reveal flex flex-col gap-4 laptop:col-span-5">
               <span className="fu-meta">{String(groups.length + 1).padStart(2, "0")} / Past projects</span>
-              <h2 className="fu-display text-[96px] tablet:text-phi5">Past projects</h2>
+              <h2 className="fu-display text-[64px] tablet:text-phi4">Past projects</h2>
             </div>
             <ol className="fu-reveal border-t border-ink laptop:col-span-8">
               {archive.map((project) => (
@@ -279,7 +268,7 @@ const Home = () => {
         {/* ——— Record ——— */}
         <section id="record" className="grid gap-10 px-4 py-20 tablet:px-10 laptop:grid-cols-13 laptop:gap-x-4 laptop:py-[110px]">
           <div className="fu-reveal flex flex-col gap-6 laptop:col-span-5">
-            <h2 className="fu-display text-[110px] tablet:text-phi5">Record</h2>
+            <h2 className="fu-display text-[72px] tablet:text-phi4">Record</h2>
             <Link href="/resume" className="fu-btn fu-btn-primary self-start">
               Full résumé ↗
             </Link>
