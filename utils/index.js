@@ -8,7 +8,7 @@ const CATEGORY_META = {
   Design: { short: "Design", tone: "#F2C4CE" },
   Research: { short: "Research", tone: "#CFC6E8" },
   "Live Coding": { short: "Live coding", tone: "#C8D8BF" },
-  Archive: { short: "Archive", tone: "#A89F7E" },
+  "Past Projects": { short: "Past projects", tone: "#A89F7E" },
 };
 
 export function categoryMeta(category) {

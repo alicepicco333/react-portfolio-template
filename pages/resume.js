@@ -91,7 +91,7 @@ const Resume = () => {
                     <h3 className="fu-title text-phi1">{title}</h3>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {items.map((item) => (
-                        <li key={item} className="fu-sticker bg-paper">
+                        <li key={item} className="fu-meta border border-ink px-3 py-2">
                           {item}
                         </li>
                       ))}

@@ -10,7 +10,7 @@ const WorkCard = ({ img, name, description, tags, category, cardNumber }) => {
         {img ? (
           <img src={img} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
         ) : (
-          <span className="fu-display px-6 text-center text-[64px] text-ink/25 tablet:text-phi4">{name}</span>
+          <span className="fu-display px-6 text-center text-[48px] leading-[0.85] text-ink/25 tablet:text-phi3">{name}</span>
         )}
         <span
           className="fu-meta absolute left-0 top-0 border-b border-r border-ink px-3 py-2 text-[11px]"

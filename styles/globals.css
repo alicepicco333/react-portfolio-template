@@ -1,4 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+/* Type: Velvetyne fonts only (SIL Open Font License — see /fonts/LICENSE-*.txt)
+   Le Murmure (Jérémy Landes) · Grotesk (Frank Adebiaye) · Sligoil (Ariel Martín Pérez) */
+@font-face {
+  font-family: "Le Murmure";
+  src: url("./fonts/LeMurmure-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Grotesk";
+  src: url("./fonts/Grotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Grotesk";
+  src: url("./fonts/Grotesk-Gras.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sligoil";
+  src: url("./fonts/Sligoil-Micro.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sligoil";
+  src: url("./fonts/Sligoil-MicroBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,7 +71,7 @@ body {
 body {
   background-color: var(--bone);
   color: var(--ink);
-  font-family: "Archivo", system-ui, sans-serif;
+  font-family: "Grotesk", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -56,22 +92,20 @@ a {
 
 @layer components {
   .fu-display {
-    font-family: "Archivo", sans-serif;
-    font-weight: 800;
-    font-stretch: 62%;
+    font-family: "Le Murmure", sans-serif;
+    font-weight: 400;
     line-height: 0.8;
     text-transform: uppercase;
     letter-spacing: -0.02em;
   }
   .fu-title {
-    font-family: "Archivo", sans-serif;
-    font-weight: 800;
-    font-stretch: 75%;
+    font-family: "Le Murmure", sans-serif;
+    font-weight: 400;
     line-height: 0.95;
     text-transform: uppercase;
   }
   .fu-meta {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Sligoil", monospace;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -86,7 +120,7 @@ a {
     min-height: 44px;
     padding: 0 20px;
     border: 1px solid var(--ink);
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Sligoil", monospace;
     font-size: 12px;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s;
@@ -105,14 +139,6 @@ a {
   .fu-btn-secondary:hover {
     background: var(--ink);
     color: var(--bone);
-  }
-  .fu-sticker {
-    display: inline-block;
-    padding: 10px 18px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
   }
   .fu-grid-bg {
     background-image: repeating-linear-gradient(0deg, transparent 0 43px, var(--olive-grid) 43px 44px),

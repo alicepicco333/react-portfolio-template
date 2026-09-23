@@ -224,7 +224,7 @@
       "conclusionText": "Closing summary or reflections for I Grandi Oggetti.",
       "imageSrc": "",
       "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
-      "category": "Archive",
+      "category": "Past Projects",
       "tags": [
         "3D Modeling",
         "3D Animation"
@@ -258,7 +258,7 @@
       "conclusionText": "Closing summary or reflections for this short film project.",
       "imageSrc": "",
       "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
-      "category": "Archive",
+      "category": "Past Projects",
       "tags": [
         "2D Animation"
       ]
@@ -295,6 +295,74 @@
       "tags": [
         "Workshop Facilitation",
         "Live Coding"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Teigetje & Woelrat",
+      "description": "Collection website for the Amsterdam fashion label Teigetje & Woelrat, designed in Figma and built for the web.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Design",
+      "tags": [
+        "UX Design",
+        "Web Development"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "The Meme Ontology",
+      "description": "MEMO: an OWL ontology of internet memes, built from scraped meme data, linked to Wikidata and queryable with SPARQL.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Research",
+      "tags": [
+        "Ontology Engineering",
+        "Semantic Web"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Archivio Fondazione Luki Massa",
+      "description": "Digitisation of the Luki Massa Foundation archive, cataloguing its series with a shared file nomenclature and inventory.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Research",
+      "tags": [
+        "Digital Archives",
+        "Digitisation"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "5PIC3 live at Fullfillment Music Center",
+      "description": "Live visuals set at Fullfillment Music Center.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Live Coding",
+      "tags": [
+        "Live Coding",
+        "Performance"
       ]
     }
   ],

@@ -28,8 +28,9 @@ module.exports = {
         signal: "#D7FF3C",
       },
       fontFamily: {
-        sans: ["Archivo", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["Grotesk", "system-ui", "sans-serif"],
+        mono: ["Sligoil", "monospace"],
+        display: ["Le Murmure", "sans-serif"],
       },
       gridTemplateColumns: {
         13: "repeat(13, minmax(0, 1fr))",

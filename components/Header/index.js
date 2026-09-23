@@ -37,7 +37,6 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-ink bg-bone">
       <div className="fu-meta mx-auto grid h-14 grid-cols-[1fr_auto] items-center gap-4 px-4 tablet:px-10 laptop:grid-cols-13">
         <Link href="/" className="flex items-center gap-3 font-bold laptop:col-span-3">
-          <span className="h-[10px] w-[10px] bg-signal outline outline-1 outline-ink" />
           A.PICCO
         </Link>
 

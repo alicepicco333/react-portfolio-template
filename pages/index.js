@@ -12,7 +12,7 @@ import Marquee from "../components/Marquee";
 import portfolioData from "../data/portfolio.json";
 import { categoryMeta, useIsomorphicLayoutEffect } from "../utils";
 
-// Works are shown in three groups; animation work lives in the archive below.
+// Works are shown in three groups; older work is listed under past projects.
 const GROUPS = [
   { id: "Design", blurb: "Interfaces, archives & the web" },
   { id: "Research", blurb: "Digital editions, ontologies & data" },
@@ -39,8 +39,8 @@ const Home = () => {
     ...categoryMeta(group.id),
     items: projects.filter((project) => project.category === group.id),
   }));
-  const archive = projects.filter((project) => project.category === "Archive");
-  // Running catalogue number in display order: groups first, then the archive.
+  const archive = projects.filter((project) => project.category === "Past Projects");
+  // Running catalogue number in display order: groups first, then past projects.
   const ordered = [...groups.flatMap((group) => group.items), ...archive];
   const numberOf = (project) => String(ordered.indexOf(project) + 1).padStart(2, "0");
   const imageOf = (project) =>
@@ -108,7 +108,7 @@ const Home = () => {
                 <ScrambleText words={roles} delay={900} className="bg-ink px-3 py-1 text-bone" />
                 <span className="fu-blink h-7 w-3 bg-ink" aria-hidden="true" />
               </div>
-              <p className="max-w-[620px] text-xl leading-snug [font-stretch:90%] tablet:text-phi1">
+              <p className="max-w-[620px] text-xl leading-snug tablet:text-phi1">
                 I&apos;m Alice, {portfolioData.headerTaglineThree} {portfolioData.headerTaglineFour.replace(/\.$/, "")} —
                 working between culture, code and interfaces.
               </p>
@@ -122,13 +122,6 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="pointer-events-none absolute right-6 top-24 hidden flex-col items-end gap-5 tablet:flex laptop:right-12 laptop:top-28">
-              <span className="fu-sticker fu-wob bg-pink [--r:7deg]">HCI specialist</span>
-              <span className="fu-sticker fu-wob mr-24 bg-lilac [--r:-5deg] [animation-delay:-2s]">digital humanist</span>
-              <span className="fu-sticker fu-wob mr-4 bg-mint [--r:4deg] [animation-delay:-3.5s]">
-                designer
-              </span>
-            </div>
           </div>
 
           <div className="h-[620px] border-t border-ink laptop:h-auto laptop:border-t-0">
@@ -169,18 +162,17 @@ const Home = () => {
             <span className="fu-meta fu-vertical hidden text-[11px] tracking-[0.3em] laptop:col-span-1 laptop:block">Selected · 2022—now</span>
             <h2 className="fu-display relative text-[110px] tablet:text-phi5 laptop:col-span-7">
               Works
-              <sup className="align-top font-mono text-base font-normal [font-stretch:100%]">
+              <sup className="align-top font-mono text-base font-normal">
                 ({String(ordered.length - archive.length).padStart(2, "0")})
               </sup>
             </h2>
             <nav className="flex flex-wrap gap-2 laptop:col-span-5 laptop:justify-end" aria-label="Jump to a group of works">
-              {[...groups, { id: "Archive", short: "Archive", tone: "#A89F7E", items: archive }].map((group) => (
+              {[...groups, { id: "Past Projects", short: "Past projects", items: archive }].map((group) => (
                 <a
                   key={group.id}
                   href={`#works-${group.id.toLowerCase().replace(" ", "-")}`}
                   className="fu-btn px-4 hover:bg-ink hover:text-bone"
                 >
-                  <span className="h-[10px] w-[10px] border border-current" style={{ background: group.tone }} />
                   {group.short}
                   <span className="opacity-60">{String(group.items.length).padStart(2, "0")}</span>
                 </a>
@@ -194,7 +186,6 @@ const Home = () => {
                 <div className="flex items-end gap-4">
                   <span className="fu-meta pb-2">{String(groupIndex + 1).padStart(2, "0")} /</span>
                   <h3 className="fu-title flex items-center gap-4 text-[48px] tablet:text-phi3">
-                    <span className="h-5 w-5 border border-ink tablet:h-7 tablet:w-7" style={{ background: group.tone }} />
                     {group.short}
                   </h3>
                   <span className="fu-meta pb-2">({String(group.items.length).padStart(2, "0")})</span>
@@ -224,12 +215,12 @@ const Home = () => {
           ))}
         </section>
 
-        {/* ——— Archive: older animation work, as an index ——— */}
-        <section id="works-archive" className="scroll-mt-14 border-t border-ink bg-paper px-4 py-16 tablet:px-10 laptop:py-[110px]">
+        {/* ——— Past projects, as an index ——— */}
+        <section id="works-past-projects" className="scroll-mt-14 border-t border-ink bg-paper px-4 py-16 tablet:px-10 laptop:py-[110px]">
           <div className="grid gap-8 laptop:grid-cols-13 laptop:gap-x-4">
             <div className="fu-reveal flex flex-col gap-4 laptop:col-span-5">
-              <span className="fu-meta">{String(groups.length + 1).padStart(2, "0")} / Archive</span>
-              <h2 className="fu-display text-[96px] tablet:text-phi5">Archive</h2>
+              <span className="fu-meta">{String(groups.length + 1).padStart(2, "0")} / Past projects</span>
+              <h2 className="fu-display text-[96px] tablet:text-phi5">Past projects</h2>
             </div>
             <ol className="fu-reveal border-t border-ink laptop:col-span-8">
               {archive.map((project) => (
@@ -264,18 +255,18 @@ const Home = () => {
               <defs>
                 <path id="fu-ring" d="M110,110 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0" />
               </defs>
-              <text fontFamily="JetBrains Mono, monospace" fontSize="12.5" letterSpacing="2.5" fill="#151613">
+              <text fontFamily="Sligoil, monospace" fontSize="12.5" letterSpacing="2.5" fill="#151613">
                 <textPath href="#fu-ring">ANTHROPOLOGY ■ DIGITAL HUMANITIES ■ DESIGN ■ HCI ■</textPath>
               </text>
               <rect x="80" y="80" width="60" height="60" fill="#151613" />
-              <text x="110" y="119" textAnchor="middle" fontFamily="Archivo, sans-serif" fontSize="26" fontWeight="800" fill="#F2C4CE">
+              <text x="110" y="119" textAnchor="middle" fontFamily="Le Murmure, sans-serif" fontSize="30" fill="#F2C4CE">
                 AP
               </text>
             </svg>
             <span className="fu-meta">Based in Amsterdam</span>
           </div>
           <div className="fu-reveal flex flex-col gap-10 px-4 py-12 tablet:px-10 laptop:py-[68px] laptop:pl-[68px]">
-            <p className="text-[40px] font-bold uppercase leading-[0.98] [font-stretch:75%] tablet:text-phi3">
+            <p className="fu-title text-[44px] leading-[0.98] tablet:text-phi3">
               I work at the intersection of culture, technology <span className="bg-lilac px-2">&amp; design</span>.
             </p>
             <div className="grid gap-6 text-[17px] leading-relaxed tablet:grid-cols-2">
@@ -307,15 +298,14 @@ const Home = () => {
             ].map((entry) => (
               <li
                 key={entry.id}
-                className="grid grid-cols-[18px_1fr] gap-x-4 gap-y-1 border-b border-concrete py-5 tablet:grid-cols-[170px_18px_1fr_110px]"
+                className="grid gap-y-1 border-b border-concrete py-5 tablet:grid-cols-[170px_1fr_110px] tablet:gap-x-4"
               >
-                <span className="fu-meta col-span-2 text-fieldgrey tablet:col-span-1 tablet:pt-1">{entry.dates}</span>
-                <span className="mt-1 h-3 w-3 border border-ink" style={{ background: entry.tone }} />
+                <span className="fu-meta text-fieldgrey tablet:pt-1">{entry.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-xl font-bold">{entry.position}</span>
                   <span className="text-[15px] text-graphite">{entry.bullets}</span>
                 </span>
-                <span className="fu-meta col-start-2 text-[11px] tablet:col-start-auto tablet:pt-1 tablet:text-right">{entry.type}</span>
+                <span className="fu-meta text-[11px] tablet:pt-1 tablet:text-right">{entry.type}</span>
               </li>
             ))}
           </ol>
