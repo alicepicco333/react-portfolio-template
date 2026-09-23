@@ -1,54 +1,214 @@
-@import url("https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* FIELD/UNIT design tokens — mirrored as Tailwind colours in tailwind.config.js */
 :root {
-  --color-ink: #2B2118;
-  --color-sage: #A8C69F;
-  --color-pink: #FFC1CF;
-  --color-mist: #D9D7D2;
-  --color-cream: #F5EFE6;
+  --bone: #e8e4da;
+  --paper: #f1eee7;
+  --ink: #151613;
+  --olive: #4b5238;
+  --olive-line: #6e7556;
+  --olive-grid: #5c6446;
+  --khaki: #a89f7e;
+  --concrete: #bdb8ac;
+  --graphite: #4a4b44;
+  --field-grey: #6c6f63;
+  --pink: #f2c4ce;
+  --lilac: #cfc6e8;
+  --mint: #c8d8bf;
+  --signal: #d7ff3c;
 }
 
-* {
-  margin: 0vw;
-  font-family: "Space Mono", monospace;
-  font-weight: 400;
-  font-style: normal;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll 25s linear infinite;
-}
-
-
-
+html,
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
-  @apply dark:bg-black dark:text-white;
-}
-
-html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* optional: prevent accidental horizontal scroll */
+  overflow-x: hidden;
 }
 
+body {
+  background-color: var(--bone);
+  color: var(--ink);
+  font-family: "Archivo", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+@layer components {
+  .fu-display {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-stretch: 62%;
+    line-height: 0.8;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .fu-title {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-stretch: 75%;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+  .fu-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .fu-jp {
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .fu-vertical {
+    writing-mode: vertical-rl;
+  }
+  .fu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .fu-btn-primary {
+    background: var(--ink);
+    color: var(--bone);
+  }
+  .fu-btn-primary:hover {
+    background: var(--olive);
+  }
+  .fu-btn-secondary {
+    background: transparent;
+    color: var(--ink);
+  }
+  .fu-btn-secondary:hover {
+    background: var(--ink);
+    color: var(--bone);
+  }
+  .fu-sticker {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+  }
+  .fu-grid-bg {
+    background-image: repeating-linear-gradient(0deg, transparent 0 43px, var(--olive-grid) 43px 44px),
+      repeating-linear-gradient(90deg, transparent 0 43px, var(--olive-grid) 43px 44px);
+  }
+}
+
+/* ——— Motion ——— */
+@keyframes fu-mq {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.fu-mq {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: fu-mq 38s linear infinite;
+}
+.fu-mq-rev {
+  animation-direction: reverse;
+  animation-duration: 52s;
+}
+
+@keyframes fu-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+.fu-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fu-pulse 2.6s ease-out infinite;
+}
+
+@keyframes fu-drift {
+  to { transform: translate(10px, -12px); }
+}
+.fu-drift {
+  animation: fu-drift 6s ease-in-out infinite alternate;
+}
+
+@keyframes fu-spin {
+  to { transform: rotate(360deg); }
+}
+.fu-spin {
+  animation: fu-spin 22s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes fu-blink {
+  50% { opacity: 0; }
+}
+.fu-blink {
+  animation: fu-blink 1s steps(1) infinite;
+}
+
+@keyframes fu-scan {
+  from { transform: translateY(-120%); }
+  to { transform: translateY(900%); }
+}
+.fu-scan {
+  animation: fu-scan 5s linear infinite;
+  background: repeating-linear-gradient(0deg, rgba(215, 255, 60, 0.1) 0 2px, transparent 2px 5px);
+}
+
+@keyframes fu-wob {
+  0%, 100% { transform: rotate(var(--r, -4deg)); }
+  50% { transform: rotate(calc(var(--r, -4deg) * -1)); }
+}
+.fu-wob {
+  animation: fu-wob 5s ease-in-out infinite;
+}
+
+.fu-card img {
+  filter: grayscale(1) contrast(1.15) brightness(0.95);
+  transition: filter 0.5s, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.fu-card:hover img,
+.fu-card:focus-visible img {
+  filter: none;
+  transform: scale(1.03);
+}
+.fu-card .fu-bar {
+  transition: background-color 0.3s, color 0.3s;
+}
+.fu-card:hover .fu-bar,
+.fu-card:focus-visible .fu-bar {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fu-mq, .fu-pulse, .fu-drift, .fu-spin, .fu-blink, .fu-scan, .fu-wob {
+    animation: none;
+  }
+}

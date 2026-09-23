@@ -1,7 +1,33 @@
-import { useLayoutEffect, useEffect } from "react";
+import { useLayoutEffect, useEffect, useState } from "react";
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+// Category → short label + pastel tone (FIELD/UNIT colour key)
+const CATEGORY_META = {
+  "Design and Development": { short: "Design & Dev", tone: "#F2C4CE" },
+  "Research Projects": { short: "Research", tone: "#CFC6E8" },
+  "Creative Projects": { short: "Creative", tone: "#C8D8BF" },
+  Workshops: { short: "Workshops", tone: "#A89F7E" },
+};
+
+export function categoryMeta(category) {
+  return CATEGORY_META[category] || { short: category, tone: "#BDB8AC" };
+}
+
+export function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  return reduced;
+}
 
 export function ISOToDate(date) {
   if (date) {

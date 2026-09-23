@@ -1,91 +1,65 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "../../utils";
 
-const ScrambleText = ({ text, className, delay = 0, highlight = false }) => {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-  
-  // Start with actual text to avoid hydration mismatch
-  const [displayText, setDisplayText] = useState(text);
-  const [mounted, setMounted] = useState(false);
-  const animationRef = useRef(null);
-  const hasAnimated = useRef(false);
-  
-  // Mark as mounted on client
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+const GLYPHS = "アイウエオカキクケコサシスセソタチツテト#%&/<>01";
+
+// Reveals `text` through scrambled katakana glyphs. Pass `words` instead to
+// cycle through several strings, each one resolving and holding for `hold` ms.
+const ScrambleText = ({ text, words, className, delay = 0, hold = 3200, speed = 45 }) => {
+  const list = words && words.length ? words : [text];
+  const reducedMotion = usePrefersReducedMotion();
+  const [display, setDisplay] = useState(list[0]);
+  const timers = useRef([]);
 
   useEffect(() => {
-    if (!mounted || hasAnimated.current) return;
-    hasAnimated.current = true;
+    if (reducedMotion) {
+      setDisplay(list[0]);
+      return undefined;
+    }
 
-    const timeout = setTimeout(() => {
-      let iteration = 0;
-      const totalIterations = text.length * 3;
-      const revealedChars = new Array(text.length).fill(false);
-      let currentRevealed = 0;
+    let cancelled = false;
+    const later = (fn, ms) => timers.current.push(setTimeout(fn, ms));
 
-      const scramble = () => {
-        let result = "";
-        
-        for (let i = 0; i < text.length; i++) {
-          if (text[i] === " ") {
-            result += " ";
-            if (!revealedChars[i]) {
-              revealedChars[i] = true;
-            }
-          } else if (revealedChars[i]) {
-            result += text[i];
-          } else {
-            result += chars[Math.floor(Math.random() * chars.length)];
-          }
+    const run = (wordIndex) => {
+      const target = list[wordIndex % list.length];
+      let frame = 0;
+
+      const step = () => {
+        if (cancelled) return;
+        const revealed = Math.floor(frame / 2);
+        let out = "";
+        for (let i = 0; i < target.length; i++) {
+          out +=
+            i < revealed || target[i] === " "
+              ? target[i]
+              : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
         }
+        setDisplay(out);
+        frame++;
 
-        setDisplayText(result);
-
-        const revealThreshold = Math.floor(iteration / 3);
-        if (revealThreshold > currentRevealed && currentRevealed < text.length) {
-          for (let i = 0; i < text.length; i++) {
-            if (!revealedChars[i] && text[i] !== " ") {
-              revealedChars[i] = true;
-              currentRevealed++;
-              break;
-            }
-          }
-        }
-
-        iteration++;
-
-        const allRevealed = revealedChars.every((revealed, i) => revealed || text[i] === " ");
-        
-        if (!allRevealed && iteration < totalIterations + text.length * 2) {
-          animationRef.current = requestAnimationFrame(() => {
-            setTimeout(scramble, 30);
-          });
-        } else {
-          setDisplayText(text);
+        if (revealed < target.length) {
+          later(step, speed);
+        } else if (list.length > 1) {
+          later(() => run(wordIndex + 1), hold);
         }
       };
 
-      scramble();
-    }, delay);
+      step();
+    };
+
+    later(() => run(0), delay);
 
     return () => {
-      clearTimeout(timeout);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      cancelled = true;
+      timers.current.forEach(clearTimeout);
+      timers.current = [];
     };
-  }, [mounted, text, delay]);
-
-  const highlightStyle = highlight ? {
-    backgroundColor: "#A8C69F",
-    padding: "0 8px",
-    borderRadius: "8px",
-  } : {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reducedMotion, delay, hold, speed, list.join("|")]);
 
   return (
-    <span className={className} style={highlightStyle}>
-      {displayText || text}
+    <span className={className} aria-label={list.join(", ")}>
+      <span aria-hidden="true">{display}</span>
     </span>
   );
 };
