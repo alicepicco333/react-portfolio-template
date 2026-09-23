@@ -35,7 +35,6 @@ const Resume = () => {
         <div className="grid gap-8 py-14 laptop:grid-cols-golden laptop:py-[110px]">
           <h1 className="fu-display text-[110px] tablet:text-phi5">
             Record
-            <span className="fu-hand block rotate-[-3deg] pt-4 text-[34px] text-olive">the serious bit</span>
           </h1>
           <div className="flex flex-col justify-end gap-5">
             <p className="fu-meta text-olive">{resume.tagline}</p>

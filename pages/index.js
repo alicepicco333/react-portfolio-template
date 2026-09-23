@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { gsap } from "gsap";
@@ -12,7 +12,12 @@ import Marquee from "../components/Marquee";
 import portfolioData from "../data/portfolio.json";
 import { categoryMeta, useIsomorphicLayoutEffect } from "../utils";
 
-const categories = [...new Set(portfolioData.projects.map((project) => project.category))];
+// Works are shown in three groups; animation work lives in the archive below.
+const GROUPS = [
+  { id: "Design", blurb: "Interfaces, archives & the web" },
+  { id: "Research", blurb: "Digital editions, ontologies & data" },
+  { id: "Live Coding", blurb: "Hydra, performance & workshops" },
+];
 
 // Golden pairing on the 13-column grid: 8 + 5, then 5 + 8; a lone last card spans the row.
 const spanFor = (index, count) => {
@@ -22,7 +27,6 @@ const spanFor = (index, count) => {
 };
 
 const Home = () => {
-  const [filter, setFilter] = useState("all");
   const pageRef = useRef(null);
   const { projects, resume, roles, email } = portfolioData;
 
@@ -30,7 +34,17 @@ const Home = () => {
   const aboutRest = resume.description.replace(/^I work at the intersection of culture, technology, and design, /, "");
   const aboutDetail = aboutRest.charAt(0).toUpperCase() + aboutRest.slice(1);
 
-  const filteredProjects = projects.filter((project) => filter === "all" || project.category === filter);
+  const groups = GROUPS.map((group) => ({
+    ...group,
+    ...categoryMeta(group.id),
+    items: projects.filter((project) => project.category === group.id),
+  }));
+  const archive = projects.filter((project) => project.category === "Archive");
+  // Running catalogue number in display order: groups first, then the archive.
+  const ordered = [...groups.flatMap((group) => group.items), ...archive];
+  const numberOf = (project) => String(ordered.indexOf(project) + 1).padStart(2, "0");
+  const imageOf = (project) =>
+    project.imageSrc || (project.highlightImage?.startsWith("http") ? project.highlightImage : "");
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -54,22 +68,6 @@ const Home = () => {
     return () => mm.revert();
   }, []);
 
-  useIsomorphicLayoutEffect(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.fromTo(
-        ".fu-work-card",
-        { autoAlpha: 0, y: 40 },
-        { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.07, ease: "power2.out", onComplete: () => ScrollTrigger.refresh() }
-      );
-    });
-    return () => mm.revert();
-  }, [filter]);
-
-  const filterButtons = [
-    { id: "all", label: "All", tone: "#151613" },
-    ...categories.map((category) => ({ id: category, label: categoryMeta(category).short, tone: categoryMeta(category).tone })),
-  ];
 
   return (
     <div ref={pageRef} className="min-h-screen bg-bone text-ink">
@@ -86,7 +84,7 @@ const Home = () => {
         {/* ——— Hero: 61.8 / 38.2 ——— */}
         <section id="top" className="grid border-b border-ink laptop:h-[calc(100svh-56px)] laptop:max-h-[900px] laptop:min-h-[760px] laptop:grid-cols-golden">
           <div className="relative flex flex-col justify-between gap-12 overflow-hidden px-4 py-10 tablet:px-10 laptop:border-r laptop:border-ink laptop:py-10 laptop:pl-24 laptop:pr-10">
-            <span className="fu-meta fu-vertical absolute left-9 top-10 hidden text-[11px] tracking-[0.3em] laptop:block">Research · Design · Development</span>
+            <span className="fu-meta fu-vertical absolute left-9 top-10 hidden text-[11px] tracking-[0.3em] laptop:block">Research · Design · Creative technology</span>
             <span className="absolute bottom-10 left-11 hidden h-[260px] w-px bg-ink laptop:block" />
 
             <div className="fu-meta fu-hero-fade flex justify-between gap-4">
@@ -100,15 +98,8 @@ const Home = () => {
               </span>
               <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
                 <span className="fu-hero-line block">
-                  Picco<span className="text-signal [-webkit-text-stroke:2px_#151613]">.</span>
+                  Picco
                 </span>
-              </span>
-              <span className="fu-hand fu-hero-fade absolute -bottom-2 right-0 hidden rotate-[-6deg] items-center gap-2 text-[30px] text-olive tablet:flex laptop:-right-4">
-                <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <path d="M44,20 C30,24 14,18 4,6" />
-                  <path d="M4,15 L3,5 L13,6" />
-                </svg>
-                hi, that&apos;s me
               </span>
             </h1>
 
@@ -172,55 +163,94 @@ const Home = () => {
           />
         </div>
 
-        {/* ——— Works ——— */}
+        {/* ——— Works: three groups ——— */}
         <section id="work" className="scroll-mt-14 px-4 pb-16 pt-20 tablet:px-10 laptop:pb-[68px] laptop:pt-[110px]">
           <div className="fu-reveal grid items-end gap-6 border-b border-ink pb-7 laptop:grid-cols-13 laptop:gap-x-4">
             <span className="fu-meta fu-vertical hidden text-[11px] tracking-[0.3em] laptop:col-span-1 laptop:block">Selected · 2022—now</span>
             <h2 className="fu-display relative text-[110px] tablet:text-phi5 laptop:col-span-7">
               Works
-              <span className="fu-hand absolute -top-9 left-1 hidden rotate-[-4deg] text-[28px] text-olive tablet:block">
-                (the fun part)
-              </span>
               <sup className="align-top font-mono text-base font-normal [font-stretch:100%]">
-                ({String(filteredProjects.length).padStart(2, "0")})
+                ({String(ordered.length - archive.length).padStart(2, "0")})
               </sup>
             </h2>
-            <div className="flex flex-wrap gap-2 laptop:col-span-5 laptop:justify-end" role="group" aria-label="Filter works by category">
-              {filterButtons.map((button) => {
-                const active = filter === button.id;
-                return (
-                  <button
-                    key={button.id}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => setFilter(button.id)}
-                    className={`fu-btn px-4 ${active ? "bg-ink text-bone" : "bg-transparent text-ink hover:bg-paper"}`}
-                  >
-                    <span className="h-[10px] w-[10px] border border-current" style={{ background: button.tone }} />
-                    {button.label}
-                  </button>
-                );
-              })}
-            </div>
+            <nav className="flex flex-wrap gap-2 laptop:col-span-5 laptop:justify-end" aria-label="Jump to a group of works">
+              {[...groups, { id: "Archive", short: "Archive", tone: "#A89F7E", items: archive }].map((group) => (
+                <a
+                  key={group.id}
+                  href={`#works-${group.id.toLowerCase().replace(" ", "-")}`}
+                  className="fu-btn px-4 hover:bg-ink hover:text-bone"
+                >
+                  <span className="h-[10px] w-[10px] border border-current" style={{ background: group.tone }} />
+                  {group.short}
+                  <span className="opacity-60">{String(group.items.length).padStart(2, "0")}</span>
+                </a>
+              ))}
+            </nav>
           </div>
 
-          <div className="mt-4 grid gap-4 laptop:grid-cols-13">
-            {filteredProjects.map((project, index) => (
-              <Link
-                key={project.id}
-                href={`/projects/${project.id}`}
-                className={`fu-card fu-work-card block ${spanFor(index, filteredProjects.length)}`}
-              >
-                <WorkCard
-                  img={project.imageSrc || (project.highlightImage?.startsWith("http") ? project.highlightImage : "")}
-                  name={project.title}
-                  description={project.description}
-                  tags={project.tags}
-                  category={project.category}
-                  cardNumber={String(projects.indexOf(project) + 1).padStart(2, "0")}
-                />
-              </Link>
-            ))}
+          {groups.map((group, groupIndex) => (
+            <div key={group.id} id={`works-${group.id.toLowerCase().replace(" ", "-")}`} className="scroll-mt-20 pt-14 laptop:pt-[68px]">
+              <div className="fu-reveal flex flex-wrap items-end justify-between gap-4 border-b border-ink pb-4">
+                <div className="flex items-end gap-4">
+                  <span className="fu-meta pb-2">{String(groupIndex + 1).padStart(2, "0")} /</span>
+                  <h3 className="fu-title flex items-center gap-4 text-[48px] tablet:text-phi3">
+                    <span className="h-5 w-5 border border-ink tablet:h-7 tablet:w-7" style={{ background: group.tone }} />
+                    {group.short}
+                  </h3>
+                  <span className="fu-meta pb-2">({String(group.items.length).padStart(2, "0")})</span>
+                </div>
+                <span className="fu-meta pb-2 text-graphite">{group.blurb}</span>
+              </div>
+
+              <div className="mt-4 grid gap-4 laptop:grid-cols-13">
+                {group.items.map((project, index) => (
+                  <Link
+                    key={project.id}
+                    href={`/projects/${project.id}`}
+                    className={`fu-card fu-reveal block ${spanFor(index, group.items.length)}`}
+                  >
+                    <WorkCard
+                      img={imageOf(project)}
+                      name={project.title}
+                      description={project.description}
+                      tags={project.tags}
+                      category={project.category}
+                      cardNumber={numberOf(project)}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* ——— Archive: older animation work, as an index ——— */}
+        <section id="works-archive" className="scroll-mt-14 border-t border-ink bg-paper px-4 py-16 tablet:px-10 laptop:py-[110px]">
+          <div className="grid gap-8 laptop:grid-cols-13 laptop:gap-x-4">
+            <div className="fu-reveal flex flex-col gap-4 laptop:col-span-5">
+              <span className="fu-meta">{String(groups.length + 1).padStart(2, "0")} / Archive</span>
+              <h2 className="fu-display text-[96px] tablet:text-phi5">Archive</h2>
+            </div>
+            <ol className="fu-reveal border-t border-ink laptop:col-span-8">
+              {archive.map((project) => (
+                <li key={project.id}>
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="group grid grid-cols-[44px_1fr_auto] items-baseline gap-4 border-b border-concrete px-2 py-6 transition-colors hover:bg-ink hover:text-bone tablet:grid-cols-[60px_1fr_220px_32px]"
+                  >
+                    <span className="fu-meta">{numberOf(project)}</span>
+                    <span className="flex flex-col gap-2">
+                      <span className="fu-title text-[36px] tablet:text-phi2">{project.title}</span>
+                      <span className="text-[15px] text-graphite transition-colors group-hover:text-bone/80">{project.description}</span>
+                    </span>
+                    <span className="fu-meta hidden text-[11px] tablet:block">{project.tags?.join(" / ")}</span>
+                    <span className="font-mono text-xl" aria-hidden="true">
+                      ↗
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -259,7 +289,6 @@ const Home = () => {
         <section id="record" className="grid gap-10 px-4 py-20 tablet:px-10 laptop:grid-cols-13 laptop:gap-x-4 laptop:py-[110px]">
           <div className="fu-reveal flex flex-col gap-6 laptop:col-span-5">
             <h2 className="fu-display text-[110px] tablet:text-phi5">Record</h2>
-            <span className="fu-hand rotate-[-3deg] self-start text-[30px] text-olive">the serious bit ↘</span>
             <Link href="/resume" className="fu-btn fu-btn-primary self-start">
               Full résumé ↗
             </Link>

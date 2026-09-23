@@ -6,6 +6,7 @@
   "name": "Alice Picco",
   "roles": [
     "HCI specialist",
+    "Creative technologist",
     "Designer",
     "Digital humanist",
     "Researcher"
@@ -54,7 +55,7 @@
       "conclusionText": "Closing summary or reflections for The Stolen Archive.",
       "imageSrc": "https://i.postimg.cc/vTr8D58D/Slide-4-3-1.png",
       "url": "https://marcolamorte.github.io/Looted-items-collection/",
-      "category": "Design and Development",
+      "category": "Design",
       "tags": [
         "UX Design",
         "Web Development"
@@ -88,7 +89,7 @@
       "conclusionText": "Closing summary or reflections for Digitalian Folktales.",
       "imageSrc": "https://i.postimg.cc/Jh69xsqh/Screenshot-2025-06-19-at-17-21-30.png",
       "url": "https://n1kg0r.github.io/digitalian-folktales/",
-      "category": "Research Projects",
+      "category": "Research",
       "tags": [
         "Digital Edition"
       ]
@@ -121,7 +122,7 @@
       "conclusionText": "Closing summary or reflections for Cognitive Bias Ontology.",
       "imageSrc": "https://the-bias-project.gitbook.io/~gitbook/image?url=https%3A%2F%2F3715292082-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F69TpXcnhHK5qcm12xmil%252Fuploads%252FIQvAYofzi8QMD9jMtoaj%252FCognitive_Bias_Codex_-_180%252B_biases%252C_designed_by_John_Manoogian_III_%28jm3%29.jpg%3Falt%3Dmedia%26token%3Dd355d388-93e0-4c7f-a24b-0cf4156ebff8&width=400&dpr=3&quality=100&sign=6cc4dc15&sv=2",
       "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
-      "category": "Research Projects",
+      "category": "Research",
       "tags": [
         "Ontology Engineering",
         "Psychology"
@@ -155,7 +156,7 @@
       "conclusionText": "Closing summary or reflections for wipEU.",
       "imageSrc": "https://i.postimg.cc/fRkfDRdG/wip.png",
       "url": "https://alicepicco333.github.io/wipEU/",
-      "category": "Research Projects",
+      "category": "Research",
       "tags": [
         "Data Visualization",
         "Digital Ethics"
@@ -189,7 +190,7 @@
       "conclusionText": "Closing summary or reflections for Glitching Materiality.",
       "imageSrc": "https://i.postimg.cc/pdFkpmnn/Screenshot-2025-06-19-at-19-24-48-Expanded-Publishing-Fest-2-Space-in-Space-out-Live-coding-perfor.png",
       "url": "https://player.vimeo.com/video/980415428?loop=1&mute=1",
-      "category": "Creative Projects",
+      "category": "Live Coding",
       "tags": [
         "Live Coding",
         "Performance"
@@ -223,7 +224,7 @@
       "conclusionText": "Closing summary or reflections for I Grandi Oggetti.",
       "imageSrc": "",
       "url": "https://www.youtube.com/watch?v=phYxE_Nl1hc&ab_channel=DemetraFormazione",
-      "category": "Creative Projects",
+      "category": "Archive",
       "tags": [
         "3D Modeling",
         "3D Animation"
@@ -257,7 +258,7 @@
       "conclusionText": "Closing summary or reflections for this short film project.",
       "imageSrc": "",
       "url": "https://www.youtube.com/watch?app=desktop&v=xYfUEoZoD64&ab_channel=AbaboCinema",
-      "category": "Creative Projects",
+      "category": "Archive",
       "tags": [
         "2D Animation"
       ]
@@ -290,7 +291,7 @@
       "conclusionText": "Closing summary or reflections for CCC Jam.",
       "imageSrc": "https://wiki.hackersanddesigners.nl//images/c/c5/DSC06089.JPG",
       "url": "https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
-      "category": "Workshops",
+      "category": "Live Coding",
       "tags": [
         "Workshop Facilitation",
         "Live Coding"

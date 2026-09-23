@@ -16,9 +16,6 @@ const Footer = () => {
       <a href={`mailto:${email}`} className="group flex flex-col">
         <span className="fu-display relative text-[120px] tablet:text-[200px] laptop:text-phi6">
           Write<span className="text-pink transition-colors group-hover:text-signal">_</span>
-          <span className="fu-hand absolute left-[62%] top-2 hidden rotate-[-8deg] text-[34px] text-signal tablet:block laptop:left-[48%]">
-            go on, say hi
-          </span>
         </span>
         <span className="break-all pt-6 font-mono text-xl tablet:text-[32px] laptop:text-phi2">{email} ↗</span>
       </a>

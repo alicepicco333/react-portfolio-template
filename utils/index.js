@@ -5,10 +5,10 @@ export const useIsomorphicLayoutEffect =
 
 // Category → short label + pastel tone (FIELD/UNIT colour key)
 const CATEGORY_META = {
-  "Design and Development": { short: "Design & Dev", tone: "#F2C4CE" },
-  "Research Projects": { short: "Research", tone: "#CFC6E8" },
-  "Creative Projects": { short: "Creative", tone: "#C8D8BF" },
-  Workshops: { short: "Workshops", tone: "#A89F7E" },
+  Design: { short: "Design", tone: "#F2C4CE" },
+  Research: { short: "Research", tone: "#CFC6E8" },
+  "Live Coding": { short: "Live coding", tone: "#C8D8BF" },
+  Archive: { short: "Archive", tone: "#A89F7E" },
 };
 
 export function categoryMeta(category) {

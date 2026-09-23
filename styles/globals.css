@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,14 +75,6 @@ a {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-  }
-  /* handwritten margin notes — the personal layer over the Swiss grid */
-  .fu-hand {
-    font-family: "Caveat", cursive;
-    font-weight: 600;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: 0;
   }
   .fu-vertical {
     writing-mode: vertical-rl;
@@ -186,15 +178,6 @@ a {
   animation: fu-breathe 7s ease-in-out infinite;
 }
 
-@keyframes fu-draw {
-  from { stroke-dashoffset: 400; }
-  to { stroke-dashoffset: 0; }
-}
-.fu-draw {
-  stroke-dasharray: 400;
-  animation: fu-draw 1.6s 1s cubic-bezier(0.6, 0, 0.2, 1) both;
-}
-
 @keyframes fu-wob {
   0%, 100% { transform: rotate(var(--r, -4deg)); }
   50% { transform: rotate(calc(var(--r, -4deg) * -1)); }
@@ -223,7 +206,7 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fu-mq, .fu-pulse, .fu-drift, .fu-spin, .fu-blink, .fu-breathe, .fu-draw, .fu-wob {
+  .fu-mq, .fu-pulse, .fu-drift, .fu-spin, .fu-blink, .fu-breathe, .fu-wob {
     animation: none;
   }
 }
