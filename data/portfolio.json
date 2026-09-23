@@ -342,7 +342,7 @@
       "conclusionText": "",
       "imageSrc": "",
       "url": "",
-      "category": "Research",
+      "category": "Work in Progress",
       "tags": [
         "Digital Archives",
         "Digitisation"
@@ -364,6 +364,90 @@
         "Live Coding",
         "Hydra",
         "Performance"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Culture4All",
+      "description": "Information visualization of access to culture across Italian regions, built on ISTAT and dati.cultura open data, with Corrado Consiglio and Salvatore Di Marzo.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "/images/projects/15.jpg",
+      "url": "https://alicepicco333.github.io/culture4all/",
+      "category": "Past Projects",
+      "tags": [
+        "Data Visualization",
+        "Web Development"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Mary Shelley HTR",
+      "description": "Handwritten text recognition campaign with Transkribus: models trained on about 70 manuscript pages of Mary Shelley's Frankenstein and Mathilda.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "/images/projects/16.jpg",
+      "url": "https://maryshelleyhtr-alicepicco333s-projects.vercel.app",
+      "category": "Past Projects",
+      "tags": [
+        "HTR",
+        "Digital Libraries"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Rijksmuseum Conversational AI Interface",
+      "description": "A conversational AI interface for the Rijksmuseum.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Work in Progress",
+      "tags": [
+        "Conversational AI",
+        "Interaction Design"
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Speculative Spacesuit Design",
+      "description": "A speculative design project for a spacesuit.",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Work in Progress",
+      "tags": [
+        "Speculative Design"
+      ]
+    },
+    {
+      "id": "19",
+      "title": "OULAD Critical Dataset Analysis",
+      "description": "A living critical notebook on the Open University Learning Analytics Dataset (OULAD).",
+      "introText": "",
+      "gridImages": [],
+      "middleText": "",
+      "highlightImage": "",
+      "conclusionText": "",
+      "imageSrc": "",
+      "url": "",
+      "category": "Work in Progress",
+      "tags": [
+        "Critical Data Studies",
+        "HCI"
       ]
     }
   ],

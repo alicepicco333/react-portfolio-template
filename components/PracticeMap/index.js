@@ -38,12 +38,13 @@ const neighbours = (id) =>
   EDGES.filter((e) => e.includes(id)).map((e) => (e[0] === id ? e[1] : e[0]));
 const labelOf = (id) => NODES.find((n) => n.id === id).label;
 
-const W = 800;
-const H = 700;
-const CX = W / 2;
-const CY = H / 2 - 20;
+// Wide canvas on desktop; a narrower one on phones so labels stay readable.
+const GEOMETRY = {
+  wide: { W: 800, H: 700, sx: 290, sy: 236, font: 11 },
+  narrow: { W: 480, H: 640, sx: 170, sy: 230, font: 12.5 },
+};
 
-function project([x, y, z], ay, ax) {
+function project([x, y, z], ay, ax, g) {
   const cy = Math.cos(ay);
   const sy = Math.sin(ay);
   const x1 = x * cy + z * sy;
@@ -53,7 +54,7 @@ function project([x, y, z], ay, ax) {
   const y1 = y * cx - z1 * sx;
   const z2 = y * sx + z1 * cx;
   const scale = 2.8 / (2.8 + z2); // perspective
-  return { x: CX + x1 * scale * 290, y: CY + y1 * scale * 236, z: z2, scale };
+  return { x: g.W / 2 + x1 * scale * g.sx, y: g.H / 2 - 20 + y1 * scale * g.sy, z: z2, scale };
 }
 
 const PracticeMap = ({ projects = [] }) => {
@@ -61,11 +62,20 @@ const PracticeMap = ({ projects = [] }) => {
   const [angle, setAngle] = useState({ ay: -0.35, ax: 0.18 });
   const [hovered, setHovered] = useState(null);
   const [pinned, setPinned] = useState(null);
+  const [narrow, setNarrow] = useState(false);
   const tilt = useRef({ ay: 0, ax: 0 });
   const spin = useRef(-0.35);
   const active = hovered || pinned;
   const activeRef = useRef(null);
   activeRef.current = active;
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 767px)");
+    const update = () => setNarrow(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     if (reducedMotion) return undefined;
@@ -92,7 +102,8 @@ const PracticeMap = ({ projects = [] }) => {
 
   const togglePin = (id) => setPinned((current) => (current === id ? null : id));
 
-  const points = Object.fromEntries(NODES.map((n) => [n.id, project(n.p, angle.ay, angle.ax)]));
+  const g = narrow ? GEOMETRY.narrow : GEOMETRY.wide;
+  const points = Object.fromEntries(NODES.map((n) => [n.id, project(n.p, angle.ay, angle.ax, g)]));
   const lit = active ? new Set([active, ...neighbours(active)]) : null;
   const depthOpacity = (z) => 0.35 + (1 - (z + 1.2) / 2.4) * 0.65; // nearer = brighter
   const sorted = [...NODES].sort((a, b) => points[b.id].z - points[a.id].z); // paint far → near
@@ -108,7 +119,7 @@ const PracticeMap = ({ projects = [] }) => {
       onPointerLeave={() => (tilt.current = { ay: 0, ax: 0 })}
     >
       <svg
-        viewBox={`0 0 ${W} ${H}`}
+        viewBox={`0 0 ${g.W} ${g.H}`}
         className="absolute inset-0 h-full w-full"
         preserveAspectRatio="xMidYMid meet"
         role="group"
@@ -138,7 +149,7 @@ const PracticeMap = ({ projects = [] }) => {
           const pt = points[node.id];
           const isActive = active === node.id;
           const isLit = !lit || lit.has(node.id);
-          const right = pt.x < CX + 110; // label side, so text stays inside the frame
+          const right = pt.x < g.W / 2 + g.W * 0.14; // label side, so text stays inside the frame
           const opacity = isLit ? (lit ? 1 : depthOpacity(pt.z)) : 0.15;
           return (
             <g
@@ -177,7 +188,7 @@ const PracticeMap = ({ projects = [] }) => {
                 y={pt.y + 4}
                 textAnchor={right ? "start" : "end"}
                 fontFamily="Space Mono, monospace"
-                fontSize={11 + 3 * (pt.scale - 0.7)}
+                fontSize={g.font + 3 * (pt.scale - 0.7)}
                 fontWeight={isActive ? 700 : 400}
                 fill={isActive ? "#D7FF3C" : "#E8E4DA"}
               >
@@ -210,7 +221,7 @@ const PracticeMap = ({ projects = [] }) => {
             {pinned === activeNode.id && <p className="fu-meta mt-3 text-[10px] text-bone/50">Click the node again to unpin</p>}
           </div>
         ) : (
-          <p className="fu-meta text-[11px] text-bone/60">Hover a skill to see where it shows up · click to pin</p>
+          <p className="fu-meta text-[11px] text-bone/60">Hover or tap a skill to see where it shows up · click to pin</p>
         )}
       </div>
     </div>

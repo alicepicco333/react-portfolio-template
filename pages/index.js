@@ -39,9 +39,10 @@ const Home = () => {
     ...categoryMeta(group.id),
     items: projects.filter((project) => project.category === group.id),
   }));
+  const wip = projects.filter((project) => project.category === "Work in Progress");
   const archive = projects.filter((project) => project.category === "Past Projects");
-  // Running catalogue number in display order: groups first, then past projects.
-  const ordered = [...groups.flatMap((group) => group.items), ...archive];
+  // Running catalogue number in display order: groups, work in progress, past projects.
+  const ordered = [...groups.flatMap((group) => group.items), ...wip, ...archive];
   const numberOf = (project) => String(ordered.indexOf(project) + 1).padStart(2, "0");
   const imageOf = (project) =>
     project.imageSrc || (project.highlightImage?.startsWith("http") ? project.highlightImage : "");
@@ -152,14 +153,14 @@ const Home = () => {
             <h2 className="fu-display relative text-[72px] tablet:text-phi4 laptop:col-span-7">
               Works
               <sup className="align-top font-mono text-base font-normal">
-                ({String(ordered.length - archive.length).padStart(2, "0")})
+                ({String(groups.reduce((sum, group) => sum + group.items.length, 0)).padStart(2, "0")})
               </sup>
             </h2>
             <nav className="flex flex-wrap gap-2 laptop:col-span-5 laptop:justify-end" aria-label="Jump to a group of works">
-              {[...groups, { id: "Past Projects", short: "Past projects", items: archive }].map((group) => (
+              {[...groups, { id: "Work in Progress", short: "In progress", items: wip }, { id: "Past Projects", short: "Past projects", items: archive }].map((group) => (
                 <a
                   key={group.id}
-                  href={`#works-${group.id.toLowerCase().replace(" ", "-")}`}
+                  href={`#works-${group.id.toLowerCase().replace(/ /g, "-")}`}
                   className="fu-btn px-4 hover:bg-ink hover:text-bone"
                 >
                   {group.short}
@@ -170,7 +171,7 @@ const Home = () => {
           </div>
 
           {groups.map((group, groupIndex) => (
-            <div key={group.id} id={`works-${group.id.toLowerCase().replace(" ", "-")}`} className="scroll-mt-20 pt-14 laptop:pt-[68px]">
+            <div key={group.id} id={`works-${group.id.toLowerCase().replace(/ /g, "-")}`} className="scroll-mt-20 pt-14 laptop:pt-[68px]">
               <div className="fu-reveal flex flex-wrap items-end justify-between gap-4 border-b border-ink pb-4">
                 <div className="flex items-end gap-4">
                   <span className="fu-meta pb-2">{String(groupIndex + 1).padStart(2, "0")} /</span>
@@ -204,11 +205,45 @@ const Home = () => {
           ))}
         </section>
 
+        {/* ——— Work in progress, as an index ——— */}
+        <section id="works-work-in-progress" className="scroll-mt-14 border-t border-ink px-4 py-16 tablet:px-10 laptop:py-[110px]">
+          <div className="grid gap-8 laptop:grid-cols-13 laptop:gap-x-4">
+            <div className="fu-reveal flex flex-col gap-4 laptop:col-span-5">
+              <span className="fu-meta">{String(groups.length + 1).padStart(2, "0")} / Work in progress</span>
+              <h2 className="fu-display text-[64px] tablet:text-phi4">In progress</h2>
+              <p className="max-w-[360px] text-[15px] text-graphite">What I&apos;m working on right now.</p>
+            </div>
+            <ol className="fu-reveal border-t border-ink laptop:col-span-8">
+              {wip.map((project) => (
+                <li key={project.id}>
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="group grid grid-cols-[44px_1fr_auto] items-baseline gap-4 border-b border-concrete px-2 py-6 transition-colors hover:bg-olive hover:text-bone tablet:grid-cols-[60px_1fr_170px_32px]"
+                  >
+                    <span className="fu-meta">{numberOf(project)}</span>
+                    <span className="flex flex-col gap-2">
+                      <span className="fu-title text-[32px] tablet:text-phi2">{project.title}</span>
+                      <span className="text-[15px] text-graphite transition-colors group-hover:text-bone/80">{project.description}</span>
+                    </span>
+                    <span className="fu-meta hidden items-center gap-2 text-[11px] tablet:flex">
+                      <span className="fu-blink h-2 w-2 rounded-full bg-olive group-hover:bg-signal" aria-hidden="true" />
+                      In progress
+                    </span>
+                    <span className="font-mono text-xl" aria-hidden="true">
+                      ↗
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         {/* ——— Past projects, as an index ——— */}
         <section id="works-past-projects" className="scroll-mt-14 border-t border-ink bg-paper px-4 py-16 tablet:px-10 laptop:py-[110px]">
           <div className="grid gap-8 laptop:grid-cols-13 laptop:gap-x-4">
             <div className="fu-reveal flex flex-col gap-4 laptop:col-span-5">
-              <span className="fu-meta">{String(groups.length + 1).padStart(2, "0")} / Past projects</span>
+              <span className="fu-meta">{String(groups.length + 2).padStart(2, "0")} / Past projects</span>
               <h2 className="fu-display text-[64px] tablet:text-phi4">Past projects</h2>
             </div>
             <ol className="fu-reveal border-t border-ink laptop:col-span-8">
