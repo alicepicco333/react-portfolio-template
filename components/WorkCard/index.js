@@ -1,7 +1,7 @@
 import React from "react";
 import { categoryMeta } from "../../utils";
 
-const WorkCard = ({ img, name, description, tags, category, cardNumber, jp }) => {
+const WorkCard = ({ img, name, description, tags, category, cardNumber }) => {
   const { short, tone } = categoryMeta(category);
 
   return (
@@ -18,7 +18,6 @@ const WorkCard = ({ img, name, description, tags, category, cardNumber, jp }) =>
         >
           {cardNumber} · {short}
         </span>
-        {jp && <span className="fu-jp absolute bottom-3 right-3 bg-ink px-2 py-1 text-xs text-bone">{jp}</span>}
       </div>
 
       <div className="fu-bar flex items-center justify-between gap-4 border-b border-ink px-5 py-4">

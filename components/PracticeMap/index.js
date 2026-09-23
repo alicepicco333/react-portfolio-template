@@ -1,152 +1,148 @@
 import React, { useState } from "react";
 
-// Research / Design / Development and the skills around them (from the old HeroGraph).
-const NODES = [
-  {
-    id: "research",
-    label: "Research",
-    x: 190,
-    y: 250,
-    tone: "#CFC6E8",
-    subnodes: [
-      { label: "User research", x: 90, y: 160, lx: 40, ly: 146 },
-      { label: "Cultural analytics", x: 70, y: 320, lx: 20, ly: 344 },
-      { label: "HCI · Digital humanities", x: 200, y: 110, lx: 150, ly: 96 },
-      { label: "Systems thinking", x: 60, y: 230, lx: 14, ly: 216 },
-    ],
-  },
-  {
-    id: "design",
-    label: "Design",
-    x: 370,
-    y: 275,
-    tone: "#F2C4CE",
-    subnodes: [
-      { label: "UX design", x: 470, y: 170, lx: 424, ly: 156 },
-      { label: "Interaction", x: 490, y: 345, lx: 430, ly: 372 },
-      { label: "Visual · 3D", x: 360, y: 130, lx: 314, ly: 116 },
-    ],
-  },
-  {
-    id: "dev",
-    label: "Dev",
-    x: 275,
-    y: 455,
-    tone: "#C8D8BF",
-    subnodes: [
-      { label: "Creative coding", x: 140, y: 560, lx: 64, ly: 588 },
-      { label: "Data visualization", x: 330, y: 600, lx: 262, ly: 628 },
-      { label: "Front-end", x: 460, y: 510, lx: 410, ly: 538 },
-    ],
-  },
+// Three overlapping fields of practice. Skills sit in the field — or the overlap —
+// they belong to; the centre, where all three meet, is Alice.
+const FIELDS = [
+  { id: "research", label: "Research", no: "01", cx: 200, cy: 290, tone: "#CFC6E8", lx: 58, ly: 112, anchor: "start" },
+  { id: "design", label: "Design", no: "02", cx: 350, cy: 290, tone: "#F2C4CE", lx: 492, ly: 112, anchor: "end" },
+  { id: "dev", label: "Development", no: "03", cx: 275, cy: 420, tone: "#C8D8BF", lx: 275, ly: 626, anchor: "middle" },
+];
+
+const SKILLS = [
+  { label: "User research", in: ["research"], x: 76, y: 222, anchor: "start" },
+  { label: "Digital humanities", in: ["research"], x: 76, y: 256, anchor: "start" },
+  { label: "Cultural analytics", in: ["research"], x: 76, y: 290, anchor: "start" },
+  { label: "Visual design", in: ["design"], x: 474, y: 222, anchor: "end" },
+  { label: "3D & animation", in: ["design"], x: 474, y: 256, anchor: "end" },
+  { label: "AR filters", in: ["design"], x: 474, y: 290, anchor: "end" },
+  { label: "Front-end dev", in: ["dev"], x: 275, y: 522, anchor: "middle" },
+  { label: "Live coding", in: ["dev"], x: 275, y: 546, anchor: "middle" },
+  { label: "HCI", in: ["research", "design"], x: 275, y: 196, anchor: "middle" },
+  { label: "UX design", in: ["research", "design"], x: 275, y: 222, anchor: "middle" },
+  { label: "Data vis", in: ["research", "dev"], x: 185, y: 395, anchor: "middle" },
+  { label: "Ontologies", in: ["research", "dev"], x: 180, y: 418, anchor: "middle" },
+  { label: "Creative coding", in: ["design", "dev"], x: 365, y: 395, anchor: "middle" },
+  { label: "Interaction", in: ["design", "dev"], x: 370, y: 418, anchor: "middle" },
 ];
 
 const PracticeMap = ({ stats = [] }) => {
   const [active, setActive] = useState(null);
-  const activeNode = NODES.find((n) => n.id === active);
-  const dim = (id) => (active && active !== id ? 0.22 : 1);
+  const activeField = FIELDS.find((f) => f.id === active);
+  const skillsOf = (id) => SKILLS.filter((s) => s.in.includes(id));
+  const lit = (ids) => !active || ids.includes(active);
+
+  const fieldHandlers = (id) => ({
+    onMouseEnter: () => setActive(id),
+    onMouseLeave: () => setActive(null),
+    onFocus: () => setActive(id),
+    onBlur: () => setActive(null),
+  });
 
   return (
     <div className="relative flex h-full flex-col bg-olive text-bone">
       <div className="fu-meta flex justify-between border-b border-[#6E7556] px-5 py-4 text-[11px]">
         <span>Fig. 01 — Practice map</span>
-        <span>Hover a node ↘</span>
+        <span>Hover a field ↘</span>
       </div>
 
       <div className="fu-grid-bg relative flex-grow overflow-hidden">
-        <div className="fu-scan pointer-events-none absolute inset-x-0 top-0 h-[90px]" />
         <svg
           viewBox="0 0 550 690"
           className="absolute inset-0 h-full w-full"
           preserveAspectRatio="xMidYMid meet"
           role="group"
-          aria-label="Practice map: research, design and development, with the skills connected to each"
+          aria-label="Practice map: research, design and development overlap; the skills in each field and overlap, with Alice in the middle"
         >
-          <g stroke="#E8E4DA" strokeOpacity="0.5" fill="none">
-            <line x1="0" y1="345" x2="550" y2="345" strokeDasharray="3 6" />
-            <line x1="275" y1="0" x2="275" y2="690" strokeDasharray="3 6" />
-            <circle cx="275" cy="345" r="220" strokeOpacity="0.25" />
-          </g>
-          <g className="fu-spin">
-            <circle cx="275" cy="345" r="150" fill="none" stroke="#E8E4DA" strokeOpacity="0.35" strokeDasharray="1 9" strokeWidth="3" />
-          </g>
-
-          <g stroke="#E8E4DA" strokeWidth="1.2">
-            <line x1="190" y1="250" x2="370" y2="275" />
-            <line x1="370" y1="275" x2="275" y2="455" />
-            <line x1="275" y1="455" x2="190" y2="250" />
-          </g>
-
-          {NODES.map((node, index) => (
-            <g
-              key={node.id}
-              style={{ opacity: dim(node.id), transition: "opacity .35s" }}
-              className={index === 2 ? "fu-drift [animation-duration:8s] [animation-delay:-3s]" : "fu-drift"}
-            >
-              {node.subnodes.map((sub) => (
-                <g key={sub.label}>
-                  <line x1={node.x} y1={node.y} x2={sub.x} y2={sub.y} stroke="#E8E4DA" strokeWidth="1.2" />
-                  <rect x={sub.x - 4} y={sub.y - 4} width="8" height="8" fill={node.tone} />
-                  <text x={sub.lx} y={sub.ly} fontFamily="JetBrains Mono, monospace" fontSize="10" fill="#E8E4DA">
-                    {sub.label.toUpperCase()}
-                  </text>
-                </g>
-              ))}
-            </g>
+          {FIELDS.map((field, index) => (
+            <circle
+              key={field.id}
+              className="fu-breathe"
+              style={{
+                animationDuration: `${7 + index * 1.7}s`,
+                animationDelay: `${-index * 2}s`,
+                fillOpacity: active === field.id ? 0.42 : active ? 0.06 : 0.16,
+                transition: "fill-opacity .4s",
+                cursor: "pointer",
+              }}
+              cx={field.cx}
+              cy={field.cy}
+              r="150"
+              fill={field.tone}
+              stroke={field.tone}
+              strokeWidth="1.5"
+              {...fieldHandlers(field.id)}
+            />
           ))}
 
-          {NODES.map((node, index) => (
+          {FIELDS.map((field) => (
             <g
-              key={`${node.id}-core`}
+              key={`${field.id}-label`}
               tabIndex={0}
               role="button"
-              aria-label={`${node.label}: ${node.subnodes.map((s) => s.label).join(", ")}`}
-              aria-pressed={active === node.id}
-              onMouseEnter={() => setActive(node.id)}
-              onMouseLeave={() => setActive(null)}
-              onFocus={() => setActive(node.id)}
-              onBlur={() => setActive(null)}
-              style={{ cursor: "pointer", outline: "none", opacity: dim(node.id), transition: "opacity .35s" }}
+              aria-label={`${field.label}: ${skillsOf(field.id).map((s) => s.label).join(", ")}`}
+              aria-pressed={active === field.id}
+              style={{ cursor: "pointer", outline: "none", opacity: lit([field.id]) ? 1 : 0.3, transition: "opacity .35s" }}
+              {...fieldHandlers(field.id)}
             >
-              <circle
-                className="fu-pulse"
-                style={{ animationDelay: `${index * 0.85}s` }}
-                cx={node.x}
-                cy={node.y}
-                r="40"
-                fill="none"
-                stroke={node.tone}
-                strokeWidth="1.5"
-              />
-              <circle
-                cx={node.x}
-                cy={node.y}
-                r={active === node.id ? 48 : 40}
-                fill={node.tone}
-                stroke="#151613"
-                style={{ transition: "r .3s" }}
-              />
+              <text x={field.lx} y={field.ly - 30} textAnchor={field.anchor} fontFamily="JetBrains Mono, monospace" fontSize="11" fill={field.tone}>
+                {field.no} /
+              </text>
               <text
-                x={node.x}
-                y={node.y + 5}
-                textAnchor="middle"
+                x={field.lx}
+                y={field.ly}
+                textAnchor={field.anchor}
                 fontFamily="Archivo, sans-serif"
-                fontSize="14"
-                fontWeight="700"
-                fill="#151613"
+                fontWeight="800"
+                fontSize="30"
+                fill="#E8E4DA"
+                style={{ fontStretch: "62%" }}
               >
-                {node.label.toUpperCase()}
+                {field.label.toUpperCase()}
               </text>
             </g>
           ))}
+
+          <g fontFamily="JetBrains Mono, monospace" fontSize="10.5" fill="#E8E4DA" pointerEvents="none">
+            {SKILLS.map((skill) => (
+              <text
+                key={skill.label}
+                x={skill.x}
+                y={skill.y}
+                textAnchor={skill.anchor}
+                style={{ opacity: lit(skill.in) ? 1 : 0.18, transition: "opacity .35s" }}
+                fontWeight={skill.in.length > 1 ? 700 : 400}
+              >
+                {skill.label.toUpperCase()}
+              </text>
+            ))}
+          </g>
+
+          {/* Alice, where the three fields meet */}
+          <g pointerEvents="none">
+            <circle className="fu-pulse" cx="275" cy="335" r="9" fill="none" stroke="#D7FF3C" strokeWidth="1.5" />
+            <rect x="268" y="328" width="14" height="14" fill="#D7FF3C" stroke="#151613" />
+            <text x="275" y="364" textAnchor="middle" fontFamily="Archivo, sans-serif" fontWeight="800" fontSize="15" fill="#E8E4DA">
+              ALICE
+            </text>
+          </g>
+
+          {/* handwritten margin note */}
+          <g pointerEvents="none" stroke="#D7FF3C" strokeWidth="1.8" fill="none" strokeLinecap="round">
+            <path className="fu-draw" d="M440,580 C445,470 430,380 294,340" />
+            <path d="M303,334 L294,340 L304,346" />
+          </g>
+          <text className="fu-hand" textAnchor="middle" fill="#D7FF3C" fontSize="23" pointerEvents="none">
+            <tspan x="448" y="604">me, right in</tspan>
+            <tspan x="448" y="628">the messy middle</tspan>
+          </text>
         </svg>
       </div>
 
       <div className="fu-meta grid min-h-[46px] grid-cols-3 border-t border-[#6E7556] text-[11px]">
-        {activeNode ? (
+        {activeField ? (
           <span className="col-span-3 flex items-center gap-3 px-5">
-            <span className="h-[10px] w-[10px]" style={{ background: activeNode.tone }} />
-            {activeNode.label} → {activeNode.subnodes.map((s) => s.label).join(" / ")}
+            <span className="h-[10px] w-[10px] flex-shrink-0" style={{ background: activeField.tone }} />
+            {activeField.label} → {skillsOf(activeField.id).map((s) => s.label).join(" / ")}
           </span>
         ) : (
           stats.map((stat, i) => (

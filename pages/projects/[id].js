@@ -74,7 +74,9 @@ export default function ProjectPage({ project, number, next }) {
           </div>
 
           <aside className="flex flex-col justify-between gap-8 px-4 py-12 tablet:px-10 laptop:py-[68px]">
-            {project.jp && <span className="fu-jp fu-vertical self-end text-phi1 font-bold">{project.jp}</span>}
+            <span className="fu-display self-end text-phi4 text-ink/15 laptop:text-phi5" aria-hidden="true">
+              {number}
+            </span>
             <dl className="fu-meta grid grid-cols-[110px_1fr] gap-y-3 border-t border-ink pt-4">
               <dt className="text-fieldgrey">Category</dt>
               <dd>{project.category}</dd>
@@ -97,7 +99,7 @@ export default function ProjectPage({ project, number, next }) {
 
         {(project.middleText || project.conclusionText) && (
           <section className="grid gap-10 border-b border-ink px-4 py-16 tablet:px-10 laptop:grid-cols-golden-rev laptop:py-[110px]">
-            <span className="fu-meta">Notes / <span className="fu-jp">記録</span></span>
+            <span className="fu-meta">Notes</span>
             <div className="flex flex-col gap-6 text-lg leading-relaxed">
               {project.middleText && <p>{project.middleText}</p>}
               {project.conclusionText && <p>{project.conclusionText}</p>}

@@ -9,10 +9,10 @@ export async function getStaticProps() {
   return { props: {} };
 }
 
-const Section = ({ label, jp, children }) => (
+const Section = ({ label, children }) => (
   <section className="grid gap-6 border-t border-ink py-10 laptop:grid-cols-golden-rev laptop:py-[68px]">
     <h2 className="fu-meta">
-      {label} / <span className="fu-jp">{jp}</span>
+      {label}
     </h2>
     <div>{children}</div>
   </section>
@@ -34,7 +34,8 @@ const Resume = () => {
       <main className="px-4 tablet:px-10">
         <div className="grid gap-8 py-14 laptop:grid-cols-golden laptop:py-[110px]">
           <h1 className="fu-display text-[110px] tablet:text-phi5">
-            Record<span className="fu-jp block pt-4 text-phi1 font-bold normal-case tracking-normal">経歴</span>
+            Record
+            <span className="fu-hand block rotate-[-3deg] pt-4 text-[34px] text-olive">the serious bit</span>
           </h1>
           <div className="flex flex-col justify-end gap-5">
             <p className="fu-meta text-olive">{resume.tagline}</p>
@@ -52,7 +53,7 @@ const Resume = () => {
           </div>
         </div>
 
-        <Section label="Experience" jp="職歴">
+        <Section label="Experience">
           <ol>
             {resume.experiences.map((exp) => (
               <li key={exp.id} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr_130px] tablet:gap-4">
@@ -67,7 +68,7 @@ const Resume = () => {
           </ol>
         </Section>
 
-        <Section label="Education" jp="学歴">
+        <Section label="Education">
           <ol>
             {education.map((edu) => (
               <li key={edu.universityName} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr] tablet:gap-4">
@@ -82,7 +83,7 @@ const Resume = () => {
         </Section>
 
         {(resume.languages || resume.others) && (
-          <Section label="Skills" jp="技能">
+          <Section label="Skills">
             <div className="grid gap-8 tablet:grid-cols-2">
               {[["Languages", resume.languages], ["Others", resume.others]]
                 .filter(([, items]) => items && items.length)

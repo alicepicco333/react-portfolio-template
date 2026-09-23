@@ -86,7 +86,7 @@ const Home = () => {
         {/* ——— Hero: 61.8 / 38.2 ——— */}
         <section id="top" className="grid border-b border-ink laptop:h-[calc(100svh-56px)] laptop:max-h-[900px] laptop:min-h-[760px] laptop:grid-cols-golden">
           <div className="relative flex flex-col justify-between gap-12 overflow-hidden px-4 py-10 tablet:px-10 laptop:border-r laptop:border-ink laptop:py-10 laptop:pl-24 laptop:pr-10">
-            <span className="fu-jp fu-vertical absolute left-9 top-10 hidden text-[13px] tracking-[0.4em] laptop:block">研究・設計・開発</span>
+            <span className="fu-meta fu-vertical absolute left-9 top-10 hidden text-[11px] tracking-[0.3em] laptop:block">Research · Design · Development</span>
             <span className="absolute bottom-10 left-11 hidden h-[260px] w-px bg-ink laptop:block" />
 
             <div className="fu-meta fu-hero-fade flex justify-between gap-4">
@@ -94,7 +94,7 @@ const Home = () => {
               <span className="hidden text-fieldgrey tablet:inline">Fig. 00 / Portrait of a practice</span>
             </div>
 
-            <h1 className="fu-display text-[34vw] tablet:text-[200px] laptopl:text-phi6">
+            <h1 className="fu-display relative text-[34vw] tablet:text-[200px] laptopl:text-phi6">
               <span className="-my-[0.06em] block overflow-hidden py-[0.06em]">
                 <span className="fu-hero-line block">Alice</span>
               </span>
@@ -102,6 +102,13 @@ const Home = () => {
                 <span className="fu-hero-line block">
                   Picco<span className="text-signal [-webkit-text-stroke:2px_#151613]">.</span>
                 </span>
+              </span>
+              <span className="fu-hand fu-hero-fade absolute -bottom-2 right-0 hidden rotate-[-6deg] items-center gap-2 text-[30px] text-olive tablet:flex laptop:-right-4">
+                <svg width="46" height="26" viewBox="0 0 46 26" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M44,20 C30,24 14,18 4,6" />
+                  <path d="M4,15 L3,5 L13,6" />
+                </svg>
+                hi, that&apos;s me
               </span>
             </h1>
 
@@ -128,7 +135,7 @@ const Home = () => {
               <span className="fu-sticker fu-wob bg-pink [--r:7deg]">HCI specialist</span>
               <span className="fu-sticker fu-wob mr-24 bg-lilac [--r:-5deg] [animation-delay:-2s]">digital humanist</span>
               <span className="fu-sticker fu-wob mr-4 bg-mint [--r:4deg] [animation-delay:-3.5s]">
-                designer <span className="fu-jp">設計</span>
+                designer
               </span>
             </div>
           </div>
@@ -154,7 +161,7 @@ const Home = () => {
               "Human–Computer Interaction",
               "Design",
               "Digital Humanities",
-              <span key="jp" className="fu-jp text-[28px] font-bold normal-case tablet:text-[34px]">人とコンピュータ</span>,
+              "People × Computers",
             ]}
           />
           <Marquee
@@ -168,9 +175,12 @@ const Home = () => {
         {/* ——— Works ——— */}
         <section id="work" className="scroll-mt-14 px-4 pb-16 pt-20 tablet:px-10 laptop:pb-[68px] laptop:pt-[110px]">
           <div className="fu-reveal grid items-end gap-6 border-b border-ink pb-7 laptop:grid-cols-13 laptop:gap-x-4">
-            <span className="fu-jp fu-vertical hidden text-phi1 font-bold laptop:col-span-1 laptop:block">作品</span>
-            <h2 className="fu-display text-[110px] tablet:text-phi5 laptop:col-span-7">
+            <span className="fu-meta fu-vertical hidden text-[11px] tracking-[0.3em] laptop:col-span-1 laptop:block">Selected · 2022—now</span>
+            <h2 className="fu-display relative text-[110px] tablet:text-phi5 laptop:col-span-7">
               Works
+              <span className="fu-hand absolute -top-9 left-1 hidden rotate-[-4deg] text-[28px] text-olive tablet:block">
+                (the fun part)
+              </span>
               <sup className="align-top font-mono text-base font-normal [font-stretch:100%]">
                 ({String(filteredProjects.length).padStart(2, "0")})
               </sup>
@@ -207,7 +217,6 @@ const Home = () => {
                   description={project.description}
                   tags={project.tags}
                   category={project.category}
-                  jp={project.jp}
                   cardNumber={String(projects.indexOf(project) + 1).padStart(2, "0")}
                 />
               </Link>
@@ -219,7 +228,7 @@ const Home = () => {
         <section id="about" className="grid scroll-mt-14 border-y border-ink laptop:grid-cols-golden-rev">
           <div className="relative flex flex-col justify-between gap-8 overflow-hidden border-b border-ink bg-khaki px-4 py-12 tablet:px-10 laptop:border-b-0 laptop:border-r laptop:py-[68px]">
             <span className="fu-meta">
-              02 — About / <span className="fu-jp">概要</span>
+              02 — About
             </span>
             <svg viewBox="0 0 220 220" className="fu-spin mx-auto h-[180px] w-[180px] tablet:h-[220px] tablet:w-[220px]" aria-hidden="true">
               <defs>
@@ -229,8 +238,8 @@ const Home = () => {
                 <textPath href="#fu-ring">ANTHROPOLOGY ■ DIGITAL HUMANITIES ■ DESIGN ■ HCI ■</textPath>
               </text>
               <rect x="80" y="80" width="60" height="60" fill="#151613" />
-              <text x="110" y="117" textAnchor="middle" fontFamily="Noto Sans JP, sans-serif" fontSize="22" fontWeight="700" fill="#F2C4CE">
-                アリス
+              <text x="110" y="119" textAnchor="middle" fontFamily="Archivo, sans-serif" fontSize="26" fontWeight="800" fill="#F2C4CE">
+                AP
               </text>
             </svg>
             <span className="fu-meta">Based in Amsterdam</span>
@@ -250,7 +259,7 @@ const Home = () => {
         <section id="record" className="grid gap-10 px-4 py-20 tablet:px-10 laptop:grid-cols-13 laptop:gap-x-4 laptop:py-[110px]">
           <div className="fu-reveal flex flex-col gap-6 laptop:col-span-5">
             <h2 className="fu-display text-[110px] tablet:text-phi5">Record</h2>
-            <span className="fu-jp">経歴</span>
+            <span className="fu-hand rotate-[-3deg] self-start text-[30px] text-olive">the serious bit ↘</span>
             <Link href="/resume" className="fu-btn fu-btn-primary self-start">
               Full résumé ↗
             </Link>

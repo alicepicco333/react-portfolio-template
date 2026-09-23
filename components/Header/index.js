@@ -1,10 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import data from "../../data/portfolio.json";
 
+// Live Amsterdam time — rendered client-side only, so static HTML never mismatches.
+const AmsterdamClock = () => {
+  const [time, setTime] = useState(null);
+
+  useEffect(() => {
+    const format = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Amsterdam",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    const tick = () => setTime(format.format(new Date()));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return <span className="tabular-nums">AMS {time || "--:--:--"}</span>;
+};
+
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { showResume, email, nameJp } = data;
+  const { showResume, email } = data;
 
   const links = [
     { href: "/#work", label: "01 Work" },
@@ -19,10 +39,12 @@ const Header = () => {
         <Link href="/" className="flex items-center gap-3 font-bold laptop:col-span-3">
           <span className="h-[10px] w-[10px] bg-signal outline outline-1 outline-ink" />
           A.PICCO
-          <span className="fu-jp hidden font-normal tablet:inline">{nameJp}</span>
         </Link>
 
-        <span className="hidden text-fieldgrey laptop:col-span-3 laptop:block">52.3676° N · 4.9041° E</span>
+        <span className="hidden gap-4 text-fieldgrey laptop:col-span-3 laptop:flex">
+          <AmsterdamClock />
+          <span>52.37° N · 4.90° E</span>
+        </span>
 
         <nav className="hidden gap-7 laptop:col-span-5 laptop:flex" aria-label="Main">
           {links.map((link) => (

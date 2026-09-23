@@ -4,7 +4,6 @@
   "headerTaglineThree": "researcher and designer",
   "headerTaglineFour": "based in Amsterdam.",
   "name": "Alice Picco",
-  "nameJp": "アリス・ピッコ",
   "roles": [
     "HCI specialist",
     "Designer",
@@ -59,8 +58,7 @@
       "tags": [
         "UX Design",
         "Web Development"
-      ],
-      "jp": "盗まれた資料館"
+      ]
     },
     {
       "id": "1",
@@ -93,8 +91,7 @@
       "category": "Research Projects",
       "tags": [
         "Digital Edition"
-      ],
-      "jp": "民話"
+      ]
     },
     {
       "id": "2",
@@ -128,8 +125,7 @@
       "tags": [
         "Ontology Engineering",
         "Psychology"
-      ],
-      "jp": "認知バイアス"
+      ]
     },
     {
       "id": "3",
@@ -163,8 +159,7 @@
       "tags": [
         "Data Visualization",
         "Digital Ethics"
-      ],
-      "jp": "女性と政治"
+      ]
     },
     {
       "id": "5",
@@ -198,8 +193,7 @@
       "tags": [
         "Live Coding",
         "Performance"
-      ],
-      "jp": "グリッチ"
+      ]
     },
     {
       "id": "6",
@@ -233,8 +227,7 @@
       "tags": [
         "3D Modeling",
         "3D Animation"
-      ],
-      "jp": "大きな物"
+      ]
     },
     {
       "id": "9",
@@ -267,8 +260,7 @@
       "category": "Creative Projects",
       "tags": [
         "2D Animation"
-      ],
-      "jp": "ロブスター"
+      ]
     },
     {
       "id": "10",
@@ -302,8 +294,7 @@
       "tags": [
         "Workshop Facilitation",
         "Live Coding"
-      ],
-      "jp": "ワークショップ"
+      ]
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",

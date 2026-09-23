@@ -30,7 +30,7 @@ module.exports = {
       fontFamily: {
         sans: ["Archivo", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
-        jp: ["Noto Sans JP", "sans-serif"],
+        hand: ["Caveat", "cursive"],
       },
       gridTemplateColumns: {
         13: "repeat(13, minmax(0, 1fr))",

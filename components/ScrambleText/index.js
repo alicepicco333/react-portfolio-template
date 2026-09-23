@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "../../utils";
 
-const GLYPHS = "アイウエオカキクケコサシスセソタチツテト#%&/<>01";
+const GLYPHS = "#%&/<>{}[]=+*~01";
 
-// Reveals `text` through scrambled katakana glyphs. Pass `words` instead to
+// Reveals `text` through scrambled glyphs. Pass `words` instead to
 // cycle through several strings, each one resolving and holding for `hold` ms.
 const ScrambleText = ({ text, words, className, delay = 0, hold = 3200, speed = 45 }) => {
   const list = words && words.length ? words : [text];
