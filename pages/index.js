@@ -77,7 +77,7 @@ const Home = () => {
         <title>Alice Picco — HCI, design, digital humanities</title>
         <meta name="description" content={portfolioData.aboutpara} />
         <meta name="theme-color" content="#E8E4DA" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`${process.env.NEXT_PUBLIC_BASE_PATH}/favicon.ico`} />
       </Head>
 
       <Header />
