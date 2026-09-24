@@ -35,19 +35,27 @@
       "gridImages": [
         {
           "src": "/images/projects/0-g1.jpg",
-          "caption": "Timeline tour: five eras of appropriation, from the spoils of Europe's wars to world wars and returns."
+          "caption": "Five eras of appropriation, from the spoils of Europe's wars to world wars and returns."
         },
         {
           "src": "/images/projects/0-g2.jpg",
-          "caption": "The collection: thirty objects from five continents, each with its origin, where it is held today and its room in the museum."
+          "caption": "Three ways through the archive: choose a tour, then how long and how complex the texts should be."
         },
         {
           "src": "/images/projects/0-g3.jpg",
-          "caption": "Object page for the Benin Bronzes: how they left, who claims them and who holds them."
+          "caption": "The collection: thirty objects from five continents, filterable by region."
         },
         {
           "src": "/images/projects/0-g4.jpg",
-          "caption": "Atlas: thirty routes from each object's place of origin to where it is held today."
+          "caption": "Object page for the Benin Bronzes, with where they were made, where they are held and how they left."
+        },
+        {
+          "src": "/images/projects/0-g5.jpg",
+          "caption": "Whose object is it? The claimant's and the holder's positions side by side, each with its sources."
+        },
+        {
+          "src": "/images/projects/0-g6.jpg",
+          "caption": "The Timeline tour, one of three readings of the same thirty objects."
         }
       ],
       "middleText": "Visitors pick one of three tours (Timeline, Colonial Conquests, Geo) and choose how long and how complex the texts should be: every object has nine versions of its text for each tour, 810 in all. Each object page explains how the object left, who claims it and who holds it, with the sources for each position. An atlas traces the thirty routes on a map, and a floor plan places the objects in thirteen rooms over two floors.",
@@ -60,7 +68,7 @@
         "UX Design",
         "Web Development"
       ],
-      "highlightCaption": "Home page of the exhibition, with the thirty objects along the bottom.",
+      "highlightCaption": "Home page: the thirty objects, five continents, thirteen rooms, two floors and three tours.",
       "date": "2026-09-01",
       "dateLabel": "2024 – 2026"
     },
@@ -240,10 +248,30 @@
       "gridImages": [
         {
           "src": "/images/projects/11-g1.jpg",
-          "caption": "The end of the hero and the footer with the studio's details."
+          "caption": "Collection pieces, each with its name, category and year."
+        },
+        {
+          "src": "/images/projects/11-g2.jpg",
+          "caption": "More of the current collection."
+        },
+        {
+          "src": "/images/projects/11-g3.jpg",
+          "caption": "Archived Pieces: garments from past collections, with their own filters."
+        },
+        {
+          "src": "/images/projects/11-g4.jpg",
+          "caption": "History page: how the label began."
+        },
+        {
+          "src": "/images/projects/11-g5.jpg",
+          "caption": "The label's timeline, from 1972 to 2001."
+        },
+        {
+          "src": "/images/projects/11-g6.jpg",
+          "caption": "Home page."
         }
       ],
-      "middleText": "The site brings together a gallery of the current collection, an archive of past pieces, the label's history and a contact page, in English and Dutch.",
+      "middleText": "The site has a collection page of ready-to-wear pieces with filters, an archive of pieces from past collections, a history of the label told as a timeline from 1972 onwards, an about page and a contact page, all in English and Dutch.",
       "highlightImage": "/images/projects/11-hl.jpg",
       "conclusionText": "Built with React, TypeScript and Vite from the Figma design.",
       "imageSrc": "/images/projects/11.jpg",
@@ -253,7 +281,7 @@
         "UX Design",
         "Web Development"
       ],
-      "highlightCaption": "Home page.",
+      "highlightCaption": "Collection page, with filters for browsing the pieces.",
       "date": "2026-05-01",
       "dateLabel": "2025 – 2026"
     },

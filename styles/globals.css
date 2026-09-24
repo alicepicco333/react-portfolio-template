@@ -142,15 +142,6 @@ a {
   animation: fu-blink 1.2s steps(1) infinite;
 }
 
-.fu-card img {
-  filter: grayscale(1);
-  transition: filter 0.4s;
-}
-.fu-card:hover img,
-.fu-card:focus-visible img {
-  filter: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fu-blink { animation: none; }
