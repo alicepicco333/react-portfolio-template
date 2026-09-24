@@ -35,7 +35,11 @@ export async function getStaticProps({ params }) {
     props: {
       project: {
         ...project,
-        gridImages: (project.gridImages || []).filter(imageExists),
+        // gallery entries are a path or { src, caption }
+        gridImages: (project.gridImages || [])
+          .map((item) => (typeof item === "string" ? { src: item, caption: "" } : { caption: "", ...item }))
+          .filter((item) => imageExists(item.src)),
+        highlightCaption: project.highlightCaption || "",
         highlightImage: highlight,
         introText: realText(project.introText) || project.description,
         middleText: realText(project.middleText),
@@ -87,7 +91,8 @@ export default function ProjectPage({ project, number, next }) {
 
         {project.highlightImage && (
           <figure className="px-4 tablet:px-10">
-            <img src={withBase(project.highlightImage)} alt={project.title} className="max-h-[80vh] w-full object-cover" />
+            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="max-h-[80vh] w-full object-cover" />
+            {project.highlightCaption && <figcaption className="fu-meta mt-3 max-w-[720px] text-graphite">{project.highlightCaption}</figcaption>}
           </figure>
         )}
 
@@ -102,11 +107,22 @@ export default function ProjectPage({ project, number, next }) {
         )}
 
         {project.gridImages.length > 0 && (
-          <section className="grid grid-cols-2 gap-4 px-4 py-10 tablet:grid-cols-4 tablet:px-10">
-            {project.gridImages.map((src, index) => (
-              <div key={src} className="aspect-square overflow-hidden">
-                <img src={withBase(src)} alt={`${project.title} — image ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
-              </div>
+          <section className="grid gap-x-4 gap-y-10 px-4 py-10 tablet:grid-cols-2 tablet:px-10">
+            {project.gridImages.map(({ src, caption }, index) => (
+              <figure key={src} className="flex flex-col gap-3">
+                <img
+                  src={withBase(src)}
+                  alt={caption || `${project.title} — image ${index + 1}`}
+                  className="w-full border border-concrete"
+                  loading="lazy"
+                />
+                {caption && (
+                  <figcaption className="flex gap-3 text-[15px] leading-snug text-graphite">
+                    <span className="fu-meta shrink-0 text-fieldgrey">{String(index + 1).padStart(2, "0")}</span>
+                    <span>{caption}</span>
+                  </figcaption>
+                )}
+              </figure>
             ))}
           </section>
         )}

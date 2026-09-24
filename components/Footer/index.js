@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="grid gap-x-4 gap-y-10 pb-20 laptop:grid-cols-4 laptop:pb-[110px]">
         <h2 className="fu-title text-phi1">Contact</h2>
         <div className="flex flex-col gap-6 laptop:col-span-2">
-          <a href={`mailto:${email}`} className="fu-display break-all text-[36px] hover:text-signal tablet:text-phi3">
+          <a href={`mailto:${email}`} className="fu-display break-all text-[32px] hover:text-signal tablet:break-normal tablet:text-[48px] laptopl:text-[64px]">
             {email}
           </a>
           <p className="fu-meta text-bone/60">Open to collaborations — based in Amsterdam.</p>
