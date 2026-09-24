@@ -1,7 +1,39 @@
-import { useLayoutEffect, useEffect } from "react";
+import { useLayoutEffect, useEffect, useState } from "react";
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+// Category → short label + pastel tone (FIELD/UNIT colour key)
+const CATEGORY_META = {
+  Design: { short: "Design", tone: "#F2C4CE" },
+  Research: { short: "Research", tone: "#CFC6E8" },
+  "Live Coding": { short: "Live coding", tone: "#C8D8BF" },
+  "Work in Progress": { short: "Work in progress", tone: "#D7FF3C" },
+  "Past Projects": { short: "Past projects", tone: "#A89F7E" },
+};
+
+// Prefix local /public paths with the deploy base path (GitHub Pages serves from a sub-folder).
+export function withBase(src) {
+  return src && src.startsWith("/") ? `${process.env.NEXT_PUBLIC_BASE_PATH || ""}${src}` : src;
+}
+
+export function categoryMeta(category) {
+  return CATEGORY_META[category] || { short: category, tone: "#BDB8AC" };
+}
+
+export function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  return reduced;
+}
 
 export function ISOToDate(date) {
   if (date) {

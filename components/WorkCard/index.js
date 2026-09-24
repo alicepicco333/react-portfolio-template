@@ -1,53 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { categoryMeta, withBase } from "../../utils";
 
-const presetColors = ["#E6EBE0"];
-
-const getRandomPresetColor = () => {
-  const index = Math.floor(Math.random() * presetColors.length);
-  return presetColors[index];
-};
-
-const WorkCard = ({ img, name, description, tags }) => {
-  const [bgColor, setBgColor] = useState("transparent");
-
-  useEffect(() => {
-    setBgColor(getRandomPresetColor());
-  }, []);
+// Square image tile, flush-left caption underneath. Without an image the square
+// becomes a flat colour field in the project's category tone.
+const WorkCard = ({ img, name, description, tags, category, cardNumber }) => {
+  const { tone } = categoryMeta(category);
 
   return (
-    <div
-      className="relative rounded-lg cursor-pointer overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 bg-white aspect-square"
-      style={{
-       border: "1px solid black",
-        width: "100%",
-      }}
-    >
-      {/* Image */}
-      <div className="w-full flex-grow overflow-hidden rounded-t-lg">
-        <img
-          src={img}
-          alt={name}
-          className="w-full h-full object-cover"
-          draggable={false}
-        />
+    <article className="flex flex-col gap-3">
+      <div className="aspect-square overflow-hidden" style={{ background: tone }}>
+        {img ? (
+          <img src={withBase(img)} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
+        ) : (
+          <div className="flex h-full items-end p-4">
+            <span className="fu-title text-phi1">{name}</span>
+          </div>
+        )}
       </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-shrink-0 px-4 py-3 text-center">
-        <h2 className="text-lg font-semibold mb-2 text-black">{name}</h2>
-        <p className="text-sm text-gray-700 mb-3 line-clamp-2">{description}</p>
-        <div className="flex flex-wrap justify-center gap-2">
-          {tags?.map((tag, i) => (
-            <span
-              key={i}
-              className="bg-black text-white text-xs px-2 py-1 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+      <div className="flex items-baseline gap-3">
+        <span className="fu-meta text-fieldgrey">{cardNumber}</span>
+        <h4 className="fu-title text-xl">{name}</h4>
       </div>
-    </div>
+      <p className="text-[15px] leading-snug text-graphite">{description}</p>
+      {tags?.length > 0 && <p className="fu-meta text-fieldgrey">{tags.join(", ")}</p>}
+    </article>
   );
 };
 
