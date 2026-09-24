@@ -6,7 +6,7 @@ import portfolioData from "../../data/portfolio.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CaseStudy from "../../components/CaseStudy";
-import { categoryMeta, withBase } from "../../utils";
+import { byDateDesc, categoryMeta, withBase } from "../../utils";
 
 // Template filler ("Introductory paragraph for…") is hidden until real copy is written.
 const PLACEHOLDER = /^(Introductory paragraph|Middle explanatory section|Closing summary)/;
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const order = ["Design", "Research", "Live Coding", "Work in Progress", "Past Projects"];
-  const projects = order.flatMap((category) => portfolioData.projects.filter((p) => p.category === category));
+  const projects = order.flatMap((category) => portfolioData.projects.filter((p) => p.category === category).sort(byDateDesc));
   const index = projects.findIndex((p) => p.id === params.id);
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
@@ -77,6 +77,8 @@ export default function ProjectPage({ project, number, next }) {
             <h1 className="fu-display max-w-[900px] text-[44px] tablet:text-phi3">{project.title}</h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
             <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[140px_1fr]">
+              <dt className="text-fieldgrey">Date</dt>
+              <dd>{project.dateLabel}</dd>
               <dt className="text-fieldgrey">Category</dt>
               <dd>{project.category}</dd>
               <dt className="text-fieldgrey">Techniques</dt>

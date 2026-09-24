@@ -57,3 +57,6 @@ export function getRandomImage() {
   ];
   return randomImageUrl[Math.floor(Math.random() * randomImageUrl.length)];
 }
+
+// Newest first; `date` is an ISO date used only for ordering, `dateLabel` is what is shown.
+export const byDateDesc = (a, b) => (b.date || "").localeCompare(a.date || "");

@@ -60,7 +60,9 @@
         "UX Design",
         "Web Development"
       ],
-      "highlightCaption": "Home page of the exhibition, with the thirty objects along the bottom."
+      "highlightCaption": "Home page of the exhibition, with the thirty objects along the bottom.",
+      "date": "2026-09-01",
+      "dateLabel": "2024 – 2026"
     },
     {
       "id": "1",
@@ -82,7 +84,9 @@
       "tags": [
         "Digital Edition"
       ],
-      "highlightCaption": "Comparing Gesù e San Pietro in Friuli and in Sicilia side by side."
+      "highlightCaption": "Comparing Gesù e San Pietro in Friuli and in Sicilia side by side.",
+      "date": "2024-01-25",
+      "dateLabel": "2023 – 2024"
     },
     {
       "id": "2",
@@ -105,7 +109,9 @@
         "Ontology Engineering",
         "Psychology"
       ],
-      "highlightCaption": "Introduction page of the project documentation."
+      "highlightCaption": "Introduction page of the project documentation.",
+      "date": "2023-06-01",
+      "dateLabel": "2023"
     },
     {
       "id": "3",
@@ -140,7 +146,9 @@
         "Data Visualization",
         "Digital Ethics"
       ],
-      "highlightCaption": "Home page with the research question."
+      "highlightCaption": "Home page with the research question.",
+      "date": "2024-02-07",
+      "dateLabel": "Feb 2024"
     },
     {
       "id": "5",
@@ -158,7 +166,9 @@
         "Live Coding",
         "Performance"
       ],
-      "highlightCaption": "Still from the performance recording."
+      "highlightCaption": "Still from the performance recording.",
+      "date": "2024-07-01",
+      "dateLabel": "Jul 2024"
     },
     {
       "id": "6",
@@ -176,7 +186,9 @@
         "3D Modeling",
         "3D Animation"
       ],
-      "highlightCaption": "Title card of the short."
+      "highlightCaption": "Title card of the short.",
+      "date": "2023-09-01",
+      "dateLabel": "2023"
     },
     {
       "id": "9",
@@ -192,7 +204,9 @@
       "category": "Past Projects",
       "tags": [
         "2D Animation"
-      ]
+      ],
+      "date": "2020-05-09",
+      "dateLabel": "2020"
     },
     {
       "id": "10",
@@ -214,7 +228,9 @@
       "tags": [
         "Workshop Facilitation",
         "Live Coding"
-      ]
+      ],
+      "date": "2024-07-20",
+      "dateLabel": "Jul 2024"
     },
     {
       "id": "11",
@@ -237,7 +253,9 @@
         "UX Design",
         "Web Development"
       ],
-      "highlightCaption": "Home page."
+      "highlightCaption": "Home page.",
+      "date": "2026-05-01",
+      "dateLabel": "2025 – 2026"
     },
     {
       "id": "12",
@@ -276,7 +294,9 @@
         "Ontology Engineering",
         "Semantic Web"
       ],
-      "highlightCaption": "Home page: a wall of memes from the dataset."
+      "highlightCaption": "Home page: a wall of memes from the dataset.",
+      "date": "2026-06-01",
+      "dateLabel": "2024 – 2026"
     },
     {
       "id": "13",
@@ -293,7 +313,9 @@
       "tags": [
         "Digital Archives",
         "Digitisation"
-      ]
+      ],
+      "date": "2026-09-03",
+      "dateLabel": "2026 –"
     },
     {
       "id": "14",
@@ -329,7 +351,9 @@
         "Hydra",
         "Performance"
       ],
-      "highlightCaption": "The projection across the wall of the venue."
+      "highlightCaption": "The projection across the wall of the venue.",
+      "date": "2026-01-30",
+      "dateLabel": "Jan 2026"
     },
     {
       "id": "15",
@@ -372,7 +396,9 @@
         "Data Visualization",
         "Web Development"
       ],
-      "highlightCaption": "Home page."
+      "highlightCaption": "Home page.",
+      "date": "2024-06-04",
+      "dateLabel": "Jun 2024"
     },
     {
       "id": "16",
@@ -403,7 +429,9 @@
         "HTR",
         "Digital Libraries"
       ],
-      "highlightCaption": "Project website."
+      "highlightCaption": "Project website.",
+      "date": "2024-05-15",
+      "dateLabel": "May 2024"
     },
     {
       "id": "17",
@@ -420,7 +448,9 @@
       "tags": [
         "Conversational AI",
         "Interaction Design"
-      ]
+      ],
+      "date": "2026-09-10",
+      "dateLabel": "Sep 2026"
     },
     {
       "id": "18",
@@ -436,7 +466,9 @@
       "category": "Work in Progress",
       "tags": [
         "Speculative Design"
-      ]
+      ],
+      "date": "2026-09-18",
+      "dateLabel": "Sep 2026"
     },
     {
       "id": "19",
@@ -453,7 +485,9 @@
       "tags": [
         "Critical Data Studies",
         "HCI"
-      ]
+      ],
+      "date": "2026-09-15",
+      "dateLabel": "Sep 2026"
     },
     {
       "id": "20",
@@ -874,7 +908,9 @@
           "The biggest change was structural, not visual: separating “understand the service” from “start the test” fixed three critical issues at once. For a mental-health service, trust comes from transparency: showing how matching works, what it costs and what happens to your data.",
           "The final version adds what a real product would need next: crisis support and health-data consent in the questionnaire, empty and error states, and the online session itself. The samples were small (three to four people per round), so the next step would be a larger test across all age segments."
         ]
-      }
+      },
+      "date": "2026-03-08",
+      "dateLabel": "2025 – 2026"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",

@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import WorkCard from "../components/WorkCard";
 import PracticeMap from "../components/PracticeMap";
 import portfolioData from "../data/portfolio.json";
-import { categoryMeta, useIsomorphicLayoutEffect } from "../utils";
+import { categoryMeta, useIsomorphicLayoutEffect, byDateDesc } from "../utils";
 
 // Works are shown in three groups; ongoing and older work follow as indexes.
 const GROUPS = [
@@ -46,7 +46,8 @@ const IndexRow = ({ project, number, status }) => (
         <span className="fu-title text-[22px] group-hover:underline">{project.title}</span>
         <span className="text-[15px] leading-snug text-graphite">{project.description}</span>
       </span>
-      <span className="fu-meta col-start-2 flex items-center gap-2 pt-1 text-graphite tablet:col-start-auto">
+      <span className="fu-meta col-start-2 flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-graphite tablet:col-start-auto tablet:flex-col tablet:items-start">
+        <span className="text-ink">{project.dateLabel}</span>
         {status ? (
           <>
             <span className="fu-blink h-2 w-2 rounded-full bg-olive" aria-hidden="true" />
@@ -61,7 +62,8 @@ const IndexRow = ({ project, number, status }) => (
 );
 
 const Home = () => {
-  const { projects, resume, roles, email } = portfolioData;
+  const { resume, roles, email } = portfolioData;
+  const projects = [...portfolioData.projects].sort(byDateDesc);
 
   // The statement already says the opening clause, so continue from "weaving together…".
   const aboutRest = resume.description.replace(/^I work at the intersection of culture, technology, and design, /, "");
@@ -194,6 +196,7 @@ const Home = () => {
                       tags={project.tags}
                       category={project.category}
                       cardNumber={numberOf(project)}
+                      date={project.dateLabel}
                     />
                   </Link>
                 ))}
