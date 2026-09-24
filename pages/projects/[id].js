@@ -5,6 +5,7 @@ import Link from "next/link";
 import portfolioData from "../../data/portfolio.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import CaseStudy from "../../components/CaseStudy";
 import { categoryMeta, withBase } from "../../utils";
 
 // Template filler ("Introductory paragraph for…") is hidden until real copy is written.
@@ -91,7 +92,9 @@ export default function ProjectPage({ project, number, next }) {
           </figure>
         )}
 
-        {(project.middleText || project.conclusionText) && (
+        {project.caseStudy && <CaseStudy data={project.caseStudy} />}
+
+        {!project.caseStudy && (project.middleText || project.conclusionText) && (
           <section className="grid gap-x-4 gap-y-6 px-4 py-16 tablet:px-10 laptop:grid-cols-4 laptop:py-[110px]">
             <h2 className="fu-title text-phi1">Notes</h2>
             <div className="flex max-w-[720px] flex-col gap-6 text-lg leading-relaxed laptop:col-span-3">
@@ -101,7 +104,7 @@ export default function ProjectPage({ project, number, next }) {
           </section>
         )}
 
-        {project.gridImages.length > 0 && (
+        {!project.caseStudy && project.gridImages.length > 0 && (
           <section className="grid grid-cols-2 gap-4 px-4 py-10 tablet:grid-cols-4 tablet:px-10">
             {project.gridImages.map((src, index) => (
               <div key={src} className="aspect-square overflow-hidden">
