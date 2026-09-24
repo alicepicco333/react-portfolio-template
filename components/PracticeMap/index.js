@@ -137,7 +137,7 @@ const PracticeMap = ({ projects = [] }) => {
                 y1={pa.y}
                 x2={pb.x}
                 y2={pb.y}
-                stroke={on ? "#D7FF3C" : "#E8E4DA"}
+                style={{ stroke: on ? "rgb(var(--signal))" : "rgb(var(--bone))" }}
                 strokeWidth={on ? 1.6 : 1}
                 strokeOpacity={lit ? (on ? 1 : 0.08) : depthOpacity((pa.z + pb.z) / 2) * 0.55}
               />
@@ -176,8 +176,7 @@ const PracticeMap = ({ projects = [] }) => {
                 cx={pt.x}
                 cy={pt.y}
                 r={(isActive ? 7 : 4.5) * pt.scale}
-                fill={isActive ? "#D7FF3C" : lit && isLit ? "#F2C4CE" : "#E8E4DA"}
-                stroke="#151613"
+                style={{ fill: isActive ? "rgb(var(--signal))" : lit && isLit ? "rgb(var(--pink))" : "rgb(var(--bone))", stroke: "rgb(var(--ink))" }}
                 strokeWidth="1"
               />
               <text
@@ -187,7 +186,7 @@ const PracticeMap = ({ projects = [] }) => {
                 fontFamily="Instrument Sans, sans-serif"
                 fontSize={g.font + 3 * (pt.scale - 0.7)}
                 fontWeight={isActive ? 600 : 500}
-                fill={isActive ? "#D7FF3C" : "#E8E4DA"}
+                style={{ fill: isActive ? "rgb(var(--signal))" : "rgb(var(--bone))" }}
               >
                 {node.label}
               </text>

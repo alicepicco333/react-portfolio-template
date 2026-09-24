@@ -5,11 +5,11 @@ export const useIsomorphicLayoutEffect =
 
 // Category → short label + pastel tone (FIELD/UNIT colour key)
 const CATEGORY_META = {
-  Design: { short: "Design", tone: "#F2C4CE" },
-  Research: { short: "Research", tone: "#CFC6E8" },
-  "Live Coding": { short: "Live coding", tone: "#C8D8BF" },
-  "Work in Progress": { short: "Work in progress", tone: "#D7FF3C" },
-  "Past Projects": { short: "Past projects", tone: "#A89F7E" },
+  Design: { short: "Design", tone: "rgb(var(--pink))" },
+  Research: { short: "Research", tone: "rgb(var(--lilac))" },
+  "Live Coding": { short: "Live coding", tone: "rgb(var(--mint))" },
+  "Work in Progress": { short: "Work in progress", tone: "rgb(var(--signal))" },
+  "Past Projects": { short: "Past projects", tone: "rgb(var(--khaki))" },
 };
 
 // Prefix local /public paths with the deploy base path (GitHub Pages serves from a sub-folder).
@@ -18,7 +18,7 @@ export function withBase(src) {
 }
 
 export function categoryMeta(category) {
-  return CATEGORY_META[category] || { short: category, tone: "#BDB8AC" };
+  return CATEGORY_META[category] || { short: category, tone: "rgb(var(--concrete))" };
 }
 
 export function usePrefersReducedMotion() {

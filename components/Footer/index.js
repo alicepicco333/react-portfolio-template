@@ -24,7 +24,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-      <div className="fu-meta flex justify-between border-t border-[#3A3B35] pt-4 text-bone/60">
+      <div className="fu-meta flex justify-between border-t border-bone/20 pt-4 text-bone/60">
         <span>© {new Date().getFullYear()} {name}</span>
         <a href="#top" className="hover:text-bone">
           Back to top ↑

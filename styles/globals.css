@@ -39,20 +39,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FIELD/UNIT — flat Swiss system. Tokens mirrored in tailwind.config.js */
+/* FIELD/UNIT — flat Swiss system. Tokens are "r g b" triplets so the colour shuffle
+   (utils/palette.js) can swap them; Tailwind reads them in tailwind.config.js. */
 :root {
-  --bone: #e8e4da;
-  --paper: #f1eee7;
-  --ink: #151613;
-  --olive: #4b5238;
-  --khaki: #a89f7e;
-  --concrete: #bdb8ac;
-  --graphite: #4a4b44;
-  --field-grey: #6c6f63;
-  --pink: #f2c4ce;
-  --lilac: #cfc6e8;
-  --mint: #c8d8bf;
-  --signal: #d7ff3c;
+  --bone: 232 228 218;
+  --paper: 241 238 231;
+  --ink: 21 22 19;
+  --olive: 75 82 56;
+  --khaki: 168 159 126;
+  --concrete: 189 184 172;
+  --graphite: 74 75 68;
+  --field-grey: 96 99 88;
+  --pink: 242 196 206;
+  --lilac: 207 198 232;
+  --mint: 200 216 191;
+  --signal: 215 255 60;
 }
 
 html {
@@ -67,16 +68,16 @@ body {
 }
 
 body {
-  background-color: var(--bone);
-  color: var(--ink);
+  background-color: rgb(var(--bone));
+  color: rgb(var(--ink));
   font-family: "Instrument Sans", system-ui, sans-serif;
   font-feature-settings: "tnum" 1;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--signal);
-  color: var(--ink);
+  background: rgb(var(--signal));
+  color: rgb(var(--ink));
 }
 
 a {
@@ -85,7 +86,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid rgb(var(--ink));
   outline-offset: 3px;
 }
 
@@ -118,19 +119,19 @@ a {
     transition: background-color 0.2s, color 0.2s;
   }
   .fu-btn-primary {
-    background: var(--ink);
-    color: var(--bone);
+    background: rgb(var(--ink));
+    color: rgb(var(--bone));
   }
   .fu-btn-primary:hover {
-    background: var(--olive);
+    background: rgb(var(--olive));
   }
   .fu-btn-secondary {
-    background: var(--concrete);
-    color: var(--ink);
+    background: rgb(var(--concrete));
+    color: rgb(var(--ink));
   }
   .fu-btn-secondary:hover {
-    background: var(--ink);
-    color: var(--bone);
+    background: rgb(var(--ink));
+    color: rgb(var(--bone));
   }
 }
 

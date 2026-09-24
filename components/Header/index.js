@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import data from "../../data/portfolio.json";
+import ShuffleButton from "../ShuffleButton";
 
 // Live Amsterdam time — rendered client-side only, so static HTML never mismatches.
 const AmsterdamClock = () => {
@@ -43,12 +44,15 @@ const Header = () => {
           <AmsterdamClock />
         </span>
 
-        <nav className="hidden gap-6 font-medium laptop:col-span-2 laptop:flex" aria-label="Main">
+        <nav className="hidden items-center gap-6 font-medium laptop:col-span-2 laptop:flex" aria-label="Main">
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="hover:underline">
               {link.label}
             </Link>
           ))}
+          <span className="ml-auto">
+            <ShuffleButton />
+          </span>
         </nav>
 
         <button
@@ -69,12 +73,15 @@ const Header = () => {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="fu-display block border-b border-[#3A3B35] py-4 text-[40px]"
+              className="fu-display block border-b border-bone/20 py-4 text-[40px]"
             >
               {link.label}
             </Link>
           ))}
-          <a href={`mailto:${email}`} className="block pt-5 text-[15px] text-signal">
+          <div className="pt-4 text-[15px]">
+            <ShuffleButton showName={false} />
+          </div>
+          <a href={`mailto:${email}`} className="block pt-2 text-[15px] text-signal">
             {email} ↗
           </a>
         </nav>
