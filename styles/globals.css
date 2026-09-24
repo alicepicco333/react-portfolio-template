@@ -1,113 +1,36 @@
-/* Type: independent, open-licence (SIL OFL — see /fonts/LICENSE-*.txt)
-   Big Shoulders Display (Patric King) · Space Grotesk (Florian Karsten) · Space Mono (Colophon Foundry) */
+/* Type: Instrument Sans (Instrument, SIL OFL — see /fonts/LICENSE-InstrumentSans.txt), one family throughout */
 @font-face {
-  font-family: "Big Shoulders Display";
-  src: url("./fonts/BigShouldersDisplay-latin-ext-0.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
+  font-family: "Instrument Sans";
+  src: url("./fonts/InstrumentSans-italic-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-style: italic;
   font-display: swap;
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Big Shoulders Display";
-  src: url("./fonts/BigShouldersDisplay-latin-1.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
+  font-family: "Instrument Sans";
+  src: url("./fonts/InstrumentSans-italic-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-style: italic;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Big Shoulders Display";
-  src: url("./fonts/BigShouldersDisplay-latin-ext-0.woff2") format("woff2");
-  font-weight: 800;
+  font-family: "Instrument Sans";
+  src: url("./fonts/InstrumentSans-normal-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Big Shoulders Display";
-  src: url("./fonts/BigShouldersDisplay-latin-1.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-latin-ext-2.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-latin-3.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-latin-ext-2.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-latin-3.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-latin-ext-2.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Space Grotesk";
-  src: url("./fonts/SpaceGrotesk-latin-3.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Space Mono";
-  src: url("./fonts/SpaceMono-latin-ext-4.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Space Mono";
-  src: url("./fonts/SpaceMono-latin-5.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Space Mono";
-  src: url("./fonts/SpaceMono-latin-ext-6.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Space Mono";
-  src: url("./fonts/SpaceMono-latin-7.woff2") format("woff2");
-  font-weight: 700;
+  font-family: "Instrument Sans";
+  src: url("./fonts/InstrumentSans-normal-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
@@ -116,14 +39,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FIELD/UNIT design tokens — mirrored as Tailwind colours in tailwind.config.js */
+/* FIELD/UNIT — flat Swiss system. Tokens mirrored in tailwind.config.js */
 :root {
   --bone: #e8e4da;
   --paper: #f1eee7;
   --ink: #151613;
   --olive: #4b5238;
-  --olive-line: #6e7556;
-  --olive-grid: #5c6446;
   --khaki: #a89f7e;
   --concrete: #bdb8ac;
   --graphite: #4a4b44;
@@ -148,7 +69,8 @@ body {
 body {
   background-color: var(--bone);
   color: var(--ink);
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-feature-settings: "tnum" 1;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -168,39 +90,32 @@ a {
 }
 
 @layer components {
+  /* big type: tight, flush-left, sentence case */
   .fu-display {
-    font-family: "Big Shoulders Display", sans-serif;
-    font-weight: 800;
-    line-height: 0.82;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-  }
-  .fu-title {
-    font-family: "Big Shoulders Display", sans-serif;
     font-weight: 700;
     line-height: 0.95;
-    text-transform: uppercase;
+    letter-spacing: -0.035em;
   }
+  .fu-title {
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  /* small labels and numbers */
   .fu-meta {
-    font-family: "Space Mono", monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  .fu-vertical {
-    writing-mode: vertical-rl;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.005em;
   }
   .fu-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     min-height: 44px;
-    padding: 0 20px;
-    border: 1px solid var(--ink);
-    font-family: "Space Mono", monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 0 18px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
   }
   .fu-btn-primary {
     background: var(--ink);
@@ -210,106 +125,33 @@ a {
     background: var(--olive);
   }
   .fu-btn-secondary {
-    background: transparent;
+    background: var(--concrete);
     color: var(--ink);
   }
   .fu-btn-secondary:hover {
     background: var(--ink);
     color: var(--bone);
   }
-  .fu-grid-bg {
-    background-image: repeating-linear-gradient(0deg, transparent 0 43px, var(--olive-grid) 43px 44px),
-      repeating-linear-gradient(90deg, transparent 0 43px, var(--olive-grid) 43px 44px);
-  }
 }
 
-/* ——— Motion ——— */
-@keyframes fu-mq {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.fu-mq {
-  display: inline-flex;
-  white-space: nowrap;
-  animation: fu-mq 38s linear infinite;
-}
-.fu-mq-rev {
-  animation-direction: reverse;
-  animation-duration: 52s;
-}
-
-@keyframes fu-pulse {
-  0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(2.8); opacity: 0; }
-}
-.fu-pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: fu-pulse 2.6s ease-out infinite;
-}
-
-@keyframes fu-drift {
-  to { transform: translate(10px, -12px); }
-}
-.fu-drift {
-  animation: fu-drift 6s ease-in-out infinite alternate;
-}
-
-@keyframes fu-spin {
-  to { transform: rotate(360deg); }
-}
-.fu-spin {
-  animation: fu-spin 22s linear infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
+/* ——— Motion (kept small) ——— */
 @keyframes fu-blink {
   50% { opacity: 0; }
 }
 .fu-blink {
-  animation: fu-blink 1s steps(1) infinite;
-}
-
-@keyframes fu-breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.035); }
-}
-.fu-breathe {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: fu-breathe 7s ease-in-out infinite;
-}
-
-@keyframes fu-wob {
-  0%, 100% { transform: rotate(var(--r, -4deg)); }
-  50% { transform: rotate(calc(var(--r, -4deg) * -1)); }
-}
-.fu-wob {
-  animation: fu-wob 5s ease-in-out infinite;
+  animation: fu-blink 1.2s steps(1) infinite;
 }
 
 .fu-card img {
-  filter: grayscale(1) contrast(1.15) brightness(0.95);
-  transition: filter 0.5s, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  filter: grayscale(1);
+  transition: filter 0.4s;
 }
 .fu-card:hover img,
 .fu-card:focus-visible img {
   filter: none;
-  transform: scale(1.03);
-}
-.fu-card .fu-bar {
-  transition: background-color 0.3s, color 0.3s;
-}
-.fu-card:hover .fu-bar,
-.fu-card:focus-visible .fu-bar {
-  background: var(--ink);
-  color: var(--bone);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fu-mq, .fu-pulse, .fu-drift, .fu-spin, .fu-blink, .fu-breathe, .fu-wob {
-    animation: none;
-  }
+  .fu-blink { animation: none; }
 }

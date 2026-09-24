@@ -24,7 +24,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { projects } = portfolioData;
+  const order = ["Design", "Research", "Live Coding", "Work in Progress", "Past Projects"];
+  const projects = order.flatMap((category) => portfolioData.projects.filter((p) => p.category === category));
   const index = projects.findIndex((p) => p.id === params.id);
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
@@ -47,7 +48,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function ProjectPage({ project, number, next }) {
-  const { short, tone } = categoryMeta(project.category);
+  const { short } = categoryMeta(project.category);
 
   return (
     <div className="min-h-screen bg-bone text-ink">
@@ -59,48 +60,41 @@ export default function ProjectPage({ project, number, next }) {
       <Header />
 
       <main>
-        <section className="relative grid border-b border-ink laptop:grid-cols-golden">
-          <div className="flex flex-col gap-10 px-4 py-12 tablet:px-10 laptop:border-r laptop:border-ink laptop:py-[68px] laptop:pl-24">
-            <div className="fu-meta flex flex-wrap items-center gap-3">
-              <Link href="/#work" className="hover:text-olive">
-                ← Works
-              </Link>
-              <span className="border border-ink px-3 py-1" style={{ background: tone }}>
-                {number} · {short}
-              </span>
-            </div>
-            <h1 className="fu-display text-[56px] tablet:text-phi3 laptopl:text-phi4">{project.title}</h1>
-            <p className="max-w-[640px] text-xl leading-snug tablet:text-phi1">{project.introText}</p>
+        <section className="grid gap-x-4 gap-y-8 px-4 pb-16 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
+          <div className="flex flex-col gap-1">
+            <Link href="/#work" className="fu-meta text-fieldgrey hover:text-ink">
+              ← Works
+            </Link>
+            <span className="fu-meta pt-4 text-fieldgrey">{number}</span>
+            <span className="fu-title text-xl">{short}</span>
           </div>
-
-          <aside className="flex flex-col justify-between gap-8 px-4 py-12 tablet:px-10 laptop:py-[68px]">
-            <span className="fu-display self-end text-phi3 text-ink/15 laptop:text-phi4" aria-hidden="true">
-              {number}
-            </span>
-            <dl className="fu-meta grid grid-cols-[110px_1fr] gap-y-3 border-t border-ink pt-4">
+          <div className="flex flex-col gap-8 laptop:col-span-3">
+            <h1 className="fu-display max-w-[900px] text-[44px] tablet:text-phi3">{project.title}</h1>
+            <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
+            <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[140px_1fr]">
               <dt className="text-fieldgrey">Category</dt>
               <dd>{project.category}</dd>
               <dt className="text-fieldgrey">Techniques</dt>
-              <dd>{project.tags?.join(" / ")}</dd>
+              <dd>{project.tags?.join(", ")}</dd>
             </dl>
             {project.url && (
               <a href={project.url} target="_blank" rel="noreferrer" className="fu-btn fu-btn-primary self-start">
                 Visit project ↗
               </a>
             )}
-          </aside>
+          </div>
         </section>
 
         {project.highlightImage && (
-          <figure className="fu-card border-b border-ink">
+          <figure className="px-4 tablet:px-10">
             <img src={withBase(project.highlightImage)} alt={project.title} className="max-h-[80vh] w-full object-cover" />
           </figure>
         )}
 
         {(project.middleText || project.conclusionText) && (
-          <section className="grid gap-10 border-b border-ink px-4 py-16 tablet:px-10 laptop:grid-cols-golden-rev laptop:py-[110px]">
-            <span className="fu-meta">Notes</span>
-            <div className="flex flex-col gap-6 text-lg leading-relaxed">
+          <section className="grid gap-x-4 gap-y-6 px-4 py-16 tablet:px-10 laptop:grid-cols-4 laptop:py-[110px]">
+            <h2 className="fu-title text-phi1">Notes</h2>
+            <div className="flex max-w-[720px] flex-col gap-6 text-lg leading-relaxed laptop:col-span-3">
               {project.middleText && <p>{project.middleText}</p>}
               {project.conclusionText && <p>{project.conclusionText}</p>}
             </div>
@@ -108,9 +102,9 @@ export default function ProjectPage({ project, number, next }) {
         )}
 
         {project.gridImages.length > 0 && (
-          <section className="grid grid-cols-2 gap-4 border-b border-ink px-4 py-10 tablet:grid-cols-4 tablet:px-10">
+          <section className="grid grid-cols-2 gap-4 px-4 py-10 tablet:grid-cols-4 tablet:px-10">
             {project.gridImages.map((src, index) => (
-              <div key={src} className="fu-card aspect-square overflow-hidden border border-ink">
+              <div key={src} className="aspect-square overflow-hidden">
                 <img src={withBase(src)} alt={`${project.title} — image ${index + 1}`} className="h-full w-full object-cover" loading="lazy" />
               </div>
             ))}
@@ -119,10 +113,10 @@ export default function ProjectPage({ project, number, next }) {
 
         <Link
           href={`/projects/${next.id}`}
-          className="group flex flex-col gap-3 border-b border-ink px-4 py-12 transition-colors hover:bg-olive hover:text-bone tablet:px-10"
+          className="group mt-16 grid gap-x-4 gap-y-2 border-t border-ink px-4 pb-16 pt-4 tablet:px-10 laptop:grid-cols-4"
         >
-          <span className="fu-meta">Next work →</span>
-          <span className="fu-display text-[64px] tablet:text-phi4">{next.title}</span>
+          <span className="fu-meta text-fieldgrey">Next work →</span>
+          <span className="fu-display text-[36px] group-hover:underline tablet:text-phi2 laptop:col-span-3">{next.title}</span>
         </Link>
       </main>
 

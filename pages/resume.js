@@ -10,11 +10,11 @@ export async function getStaticProps() {
 }
 
 const Section = ({ label, children }) => (
-  <section className="grid gap-6 border-t border-ink py-10 laptop:grid-cols-golden-rev laptop:py-[68px]">
-    <h2 className="fu-meta">
+  <section className="grid gap-x-4 gap-y-6 border-t border-ink pb-16 pt-4 laptop:grid-cols-4">
+    <h2 className="fu-title text-phi1">
       {label}
     </h2>
-    <div>{children}</div>
+    <div className="laptop:col-span-3">{children}</div>
   </section>
 );
 
@@ -32,12 +32,12 @@ const Resume = () => {
       <Header />
 
       <main className="px-4 tablet:px-10">
-        <div className="grid gap-8 py-14 laptop:grid-cols-golden laptop:py-[110px]">
-          <h1 className="fu-display text-[72px] tablet:text-phi4">
+        <div className="grid gap-x-4 gap-y-8 pb-16 pt-6 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
+          <h1 className="fu-display text-[48px] tablet:text-phi3">
             Record
           </h1>
-          <div className="flex flex-col justify-end gap-5">
-            <p className="fu-meta text-olive">{resume.tagline}</p>
+          <div className="flex max-w-[720px] flex-col gap-5 laptop:col-span-3">
+            <p className="fu-meta text-fieldgrey">{resume.tagline}</p>
             <p className="text-lg leading-relaxed">{resume.description}</p>
             <div className="flex flex-wrap gap-2">
               <a href={`mailto:${email}`} className="fu-btn fu-btn-primary">
@@ -58,10 +58,10 @@ const Resume = () => {
               <li key={exp.id} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr_130px] tablet:gap-4">
                 <span className="fu-meta text-fieldgrey">{exp.dates}</span>
                 <span className="flex flex-col gap-1">
-                  <span className="text-xl font-bold">{exp.position}</span>
+                  <span className="text-lg font-semibold">{exp.position}</span>
                   <span className="text-[15px] text-graphite">{exp.bullets}</span>
                 </span>
-                <span className="fu-meta text-[11px] tablet:text-right">{exp.type}</span>
+                <span className="fu-meta text-graphite tablet:text-right">{exp.type}</span>
               </li>
             ))}
           </ol>
@@ -73,7 +73,7 @@ const Resume = () => {
               <li key={edu.universityName} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr] tablet:gap-4">
                 <span className="fu-meta text-fieldgrey">{edu.universityDate}</span>
                 <span className="flex flex-col gap-1">
-                  <span className="text-xl font-bold">{edu.universityName}</span>
+                  <span className="text-lg font-semibold">{edu.universityName}</span>
                   <span className="text-[15px] text-graphite">{edu.universityPara}</span>
                 </span>
               </li>
@@ -91,7 +91,7 @@ const Resume = () => {
                     <h3 className="fu-title text-phi1">{title}</h3>
                     <ul className="mt-3 flex flex-wrap gap-2">
                       {items.map((item) => (
-                        <li key={item} className="fu-meta border border-ink px-3 py-2">
+                        <li key={item} className="text-[15px]">
                           {item}
                         </li>
                       ))}

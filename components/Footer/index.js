@@ -5,36 +5,30 @@ const Footer = () => {
   const { email, socials, name } = data;
 
   return (
-    <footer id="contact" className="flex flex-col gap-10 bg-ink px-4 pb-6 pt-16 text-bone tablet:px-10 tablet:pt-[68px]">
-      <div className="fu-meta flex flex-wrap justify-between gap-4">
-        <span>
-          04 — Contact
-        </span>
-        <span className="text-signal">● Open to collaborations</span>
-      </div>
-
-      <a href={`mailto:${email}`} className="group flex flex-col">
-        <span className="fu-display relative text-[88px] tablet:text-phi5">
-          Write<span className="text-pink transition-colors group-hover:text-signal">_</span>
-        </span>
-        <span className="break-all pt-6 font-mono text-lg tablet:text-phi1">{email} ↗</span>
-      </a>
-
-      <div className="fu-meta flex flex-col gap-4 border-t border-[#3A3B35] pt-4 tablet:flex-row tablet:items-center tablet:justify-between">
-        <div className="flex flex-wrap gap-2">
-          {socials.map((social) => (
-            <a
-              key={social.id}
-              href={social.link}
-              target="_blank"
-              rel="noreferrer"
-              className="fu-btn border-bone text-bone hover:bg-bone hover:text-ink"
-            >
-              {social.title} ↗
-            </a>
-          ))}
+    <footer id="contact" className="bg-ink px-4 pb-6 pt-4 text-bone tablet:px-10">
+      <div className="grid gap-x-4 gap-y-10 pb-20 laptop:grid-cols-4 laptop:pb-[110px]">
+        <h2 className="fu-title text-phi1">Contact</h2>
+        <div className="flex flex-col gap-6 laptop:col-span-2">
+          <a href={`mailto:${email}`} className="fu-display break-all text-[36px] hover:text-signal tablet:text-phi3">
+            {email}
+          </a>
+          <p className="fu-meta text-bone/60">Open to collaborations — based in Amsterdam.</p>
         </div>
-        <span className="text-[#8E9082]">© {new Date().getFullYear()} {name} — Amsterdam</span>
+        <ul className="flex flex-col gap-2 text-[15px] font-medium">
+          {socials.map((social) => (
+            <li key={social.id}>
+              <a href={social.link} target="_blank" rel="noreferrer" className="hover:text-signal">
+                {social.title} ↗
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="fu-meta flex justify-between border-t border-[#3A3B35] pt-4 text-bone/60">
+        <span>© {new Date().getFullYear()} {name}</span>
+        <a href="#top" className="hover:text-bone">
+          Back to top ↑
+        </a>
       </div>
     </footer>
   );

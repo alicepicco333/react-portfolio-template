@@ -51,9 +51,9 @@
         "/images/tsa-16.jpg"
       ],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://i.postimg.cc/vTr8D58D/Slide-4-3-1.png",
+      "highlightImage": "/images/projects/0.jpg",
       "conclusionText": "Closing summary or reflections for The Stolen Archive.",
-      "imageSrc": "https://i.postimg.cc/vTr8D58D/Slide-4-3-1.png",
+      "imageSrc": "/images/projects/0.jpg",
       "url": "https://marcolamorte.github.io/Looted-items-collection/",
       "category": "Design",
       "tags": [
@@ -85,9 +85,9 @@
         "/images/df-16.jpg"
       ],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://i.postimg.cc/Jh69xsqh/Screenshot-2025-06-19-at-17-21-30.png",
+      "highlightImage": "/images/projects/1.jpg",
       "conclusionText": "Closing summary or reflections for Digitalian Folktales.",
-      "imageSrc": "https://i.postimg.cc/Jh69xsqh/Screenshot-2025-06-19-at-17-21-30.png",
+      "imageSrc": "/images/projects/1.jpg",
       "url": "https://n1kg0r.github.io/digitalian-folktales/",
       "category": "Research",
       "tags": [
@@ -118,9 +118,9 @@
         "/images/cbo-16.jpg"
       ],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://the-bias-project.gitbook.io/~gitbook/image?url=https%3A%2F%2F3715292082-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F69TpXcnhHK5qcm12xmil%252Fuploads%252FIQvAYofzi8QMD9jMtoaj%252FCognitive_Bias_Codex_-_180%252B_biases%252C_designed_by_John_Manoogian_III_%28jm3%29.jpg%3Falt%3Dmedia%26token%3Dd355d388-93e0-4c7f-a24b-0cf4156ebff8&width=400&dpr=3&quality=100&sign=6cc4dc15&sv=2",
+      "highlightImage": "/images/projects/2.jpg",
       "conclusionText": "Closing summary or reflections for Cognitive Bias Ontology.",
-      "imageSrc": "https://the-bias-project.gitbook.io/~gitbook/image?url=https%3A%2F%2F3715292082-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F69TpXcnhHK5qcm12xmil%252Fuploads%252FIQvAYofzi8QMD9jMtoaj%252FCognitive_Bias_Codex_-_180%252B_biases%252C_designed_by_John_Manoogian_III_%28jm3%29.jpg%3Falt%3Dmedia%26token%3Dd355d388-93e0-4c7f-a24b-0cf4156ebff8&width=400&dpr=3&quality=100&sign=6cc4dc15&sv=2",
+      "imageSrc": "/images/projects/2.jpg",
       "url": "https://the-bias-project.gitbook.io/cognitive-bias-ontologies-project-documentation",
       "category": "Research",
       "tags": [
@@ -152,9 +152,9 @@
         "/images/weu-16.jpg"
       ],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://i.postimg.cc/fRkfDRdG/wip.png",
+      "highlightImage": "/images/projects/3.jpg",
       "conclusionText": "Closing summary or reflections for wipEU.",
-      "imageSrc": "https://i.postimg.cc/fRkfDRdG/wip.png",
+      "imageSrc": "/images/projects/3.jpg",
       "url": "https://alicepicco333.github.io/wipEU/",
       "category": "Research",
       "tags": [
@@ -186,9 +186,9 @@
         "/images/gm-16.jpg"
       ],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://i.postimg.cc/pdFkpmnn/Screenshot-2025-06-19-at-19-24-48-Expanded-Publishing-Fest-2-Space-in-Space-out-Live-coding-perfor.png",
+      "highlightImage": "/images/projects/5.jpg",
       "conclusionText": "Closing summary or reflections for Glitching Materiality.",
-      "imageSrc": "https://i.postimg.cc/pdFkpmnn/Screenshot-2025-06-19-at-19-24-48-Expanded-Publishing-Fest-2-Space-in-Space-out-Live-coding-perfor.png",
+      "imageSrc": "/images/projects/5.jpg",
       "url": "https://player.vimeo.com/video/980415428?loop=1&mute=1",
       "category": "Live Coding",
       "tags": [
@@ -287,9 +287,9 @@
         "/images/cccj-16.jpg"
       ],
       "middleText": "Middle explanatory section of the project.",
-      "highlightImage": "https://wiki.hackersanddesigners.nl//images/c/c5/DSC06089.JPG",
+      "highlightImage": "/images/projects/10.jpg",
       "conclusionText": "Closing summary or reflections for CCC Jam.",
-      "imageSrc": "https://wiki.hackersanddesigners.nl//images/c/c5/DSC06089.JPG",
+      "imageSrc": "/images/projects/10.jpg",
       "url": "https://hackersanddesigners.nl/collaboratory-creative-coding-jam.html",
       "category": "Live Coding",
       "tags": [

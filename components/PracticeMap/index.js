@@ -38,10 +38,10 @@ const neighbours = (id) =>
   EDGES.filter((e) => e.includes(id)).map((e) => (e[0] === id ? e[1] : e[0]));
 const labelOf = (id) => NODES.find((n) => n.id === id).label;
 
-// Wide canvas on desktop; a narrower one on phones so labels stay readable.
+// Square canvas; a smaller coordinate space on phones so labels stay readable.
 const GEOMETRY = {
-  wide: { W: 800, H: 700, sx: 290, sy: 236, font: 11 },
-  narrow: { W: 480, H: 640, sx: 170, sy: 230, font: 12.5 },
+  wide: { W: 700, H: 700, sx: 250, sy: 215, font: 13, dy: -30 },
+  narrow: { W: 520, H: 520, sx: 180, sy: 150, font: 14, dy: -30 },
 };
 
 function project([x, y, z], ay, ax, g) {
@@ -54,7 +54,7 @@ function project([x, y, z], ay, ax, g) {
   const y1 = y * cx - z1 * sx;
   const z2 = y * sx + z1 * cx;
   const scale = 2.8 / (2.8 + z2); // perspective
-  return { x: g.W / 2 + x1 * scale * g.sx, y: g.H / 2 - 20 + y1 * scale * g.sy, z: z2, scale };
+  return { x: g.W / 2 + x1 * scale * g.sx, y: g.H / 2 + g.dy + y1 * scale * g.sy, z: z2, scale };
 }
 
 const PracticeMap = ({ projects = [] }) => {
@@ -114,7 +114,7 @@ const PracticeMap = ({ projects = [] }) => {
 
   return (
     <div
-      className="fu-grid-bg relative h-full overflow-hidden bg-olive text-bone"
+      className="relative h-full overflow-hidden bg-olive text-bone"
       onPointerMove={onPointerMove}
       onPointerLeave={() => (tilt.current = { ay: 0, ax: 0 })}
     >
@@ -172,9 +172,6 @@ const PracticeMap = ({ projects = [] }) => {
               style={{ cursor: "pointer", outline: "none", opacity, transition: "opacity .3s" }}
             >
               <circle cx={pt.x} cy={pt.y} r={18} fill="transparent" />
-              {isActive && (
-                <circle className="fu-pulse" cx={pt.x} cy={pt.y} r={7 * pt.scale} fill="none" stroke="#D7FF3C" strokeWidth="1.5" />
-              )}
               <circle
                 cx={pt.x}
                 cy={pt.y}
@@ -187,12 +184,12 @@ const PracticeMap = ({ projects = [] }) => {
                 x={pt.x + (right ? 12 : -12)}
                 y={pt.y + 4}
                 textAnchor={right ? "start" : "end"}
-                fontFamily="Space Mono, monospace"
+                fontFamily="Instrument Sans, sans-serif"
                 fontSize={g.font + 3 * (pt.scale - 0.7)}
-                fontWeight={isActive ? 700 : 400}
+                fontWeight={isActive ? 600 : 500}
                 fill={isActive ? "#D7FF3C" : "#E8E4DA"}
               >
-                {node.label.toUpperCase()}
+                {node.label}
               </text>
             </g>
           );
@@ -202,26 +199,26 @@ const PracticeMap = ({ projects = [] }) => {
       {/* where the selected skill shows up in the work */}
       <div className="pointer-events-none absolute inset-x-4 bottom-4 tablet:inset-x-6 tablet:bottom-6" aria-live="polite">
         {activeNode ? (
-          <div className="pointer-events-auto max-w-[420px] border border-[#6E7556] bg-olive/95 p-4">
-            <p className="fu-title text-phi1 text-signal">{activeNode.label}</p>
-            <p className="fu-meta mt-2 text-[11px] text-bone/70">
+          <div className="pointer-events-auto max-w-[400px] bg-bone p-4 text-ink">
+            <p className="fu-title text-phi1">{activeNode.label}</p>
+            <p className="fu-meta mt-2 text-graphite">
               Linked to {neighbours(activeNode.id).map(labelOf).join(" / ")}
             </p>
             {activeWork.length > 0 && (
-              <ul className="mt-3 flex flex-col gap-1 border-t border-[#6E7556] pt-3 text-sm">
+              <ul className="mt-3 flex flex-col gap-1 border-t border-concrete pt-3 text-[15px] font-medium">
                 {activeWork.map((work) => (
                   <li key={work.id}>
-                    <Link href={`/projects/${work.id}`} className="hover:text-signal">
+                    <Link href={`/projects/${work.id}`} className="hover:underline">
                       ↗ {work.title.split(" - ")[0]}
                     </Link>
                   </li>
                 ))}
               </ul>
             )}
-            {pinned === activeNode.id && <p className="fu-meta mt-3 text-[10px] text-bone/50">Click the node again to unpin</p>}
+            {pinned === activeNode.id && <p className="fu-meta mt-3 text-fieldgrey">Click the node again to unpin</p>}
           </div>
         ) : (
-          <p className="fu-meta text-[11px] text-bone/60">Hover or tap a skill to see where it shows up · click to pin</p>
+          <p className="fu-meta text-bone/70">Hover or tap a skill to see where it shows up</p>
         )}
       </div>
     </div>

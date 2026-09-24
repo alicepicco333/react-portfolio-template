@@ -1,40 +1,28 @@
 import React from "react";
 import { categoryMeta, withBase } from "../../utils";
 
+// Square image tile, flush-left caption underneath. Without an image the square
+// becomes a flat colour field in the project's category tone.
 const WorkCard = ({ img, name, description, tags, category, cardNumber }) => {
-  const { short, tone } = categoryMeta(category);
+  const { tone } = categoryMeta(category);
 
   return (
-    <article className="flex h-full flex-col border border-ink bg-paper">
-      <div className="relative flex h-[260px] items-center justify-center overflow-hidden border-b border-ink bg-concrete tablet:h-[340px]">
+    <article className="flex flex-col gap-3">
+      <div className="aspect-square overflow-hidden" style={{ background: tone }}>
         {img ? (
           <img src={withBase(img)} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
         ) : (
-          <span className="fu-display px-6 text-center text-[48px] leading-[0.85] text-ink/25 tablet:text-phi3">{name}</span>
+          <div className="flex h-full items-end p-4">
+            <span className="fu-title text-phi1">{name}</span>
+          </div>
         )}
-        <span
-          className="fu-meta absolute left-0 top-0 border-b border-r border-ink px-3 py-2 text-[11px]"
-          style={{ background: tone }}
-        >
-          {cardNumber} · {short}
-        </span>
       </div>
-
-      <div className="fu-bar flex items-center justify-between gap-4 border-b border-ink px-5 py-4">
-        <h3 className="fu-title text-[32px] tablet:text-phi2">{name}</h3>
-        <span className="font-mono text-xl" aria-hidden="true">
-          ↗
-        </span>
+      <div className="flex items-baseline gap-3">
+        <span className="fu-meta text-fieldgrey">{cardNumber}</span>
+        <h4 className="fu-title text-xl">{name}</h4>
       </div>
-
-      <div className="flex flex-grow flex-col justify-between gap-4 px-5 pb-5 pt-4 tablet:flex-row tablet:gap-6">
-        <p className="max-w-[440px] text-base leading-relaxed">{description}</p>
-        <ul className="fu-meta flex flex-shrink-0 flex-wrap gap-x-3 text-[11px] leading-relaxed text-olive tablet:flex-col tablet:text-right">
-          {tags?.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-      </div>
+      <p className="text-[15px] leading-snug text-graphite">{description}</p>
+      {tags?.length > 0 && <p className="fu-meta text-fieldgrey">{tags.join(", ")}</p>}
     </article>
   );
 };
