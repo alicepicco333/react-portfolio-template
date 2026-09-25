@@ -23,14 +23,16 @@ export const DEFAULT_PALETTE = {
   },
 };
 
-// Hue offsets per harmony: [olive (dark accent), signal, pastel 1, pastel 2, pastel 3]
+// Hue offsets from the base (background) hue for each role:
+// panel = the dark accent field (map, primary buttons), signal = the vivid highlight,
+// p1–p3 = the pastel tiles. Every harmony spreads the roles across the wheel.
 const SCHEMES = [
-  { name: "Analogous", offsets: [30, -30, 0, 30, -30] },
-  { name: "Complementary", offsets: [0, 180, 0, 180, 20] },
-  { name: "Split complementary", offsets: [0, 150, 150, 210, 0] },
-  { name: "Triadic", offsets: [0, 120, 0, 120, 240] },
-  { name: "Tetradic", offsets: [90, 180, 0, 90, 270] },
-  { name: "Monochrome", offsets: [0, 0, 0, 0, 0] },
+  { name: "Complementary", panel: 180, signal: 30, p: [0, 180, 200] },
+  { name: "Split complementary", panel: 150, signal: 210, p: [0, 150, 210] },
+  { name: "Triadic", panel: 120, signal: 240, p: [0, 120, 240] },
+  { name: "Tetradic", panel: 90, signal: 180, p: [0, 90, 270] },
+  { name: "Analogous", panel: 40, signal: -40, p: [0, 40, -40] },
+  { name: "Clash", panel: 200, signal: 110, p: [60, 250, 310] },
 ];
 
 // --- OKLCH → sRGB -----------------------------------------------------------
@@ -86,21 +88,23 @@ function withContrast(L, C, h, against, min, direction) {
 export function generatePalette(random = Math.random) {
   const scheme = SCHEMES[Math.floor(random() * SCHEMES.length)];
   const base = Math.round(random() * 360);
-  const hue = (offset) => (base + offset + 360) % 360;
-  const [oliveH, signalH, p1, p2, p3] = scheme.offsets.map(hue);
-  const mono = scheme.name === "Monochrome";
+  const hue = (offset) => (((base + offset) % 360) + 360) % 360;
+  const between = (lo, hi) => lo + random() * (hi - lo);
 
-  const bone = oklch(0.925, 0.022, base);
-  const paper = oklch(0.955, 0.014, base);
-  const ink = withContrast(0.2, 0.02, base, bone, 12, -1);
-  const graphite = withContrast(0.42, 0.02, base, bone, 7, -1);
-  const fieldGrey = withContrast(0.53, 0.025, base, bone, 4.6, -1);
-  const concrete = oklch(0.8, 0.02, base);
-  const khaki = oklch(0.72, 0.06, p3);
-  const olive = withContrast(0.42, 0.07, oliveH, bone, 7, -1);
-  // signal sits on olive and ink (map highlights, footer hover), so it stays very light
-  const signal = withContrast(0.93, mono ? 0.12 : 0.2, signalH, olive, 5.5, 1);
-  const pastel = (h, shift) => oklch(0.86, mono ? 0.03 + shift : 0.075, h);
+  // tinted paper, not grey
+  const bone = oklch(between(0.9, 0.94), between(0.045, 0.08), base);
+  const paper = oklch(0.965, 0.03, base);
+  // text keeps a trace of the panel colour instead of flat black
+  const ink = withContrast(0.24, 0.05, hue(scheme.panel), bone, 12, -1);
+  const graphite = withContrast(0.42, 0.045, hue(scheme.panel), bone, 7, -1);
+  const fieldGrey = withContrast(0.52, 0.05, base, bone, 4.6, -1);
+  const concrete = oklch(0.8, 0.05, base);
+  // a saturated accent field in another hue, as dark as bone-on-panel contrast needs
+  const olive = withContrast(0.5, between(0.13, 0.18), hue(scheme.panel), bone, 6.5, -1);
+  // a vivid highlight that reads on the panel and on ink
+  const signal = withContrast(0.86, 0.24, hue(scheme.signal), olive, 4.5, 1);
+  const khaki = oklch(0.7, 0.11, hue(scheme.p[2]));
+  const pastel = (offset) => oklch(0.83, 0.12, hue(offset));
 
   const vars = {
     bone,
@@ -111,9 +115,9 @@ export function generatePalette(random = Math.random) {
     concrete,
     graphite,
     "field-grey": fieldGrey,
-    pink: pastel(p1, 0),
-    lilac: pastel(p2, 0.02),
-    mint: pastel(p3, 0.04),
+    pink: pastel(scheme.p[0] + 10),
+    lilac: pastel(scheme.p[1]),
+    mint: pastel(scheme.p[2]),
     signal,
   };
   return {
