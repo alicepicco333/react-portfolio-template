@@ -18,9 +18,9 @@ const WorkCard = ({ img, name, description, tags, category, cardNumber, date }) 
         )}
       </div>
       <div className="flex items-baseline gap-3">
-        <span className="fu-meta text-fieldgrey">{cardNumber}</span>
+        <span className="fu-meta text-olive">{cardNumber}</span>
         <h4 className="fu-title text-xl">{name}</h4>
-        {date && <span className="fu-meta ml-auto shrink-0 text-fieldgrey">{date}</span>}
+        {date && <span className="fu-meta ml-auto shrink-0 text-olive">{date}</span>}
       </div>
       <p className="text-[15px] leading-snug text-graphite">{description}</p>
       {tags?.length > 0 && <p className="fu-meta text-fieldgrey">{tags.join(", ")}</p>}

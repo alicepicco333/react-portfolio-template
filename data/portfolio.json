@@ -440,22 +440,26 @@
       "gridImages": [
         {
           "src": "/images/projects/15-g1.jpg",
-          "caption": "Click any of 19,168 places for its record: here the Museo degli Innocenti, with hours, price and website from the Ministry of Culture's open data."
+          "caption": "Counting libraries rewards big provinces; per inhabitant, the map changes."
         },
         {
           "src": "/images/projects/15-g2.jpg",
-          "caption": "Places with free entry, counted in hexagons at country scale, in dark mode."
+          "caption": "Where the cultural institutions are, next to the share of municipalities with no library, by region."
         },
         {
           "src": "/images/projects/15-g3.jpg",
-          "caption": "The supply map redraws from library counts to libraries per 10,000 inhabitants as you scroll."
+          "caption": "Southern libraries lend a fraction of what northern ones do: loans per public library, 2022."
         },
         {
           "src": "/images/projects/15-g4.jpg",
-          "caption": "Your place: Campania compared with Emilia-Romagna on every measure, with ranks and the Italian figure."
+          "caption": "Where libraries lend less, fewer people read: reading habits by region, 2021."
+        },
+        {
+          "src": "/images/projects/15-g5.jpg",
+          "caption": "The findings, each linked back to its chart, and how every number was made."
         }
       ],
-      "middleText": "Built on open data from ISTAT and the Ministry of Culture, the 2026 version reads as an atlas of Italian culture: 19,168 libraries, museums, archives and heritage sites you can search, filter and click for their records; a supply map that turns counts into rates per inhabitant as you scroll; ranked comparisons of loans, reading and free entry; and a profile of any region or province against the Italian average. It is set in Fraunces and Source Serif on warm paper, with a light/dark switch.",
+      "middleText": "Built on open data from ISTAT and the Ministry of Culture, the 2026 version is a data story on unequal access to culture: headline figures, a per-capita map from ISTAT's own rate of libraries per 10,000 inhabitants next to the raw counts, ranked bars instead of a pie chart, loans per library, reading habits by region and a loans-versus-reading comparison, with the finding stated and a data table under every chart.",
       "highlightImage": "/images/projects/15-hl.jpg",
       "conclusionText": "Institutions cluster in Lombardy, Veneto, Tuscany and Lazio, cities borrow more than rural areas, and reading habits vary widely, which points to where cultural infrastructure needs investment. Made for Information Visualization (2023/24, University of Bologna) with Corrado Consiglio and Salvatore Di Marzo, who gathered and cleaned the data. I designed the visualisations and built the site with Leaflet, D3.js and Chart.js.",
       "imageSrc": "/images/projects/15.jpg",
@@ -465,7 +469,7 @@
         "Data Visualization",
         "Web Development"
       ],
-      "highlightCaption": "An atlas of Italian culture: the title page, with a picker for any region or province.",
+      "highlightCaption": "Where you live in Italy decides how much culture you can reach: the opening, with four headline figures.",
       "date": "2024-06-04",
       "dateLabel": "2024 · reworked 2026",
       "context": "Information Visualization, 2023/24, MA Digital Humanities and Digital Knowledge, University of Bologna",

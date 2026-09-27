@@ -46,7 +46,7 @@ const Header = () => {
 
         <nav className="hidden items-center gap-6 font-medium laptop:col-span-2 laptop:flex" aria-label="Main">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:underline">
+            <Link key={link.href} href={link.href} className="decoration-olive decoration-2 underline-offset-[6px] hover:underline">
               {link.label}
             </Link>
           ))}

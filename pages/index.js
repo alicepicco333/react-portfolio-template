@@ -20,19 +20,30 @@ const GROUPS = [
 const anchorOf = (id) => `works-${id.toLowerCase().replace(/ /g, "-")}`;
 const pad = (n) => String(n).padStart(2, "0");
 
+// Section chapters alternate tone: plain paper, the accent field, or a pastel.
+const TONES = {
+  paper: { wrap: "border-t border-ink", number: "text-olive", note: "text-graphite", bar: "bg-olive" },
+  accent: { wrap: "bg-olive text-bone", number: "text-signal", note: "text-bone/80", bar: "bg-signal" },
+  pastel: { wrap: "bg-pink text-ink", number: "text-ink", note: "text-ink/80", bar: "bg-ink" },
+};
+
 // Swiss section: a label column on the left, content across the other three.
-const Section = ({ id, number, title, note, className = "", children }) => (
-  <section id={id} className={`scroll-mt-14 border-t border-ink px-4 pb-20 pt-4 tablet:px-10 laptop:pb-[110px] ${className}`}>
+const Section = ({ id, number, title, note, tone = "paper", className = "", children }) => {
+  const t = TONES[tone];
+  return (
+  <section id={id} className={`scroll-mt-14 px-4 pb-20 pt-4 tablet:px-10 laptop:pb-[110px] ${t.wrap} ${tone === "paper" ? "" : "pt-10"} ${className}`}>
     <div className="grid gap-x-4 gap-y-8 laptop:grid-cols-4">
       <div className="fu-reveal flex flex-col gap-1">
-        {number && <span className="fu-meta text-fieldgrey">{number}</span>}
+        {number && <span className={`fu-meta ${t.number}`}>{number}</span>}
         <h2 className="fu-title text-phi1">{title}</h2>
-        {note && <p className="fu-meta max-w-[260px] text-graphite">{note}</p>}
+        <span className={`mb-2 mt-2 block h-[6px] w-14 ${t.bar}`} aria-hidden="true" />
+        {note && <p className={`fu-meta max-w-[260px] ${t.note}`}>{note}</p>}
       </div>
       <div className="laptop:col-span-3">{children}</div>
     </div>
   </section>
-);
+  );
+};
 
 // An index row for work in progress and past projects.
 const IndexRow = ({ project, number, status }) => (
@@ -41,13 +52,13 @@ const IndexRow = ({ project, number, status }) => (
       href={`/projects/${project.id}`}
       className="group grid grid-cols-[40px_1fr] gap-x-4 gap-y-1 border-b border-concrete py-5 transition-colors hover:bg-paper tablet:grid-cols-[48px_1fr_180px]"
     >
-      <span className="fu-meta pt-1 text-fieldgrey">{number}</span>
+      <span className="fu-meta pt-1 text-olive">{number}</span>
       <span className="flex flex-col gap-1">
         <span className="fu-title text-[22px] group-hover:underline">{project.title}</span>
         <span className="text-[15px] leading-snug text-graphite">{project.description}</span>
       </span>
       <span className="fu-meta col-start-2 flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-graphite tablet:col-start-auto tablet:flex-col tablet:items-start">
-        <span className="text-ink">{project.dateLabel}</span>
+        <span className="text-olive">{project.dateLabel}</span>
         {status ? (
           <>
             <span className="fu-blink h-2 w-2 rounded-full bg-olive" aria-hidden="true" />
@@ -165,7 +176,10 @@ const Home = () => {
         {/* ——— Works ——— */}
         <section id="work" className="scroll-mt-14 border-t border-ink px-4 pb-20 pt-4 tablet:px-10 laptop:pb-[110px]">
           <div className="grid gap-x-4 gap-y-6 laptop:grid-cols-4">
-            <h2 className="fu-display fu-reveal text-[48px] tablet:text-phi3">Works</h2>
+            <div className="flex flex-col gap-4">
+              <h2 className="fu-display fu-reveal text-[48px] tablet:text-phi3">Works</h2>
+              <span className="block h-[8px] w-24 bg-olive" aria-hidden="true" />
+            </div>
             <nav className="flex flex-wrap content-start gap-x-6 gap-y-2 pt-2 laptop:col-span-3 laptop:pt-5" aria-label="Jump to a group of works">
               {index.map((group) => (
                 <a key={group.id} href={`#${anchorOf(group.id)}`} className="text-[15px] font-medium hover:underline">
@@ -182,8 +196,9 @@ const Home = () => {
               className="mt-16 grid scroll-mt-20 gap-x-4 gap-y-8 border-t border-ink pt-4 laptop:grid-cols-4"
             >
               <div className="fu-reveal flex flex-col gap-1">
-                <span className="fu-meta text-fieldgrey">{pad(groupIndex + 1)}</span>
+                <span className="fu-meta text-olive">{pad(groupIndex + 1)}</span>
                 <h3 className="fu-title text-phi1">{group.short}</h3>
+                <span className="mb-1 mt-1 block h-[6px] w-14 bg-olive" aria-hidden="true" />
                 <p className="fu-meta text-graphite">{group.blurb}</p>
               </div>
               <div className="grid gap-x-4 gap-y-12 tablet:grid-cols-2 laptop:col-span-3 laptop:grid-cols-3">
@@ -221,10 +236,10 @@ const Home = () => {
           </ol>
         </Section>
 
-        <Section id="about" title="About" note={resume.tagline}>
+        <Section id="about" title="About" note={resume.tagline} tone="accent">
           <div className="fu-reveal flex flex-col gap-10">
             <p className="fu-title max-w-[900px] text-[32px] tablet:text-phi2">
-              I work at the intersection of culture, technology and design.
+              I work at the intersection of <span className="text-signal">culture, technology and design.</span>
             </p>
             <div className="grid max-w-[900px] gap-6 text-[17px] leading-relaxed tablet:grid-cols-2">
               <p>{portfolioData.aboutpara}</p>
@@ -233,19 +248,19 @@ const Home = () => {
           </div>
         </Section>
 
-        <Section id="record" title="Record" note="Experience and education">
+        <Section id="record" title="Record" note="Experience and education" tone="pastel">
           <ol className="fu-reveal border-t border-ink">
             {record.map((entry) => (
               <li
                 key={entry.id}
-                className="grid gap-y-1 border-b border-concrete py-5 tablet:grid-cols-[170px_1fr_120px] tablet:gap-x-4"
+                className="grid gap-y-1 border-b border-ink/25 py-5 tablet:grid-cols-[170px_1fr_120px] tablet:gap-x-4"
               >
-                <span className="fu-meta pt-1 text-fieldgrey">{entry.dates}</span>
+                <span className="fu-meta pt-1 text-ink">{entry.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-lg font-semibold">{entry.position}</span>
-                  <span className="text-[15px] text-graphite">{entry.bullets}</span>
+                  <span className="text-[15px] text-ink/80">{entry.bullets}</span>
                 </span>
-                <span className="fu-meta pt-1 text-graphite tablet:text-right">{entry.type}</span>
+                <span className="fu-meta pt-1 text-ink/80 tablet:text-right">{entry.type}</span>
               </li>
             ))}
           </ol>
