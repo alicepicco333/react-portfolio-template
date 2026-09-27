@@ -70,7 +70,13 @@
       ],
       "highlightCaption": "Home page: the thirty objects, five continents, thirteen rooms, two floors and three tours.",
       "date": "2026-09-01",
-      "dateLabel": "2024 – 2026"
+      "dateLabel": "2024 · reworked 2026",
+      "context": "Information Modelling and Web Technologies (prof. Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": [
+        "Corrado Consiglio",
+        "Marco Lamorte"
+      ],
+      "reworkNote": "The Stolen Archive began as a group project with Corrado Consiglio and Marco Lamorte for Information Modelling and Web Technologies. I reworked it independently in 2026; the version shown here is that rework."
     },
     {
       "id": "1",
@@ -94,7 +100,11 @@
       ],
       "highlightCaption": "Comparing Gesù e San Pietro in Friuli and in Sicilia side by side.",
       "date": "2024-01-25",
-      "dateLabel": "2023 – 2024"
+      "dateLabel": "2023 – 2024",
+      "context": "MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": [
+        "Nikolai Gorbachev"
+      ]
     },
     {
       "id": "2",
@@ -119,7 +129,13 @@
       ],
       "highlightCaption": "Introduction page of the project documentation.",
       "date": "2023-06-01",
-      "dateLabel": "2023"
+      "dateLabel": "2023",
+      "context": "Knowledge Representation and Extraction (prof. Aldo Gangemi), 2022/23, MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": [
+        "Marco Lamorte",
+        "Corrado Consiglio",
+        "Salvatore Di Marzo"
+      ]
     },
     {
       "id": "3",
@@ -156,7 +172,13 @@
       ],
       "highlightCaption": "The chamber: one dot per person. In 2023, 44 of the 164 leaders of major political parties in the EU-27 were women.",
       "date": "2024-02-07",
-      "dateLabel": "Feb 2024"
+      "dateLabel": "2024 · reworked 2026",
+      "context": "Open Access and Digital Ethics, 2023/24, MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": [
+        "Salvatore Di Marzo",
+        "Matteo Guenci"
+      ],
+      "reworkNote": "wipEU began as a group project with Salvatore Di Marzo and Matteo Guenci for Open Access and Digital Ethics (2023/24). I reworked it independently in 2026; the version shown here is that rework."
     },
     {
       "id": "5",
@@ -176,7 +198,11 @@
       ],
       "highlightCaption": "Still from the performance recording.",
       "date": "2024-07-01",
-      "dateLabel": "Jul 2024"
+      "dateLabel": "Jul 2024",
+      "context": "Expanded Publishing Fest 2: Space-in / Space-out, Institute of Network Cultures, Amsterdam",
+      "collaborators": [
+        "Karolis Lasys"
+      ]
     },
     {
       "id": "6",
@@ -196,7 +222,12 @@
       ],
       "highlightCaption": "Title card of the short.",
       "date": "2023-09-01",
-      "dateLabel": "2023"
+      "dateLabel": "2023",
+      "context": "3D Animation course, Demetra Formazione with the Future Film Festival, Bologna",
+      "collaborators": [
+        "Jessica Bugamelli",
+        "Laura Martorana"
+      ]
     },
     {
       "id": "9",
@@ -214,7 +245,11 @@
         "2D Animation"
       ],
       "date": "2020-05-09",
-      "dateLabel": "2020"
+      "dateLabel": "2020",
+      "context": "Short film by Davide di Lorenzo for Ababo Cinema",
+      "collaborators": [
+        "Davide di Lorenzo"
+      ]
     },
     {
       "id": "10",
@@ -238,7 +273,9 @@
         "Live Coding"
       ],
       "date": "2024-07-20",
-      "dateLabel": "Jul 2024"
+      "dateLabel": "Jul 2024",
+      "context": "HDSC2024 open programme, Hackers & Designers, Het Wilde Weg, Amsterdam",
+      "collaborators": []
     },
     {
       "id": "11",
@@ -283,7 +320,9 @@
       ],
       "highlightCaption": "Collection page, with filters for browsing the pieces.",
       "date": "2026-05-01",
-      "dateLabel": "2025 – 2026"
+      "dateLabel": "2025 – 2026",
+      "context": "Commission for Teigetje & Woelrat, Amsterdam",
+      "collaborators": []
     },
     {
       "id": "12",
@@ -301,15 +340,19 @@
         },
         {
           "src": "/images/projects/12-g3.jpg",
-          "caption": "Creative productivity against cultural prominence."
+          "caption": "Memes placed by creative productivity against cultural prominence."
         },
         {
           "src": "/images/projects/12-g4.jpg",
-          "caption": "Variant gallery: the dimensions along which a meme is transformed."
+          "caption": "Variant gallery: memes grouped by the dimension along which they are transformed."
         },
         {
           "src": "/images/projects/12-g5.jpg",
-          "caption": "SPARQL explorer with example queries."
+          "caption": "Variant family tree: one meme and its variants, with the colour spectrum of the set."
+        },
+        {
+          "src": "/images/projects/12-g6.jpg",
+          "caption": "SPARQL explorer with example queries over the knowledge graph."
         }
       ],
       "middleText": "Following Lev Manovich's cultural analytics, it treats memes as a large dataset rather than isolated texts. Around 5,000 images and their metadata, scraped from Know Your Meme, are described in an OWL ontology informed by FRBR across three areas: visual content, cultural references and format. CLIP is used to classify them semi-automatically.",
@@ -322,9 +365,11 @@
         "Ontology Engineering",
         "Semantic Web"
       ],
-      "highlightCaption": "Home page: a wall of memes from the dataset.",
+      "highlightCaption": "Home page: a wall of memes from the Know Your Meme sample, around the project title.",
       "date": "2026-06-01",
-      "dateLabel": "2024 – 2026"
+      "dateLabel": "2024 – 2026",
+      "context": "Master's thesis (supervisor Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna; begun as a research internship at the Institute of Network Cultures",
+      "collaborators": []
     },
     {
       "id": "13",
@@ -343,7 +388,9 @@
         "Digitisation"
       ],
       "date": "2026-09-03",
-      "dateLabel": "2026 –"
+      "dateLabel": "2026 –",
+      "context": "Archivio Luki Massa, Bologna",
+      "collaborators": null
     },
     {
       "id": "14",
@@ -381,7 +428,9 @@
       ],
       "highlightCaption": "The projection across the wall of the venue.",
       "date": "2026-01-30",
-      "dateLabel": "Jan 2026"
+      "dateLabel": "Jan 2026",
+      "context": "Live set as 5PIC3, Fullfillment Music Center",
+      "collaborators": []
     },
     {
       "id": "15",
@@ -391,30 +440,22 @@
       "gridImages": [
         {
           "src": "/images/projects/15-g1.jpg",
-          "caption": "Libraries by province, 2022."
+          "caption": "Click any of 19,168 places for its record: here the Museo degli Innocenti, with hours, price and website from the Ministry of Culture's open data."
         },
         {
           "src": "/images/projects/15-g2.jpg",
-          "caption": "Library holdings by region and year."
+          "caption": "Places with free entry, counted in hexagons at country scale, in dark mode."
         },
         {
           "src": "/images/projects/15-g3.jpg",
-          "caption": "Libraries, archives and museums on a pin map."
+          "caption": "The supply map redraws from library counts to libraries per 10,000 inhabitants as you scroll."
         },
         {
           "src": "/images/projects/15-g4.jpg",
-          "caption": "Library loans by category, grouped by region."
-        },
-        {
-          "src": "/images/projects/15-g5.jpg",
-          "caption": "Reading habits by region, 2021."
-        },
-        {
-          "src": "/images/projects/15-g6.jpg",
-          "caption": "Key findings."
+          "caption": "Your place: Campania compared with Emilia-Romagna on every measure, with ranks and the Italian figure."
         }
       ],
-      "middleText": "Built on open data from ISTAT, dati.cultura and cultural institutions, the site has five interactive visualisations: a choropleth map of libraries by province, a pie chart of library holdings, a pin map of libraries, archives and museums, library loans grouped by region, area, population or urban classification, and reading habits by region.",
+      "middleText": "Built on open data from ISTAT and the Ministry of Culture, the 2026 version reads as an atlas of Italian culture: 19,168 libraries, museums, archives and heritage sites you can search, filter and click for their records; a supply map that turns counts into rates per inhabitant as you scroll; ranked comparisons of loans, reading and free entry; and a profile of any region or province against the Italian average. It is set in Fraunces and Source Serif on warm paper, with a light/dark switch.",
       "highlightImage": "/images/projects/15-hl.jpg",
       "conclusionText": "Institutions cluster in Lombardy, Veneto, Tuscany and Lazio, cities borrow more than rural areas, and reading habits vary widely, which points to where cultural infrastructure needs investment. Made for Information Visualization (2023/24, University of Bologna) with Corrado Consiglio and Salvatore Di Marzo, who gathered and cleaned the data. I designed the visualisations and built the site with Leaflet, D3.js and Chart.js.",
       "imageSrc": "/images/projects/15.jpg",
@@ -424,9 +465,15 @@
         "Data Visualization",
         "Web Development"
       ],
-      "highlightCaption": "Home page.",
+      "highlightCaption": "An atlas of Italian culture: the title page, with a picker for any region or province.",
       "date": "2024-06-04",
-      "dateLabel": "Jun 2024"
+      "dateLabel": "2024 · reworked 2026",
+      "context": "Information Visualization, 2023/24, MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": [
+        "Corrado Consiglio",
+        "Salvatore Di Marzo"
+      ],
+      "reworkNote": "Culture for All began as a group project with Corrado Consiglio and Salvatore Di Marzo for Information Visualization (2023/24). I reworked it independently in 2026; the version shown here is that rework."
     },
     {
       "id": "16",
@@ -459,7 +506,12 @@
       ],
       "highlightCaption": "Project website.",
       "date": "2024-05-15",
-      "dateLabel": "May 2024"
+      "dateLabel": "May 2024",
+      "context": "Semantic Digital Libraries, 2024, MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": [
+        "Gaia Ortona",
+        "Chiara Parravicini"
+      ]
     },
     {
       "id": "17",
@@ -478,7 +530,9 @@
         "Interaction Design"
       ],
       "date": "2026-09-10",
-      "dateLabel": "Sep 2026"
+      "dateLabel": "Sep 2026",
+      "context": "Data Systems Project, MSc Information Studies, 2026/27, with Q42 and Curamando as stakeholders",
+      "collaborators": null
     },
     {
       "id": "18",
@@ -496,7 +550,9 @@
         "Speculative Design"
       ],
       "date": "2026-09-18",
-      "dateLabel": "Sep 2026"
+      "dateLabel": "Sep 2026",
+      "context": "Multimodal Interaction Design course",
+      "collaborators": null
     },
     {
       "id": "19",
@@ -515,7 +571,9 @@
         "HCI"
       ],
       "date": "2026-09-15",
-      "dateLabel": "Sep 2026"
+      "dateLabel": "Sep 2026",
+      "context": "HCI Theory and Data course",
+      "collaborators": []
     },
     {
       "id": "20",
@@ -938,7 +996,9 @@
         ]
       },
       "date": "2026-03-08",
-      "dateLabel": "2025 – 2026"
+      "dateLabel": "2025 – 2026",
+      "context": "HCI course project, MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "collaborators": []
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",

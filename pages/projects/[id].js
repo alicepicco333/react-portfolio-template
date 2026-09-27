@@ -79,11 +79,26 @@ export default function ProjectPage({ project, number, next }) {
             <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[140px_1fr]">
               <dt className="text-fieldgrey">Date</dt>
               <dd>{project.dateLabel}</dd>
+              {project.context && (
+                <>
+                  <dt className="text-fieldgrey">Context</dt>
+                  <dd>{project.context}</dd>
+                </>
+              )}
+              {Array.isArray(project.collaborators) && (
+                <>
+                  <dt className="text-fieldgrey">With</dt>
+                  <dd>{project.collaborators.length ? project.collaborators.join(", ") : "Solo project"}</dd>
+                </>
+              )}
               <dt className="text-fieldgrey">Category</dt>
               <dd>{project.category}</dd>
               <dt className="text-fieldgrey">Techniques</dt>
               <dd>{project.tags?.join(", ")}</dd>
             </dl>
+            {project.reworkNote && (
+              <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[15px] leading-snug text-graphite">{project.reworkNote}</p>
+            )}
             {project.url && (
               <a href={project.url} target="_blank" rel="noreferrer" className="fu-btn fu-btn-primary self-start">
                 Visit project ↗

@@ -31,8 +31,8 @@ const SCHEMES = [
   { name: "Split complementary", panel: 150, signal: 210, p: [0, 150, 210] },
   { name: "Triadic", panel: 120, signal: 240, p: [0, 120, 240] },
   { name: "Tetradic", panel: 90, signal: 180, p: [0, 90, 270] },
-  { name: "Analogous", panel: 40, signal: -40, p: [0, 40, -40] },
   { name: "Clash", panel: 200, signal: 110, p: [60, 250, 310] },
+  { name: "Off-key", panel: 140, signal: 280, p: [30, 170, 320] },
 ];
 
 // --- OKLCH → sRGB -----------------------------------------------------------
@@ -92,7 +92,7 @@ export function generatePalette(random = Math.random) {
   const between = (lo, hi) => lo + random() * (hi - lo);
 
   // tinted paper, not grey
-  const bone = oklch(between(0.9, 0.94), between(0.045, 0.08), base);
+  const bone = oklch(between(0.89, 0.93), between(0.06, 0.1), base);
   const paper = oklch(0.965, 0.03, base);
   // text keeps a trace of the panel colour instead of flat black
   const ink = withContrast(0.24, 0.05, hue(scheme.panel), bone, 12, -1);
@@ -100,11 +100,11 @@ export function generatePalette(random = Math.random) {
   const fieldGrey = withContrast(0.52, 0.05, base, bone, 4.6, -1);
   const concrete = oklch(0.8, 0.05, base);
   // a saturated accent field in another hue, as dark as bone-on-panel contrast needs
-  const olive = withContrast(0.5, between(0.13, 0.18), hue(scheme.panel), bone, 6.5, -1);
+  const olive = withContrast(0.52, between(0.16, 0.22), hue(scheme.panel), bone, 6.5, -1);
   // a vivid highlight that reads on the panel and on ink
   const signal = withContrast(0.86, 0.24, hue(scheme.signal), olive, 4.5, 1);
-  const khaki = oklch(0.7, 0.11, hue(scheme.p[2]));
-  const pastel = (offset) => oklch(0.83, 0.12, hue(offset));
+  const khaki = oklch(0.7, 0.14, hue(scheme.p[2]));
+  const pastel = (offset) => oklch(0.82, 0.15, hue(offset));
 
   const vars = {
     bone,
