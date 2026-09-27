@@ -19,14 +19,18 @@ const imageExists = (src) => {
   return fs.existsSync(path.join(process.cwd(), "public", src));
 };
 
+// Sections shown on the site; projects in other categories (e.g. "Past Projects") are kept in the data but not published.
+const ORDER = ["Design", "Research", "Live Coding", "Work in Progress"];
+
 export async function getStaticPaths() {
-  const paths = portfolioData.projects.map((project) => ({ params: { id: project.id } }));
+  const paths = portfolioData.projects
+    .filter((project) => ORDER.includes(project.category))
+    .map((project) => ({ params: { id: project.id } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const order = ["Design", "Research", "Live Coding", "Work in Progress", "Past Projects"];
-  const projects = order.flatMap((category) => portfolioData.projects.filter((p) => p.category === category).sort(byDateDesc));
+  const projects = ORDER.flatMap((category) => portfolioData.projects.filter((p) => p.category === category).sort(byDateDesc));
   const index = projects.findIndex((p) => p.id === params.id);
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];

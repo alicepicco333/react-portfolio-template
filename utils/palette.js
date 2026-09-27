@@ -92,7 +92,7 @@ export function generatePalette(random = Math.random) {
   const between = (lo, hi) => lo + random() * (hi - lo);
 
   // tinted paper, not grey
-  const bone = oklch(between(0.89, 0.93), between(0.06, 0.1), base);
+  const bone = oklch(between(0.89, 0.93), between(0.05, 0.085), base);
   const paper = oklch(0.965, 0.03, base);
   // text keeps a trace of the panel colour instead of flat black
   const ink = withContrast(0.24, 0.05, hue(scheme.panel), bone, 12, -1);
@@ -100,11 +100,11 @@ export function generatePalette(random = Math.random) {
   const fieldGrey = withContrast(0.52, 0.05, base, bone, 4.6, -1);
   const concrete = oklch(0.8, 0.05, base);
   // a saturated accent field in another hue, as dark as bone-on-panel contrast needs
-  const olive = withContrast(0.52, between(0.16, 0.22), hue(scheme.panel), bone, 6.5, -1);
+  const olive = withContrast(0.52, between(0.14, 0.19), hue(scheme.panel), bone, 6.5, -1);
   // a vivid highlight that reads on the panel and on ink
-  const signal = withContrast(0.86, 0.24, hue(scheme.signal), olive, 4.5, 1);
-  const khaki = oklch(0.7, 0.14, hue(scheme.p[2]));
-  const pastel = (offset) => oklch(0.82, 0.15, hue(offset));
+  const signal = withContrast(0.86, 0.21, hue(scheme.signal), olive, 4.5, 1);
+  const khaki = oklch(0.7, 0.12, hue(scheme.p[2]));
+  const pastel = (offset) => oklch(0.83, 0.13, hue(offset));
 
   const vars = {
     bone,

@@ -19,8 +19,6 @@ const NODES = [
   { id: "ixd", label: "Interaction design", p: [0.35, -0.05, 0.75], work: ["0", "11", "3", "20"] },
   { id: "dv", label: "Data visualization", p: [0.05, 0.2, -0.35], work: ["3", "12"] },
   { id: "vis", label: "Visual design", p: [0.85, -0.35, -0.25], work: ["11", "0"] },
-  { id: "3d", label: "3D & animation", p: [0.95, 0.25, 0.35], work: ["6", "9"] },
-  { id: "ar", label: "AR filters", p: [0.6, 0.55, 0.8], work: [] },
   { id: "cc", label: "Creative coding", p: [0.25, 0.6, 0.2], work: ["5", "10", "14"] },
   { id: "live", label: "Live coding", p: [0.45, 0.95, -0.3], work: ["5", "10", "14"] },
   { id: "perf", label: "Performance", p: [0.9, 0.85, -0.6], work: ["5", "14"] },
@@ -30,8 +28,8 @@ const EDGES = [
   ["anth", "ur"], ["anth", "cult"], ["anth", "dh"],
   ["dh", "arch"], ["dh", "sem"], ["dh", "dv"], ["sem", "onto"], ["onto", "arch"],
   ["cult", "dv"], ["ur", "hci"], ["hci", "ux"], ["hci", "ixd"], ["ux", "vis"],
-  ["dv", "vis"], ["dv", "cc"], ["ixd", "cc"], ["ixd", "ar"], ["ar", "3d"],
-  ["vis", "3d"], ["cc", "live"], ["live", "perf"], ["3d", "perf"],
+  ["dv", "vis"], ["dv", "cc"], ["ixd", "cc"],
+  ["cc", "live"], ["live", "perf"],
 ];
 
 const neighbours = (id) =>

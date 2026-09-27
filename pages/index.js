@@ -86,9 +86,8 @@ const Home = () => {
     items: projects.filter((project) => project.category === group.id),
   }));
   const wip = projects.filter((project) => project.category === "Work in Progress");
-  const archive = projects.filter((project) => project.category === "Past Projects");
   // Running catalogue number in display order: groups, work in progress, past projects.
-  const ordered = [...groups.flatMap((group) => group.items), ...wip, ...archive];
+  const ordered = [...groups.flatMap((group) => group.items), ...wip];
   const numberOf = (project) => pad(ordered.indexOf(project) + 1);
   const imageOf = (project) =>
     project.imageSrc || (project.highlightImage?.startsWith("http") ? project.highlightImage : "");
@@ -96,7 +95,6 @@ const Home = () => {
   const index = [
     ...groups,
     { id: "Work in Progress", short: "In progress", items: wip },
-    { id: "Past Projects", short: "Past projects", items: archive },
   ];
 
   const record = [
@@ -141,7 +139,7 @@ const Home = () => {
 
       <main>
         {/* ——— Hero: two equal squares ——— */}
-        <section id="top" className="grid gap-4 px-4 pb-10 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-16 laptop:pt-10">
+        <section id="top" className="grid gap-4 bg-lilac px-4 pb-10 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-16 laptop:pt-10">
           <div className="flex flex-col justify-between gap-12 laptop:col-span-2 laptop:aspect-square laptop:pr-10">
             <div className="flex flex-col gap-8">
               <h1 className="fu-display fu-hero-fade text-[56px] tablet:text-phi3">{portfolioData.name}</h1>
@@ -161,7 +159,7 @@ const Home = () => {
                 <Link href="#work" className="fu-btn fu-btn-primary">
                   See the work ↓
                 </Link>
-                <a href={`mailto:${email}`} className="fu-btn fu-btn-secondary">
+                <a href={`mailto:${email}`} className="fu-btn fu-btn-secondary bg-bone">
                   Write to me
                 </a>
               </div>
@@ -224,14 +222,6 @@ const Home = () => {
           <ol className="fu-reveal border-t border-ink">
             {wip.map((project) => (
               <IndexRow key={project.id} project={project} number={numberOf(project)} status="In progress" />
-            ))}
-          </ol>
-        </Section>
-
-        <Section id={anchorOf("Past Projects")} number={pad(groups.length + 2)} title="Past projects">
-          <ol className="fu-reveal border-t border-ink">
-            {archive.map((project) => (
-              <IndexRow key={project.id} project={project} number={numberOf(project)} />
             ))}
           </ol>
         </Section>
