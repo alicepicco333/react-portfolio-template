@@ -12,13 +12,13 @@ export const DEFAULT_PALETTE = {
     paper: "241 238 231",
     ink: "21 22 19",
     olive: "75 82 56",
-    khaki: "168 159 126",
+    khaki: "207 198 232",
     concrete: "189 184 172",
     graphite: "74 75 68",
     "field-grey": "96 99 88",
-    pink: "242 196 206",
+    pink: "207 198 232",
     lilac: "207 198 232",
-    mint: "200 216 191",
+    mint: "207 198 232",
     signal: "215 255 60",
   },
 };
@@ -85,43 +85,48 @@ function withContrast(L, C, h, against, min, direction) {
 
 // --- Palette ----------------------------------------------------------------
 
+// Four colours, reused across sections: a background, a text colour, an accent field of the
+// opposite polarity (the map, About) and a highlight that reads on that field. One tint serves
+// the hero, Record and the image-less tiles. A shuffle may also invert the page: light text on
+// a dark background, with a light accent field.
 export function generatePalette(random = Math.random) {
   const scheme = SCHEMES[Math.floor(random() * SCHEMES.length)];
   const base = Math.round(random() * 360);
   const hue = (offset) => (((base + offset) % 360) + 360) % 360;
   const between = (lo, hi) => lo + random() * (hi - lo);
+  const accentH = hue(scheme.panel);
+  const signalH = hue(scheme.signal);
+  const inverted = random() < 0.5;
+  const d = inverted ? 1 : -1; // direction that moves text away from the background
 
-  // tinted paper, not grey
-  const bone = oklch(between(0.89, 0.93), between(0.05, 0.085), base);
-  const paper = oklch(0.965, 0.03, base);
-  // text keeps a trace of the panel colour instead of flat black
-  const ink = withContrast(0.24, 0.05, hue(scheme.panel), bone, 12, -1);
-  const graphite = withContrast(0.42, 0.045, hue(scheme.panel), bone, 7, -1);
-  const fieldGrey = withContrast(0.52, 0.05, base, bone, 4.6, -1);
-  const concrete = oklch(0.8, 0.05, base);
-  // a saturated accent field in another hue, as dark as bone-on-panel contrast needs
-  const olive = withContrast(0.52, between(0.14, 0.19), hue(scheme.panel), bone, 6.5, -1);
-  // a vivid highlight that reads on the panel and on ink
-  const signal = withContrast(0.86, 0.21, hue(scheme.signal), olive, 4.5, 1);
-  const khaki = oklch(0.7, 0.12, hue(scheme.p[2]));
-  const pastel = (offset) => oklch(0.83, 0.13, hue(offset));
+  const bone = inverted ? oklch(between(0.19, 0.23), 0.04, accentH) : oklch(between(0.9, 0.93), between(0.03, 0.05), base);
+  const paper = inverted ? oklch(0.25, 0.04, accentH) : oklch(0.955, 0.02, base);
+  const ink = withContrast(inverted ? 0.92 : 0.24, 0.03, inverted ? base : accentH, bone, 12, d);
+  const graphite = withContrast(inverted ? 0.8 : 0.42, 0.025, base, bone, 7, d);
+  const fieldGrey = withContrast(inverted ? 0.7 : 0.52, 0.03, base, bone, 4.6, d);
+  const concrete = oklch(inverted ? 0.36 : 0.8, 0.03, base);
+  // the accent field has the opposite polarity to the page
+  const olive = withContrast(inverted ? 0.72 : 0.5, between(0.1, 0.14), inverted ? base : accentH, bone, 6.5, d);
+  const signal = withContrast(inverted ? 0.42 : 0.86, 0.15, signalH, olive, 4.5, -d);
+  // one tint, same polarity as the page, carrying the accent hue
+  const tint = withContrast(inverted ? 0.3 : 0.85, 0.05, accentH, ink, 8, -d);
 
   const vars = {
     bone,
     paper,
     ink,
     olive,
-    khaki,
+    khaki: tint,
     concrete,
     graphite,
     "field-grey": fieldGrey,
-    pink: pastel(scheme.p[0] + 10),
-    lilac: pastel(scheme.p[1]),
-    mint: pastel(scheme.p[2]),
+    pink: tint,
+    lilac: tint,
+    mint: tint,
     signal,
   };
   return {
-    name: `${scheme.name} · ${base}°`,
+    name: `${scheme.name}${inverted ? " · inverted" : ""} · ${base}°`,
     vars: Object.fromEntries(Object.entries(vars).map(([k, v]) => [k, v.join(" ")])),
   };
 }
