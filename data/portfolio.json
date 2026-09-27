@@ -1027,26 +1027,30 @@
       "title": "Words of Gender",
       "description": "A prototype digital archive of women authors, tracing how writers across five centuries wrote about the same gendered concepts.",
       "introText": "Words of Gender is the prototype of an archive of women authors. Taking its lead from Vera Gheno's Parole d'altro genere (Rizzoli, 2023), it asks how different authors, in different historical and cultural contexts, have written about the same concepts tied to gender: beauty, grace, strength, independence, marriage, maternity.",
-      "middleText": "Excerpts from nine women authors spanning five centuries are encoded in TEI XML, linked to open data and marked up for the concepts they touch, so the concepts can be followed across texts as a network of variations and cross-references rather than read one author at a time.",
-      "conclusionText": "The project starts from the gap in how women authors are represented in the canon and in course readings, and is designed as an archive meant to keep growing.",
+      "middleText": "Excerpts from nine women authors spanning five centuries (1558 to 1958), in Italian, French and English, are encoded in TEI XML and linked to VIAF, Wikidata and WorldCat. 172 passages are tagged with 27 concepts, so each concept can be followed across texts as a network of variations and cross-references rather than read one author at a time.",
+      "conclusionText": "The 2026 version replaces the Bootstrap template with an archival reading edition: a reading view where up to four concepts are highlighted at once, never by colour alone; an author-by-concept matrix that opens every passage on a concept side by side; and a timeline of first editions against the editions transcribed.",
       "gridImages": [
         {
           "src": "/images/projects/21-g1.jpg",
-          "caption": "About the project, with Vera Gheno's Parole d'altro genere as the starting point."
+          "caption": "Reading Mary Wollstonecraft with four concepts switched on, each with its own colour, line style and label."
         },
         {
           "src": "/images/projects/21-g2.jpg",
-          "caption": "Entry points to the concepts and the annotated texts, and the documentation."
+          "caption": "Marriage across four authors: every tagged passage side by side, short ones shown with the words around them."
         },
         {
           "src": "/images/projects/21-g3.jpg",
-          "caption": "The archive of texts: nine authors, each excerpt encoded in TEI."
+          "caption": "The author × concept matrix, in dark mode: dot area shows how many passages use each concept."
+        },
+        {
+          "src": "/images/projects/21-g4.jpg",
+          "caption": "Timeline of the nine authors: first editions from 1558 to 1958 against the editions transcribed."
         }
       ],
       "highlightImage": "/images/projects/21-hl.jpg",
-      "highlightCaption": "Home page of the prototype.",
+      "highlightCaption": "The masthead, set in EB Garamond against the research question.",
       "imageSrc": "/images/projects/21.jpg",
-      "url": "https://alicepicco333.github.io/DigitalTextInTheHumanities/index.html",
+      "url": "https://alicepicco333.github.io/DigitalTextInTheHumanities/",
       "category": "Research",
       "tags": [
         "Digital Edition",
@@ -1054,13 +1058,14 @@
         "Gender Studies"
       ],
       "date": "2023-10-09",
-      "dateLabel": "2023",
+      "dateLabel": "2023 · reworked 2026",
       "context": "Digital Text in the Humanities (prof. Tiziana Mancinelli), MA Digital Humanities and Digital Knowledge, University of Bologna",
       "collaborators": [
         "Nicole Liggeri",
         "Lucia Bertoldini",
         "Chiara Parravicini"
-      ]
+      ],
+      "reworkNote": "Words of Gender began as a group project with Nicole Liggeri, Lucia Bertoldini and Chiara Parravicini for Digital Text in the Humanities. I reworked it independently in 2026; the version shown here is that rework."
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
