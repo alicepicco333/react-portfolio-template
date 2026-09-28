@@ -222,9 +222,9 @@ const SkillMap = ({ projects }) => {
             <svg viewBox={`0 0 ${MAP.W} ${MAP.H}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
               <defs>
                 <radialGradient id="map-glow-fill">
-                  <stop offset="0%" stopColor="rgb(37, 82, 133)" stopOpacity="0.55" />
-                  <stop offset="45%" stopColor="rgb(37, 82, 133)" stopOpacity="0.22" />
-                  <stop offset="100%" stopColor="rgb(37, 82, 133)" stopOpacity="0" />
+                  <stop offset="0%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.55" />
+                  <stop offset="45%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.22" />
+                  <stop offset="100%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0" />
                 </radialGradient>
                 <filter id="map-glow-blur" x="-50%" y="-50%" width="200%" height="200%">
                   <feGaussianBlur stdDeviation="10" />

@@ -105,7 +105,8 @@
       ],
       "shows": "Information architecture for difficult, contested content, and a public interface built end to end.",
       "cardImage": "/images/projects/0-card-v2.jpg",
-      "rank": 5
+      "rank": 3,
+      "accentHC": "#75210c"
     },
     {
       "id": "1",
@@ -171,7 +172,8 @@
       ],
       "shows": "Turning scholarly source material into something people can search and read side by side.",
       "cardImage": "/images/projects/1-card-v2.jpg",
-      "rank": 8
+      "rank": 8,
+      "accentHC": "#1b1bbe"
     },
     {
       "id": "2",
@@ -240,7 +242,8 @@
       ],
       "shows": "Structured knowledge modelling in a team, and a visual tool that makes the model explorable.",
       "cardImage": "/images/projects/2-card-v2.jpg",
-      "rank": 4
+      "rank": 4,
+      "accentHC": "#111111"
     },
     {
       "id": "3",
@@ -312,7 +315,8 @@
       ],
       "shows": "Open-data research with a quality, legal and ethics review, and a policy question made visible.",
       "cardImage": "/images/projects/3-card-v2.jpg",
-      "rank": 3
+      "rank": 5,
+      "accentHC": "#701e3c"
     },
     {
       "id": "5",
@@ -484,7 +488,8 @@
       ],
       "shows": "A client commission taken from Figma design to a working bilingual website.",
       "cardImage": "/images/projects/11-card-v2.jpg",
-      "rank": 6
+      "rank": 6,
+      "accentHC": "#111111"
     },
     {
       "id": "12",
@@ -560,7 +565,8 @@
       ],
       "shows": "Data modelling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
       "cardImage": "/images/projects/12-card-v4.jpg",
-      "rank": 9
+      "rank": 9,
+      "accentHC": "#3a3733"
     },
     {
       "id": "13",
@@ -734,7 +740,8 @@
       ],
       "shows": "Data storytelling: choosing fair measures, rates rather than counts, and stating findings plainly.",
       "cardImage": "/images/projects/15-card-v2.jpg",
-      "rank": 2
+      "rank": 2,
+      "accentHC": "#18309d"
     },
     {
       "id": "17",
@@ -1214,7 +1221,8 @@
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
       "cardImage": "/images/projects/20-card-v3.jpg",
-      "rank": 1
+      "rank": 1,
+      "accentHC": "#712316"
     },
     {
       "id": "21",
@@ -1288,7 +1296,8 @@
       ],
       "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
       "cardImage": "/images/projects/21-card-v2.jpg",
-      "rank": 7
+      "rank": 7,
+      "accentHC": "#70223d"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",

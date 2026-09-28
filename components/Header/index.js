@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import data from "../../data/portfolio.json";
 import GraphMark from "../GraphMark";
+import A11yControls from "../A11yControls";
 import { useActiveSection } from "../../utils";
 
 // Sections of the home page (the nav follows the one on screen).
@@ -30,7 +31,8 @@ const Header = () => {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden h-full items-center gap-7 text-[16px] tablet:flex" aria-label="Main">
+        <A11yControls compact className="ml-auto hidden flex-nowrap gap-0 border-r border-ink/20 pr-2 tablet:flex laptop:gap-2 laptop:pr-4" />
+        <nav className="hidden h-full items-center gap-4 text-[16px] tablet:ml-2 tablet:flex laptop:ml-4 laptop:gap-7" aria-label="Main">
           {SECTIONS.map((s) => (
             <Link
               key={s.id}
@@ -68,6 +70,7 @@ const Header = () => {
           <Link href="/resume" onClick={() => setOpen(false)} className="block border-b border-ink/20 py-4 text-[32px] font-semibold tracking-[-0.02em]">
             cv
           </Link>
+          <A11yControls className="pt-5" />
           <a href={`mailto:${email}`} className="block pt-5 text-[15px] text-olive underline">
             {email}
           </a>

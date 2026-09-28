@@ -25,7 +25,7 @@ const Accessibility = () => (
             Your settings
           </h2>
           <p className="mt-3 text-[17px] leading-relaxed">
-            Both settings are also in the footer of every page. They are saved on this device only.
+            Both settings are also in the navigation bar of every page (in the menu on phones). They are saved on this device only.
           </p>
           <A11yControls className="mt-4" />
           <ul className="mt-5 list-disc space-y-2 pl-5 text-[17px] leading-relaxed">
@@ -34,7 +34,7 @@ const Accessibility = () => (
               It is off by default if your device asks for reduced motion.
             </li>
             <li>
-              <strong>High contrast</strong> darkens secondary text and outlines. The page background stays the same.
+              <strong>High contrast</strong> switches to a deep navy accent, turns all secondary text and outlines black, and removes glows and transparency. The page background stays the same.
             </li>
           </ul>
         </section>

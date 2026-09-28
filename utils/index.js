@@ -93,4 +93,7 @@ export function useActiveSection(ids) {
 // A project's own colour, applied by overriding the house accent inside its page or tile.
 // Accents are stored as hex in portfolio.json and already clear 4.5:1 against the paper.
 export const hexToTriplet = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(" ");
-export const projectStyle = (hex) => (hex ? { "--olive": hexToTriplet(hex), "--signal": "255 255 255" } : undefined);
+// Each project page carries its own colour, with a darker version for high-contrast mode
+// (applied through the .project-theme class in globals.css).
+export const projectStyle = (hex, hexHC) =>
+  hex ? { "--project": hexToTriplet(hex), "--project-hc": hexToTriplet(hexHC || hex) } : undefined;

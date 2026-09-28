@@ -382,9 +382,9 @@ const WorkExplorer = ({ projects: given }) => {
             >
               <defs>
                 <radialGradient id="work-glow">
-                  <stop offset="0%" stopColor="rgb(37, 82, 133)" stopOpacity="0.5" />
-                  <stop offset="50%" stopColor="rgb(37, 82, 133)" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="rgb(37, 82, 133)" stopOpacity="0" />
+                  <stop offset="0%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.5" />
+                  <stop offset="50%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.18" />
+                  <stop offset="100%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0" />
                 </radialGradient>
               </defs>
               <g aria-hidden="true">
@@ -458,9 +458,9 @@ const WorkExplorer = ({ projects: given }) => {
             <svg viewBox={`0 0 ${WW} ${Wh.H}`} width={WW * ws} height={Wh.H * ws} className="shrink-0" role="group" aria-label="Work wheel: each project is pulled towards the skills it uses">
               <defs>
                 <radialGradient id="work-glow">
-                  <stop offset="0%" stopColor="rgb(37, 82, 133)" stopOpacity="0.5" />
-                  <stop offset="50%" stopColor="rgb(37, 82, 133)" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="rgb(37, 82, 133)" stopOpacity="0" />
+                  <stop offset="0%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.5" />
+                  <stop offset="50%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.18" />
+                  <stop offset="100%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0" />
                 </radialGradient>
               </defs>
               {CLUSTER_TEXT.map((c) => {

@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import data from "../../data/portfolio.json";
-import A11yControls from "../A11yControls";
 
 const Footer = () => {
   const { email, socials, name } = data;
@@ -28,8 +27,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-4 border-t border-bone/20 py-4">
-        <A11yControls />
+      <div className="flex flex-wrap items-center justify-end gap-4 border-t border-bone/20 py-4">
         <Link href="/accessibility" className="font-mono text-[14px] underline underline-offset-4">
           Accessibility statement
         </Link>
