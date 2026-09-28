@@ -51,7 +51,7 @@ function compassLayout(projects) {
   // roles take part in the layout even when hidden, so projects do not jump when they appear
   ROLES.forEach((r) => {
     const [x, y] = placeOf(r.skills);
-    const half = 8 + textWidth(r.short, 14) * 0.5;
+    const half = 10 + textWidth(r.short, 15) * 0.55;
     items[roleKey(r)] = [x, y, -half, -14, half, 8];
   });
   const fixed = [
@@ -278,7 +278,7 @@ const WorkExplorer = ({ projects: given }) => {
     measure();
     if (document.fonts?.ready) document.fonts.ready.then(measure);
     return undefined;
-  }, [view, selected.id]);
+  }, [view, selected.id, showRoles]);
   const widthOf = (key, text, px) => chipW[key] || textWidth(text, px) * 1.05;
 
   const onCompassMove = (e) => {
@@ -505,15 +505,19 @@ const WorkExplorer = ({ projects: given }) => {
                       style={{ cursor: "pointer" }}
                     >
                       {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 5} r="46" fill="url(#work-glow)" />}
+                      {(() => {
+                        const w = widthOf(`role${r.id}`, r.short, 15) + 12;
+                        return <rect x={x - w / 2} y={y - 15} width={w} height="21" style={{ fill: "#fff" }} />;
+                      })()}
                       <text
+                        data-chip={`role${r.id}`}
                         x={x}
                         y={y}
                         textAnchor="middle"
                         fontFamily="Inter Tight, sans-serif"
-                        fontSize="14"
-                        fontWeight={on ? 700 : 400}
-                        letterSpacing="0.01em"
-                        style={{ fill: on || over ? "rgb(var(--olive))" : "rgb(var(--ink))", stroke: "#fff", strokeWidth: 5, strokeLinejoin: "round", paintOrder: "stroke", transition: "fill .2s" }}
+                        fontSize="15"
+                        fontWeight={on ? 700 : 500}
+                        style={{ fill: on || over ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
                       >
                         {r.short}
                       </text>
