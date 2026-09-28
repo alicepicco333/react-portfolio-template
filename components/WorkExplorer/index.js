@@ -340,7 +340,7 @@ const WorkExplorer = ({ projects: given }) => {
               className={`hidden min-h-[44px] items-center gap-2 self-end border border-ink px-4 font-mono text-[14px] desktop:flex ${showRoles ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
             >
               <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${showRoles ? "bg-current" : ""}`} />
-              My roles
+              Show roles
             </button>
           )}
           <Select label="Type" value={type} onChange={setType} options={[["all", "All types"], ...TYPES.map((t) => [t, categoryMeta(t).short])]} />

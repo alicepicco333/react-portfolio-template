@@ -7,12 +7,13 @@ import { textWidth } from "../../utils/layout";
 // Timeline: studies, roles and projects on one axis. Large screens get the drawn
 // timeline; smaller ones get the same content as a list by year.
 const NOW = 2026.75;
-const T0 = 2018.5;
+// the axis starts where the layer's first item does: studies from 2018, roles from 2023
+const START = { studies: 2018.5, roles: 2023.1 };
 const T1 = 2027.1;
 const W = 1200;
 const PAD = 16;
 const ROW = 34;
-const px = (t) => PAD + ((t - T0) / (T1 - T0)) * (W - PAD * 2);
+const scale = (t0) => (t) => PAD + ((t - t0) / (T1 - t0)) * (W - PAD * 2);
 
 const yearOf = (p) => +(((p.dateLabel || "").match(/\d{4}/) || [(p.date || "").slice(0, 4)])[0]);
 // a project sits at its first publication year, at the month of its date when that is the same year
@@ -37,7 +38,7 @@ function pack(items) {
   });
 }
 
-function spans(list, getStart, getEnd, label) {
+function spans(px, list, getStart, getEnd, label) {
   return pack(
     list
       .map((e) => {
@@ -57,8 +58,10 @@ function spans(list, getStart, getEnd, label) {
 const Journey = ({ projects }) => {
   const [layer, setLayer] = useState("roles"); // "roles" or "studies": one at a time, with the projects
   const { resume, journey } = portfolioData;
-  const studies = spans(resume.educationList, (e) => e.start, (e) => e.end, (e) => e.short);
-  const roles = spans(resume.experiences, (e) => e.start, (e) => e.end, (e) => e.short);
+  const T0 = START[layer];
+  const px = scale(T0);
+  const studies = spans(px, resume.educationList, (e) => e.start, (e) => e.end, (e) => e.short);
+  const roles = spans(px, resume.experiences, (e) => e.start, (e) => e.end, (e) => e.short);
   const work = pack(
     projects
       .map((p) => {
@@ -80,7 +83,7 @@ const Journey = ({ projects }) => {
   const yAxis = yStudies + barRows * ROW + 20;
   const yWork = yAxis + 64;
   const H = yWork + workRows * ROW + 10;
-  const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+  const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].filter((y) => y > T0);
 
   const bar = (it, kind) => {
     const e = it.e;
@@ -129,8 +132,8 @@ const Journey = ({ projects }) => {
           </div>
           <div className="flex" role="group" aria-label="Show on the timeline">
             {[
-              ["roles", "Roles"],
-              ["studies", "Studies"],
+              ["roles", "Show roles"],
+              ["studies", "Show studies"],
             ].map(([v, t]) => (
               <button
                 key={v}
@@ -148,7 +151,7 @@ const Journey = ({ projects }) => {
         {/* ——— large screens: the drawn timeline ——— */}
         <div className="fu-reveal hidden desktop:block">
           <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="group" aria-label="Timeline of studies, roles and projects, 2018 to today">
-            {journey.chapters.map((c, i) => {
+            {journey.chapters.filter((c) => c.to > T0).map((c, i) => {
               const x0 = px(Math.max(c.from, T0));
               const x1 = px(Math.min(c.to, T1));
               return (
