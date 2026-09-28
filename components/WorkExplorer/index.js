@@ -297,7 +297,7 @@ const WorkExplorer = ({ projects: given }) => {
   const pointProps = (p) => ({
     tabIndex: matches(p) ? 0 : -1,
     role: "button",
-    "aria-pressed": selected.id === p.id,
+    "aria-pressed": !(view === "Compass" && showRoles && role) && selected.id === p.id,
     "aria-label": `${mapTitle(p)}, ${categoryMeta(p.category).short}, ${yearOf(p)}`,
     onClick: () => {
       if (!matches(p)) return;
@@ -460,7 +460,7 @@ const WorkExplorer = ({ projects: given }) => {
               <line ref={chy} x1="0" y1="0" x2={C.PW} y2="0" style={{ stroke: "rgb(var(--olive))" }} strokeDasharray="3 3" opacity="0" aria-hidden="true" />
               {projects.map((p) => {
                 const [x, y] = compass[p.id];
-                const on = selected.id === p.id;
+                const on = !(showRoles && role) && selected.id === p.id;
                 return (
                   <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     {on && <circle className="work-glow glow-pulse" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
