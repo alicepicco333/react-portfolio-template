@@ -123,20 +123,20 @@
       "gridImages": [
         {
           "src": "/images/projects/2-g1.jpg",
-          "caption": "The Illusory Correlation ontology drawn from its OWL file: the “Lucky Charm Socks” user story as individuals linked by object properties, coloured by whether each class comes from Framester, a design pattern, DBpedia or the team."
+          "caption": "The Gambler's Fallacy ontology drawn from its OWL file: the lottery user story as individuals and object properties, with Framester classes in solid black and team classes outlined."
         },
         {
           "src": "/images/projects/2-g2.jpg",
-          "caption": "Reuse matrix: which content ontology design patterns and Framester frames each of the 16 ontologies uses in its story graph (filled) or only names in its documentation (outlined)."
+          "caption": "Reuse matrix of the 16 ontologies: solid cells for design patterns and Framester frames used in the story graph, outlined for documented only, hatched for terms that appear only in each file's shared axioms."
         },
         {
           "src": "/images/projects/2-g3.jpg",
-          "caption": "Properties the group reused across user stories, led by exob:isEngagedIn from the Experience & Observation pattern in 12 of the 16 ontologies."
+          "caption": "Pattern filter on the overview: selecting the Affected By design pattern inverts the seven ontologies whose user stories are built on it."
         }
       ],
       "middleText": "Our group, Marco Lamorte, Corrado Consiglio, Salvatore Di Marzo and I, modelled sixteen biases, from the gambler's fallacy and the hot hand fallacy to pareidolia, naive realism and the blind spot bias. Each went through the same eXtreme Design workflow: research and documentation, ideation and design, modelling and implementation, then presentation and visualisation. ChatGPT and Gemini were used early on for definitions, scenarios and user stories, and Framester among the resources for modelling.",
       "highlightImage": "/images/projects/2-hl.jpg",
-      "conclusionText": "The process is documented in a public GitBook. It showed how much understanding of a domain an ontology needs before any modelling starts, and where language models help and where their answers had to be corrected. The 2026 explorer draws each user story as a graph of the individuals in its OWL file, maps which design patterns and Framester frames each ontology reuses, and shows the vocabulary the group shared.",
+      "conclusionText": "The process is documented in a public GitBook. It showed how much understanding of a domain an ontology needs before any modelling starts, and where language models help and where their answers had to be corrected. The 2026 explorer, in black and white, draws each user story as a graph of the individuals in its OWL file, with class origins told apart by solid, outlined, hatched and dashed boxes; maps which design patterns and Framester frames each ontology reuses; and shows the vocabulary the group shared.",
       "imageSrc": "/images/projects/2.jpg",
       "url": "https://alicepicco333.github.io/cognitive-bias-explorer/",
       "category": "Research",
@@ -144,7 +144,7 @@
         "Ontology Engineering",
         "Psychology"
       ],
-      "highlightCaption": "Overview of the Cognitive Bias Ontology explorer: 16 bias ontologies in two Cognitive Bias Codex clusters, with a filter that highlights which user stories are built on each ontology design pattern.",
+      "highlightCaption": "Cognitive Bias Ontology explorer, black-and-white edition: the masthead and oversized counts of 16 ontologies, 119 classes, 52 object properties and 121 user-story assertions.",
       "date": "2023-06-01",
       "dateLabel": "2023 · reworked 2026",
       "context": "Knowledge Representation and Extraction (prof. Aldo Gangemi), 2022/23, MA Digital Humanities and Digital Knowledge, University of Bologna",
