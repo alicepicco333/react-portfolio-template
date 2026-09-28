@@ -507,7 +507,7 @@ const WorkExplorer = ({ projects: given }) => {
                       {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 5} r="46" fill="url(#work-glow)" />}
                       {(() => {
                         const w = widthOf(`role${r.id}`, r.short, 15) + 12;
-                        return <rect x={x - w / 2} y={y - 15} width={w} height="21" style={{ fill: "#fff" }} />;
+                        return <rect x={x - w / 2} y={y - 15} width={w} height="21" style={{ fill: "#fff", stroke: on || over ? "rgb(var(--olive))" : "rgb(var(--concrete))" }} strokeWidth="1.5" />;
                       })()}
                       <text
                         data-chip={`role${r.id}`}
@@ -516,8 +516,8 @@ const WorkExplorer = ({ projects: given }) => {
                         textAnchor="middle"
                         fontFamily="Inter Tight, sans-serif"
                         fontSize="15"
-                        fontWeight={on ? 700 : 500}
-                        style={{ fill: on || over ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
+                        fontWeight={on ? 700 : 400}
+                        style={{ fill: on || over ? "rgb(var(--olive))" : "rgb(var(--graphite))", transition: "fill .2s" }}
                       >
                         {r.short}
                       </text>
