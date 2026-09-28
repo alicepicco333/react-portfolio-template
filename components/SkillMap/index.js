@@ -349,7 +349,7 @@ const SkillMap = ({ projects }) => {
                         fontFamily="Inter Tight, sans-serif"
                         fontSize="18"
                         fontWeight={isActive ? 700 : isLit ? 600 : 400}
-                        style={{ fill: isActive ? "#fff" : "rgb(var(--ink))" }}
+                        style={{ fill: isActive ? "#fff" : hovered === n.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
                       >
                         {n.label}
                       </text>

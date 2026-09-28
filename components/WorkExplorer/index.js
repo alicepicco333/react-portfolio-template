@@ -472,7 +472,7 @@ const WorkExplorer = ({ projects: given }) => {
                       style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
                       strokeWidth={hot === p.id && !on ? 2.5 : 1}
                     />
-                    <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
+                    <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -636,7 +636,7 @@ const WorkExplorer = ({ projects: given }) => {
                         <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 2.5 : 1} />
                       );
                     })()}
-                    <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>
+                    <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : col, transition: "fill .2s" }}>
                       {mapTitle(p)}
                     </text>
                   </g>
