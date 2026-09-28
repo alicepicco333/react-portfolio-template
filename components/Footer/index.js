@@ -5,27 +5,31 @@ const Footer = () => {
   const { email, socials, name } = data;
 
   return (
-    <footer id="contact" className="bg-ink px-4 pb-6 pt-4 text-bone tablet:px-10">
-      <div className="grid gap-x-4 gap-y-10 pb-20 laptop:grid-cols-4 laptop:pb-[110px]">
-        <h2 className="fu-title text-phi1">Contact</h2>
-        <div className="flex flex-col gap-6 laptop:col-span-2">
-          <a href={`mailto:${email}`} className="fu-display break-all text-[32px] hover:text-signal tablet:break-normal tablet:text-[48px] laptopl:text-[64px]">
+    <footer id="contact" className="bg-ink px-4 pb-6 pt-8 text-bone tablet:px-8">
+      <div className="grid gap-x-4 gap-y-8 pb-16 laptop:grid-cols-4">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-[28px] font-semibold tracking-[-0.02em]">Contact</h2>
+          <p className="font-mono text-[12px] text-bone/70">Open to work and collaborations · Amsterdam</p>
+        </div>
+        <div className="laptop:col-span-2">
+          <a href={`mailto:${email}`} className="break-all text-[30px] font-semibold tracking-[-0.02em] underline decoration-olive decoration-4 underline-offset-8 hover:decoration-bone tablet:break-normal tablet:text-[48px] laptopl:text-[60px]">
             {email}
           </a>
-          <p className="fu-meta text-bone/60">Open to collaborations — based in Amsterdam.</p>
         </div>
-        <ul className="flex flex-col gap-2 text-[15px] font-medium">
+        <ul className="flex flex-col gap-2 font-mono text-[14px]">
           {socials.map((social) => (
             <li key={social.id}>
-              <a href={social.link} target="_blank" rel="noreferrer" className="hover:text-signal">
+              <a href={social.link} target="_blank" rel="noreferrer" className="hover:underline">
                 {social.title} ↗
               </a>
             </li>
           ))}
         </ul>
       </div>
-      <div className="fu-meta flex justify-between border-t border-bone/20 pt-4 text-bone/60">
-        <span>© {new Date().getFullYear()} {name}</span>
+      <div className="flex justify-between border-t border-bone/20 pt-4 font-mono text-[12px] text-bone/60">
+        <span>
+          © {new Date().getFullYear()} {name}
+        </span>
         <a href="#top" className="hover:text-bone">
           Back to top ↑
         </a>

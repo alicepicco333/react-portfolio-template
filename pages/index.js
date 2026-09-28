@@ -5,97 +5,20 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import WorkCard from "../components/WorkCard";
-import GraphStage from "../components/GraphStage";
+import SkillMap from "../components/SkillMap";
+import WorkExplorer from "../components/WorkExplorer";
+import InProgress from "../components/InProgress";
 import portfolioData from "../data/portfolio.json";
-import { categoryMeta, useIsomorphicLayoutEffect, byDateDesc } from "../utils";
+import { useIsomorphicLayoutEffect, byDateDesc } from "../utils";
 
-// Works are shown in three groups; ongoing and older work follow as indexes.
-const GROUPS = [
-  { id: "Design", blurb: "Interfaces, archives & the web" },
-  { id: "Research", blurb: "Digital editions, ontologies & data" },
-  { id: "Live Coding", blurb: "Hydra, performance & workshops" },
-];
-
-const anchorOf = (id) => `works-${id.toLowerCase().replace(/ /g, "-")}`;
-const pad = (n) => String(n).padStart(2, "0");
-
-// Section chapters alternate tone: plain paper, the accent field, or a pastel.
-const TONES = {
-  paper: { wrap: "border-t border-ink", number: "text-olive", note: "text-graphite", bar: "bg-olive" },
-  accent: { wrap: "bg-olive text-bone", number: "text-signal", note: "text-bone/80", bar: "bg-signal" },
-  pastel: { wrap: "bg-pink text-ink", number: "text-ink", note: "text-ink/80", bar: "bg-ink" },
-};
-
-// Swiss section: a label column on the left, content across the other three.
-const Section = ({ id, number, title, note, tone = "paper", className = "", children }) => {
-  const t = TONES[tone];
-  return (
-  <section id={id} className={`scroll-mt-14 px-4 pb-20 pt-4 tablet:px-10 laptop:pb-[110px] ${t.wrap} ${tone === "paper" ? "" : "pt-10"} ${className}`}>
-    <div className="grid gap-x-4 gap-y-8 laptop:grid-cols-4">
-      <div className="fu-reveal flex flex-col gap-1">
-        {number && <span className={`fu-meta ${t.number}`}>{number}</span>}
-        <h2 className="fu-title text-phi1">{title}</h2>
-        <span className={`mb-2 mt-2 block h-[6px] w-14 ${t.bar}`} aria-hidden="true" />
-        {note && <p className={`fu-meta max-w-[260px] ${t.note}`}>{note}</p>}
-      </div>
-      <div className="laptop:col-span-3">{children}</div>
-    </div>
-  </section>
-  );
-};
-
-// An index row for work in progress and past projects.
-const IndexRow = ({ project, number, status }) => (
-  <li>
-    <Link
-      href={`/projects/${project.id}`}
-      className="group grid grid-cols-[40px_1fr] gap-x-4 gap-y-1 border-b border-concrete py-5 transition-colors hover:bg-paper tablet:grid-cols-[48px_1fr_180px]"
-    >
-      <span className="fu-meta pt-1 text-olive">{number}</span>
-      <span className="flex flex-col gap-1">
-        <span className="fu-title text-[22px] group-hover:underline">{project.title}</span>
-        <span className="text-[15px] leading-snug text-graphite">{project.description}</span>
-      </span>
-      <span className="fu-meta col-start-2 flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-graphite tablet:col-start-auto tablet:flex-col tablet:items-start">
-        <span className="text-olive">{project.dateLabel}</span>
-        {status ? (
-          <>
-            <span className="fu-blink h-2 w-2 rounded-full bg-olive" aria-hidden="true" />
-            {status}
-          </>
-        ) : (
-          project.tags?.join(", ")
-        )}
-      </span>
-    </Link>
-  </li>
-);
+// Finished work is shown in the work views; work in progress gets its own section.
+const FINISHED = ["Design", "Research", "Live Coding"];
 
 const Home = () => {
-  const { resume, roles, email } = portfolioData;
+  const { resume, about } = portfolioData;
   const projects = [...portfolioData.projects].sort(byDateDesc);
-
-  // The statement already says the opening clause, so continue from "weaving together…".
-  const aboutRest = resume.description.replace(/^I work at the intersection of culture, technology, and design, /, "");
-  const aboutDetail = aboutRest.charAt(0).toUpperCase() + aboutRest.slice(1);
-
-  const groups = GROUPS.map((group) => ({
-    ...group,
-    ...categoryMeta(group.id),
-    items: projects.filter((project) => project.category === group.id),
-  }));
-  const wip = projects.filter((project) => project.category === "Work in Progress");
-  // Running catalogue number in display order: groups, work in progress, past projects.
-  const ordered = [...groups.flatMap((group) => group.items), ...wip];
-  const numberOf = (project) => pad(ordered.indexOf(project) + 1);
-  const imageOf = (project) =>
-    project.imageSrc || (project.highlightImage?.startsWith("http") ? project.highlightImage : "");
-
-  const index = [
-    ...groups,
-    { id: "Work in Progress", short: "In progress", items: wip },
-  ];
+  const finished = projects.filter((p) => FINISHED.includes(p.category));
+  const wip = projects.filter((p) => p.category === "Work in Progress");
 
   const record = [
     ...resume.experiences,
@@ -112,122 +35,89 @@ const Home = () => {
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.from(".fu-hero-fade", { opacity: 0, y: 16, duration: 0.8, stagger: 0.08, ease: "power3.out" });
       gsap.utils.toArray(".fu-reveal").forEach((el) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 24,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 88%", once: true },
-        });
+        gsap.from(el, { opacity: 0, y: 24, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+      });
+      gsap.utils.toArray(".record-row").forEach((el, i) => {
+        gsap.from(el, { opacity: 0, x: -16, duration: 0.5, delay: (i % 4) * 0.05, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 92%", once: true } });
       });
     });
-    return () => mm.revert();
+    // the map, the work views and images change the page height after load: keep triggers in step
+    let timer;
+    const observer = new ResizeObserver(() => {
+      clearTimeout(timer);
+      timer = setTimeout(() => ScrollTrigger.refresh(), 150);
+    });
+    observer.observe(document.body);
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+      mm.revert();
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-bone text-ink">
+    <div id="top" className="min-h-screen bg-bone text-ink">
       <Head>
-        <title>Alice Picco — HCI, design, digital humanities</title>
-        <meta name="description" content={portfolioData.aboutpara} />
-        <meta name="theme-color" content="#E8E4DA" />
+        <title>Alice Picco — creative technologist &amp; researcher</title>
+        <meta name="description" content={about.lead} />
+        <meta name="theme-color" content="#D5D6DB" />
       </Head>
 
       <Header />
 
       <main>
-        <GraphStage projects={projects} />
+        <SkillMap projects={projects} />
+        <WorkExplorer projects={finished} wipCount={wip.length} />
+        <InProgress projects={wip} />
 
-        {/* ——— Works ——— */}
-        <section id="work" className="scroll-mt-14 border-t border-ink px-4 pb-20 pt-4 tablet:px-10 laptop:pb-[110px]">
-          <div className="grid gap-x-4 gap-y-6 laptop:grid-cols-4">
-            <div className="flex flex-col gap-4">
-              <h2 className="fu-display fu-reveal text-[48px] tablet:text-phi3">Works</h2>
-              <span className="block h-[8px] w-24 bg-olive" aria-hidden="true" />
-            </div>
-            <nav className="flex flex-wrap content-start gap-x-6 gap-y-2 pt-2 laptop:col-span-3 laptop:pt-5" aria-label="Jump to a group of works">
-              {index.map((group) => (
-                <a key={group.id} href={`#${anchorOf(group.id)}`} className="text-[15px] font-medium hover:underline">
-                  {group.short} <span className="text-fieldgrey">{pad(group.items.length)}</span>
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {groups.map((group, groupIndex) => (
-            <div
-              key={group.id}
-              id={anchorOf(group.id)}
-              className="mt-16 grid scroll-mt-20 gap-x-4 gap-y-8 border-t border-ink pt-4 laptop:grid-cols-4"
-            >
-              <div className="fu-reveal flex flex-col gap-1">
-                <span className="fu-meta text-olive">{pad(groupIndex + 1)}</span>
-                <h3 className="fu-title text-phi1">{group.short}</h3>
-                <span className="mb-1 mt-1 block h-[6px] w-14 bg-olive" aria-hidden="true" />
-                <p className="fu-meta text-graphite">{group.blurb}</p>
+        <section id="about" className="scroll-mt-16 bg-olive px-4 pb-20 pt-8 text-white tablet:px-8">
+          <div className="grid gap-x-8 gap-y-10 laptop:grid-cols-4">
+            <h2 className="fu-reveal text-[28px] font-semibold tracking-[-0.02em]">About</h2>
+            <div className="flex flex-col gap-10 laptop:col-span-3">
+              <p className="fu-reveal max-w-[980px] text-[28px] font-medium leading-[1.2] tracking-[-0.01em] tablet:text-[40px]">{about.lead}</p>
+              <div className="fu-reveal grid max-w-[980px] gap-6 text-[17px] leading-relaxed tablet:grid-cols-2">
+                {about.paragraphs.map((text) => (
+                  <p key={text.slice(0, 20)}>{text}</p>
+                ))}
               </div>
-              <div className="grid gap-x-4 gap-y-12 tablet:grid-cols-2 laptop:col-span-3 laptop:grid-cols-3">
-                {group.items.map((project) => (
-                  <Link key={project.id} href={`/projects/${project.id}`} className="fu-card fu-reveal block">
-                    <WorkCard
-                      img={imageOf(project)}
-                      name={project.title}
-                      description={project.description}
-                      tags={project.tags}
-                      category={project.category}
-                      cardNumber={numberOf(project)}
-                      date={project.dateLabel}
-                      accent={project.accent}
-                      motion={project.tileMotion}
-                    />
-                  </Link>
+              <div className="fu-reveal grid max-w-[980px] gap-6 tablet:grid-cols-3" aria-label="How I work">
+                {about.practice.map((p) => (
+                  <div key={p.title} className="flex flex-col gap-2 border-t-2 border-white pt-3">
+                    <span className="font-mono text-[12px] uppercase tracking-[0.12em]">{p.title}</span>
+                    <span className="text-[16px] leading-snug">{p.items}</span>
+                  </div>
                 ))}
               </div>
             </div>
-          ))}
+          </div>
         </section>
 
-        <Section id={anchorOf("Work in Progress")} number={pad(groups.length + 1)} title="In progress" note="What I'm working on right now.">
-          <ol className="fu-reveal border-t border-ink">
-            {wip.map((project) => (
-              <IndexRow key={project.id} project={project} number={numberOf(project)} status="In progress" />
-            ))}
-          </ol>
-        </Section>
-
-        <Section id="about" title="About" note={resume.tagline} tone="accent">
-          <div className="fu-reveal flex flex-col gap-10">
-            <p className="fu-title max-w-[900px] text-[32px] tablet:text-phi2">
-              I work at the intersection of <span className="text-signal">culture, technology and design.</span>
-            </p>
-            <div className="grid max-w-[900px] gap-6 text-[17px] leading-relaxed tablet:grid-cols-2">
-              <p>{portfolioData.aboutpara}</p>
-              <p>{aboutDetail}</p>
+        <section id="record" className="scroll-mt-16 px-4 pb-20 pt-8 tablet:px-8">
+          <div className="grid gap-x-8 gap-y-8 laptop:grid-cols-4">
+            <div className="fu-reveal flex flex-col gap-2">
+              <h2 className="text-[28px] font-semibold tracking-[-0.02em]">Record</h2>
+              <p className="font-mono text-[12px] text-graphite">Experience and education</p>
+            </div>
+            <div className="laptop:col-span-3">
+              <ol className="border-t border-ink">
+                {record.map((entry) => (
+                  <li key={entry.id} className="record-row grid gap-y-1 border-b border-ink/25 py-4 tablet:grid-cols-[190px_1fr_150px] tablet:gap-x-4">
+                    <span className="pt-0.5 font-mono text-[12px] text-graphite">{entry.dates}</span>
+                    <span className="flex flex-col gap-1">
+                      <span className="text-[17px] font-semibold leading-snug">{entry.position}</span>
+                      <span className="text-[15px] text-ink/80">{entry.bullets}</span>
+                    </span>
+                    <span className="pt-0.5 font-mono text-[12px] text-graphite tablet:text-right">{entry.type}</span>
+                  </li>
+                ))}
+              </ol>
+              <Link href="/resume" className="mt-8 inline-flex min-h-[44px] items-center bg-ink px-5 text-[14px] font-semibold text-bone transition-colors hover:bg-olive">
+                Full CV →
+              </Link>
             </div>
           </div>
-        </Section>
-
-        <Section id="record" title="Record" note="Experience and education" tone="pastel">
-          <ol className="fu-reveal border-t border-ink">
-            {record.map((entry) => (
-              <li
-                key={entry.id}
-                className="grid gap-y-1 border-b border-ink/25 py-5 tablet:grid-cols-[170px_1fr_120px] tablet:gap-x-4"
-              >
-                <span className="fu-meta pt-1 text-ink">{entry.dates}</span>
-                <span className="flex flex-col gap-1">
-                  <span className="text-lg font-semibold">{entry.position}</span>
-                  <span className="text-[15px] text-ink/80">{entry.bullets}</span>
-                </span>
-                <span className="fu-meta pt-1 text-ink/80 tablet:text-right">{entry.type}</span>
-              </li>
-            ))}
-          </ol>
-          <Link href="/resume" className="fu-btn fu-btn-primary mt-8">
-            Full résumé ↗
-          </Link>
-        </Section>
+        </section>
       </main>
 
       <Footer />

@@ -8,6 +8,7 @@ module.exports = {
     screens: {
       mob: "375px",
       tablet: "768px",
+      map: "900px",
       laptop: "1024px",
       desktop: "1280px",
       laptopl: "1440px",
@@ -28,8 +29,8 @@ module.exports = {
         signal: "rgb(var(--signal) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["Instrument Sans", "system-ui", "sans-serif"],
-        mono: ["Instrument Sans", "system-ui", "sans-serif"],
+        sans: ["Inter Tight", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
       gridTemplateColumns: {
         13: "repeat(13, minmax(0, 1fr))",

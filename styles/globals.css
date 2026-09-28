@@ -1,59 +1,24 @@
-/* Type: Instrument Sans (Instrument, SIL OFL — see /fonts/LICENSE-InstrumentSans.txt), one family throughout */
-@font-face {
-  font-family: "Instrument Sans";
-  src: url("./fonts/InstrumentSans-italic-latin-ext.woff2") format("woff2");
-  font-weight: 400 700;
-  font-stretch: 75% 100%;
-  font-style: italic;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Instrument Sans";
-  src: url("./fonts/InstrumentSans-italic-latin.woff2") format("woff2");
-  font-weight: 400 700;
-  font-stretch: 75% 100%;
-  font-style: italic;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Instrument Sans";
-  src: url("./fonts/InstrumentSans-normal-latin-ext.woff2") format("woff2");
-  font-weight: 400 700;
-  font-stretch: 75% 100%;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Instrument Sans";
-  src: url("./fonts/InstrumentSans-normal-latin.woff2") format("woff2");
-  font-weight: 400 700;
-  font-stretch: 75% 100%;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/* Type: Inter Tight (text) and JetBrains Mono (labels, data), loaded in _document.js */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* FIELD/UNIT — flat Swiss system. Tokens are "r g b" triplets; Tailwind reads them in tailwind.config.js.
-   The house is neutral (paper, ink, one olive accent); projects bring their own colour via --project. */
+/* Grey and blue. Tokens are "r g b" triplets; Tailwind reads them in tailwind.config.js.
+   Names are kept from the earlier system: bone = page grey, paper = card surface, olive = the blue
+   accent (project pages override it with the project's own colour via projectStyle). */
 :root {
-  --bone: 232 228 218;
-  --paper: 241 238 231;
-  --ink: 21 22 19;
-  --olive: 75 82 56;
-  --khaki: 217 212 199;
-  --concrete: 189 184 172;
-  --graphite: 74 75 68;
-  --field-grey: 96 99 88;
-  --pink: 217 212 199;
-  --lilac: 217 212 199;
-  --mint: 217 212 199;
-  --signal: 215 255 60;
+  --bone: 213 214 219;
+  --paper: 236 237 240;
+  --ink: 14 14 16;
+  --olive: 26 26 255;
+  --khaki: 194 197 207;
+  --concrete: 165 166 174;
+  --graphite: 85 85 94;
+  --field-grey: 85 85 94;
+  --pink: 194 197 207;
+  --lilac: 194 197 207;
+  --mint: 194 197 207;
+  --signal: 26 26 255;
 }
 
 html {
@@ -70,14 +35,14 @@ body {
 body {
   background-color: rgb(var(--bone));
   color: rgb(var(--ink));
-  font-family: "Instrument Sans", system-ui, sans-serif;
+  font-family: "Inter Tight", system-ui, sans-serif;
   font-feature-settings: "tnum" 1;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: rgb(var(--signal));
-  color: rgb(var(--ink));
+  background: rgb(var(--olive));
+  color: #fff;
 }
 
 a {
@@ -135,7 +100,25 @@ a {
   }
 }
 
-/* ——— Motion (kept small) ——— */
+/* ——— Motion ——— */
+/* cards lift onto a hard blue shadow; the mini sigil turns */
+.work-card > a,
+.work-lift {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s;
+}
+.work-card > a:hover,
+.work-card > a:focus-visible,
+.work-lift:hover,
+.work-lift:focus-visible {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 rgb(var(--olive));
+}
+.work-mini {
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.work-card > a:hover .work-mini {
+  transform: rotate(144deg);
+}
 @keyframes fu-blink {
   50% { opacity: 0; }
 }
@@ -146,4 +129,5 @@ a {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fu-blink { animation: none; }
+  .work-card > a, .work-lift, .work-mini { transition: none; }
 }

@@ -292,7 +292,8 @@
         "method": "An introduction to Hydra's primitives, textures and commands, then a collective live jam.",
         "outcome": "A three-hour workshop and jam at Het Wilde Weg, Amsterdam, on 20 July 2024.",
         "stack": "Hydra · OBS"
-      }
+      },
+      "short": "Creative Coding Jam"
     },
     {
       "id": "11",
@@ -430,7 +431,8 @@
         "method": "A shared file nomenclature (archive, series, file, unit, page) and a catalogue record for every unit.",
         "outcome": "In progress: five series being digitised.",
         "stack": "Scanning · spreadsheets"
-      }
+      },
+      "short": "Luki Massa archive"
     },
     {
       "id": "14",
@@ -478,7 +480,8 @@
         "outcome": "A 23-minute set, recorded in full.",
         "stack": "Hydra · JavaScript"
       },
-      "tileMotion": "/images/projects/14-loop.webp"
+      "tileMotion": "/images/projects/14-loop.webp",
+      "short": "5PIC3 live"
     },
     {
       "id": "15",
@@ -561,7 +564,8 @@
         "method": "Research into what makes a rich visit and which interface attributes support it, with Q42 and Curamando.",
         "outcome": "In progress (2026/27).",
         "stack": "To be decided"
-      }
+      },
+      "short": "Rijksmuseum AI guide"
     },
     {
       "id": "18",
@@ -616,7 +620,8 @@
         "method": "A living notebook: weekly entries, superseded decisions kept visible, a change log and a log of AI use.",
         "outcome": "In progress over eight weeks.",
         "stack": "Jupyter · Python"
-      }
+      },
+      "short": "OULAD critique"
     },
     {
       "id": "20",
@@ -1107,7 +1112,7 @@
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
   "resume": {
-    "tagline": "Anthropology / Digital Humanities / Design",
+    "tagline": "Creative technologist & researcher · UX research, data visualisation, interaction design",
     "description": "I work at the intersection of culture, technology, and design, weaving together critical research and creative experimentation. With a background in cultural anthropology and a strong foundation in digital humanities, my projects range from interactive archives and feminist data visualizations to live-coded performances and augmented reality design. Whether I’m mapping digital territories, building ontologies of cognitive bias, or glitching visual narratives in real time, I’m driven by curiosity and a commitment to inclusive, ethical tech. I enjoy working across media and disciplines — from semantic web development to storytelling with code — always with a reflexive, research-oriented approach.",
     "experiences": [
       {
@@ -1156,5 +1161,26 @@
       "universityDate": "2018-2022",
       "universityPara": "Thesis on queer Muslim youth through ethnography on social media"
     }
+  },
+  "about": {
+    "lead": "I'm a creative technologist and researcher. I start from how people live with technology, and turn that into interfaces, data visualisations and working prototypes.",
+    "paragraphs": [
+      "My background is in cultural anthropology and digital humanities, so research comes first: interviews, usability tests, fieldwork and data analysis. From there I design and build, in Figma and in code.",
+      "I've done practice-based research at the Institute of Network Cultures and mapped digital cultural spaces with The Hmm and DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
+    ],
+    "practice": [
+      {
+        "title": "Research",
+        "items": "Interviews · usability testing (SUS, think-aloud) · ethnography · personas · data analysis"
+      },
+      {
+        "title": "Design",
+        "items": "Information architecture · interaction and visual design · prototyping in Figma"
+      },
+      {
+        "title": "Build",
+        "items": "React · D3.js · Leaflet · Python · RDF, SPARQL and OWL · Hydra"
+      }
+    ]
   }
 }
