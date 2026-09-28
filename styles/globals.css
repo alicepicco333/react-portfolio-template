@@ -87,11 +87,11 @@ footer :focus-visible {
 }
 
 /* ——— visitor settings ——— */
-/* High contrast: a deep navy accent (7:1), all secondary text in ink, solid outlines,
+/* High contrast: a grey accent (8:1), all secondary text in ink, solid outlines,
    no transparency or glows. The page background is unchanged. */
 html[data-contrast="high"] {
-  --olive: 31 63 122;
-  --signal: 31 63 122;
+  --olive: 58 58 66; /* #3A3A42: a grey accent, 8:1 on the grey page */
+  --signal: 58 58 66;
   --graphite: 14 14 16;
   --field-grey: 14 14 16;
   --concrete: 14 14 16;
@@ -235,4 +235,4 @@ html[data-motion="off"] ::after {
 
 /* project pages: the project's own accent; its darker version in high contrast */
 .project-theme { --olive: var(--project); --signal: var(--project); }
-html[data-contrast="high"] .project-theme { --olive: var(--project-hc); --signal: var(--project-hc); }
+html[data-contrast="high"] .project-theme { --olive: 58 58 66; --signal: 58 58 66; }

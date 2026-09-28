@@ -34,7 +34,7 @@ const Accessibility = () => (
               It is off by default if your device asks for reduced motion.
             </li>
             <li>
-              <strong>High contrast</strong> switches to a deep navy accent, turns all secondary text and outlines black, and removes glows and transparency. The page background stays the same.
+              <strong>High contrast</strong> switches the accent colour to a dark grey on every page, turns all secondary text and outlines black, and removes glows and transparency. The page background stays the same.
             </li>
           </ul>
         </section>
