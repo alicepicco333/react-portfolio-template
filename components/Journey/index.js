@@ -55,7 +55,7 @@ function spans(list, getStart, getEnd, label) {
 }
 
 const Journey = ({ projects }) => {
-  const [showRoles, setShowRoles] = useState(true);
+  const [layer, setLayer] = useState("roles"); // "roles" or "studies": one at a time, with the projects
   const { resume, journey } = portfolioData;
   const studies = spans(resume.educationList, (e) => e.start, (e) => e.end, (e) => e.short);
   const roles = spans(resume.experiences, (e) => e.start, (e) => e.end, (e) => e.short);
@@ -71,13 +71,13 @@ const Journey = ({ projects }) => {
       .sort((a, b) => a.t - b.t)
   );
 
-  const studyRows = showRoles ? Math.max(...studies.map((s) => s.row)) + 1 : 0;
-  const roleRows = showRoles ? Math.max(...roles.map((s) => s.row)) + 1 : 0;
+  const bars = layer === "studies" ? studies : roles;
+  const barRows = Math.max(...bars.map((s) => s.row)) + 1;
   const workRows = Math.max(...work.map((s) => s.row)) + 1;
   const yChapters = 0;
   const yStudies = 88;
-  const yRoles = yStudies + (showRoles ? studyRows * ROW + 28 : 0);
-  const yAxis = yRoles + (showRoles ? roleRows * ROW + 20 : 0);
+  const yRoles = yStudies;
+  const yAxis = yStudies + barRows * ROW + 20;
   const yWork = yAxis + 64;
   const H = yWork + workRows * ROW + 10;
   const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
@@ -127,15 +127,22 @@ const Journey = ({ projects }) => {
             </h2>
             <p className="text-[17px] leading-snug">{journey.lead}</p>
           </div>
-          <button
-            type="button"
-            aria-pressed={showRoles}
-            onClick={() => setShowRoles((v) => !v)}
-            className={`flex min-h-[44px] items-center gap-2 border border-ink px-4 font-mono text-[14px] ${showRoles ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
-          >
-            <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${showRoles ? "bg-current" : ""}`} />
-            Roles &amp; studies
-          </button>
+          <div className="flex" role="group" aria-label="Show on the timeline">
+            {[
+              ["roles", "Roles"],
+              ["studies", "Studies"],
+            ].map(([v, t]) => (
+              <button
+                key={v}
+                type="button"
+                aria-pressed={layer === v}
+                onClick={() => setLayer(v)}
+                className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] ${layer === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* ——— large screens: the drawn timeline ——— */}
@@ -156,18 +163,10 @@ const Journey = ({ projects }) => {
                 </g>
               );
             })}
-            {showRoles && (
-              <>
-                <text x={PAD} y={yStudies - 8} fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
-                  STUDIES
-                </text>
-                {studies.map((it) => bar(it, "study"))}
-                <text x={PAD} y={yRoles - 8} fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
-                  ROLES
-                </text>
-                {roles.map((it) => bar(it, "role"))}
-              </>
-            )}
+            <text x={PAD} y={yStudies - 8} fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
+              {layer === "studies" ? "STUDIES" : "ROLES"}
+            </text>
+            {layer === "studies" ? studies.map((it) => bar(it, "study")) : roles.map((it) => bar(it, "role"))}
             <g aria-hidden="true">
               <line x1={PAD} y1={yAxis} x2={W - PAD} y2={yAxis} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
               {years.map((y) => (
@@ -218,8 +217,8 @@ const Journey = ({ projects }) => {
           {journey.chapters.map((c) => {
             const inChapter = (t) => t >= c.from && t < c.to;
             const items = [
-              ...(showRoles ? resume.educationList.filter((e) => inChapter(e.start)).map((e) => ({ t: e.start, kind: "Study", label: e.name, dates: e.dates })) : []),
-              ...(showRoles ? resume.experiences.filter((e) => inChapter(e.start)).map((e) => ({ t: e.start, kind: "Role", label: e.position, dates: e.dates })) : []),
+              ...(layer === "studies" ? resume.educationList.filter((e) => inChapter(e.start)).map((e) => ({ t: e.start, kind: "Study", label: e.name, dates: e.dates })) : []),
+              ...(layer === "roles" ? resume.experiences.filter((e) => inChapter(e.start)).map((e) => ({ t: e.start, kind: "Role", label: e.position, dates: e.dates })) : []),
               ...projects.filter((p) => inChapter(timeOf(p))).map((p) => ({ t: timeOf(p), kind: "Project", label: shortTitle(p), dates: String(yearOf(p)), href: `/projects/${p.id}` })),
             ].sort((a, b) => a.t - b.t);
             return (
