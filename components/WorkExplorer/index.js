@@ -101,7 +101,7 @@ const Media = ({ project, className = "" }) => {
 // the card beside the compass and the wheel
 const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
-    <Media project={project} className="aspect-[4/3] max-h-[40vh] w-full border-b border-ink object-cover" />
+    <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
       <div className="flex items-center justify-between font-mono text-[13px]">
         <span className="text-olive">
@@ -236,7 +236,7 @@ const WorkExplorer = ({ projects: given }) => {
   const [winH, setWinH] = useState(900);
   useIsomorphicLayoutEffect(() => {
     const measure = () => {
-      if (plotRef.current) setPlotW(plotRef.current.clientWidth - 330 - 40);
+      if (plotRef.current) setPlotW(plotRef.current.clientWidth - Math.max(330, window.innerHeight * 0.56) - 40);
       setWinH(window.innerHeight);
     };
     measure();
@@ -245,7 +245,7 @@ const WorkExplorer = ({ projects: given }) => {
   }, [view]);
   const cs = plotW ? Math.min(1, plotW / C.PW, (winH - 110) / C.H) : 0.8;
   const WW = Wh.CX * 2 + 40;
-  const ws = plotW ? Math.min(1, plotW / WW) : 0.8;
+  const ws = plotW ? Math.min(1, plotW / WW, (winH - 110) / Wh.H) : 0.8;
 
   const [chipW, setChipW] = useState({});
   useIsomorphicLayoutEffect(() => {
@@ -367,7 +367,7 @@ const WorkExplorer = ({ projects: given }) => {
 
       {/* ——— compass ——— */}
       {view === "Compass" && (
-        <div ref={plotRef} className="hidden items-start gap-10 desktop:flex">
+        <div ref={plotRef} className="hidden items-start justify-between gap-10 desktop:flex">
             <svg
               viewBox={`0 0 ${C.PW} ${C.H}`}
               width={C.PW * cs}
@@ -439,7 +439,7 @@ const WorkExplorer = ({ projects: given }) => {
                 );
               })}
             </svg>
-            <div className="flex min-w-[330px] flex-1 flex-col gap-5">
+            <div className="flex w-full min-w-[330px] flex-col gap-5" style={{ maxWidth: "max(330px, 56vh)" }}>
               <ProjectCard project={selected} skills={false} />
               <Uses project={selected} row>
                 <MiniCompass at={compass[selected.id]} />
@@ -453,7 +453,7 @@ const WorkExplorer = ({ projects: given }) => {
 
       {/* ——— wheel ——— */}
       {view === "Wheel" && (
-        <div ref={plotRef} className="hidden items-start gap-10 desktop:flex">
+        <div ref={plotRef} className="hidden items-start justify-between gap-10 desktop:flex">
             <svg viewBox={`0 0 ${WW} ${Wh.H}`} width={WW * ws} height={Wh.H * ws} className="shrink-0" role="group" aria-label="Work wheel: each project is pulled towards the skills it uses">
               <defs>
                 <radialGradient id="work-glow">
@@ -526,10 +526,10 @@ const WorkExplorer = ({ projects: given }) => {
                 );
               })}
             </svg>
-            <div className="flex min-w-[330px] flex-1 flex-col gap-5">
+            <div className="flex w-full min-w-[330px] flex-col gap-5" style={{ maxWidth: "max(330px, 56vh)" }}>
               <ProjectCard project={selected} skills={false} />
-              <Uses project={selected}>
-                <Sigil skills={skillIds(selected.id)} size={296} width={2.5} />
+              <Uses project={selected} row>
+                <Sigil skills={skillIds(selected.id)} size={180} width={2} />
               </Uses>
             </div>
         </div>
