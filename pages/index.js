@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import SectionRail from "../components/SectionRail";
 import WorkCard from "../components/WorkCard";
 import PracticeMap from "../components/PracticeMap";
 import portfolioData from "../data/portfolio.json";
@@ -132,7 +133,6 @@ const Home = () => {
         <title>Alice Picco — HCI, design, digital humanities</title>
         <meta name="description" content={portfolioData.aboutpara} />
         <meta name="theme-color" content="#E8E4DA" />
-        <link rel="icon" href={`${process.env.NEXT_PUBLIC_BASE_PATH}/favicon.ico`} />
       </Head>
 
       <Header />
@@ -142,7 +142,13 @@ const Home = () => {
         <section id="top" className="grid gap-4 bg-lilac px-4 pb-10 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-16 laptop:pt-10">
           <div className="flex flex-col justify-between gap-12 laptop:col-span-2 laptop:aspect-square laptop:pr-10">
             <div className="flex flex-col gap-8">
-              <h1 className="fu-display fu-hero-fade text-[56px] tablet:text-phi3">{portfolioData.name}</h1>
+              <p className="fu-hero-fade text-[13px] font-semibold uppercase tracking-[0.12em]">
+                {portfolioData.name} <span className="text-olive">—</span> researcher &amp; designer, Amsterdam
+              </p>
+              <h1 className="fu-display fu-hero-fade max-w-[640px] text-[44px] leading-[1.02] tablet:text-[64px]">
+                I research and design where <span className="text-olive">culture</span> meets{" "}
+                <span className="text-olive">code</span> and <span className="text-olive">interfaces</span>.
+              </h1>
               <ul className="fu-hero-fade grid max-w-[420px] grid-cols-2 gap-x-4 gap-y-1 text-[15px]" aria-label="Roles">
                 {roles.map((role) => (
                   <li key={role}>{role}</li>
@@ -151,10 +157,6 @@ const Home = () => {
             </div>
 
             <div className="fu-hero-fade flex flex-col gap-6">
-              <p className="max-w-[480px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">
-                I&apos;m Alice, {portfolioData.headerTaglineThree} {portfolioData.headerTaglineFour.replace(/\.$/, "")} —
-                working between culture, code and interfaces.
-              </p>
               <div className="flex flex-wrap gap-2">
                 <Link href="#work" className="fu-btn fu-btn-primary">
                   See the work ↓
@@ -261,6 +263,7 @@ const Home = () => {
       </main>
 
       <Footer />
+      <SectionRail />
     </div>
   );
 };

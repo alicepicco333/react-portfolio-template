@@ -60,3 +60,32 @@ export function getRandomImage() {
 
 // Newest first; `date` is an ISO date used only for ordering, `dateLabel` is what is shown.
 export const byDateDesc = (a, b) => (b.date || "").localeCompare(a.date || "");
+
+// Which of the given section ids is on screen (the last one whose top has passed 35% of the
+// viewport), plus overall scroll progress 0–1. Used by the numbered nav and the left rail.
+export function useActiveSection(ids) {
+  const [state, setState] = useState({ active: null, progress: 0 });
+  const key = ids.join(",");
+  useEffect(() => {
+    const els = key.split(",").map((id) => document.getElementById(id)).filter(Boolean);
+    if (!els.length) return undefined;
+    const update = () => {
+      const line = window.innerHeight * 0.35;
+      let active = null;
+      els.forEach((el) => {
+        if (el.getBoundingClientRect().top <= line) active = el.id;
+      });
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY >= max - 2) active = els[els.length - 1].id;
+      setState({ active, progress: max > 0 ? Math.min(1, window.scrollY / max) : 0 });
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [key]);
+  return state;
+}

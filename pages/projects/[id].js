@@ -6,6 +6,7 @@ import portfolioData from "../../data/portfolio.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CaseStudy from "../../components/CaseStudy";
+import ProjectGraph from "../../components/ProjectGraph";
 import { byDateDesc, categoryMeta, withBase } from "../../utils";
 
 // Template filler ("Introductory paragraph for…") is hidden until real copy is written.
@@ -76,6 +77,9 @@ export default function ProjectPage({ project, number, next }) {
             </Link>
             <span className="fu-meta pt-4 text-fieldgrey">{number}</span>
             <span className="fu-title text-xl">{short}</span>
+            <div className="mt-8 hidden laptop:block">
+              <ProjectGraph projectId={project.id} />
+            </div>
           </div>
           <div className="flex flex-col gap-8 laptop:col-span-3">
             <h1 className="fu-display max-w-[900px] text-[44px] tablet:text-phi3">{project.title}</h1>
