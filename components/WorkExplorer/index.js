@@ -84,31 +84,6 @@ function wheelLayout(projects) {
   return relaxRects(items, { fixed: CLUSTER_TEXT.map((c) => c.box), box: [Wh.CX - inner, Wh.CY - inner, Wh.CX + inner, Wh.CY + inner], pad: 7 });
 }
 
-// scale a fixed-size design to the width it is given
-const Fit = ({ W, H, fitHeight = false, children }) => {
-  const ref = useRef(null);
-  const [scale, setScale] = useState(null);
-  const [left, setLeft] = useState(0);
-  useIsomorphicLayoutEffect(() => {
-    const measure = () => {
-      if (!ref.current) return;
-      const s = Math.min(1, ref.current.clientWidth / W, fitHeight ? (window.innerHeight - 96) / H : 1);
-      setScale(s);
-      setLeft(Math.max(0, (ref.current.clientWidth - W * s) / 2));
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [W]);
-  return (
-    <div ref={ref} className="relative w-full" style={{ height: H * (scale || 1) }}>
-      <div className="absolute top-0 origin-top-left" style={{ left, width: W, height: H, transform: `scale(${scale || 1})`, visibility: scale ? "visible" : "hidden" }}>
-        {children}
-      </div>
-    </div>
-  );
-};
-
 const Media = ({ project, className = "" }) => {
   const reduced = usePrefersReducedMotion();
   const motion = project.tileMotion && !reduced ? project.tileMotion : null;
@@ -124,7 +99,7 @@ const Media = ({ project, className = "" }) => {
 };
 
 // the card beside the compass and the wheel
-const ProjectCard = ({ project, where, skills = true }) => (
+const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
     <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
@@ -132,16 +107,64 @@ const ProjectCard = ({ project, where, skills = true }) => (
         <span className="text-olive">
           {categoryMeta(project.category).short.toUpperCase()} · {yearOf(project)}
         </span>
-        <span>{where}</span>
       </div>
       <span className="text-[22px] font-bold leading-tight">{shortTitle(project.title)}</span>
       <span>{project.description}</span>
       {skills && <span className="font-mono text-[13px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>}
       <Link href={`/projects/${project.id}`} className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
-        Read the story →
+        View project →
       </Link>
     </div>
   </div>
+);
+
+const Uses = ({ project, children }) => (
+  <figure className="flex flex-col gap-4 border border-ink bg-paper p-4">
+    {children}
+    <dl className="grid grid-cols-[112px_1fr] gap-x-3 gap-y-2 text-[15px] leading-snug">
+      <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
+      <dd>{skillIds(project.id).map(labelOf).join(" · ")}</dd>
+      {project.summary?.stack && (
+        <>
+          <dt className="font-mono text-[13px] uppercase text-olive">Technologies</dt>
+          <dd>{project.summary.stack}</dd>
+        </>
+      )}
+    </dl>
+  </figure>
+);
+
+// the compass again, small, with only the selected project marked
+const MiniCompass = ({ at }) => (
+  <svg viewBox={`0 0 ${C.PW} ${C.H}`} className="h-auto w-full" aria-hidden="true">
+    <rect x="0" y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.09)" }} />
+    <rect x={C.cx} y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.16)" }} />
+    <rect x="0" y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--ink) / 0.06)" }} />
+    <rect x={C.cx} y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.04)" }} />
+    <g style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="2">
+      {Array.from({ length: 9 }, (_, i) => i + 1).map((i) => (
+        <React.Fragment key={i}>
+          <line x1={(C.PW * i) / 10} y1="0" x2={(C.PW * i) / 10} y2={C.H} />
+          <line x1="0" y1={(C.H * i) / 10} x2={C.PW} y2={(C.H * i) / 10} />
+        </React.Fragment>
+      ))}
+    </g>
+    <rect x="0" y="0" width={C.PW} height={C.H} fill="none" style={{ stroke: "rgb(var(--ink))" }} strokeWidth="3" />
+    <line x1={C.cx} y1="0" x2={C.cx} y2={C.H} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="4" />
+    <line x1="0" y1={C.cy} x2={C.PW} y2={C.cy} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="4" />
+    <circle cx={at[0]} cy={at[1]} r="90" fill="url(#mini-glow)" />
+    <defs>
+      <radialGradient id="mini-glow">
+        <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.55" />
+        <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    <circle cx={at[0]} cy={at[1]} r="22" style={{ fill: "rgb(var(--olive))", stroke: "#fff" }} strokeWidth="6" />
+    <g fontFamily="JetBrains Mono, monospace" fontSize="40" style={{ fill: "rgb(var(--graphite))" }}>
+      <text x={C.cx + 16} y="48">PEOPLE</text>
+      <text x={C.PW - 16} y={C.cy - 18} textAnchor="end">MAKING</text>
+    </g>
+  </svg>
 );
 
 const Select = ({ label, value, onChange, options }) => (
@@ -218,6 +241,22 @@ const WorkExplorer = ({ projects: given }) => {
     mm.add("(prefers-reduced-motion: no-preference)", () => drawIn(gsap, Array.from(rootRef.current.querySelectorAll(".wheel-spoke")), { step: 0.08, duration: 0.5 }));
     return () => mm.revert();
   }, [selected.id, view]);
+
+  const plotRef = useRef(null);
+  const [plotW, setPlotW] = useState(null);
+  const [winH, setWinH] = useState(900);
+  useIsomorphicLayoutEffect(() => {
+    const measure = () => {
+      if (plotRef.current) setPlotW(plotRef.current.clientWidth - 330 - 40);
+      setWinH(window.innerHeight);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [view]);
+  const cs = plotW ? Math.min(1, plotW / C.PW, (winH - 110) / C.H) : 0.8;
+  const WW = Wh.CX * 2 + 40;
+  const ws = plotW ? Math.min(1, plotW / WW) : 0.8;
 
   const [chipW, setChipW] = useState({});
   useIsomorphicLayoutEffect(() => {
@@ -339,13 +378,12 @@ const WorkExplorer = ({ projects: given }) => {
 
       {/* ——— compass ——— */}
       {view === "Compass" && (
-        <div className="hidden desktop:block">
-          <Fit W={C.W} H={C.H + 40} fitHeight>
+        <div ref={plotRef} className="hidden items-start gap-10 desktop:flex">
             <svg
               viewBox={`0 0 ${C.PW} ${C.H}`}
-              width={C.PW}
-              height={C.H}
-              className="absolute left-0 top-0"
+              width={C.PW * cs}
+              height={C.H * cs}
+              className="shrink-0"
               role="group"
               aria-label="Work compass: left is understanding, right is making; up is people, down is information"
               onMouseMove={onCompassMove}
@@ -412,21 +450,22 @@ const WorkExplorer = ({ projects: given }) => {
                 );
               })}
             </svg>
-            <div className="absolute right-0 top-0 flex w-[330px] flex-col gap-5">
-              <ProjectCard project={selected} where="Compass" />
+            <div className="flex min-w-[330px] max-w-[440px] flex-1 flex-col gap-5">
+              <ProjectCard project={selected} skills={false} />
+              <Uses project={selected}>
+                <MiniCompass at={compass[selected.id]} />
+              </Uses>
               <p ref={readout} className="font-mono text-[13px] text-olive" aria-hidden="true">
                 Move over the compass to read its axes
               </p>
             </div>
-          </Fit>
         </div>
       )}
 
       {/* ——— wheel ——— */}
       {view === "Wheel" && (
-        <div className="hidden desktop:block">
-          <Fit W={Wh.W} H={Wh.H}>
-            <svg viewBox={`0 0 ${Wh.CX * 2 + 40} ${Wh.H}`} width={Wh.CX * 2 + 40} height={Wh.H} className="absolute left-0 top-0" role="group" aria-label="Work wheel: each project is pulled towards the skills it uses">
+        <div ref={plotRef} className="hidden items-start gap-10 desktop:flex">
+            <svg viewBox={`0 0 ${WW} ${Wh.H}`} width={WW * ws} height={Wh.H * ws} className="shrink-0" role="group" aria-label="Work wheel: each project is pulled towards the skills it uses">
               <defs>
                 <radialGradient id="work-glow">
                   <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.5" />
@@ -498,23 +537,12 @@ const WorkExplorer = ({ projects: given }) => {
                 );
               })}
             </svg>
-            <div className="absolute right-0 top-5 flex w-[330px] flex-col gap-5">
-              <ProjectCard project={selected} where="Wheel" skills={false} />
-              <figure className="flex flex-col gap-4 border border-ink bg-paper p-4">
+            <div className="flex min-w-[330px] max-w-[440px] flex-1 flex-col gap-5">
+              <ProjectCard project={selected} skills={false} />
+              <Uses project={selected}>
                 <Sigil skills={skillIds(selected.id)} size={296} width={2.5} />
-                <dl className="grid grid-cols-[112px_1fr] gap-x-3 gap-y-2 text-[15px] leading-snug">
-                  <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
-                  <dd>{skillIds(selected.id).map(labelOf).join(" · ")}</dd>
-                  {selected.summary?.stack && (
-                    <>
-                      <dt className="font-mono text-[13px] uppercase text-olive">Technologies</dt>
-                      <dd>{selected.summary.stack}</dd>
-                    </>
-                  )}
-                </dl>
-              </figure>
+              </Uses>
             </div>
-          </Fit>
         </div>
       )}
 

@@ -83,12 +83,10 @@ export const MAP = {
     cult: [22, 6, "start"], dh: [22, 6, "start"], arch: [22, 6, "start"], sem: [22, 6, "start"], onto: [22, 6, "start"],
   },
   clusters: { listening: [400, 425], shaping: [980, 110], playing: [1085, 452], counting: [390, 730], ordering: [40, 850] },
-  ghost: [1200, 290],
-  // areas kept clear for the statement, the legend, the card and the "your team" node
+  // areas kept clear for the statement and the card
   reserved: [
     [24, 24, 660, 250],
     [1010, 620, 1420, 912],
-    [1170, 262, 1400, 372],
   ],
 };
 

@@ -89,9 +89,6 @@ const SkillMap = ({ projects }) => {
   const frameRef = useRef(null);
   const stageRef = useRef(null);
   const narrowRef = useRef(null);
-  const rulerX = useRef(null);
-  const rulerY = useRef(null);
-  const readout = useRef(null);
   const active = hovered || pinned;
 
   // `?skill=<id>` opens the map on that skill
@@ -152,7 +149,6 @@ const SkillMap = ({ projects }) => {
         tl.from(q(".map-chip-g"), { opacity: 0, y: 6, duration: 0.5, stagger: 0.025 }, 0.7);
         q(".map-cluster").forEach((el, i) => scramble(gsap, el, 0.9 + i * 0.18));
         tl.from(q(".map-card"), { x: 60, opacity: 0, duration: 0.8 }, 1.4);
-        gsap.to(q(".map-ghost"), { rotation: 360, transformOrigin: "50% 50%", duration: 16, repeat: -1, ease: "none" });
       }
       const n = narrowRef.current;
       if (n && n.offsetParent !== null) {
@@ -192,25 +188,6 @@ const SkillMap = ({ projects }) => {
     return () => mm.revert();
   }, [active, fit]);
 
-  // park the rulers on the pinned skill until the pointer moves
-  useEffect(() => {
-    if (!fit || !rulerX.current || !pinned) return;
-    gsap.set(rulerX.current, { x: MAP.pos[pinned][0] });
-    gsap.set(rulerY.current, { y: MAP.pos[pinned][1] });
-  }, [fit, pinned]);
-
-  // rulers along the frame follow the pointer, with a live readout
-  const onPointerMove = (event) => {
-    const s = stageRef.current;
-    if (!s || !rulerX.current) return;
-    const r = s.getBoundingClientRect();
-    const x = ((event.clientX - r.left) * MAP.W) / r.width;
-    const y = ((event.clientY - r.top) * MAP.H) / r.height;
-    gsap.to(rulerX.current, { x, duration: 0.35, ease: "power3.out", overwrite: true });
-    gsap.to(rulerY.current, { y, duration: 0.35, ease: "power3.out", overwrite: true });
-    if (readout.current) readout.current.textContent = `X ${String(Math.round(x)).padStart(4, "0")} · Y ${String(Math.round(y)).padStart(4, "0")}`;
-  };
-
   const toggle = (id) => setPinned((current) => (current === id ? null : id));
   const skillLabel = (id) => `${labelOf(id)}: ${nodeOf(id).tools.join(", ")}; used in ${workOf(id).length} projects`;
   const nodeProps = (label, onSelect) => ({
@@ -233,7 +210,7 @@ const SkillMap = ({ projects }) => {
   return (
     <section id="map" aria-label="My practice, as a map" className="relative scroll-mt-16 bg-bone">
       {/* ——— desktop and tablet: the fixed stage ——— */}
-      <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined} onPointerMove={onPointerMove}>
+      <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
           className="absolute left-1/2 top-1/2"
           style={{ width: MAP.W * (fit || 1), height: MAP.H * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
@@ -251,18 +228,6 @@ const SkillMap = ({ projects }) => {
                 </filter>
               </defs>
               <g aria-hidden="true">
-                {Array.from({ length: 35 }, (_, i) => (i + 1) * 40).map((x) => (
-                  <line key={`tx${x}`} x1={x} y1="0" x2={x} y2={x % 200 ? 8 : 14} style={{ stroke: "rgb(var(--concrete))" }} />
-                ))}
-                {Array.from({ length: 22 }, (_, i) => (i + 1) * 40).map((y) => (
-                  <line key={`ty${y}`} x1="0" y1={y} x2={y % 200 ? 8 : 14} y2={y} style={{ stroke: "rgb(var(--concrete))" }} />
-                ))}
-                <g ref={rulerX}>
-                  <path d="M -6 0 L 6 0 L 0 10 Z" style={{ fill: "rgb(var(--olive))" }} />
-                </g>
-                <g ref={rulerY}>
-                  <path d="M 0 -6 L 0 6 L 10 0 Z" style={{ fill: "rgb(var(--olive))" }} />
-                </g>
                 {CLUSTERS.map((c) => (
                   <text
                     key={c.id}
@@ -296,26 +261,11 @@ const SkillMap = ({ projects }) => {
                       y2={y2}
                       style={{ stroke: hot ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "stroke .3s, stroke-width .3s, opacity .3s" }}
                       strokeWidth={hot ? 3 : 1}
-                      opacity={hot ? 1 : 0.5}
+                      opacity={hot ? 1 : active ? 0.22 : 0.4}
                     />
                   );
                 })}
-                <line x1={MAP.pos.vis[0]} y1={MAP.pos.vis[1]} x2={MAP.ghost[0]} y2={MAP.ghost[1]} style={{ stroke: "rgb(var(--ink))" }} strokeDasharray="4 5" />
-                <line x1={MAP.pos.perf[0]} y1={MAP.pos.perf[1]} x2={MAP.ghost[0]} y2={MAP.ghost[1]} style={{ stroke: "rgb(var(--ink))" }} strokeDasharray="4 5" />
               </g>
-
-              <a href="#contact" aria-label="Next node: your team. Get in touch">
-                <circle className="map-ghost" cx={MAP.ghost[0]} cy={MAP.ghost[1]} r="16" style={{ fill: "rgb(var(--bone))", stroke: "rgb(var(--ink))" }} strokeDasharray="3 4" />
-                <text x={MAP.ghost[0]} y={MAP.ghost[1] + 5} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="14" style={{ fill: "rgb(var(--ink))" }}>
-                  ?
-                </text>
-                <text x={MAP.ghost[0] + 26} y={MAP.ghost[1] - 4} fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight="600" style={{ fill: "rgb(var(--ink))" }}>
-                  Next node: your team
-                </text>
-                <text x={MAP.ghost[0] + 26} y={MAP.ghost[1] + 19} fontFamily="JetBrains Mono, monospace" fontSize="14" textDecoration="underline" style={{ fill: "rgb(var(--olive))" }}>
-                  get in touch →
-                </text>
-              </a>
 
               {fan && (
                 <g key={active}>
@@ -380,7 +330,7 @@ const SkillMap = ({ projects }) => {
                             y={y + dy - 18}
                             width={tw + 20}
                             height="25"
-                            style={{ fill: isActive ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: isActive ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .25s" }}
+                            style={{ fill: isActive ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: isActive ? "rgb(var(--olive))" : isLit ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .25s, stroke .25s" }}
                             strokeWidth={isLit ? 1.5 : 1}
                           />
                         );

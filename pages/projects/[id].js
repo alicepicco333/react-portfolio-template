@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CaseStudy from "../../components/CaseStudy";
 import ProjectGraph from "../../components/ProjectGraph";
-import { byDateDesc, categoryMeta, withBase, projectStyle } from "../../utils";
+import { byDateDesc, categoryMeta, withBase } from "../../utils";
 
 // Template filler ("Introductory paragraph for…") is hidden until real copy is written.
 const PLACEHOLDER = /^(Introductory paragraph|Middle explanatory section|Closing summary)/;
@@ -61,7 +61,7 @@ export default function ProjectPage({ project, number, next }) {
   const { short } = categoryMeta(project.category);
 
   return (
-    <div className="min-h-screen bg-bone text-ink" style={projectStyle(project.accent)}>
+    <div className="min-h-screen bg-bone text-ink">
       <Head>
         <title>{`${project.title} — Alice Picco`}</title>
         <meta name="description" content={project.description} />
