@@ -1,28 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import data from "../../data/portfolio.json";
 import GraphMark from "../GraphMark";
 import { useActiveSection } from "../../utils";
-
-// Live Amsterdam time — rendered client-side only, so static HTML never mismatches.
-const AmsterdamClock = () => {
-  const [time, setTime] = useState(null);
-
-  useEffect(() => {
-    const format = new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Europe/Amsterdam",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    const tick = () => setTime(format.format(new Date()));
-    tick();
-    const id = setInterval(tick, 10000);
-    return () => clearInterval(id);
-  }, []);
-
-  return <span>Amsterdam {time || "--:--"}</span>;
-};
 
 // Sections of the home page (the nav follows the one on screen).
 export const SECTIONS = [
@@ -40,17 +21,13 @@ const Header = () => {
   const { active } = useActiveSection(onHome ? SECTIONS.map((s) => s.id) : []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink bg-bone">
-      <div className="grid h-14 grid-cols-[1fr_auto] items-center gap-x-4 px-4 text-[15px] tablet:px-10 laptop:grid-cols-4">
-        <Link href="/" className="-m-2 flex w-max items-center p-2 text-ink" aria-label={`${name} — home`}>
+    <header className={`z-50 w-full ${onHome ? "absolute inset-x-0 top-0 text-bone" : "relative text-ink"}`}>
+      <div className="flex h-16 items-center justify-between gap-x-4 px-4 text-[15px] tablet:px-10">
+        <Link href="/" className="-m-2 flex w-max items-center p-2" aria-label={`${name} — home`}>
           <GraphMark size={30} />
         </Link>
 
-        <span className="hidden text-fieldgrey laptop:block">
-          <AmsterdamClock />
-        </span>
-
-        <nav className="hidden h-full items-stretch gap-7 laptop:col-span-2 laptop:flex" aria-label="Main">
+        <nav className="hidden h-full items-stretch gap-8 laptop:flex" aria-label="Main">
           {SECTIONS.map((s) => {
             const current = onHome && active === s.id;
             return (
@@ -62,7 +39,7 @@ const Header = () => {
               >
                 <span>{s.label}</span>
                 <span
-                  className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-olive transition-transform duration-300 ${
+                  className={`absolute inset-x-0 bottom-3 h-[2px] origin-left transition-transform duration-300 ${onHome ? "bg-signal" : "bg-olive"} ${
                     current ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
                   aria-hidden="true"
@@ -84,7 +61,7 @@ const Header = () => {
       </div>
 
       {open && (
-        <nav id="mobile-menu" className="border-t border-ink bg-ink px-4 pb-6 text-bone laptop:hidden" aria-label="Mobile">
+        <nav id="mobile-menu" className="relative z-50 bg-ink px-4 pb-6 text-bone laptop:hidden" aria-label="Mobile">
           {SECTIONS.map((s) => (
             <Link
               key={s.id}

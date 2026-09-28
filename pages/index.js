@@ -137,38 +137,6 @@ const Home = () => {
       <Header />
 
       <main>
-        {/* ——— Hero: text first; the map follows as its own scene ——— */}
-        <section id="top" className="flex min-h-[calc(100svh-56px)] flex-col justify-between gap-12 px-4 pb-8 pt-8 tablet:px-10 laptop:pt-14">
-          <div className="flex flex-col gap-8">
-            <p className="fu-hero-fade text-[13px] font-semibold uppercase tracking-[0.12em]">
-              {portfolioData.name} <span className="text-olive">—</span> researcher &amp; designer, Amsterdam
-            </p>
-            <h1 className="fu-display fu-hero-fade max-w-[1100px] text-[46px] leading-[1.0] tablet:text-[80px] laptop:text-[104px]">
-              I research and design where <span className="text-olive">culture</span> meets{" "}
-              <span className="text-olive">code</span> and <span className="text-olive">interfaces</span>.
-            </h1>
-          </div>
-
-          <div className="fu-hero-fade grid gap-8 laptop:grid-cols-4 laptop:items-end">
-            <ul className="grid max-w-[420px] grid-cols-2 gap-x-4 gap-y-1 text-[15px] laptop:col-span-2" aria-label="Roles">
-              {roles.map((role) => (
-                <li key={role}>{role}</li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-2">
-              <Link href="#work" className="fu-btn fu-btn-primary">
-                See the work ↓
-              </Link>
-              <a href={`mailto:${email}`} className="fu-btn fu-btn-secondary">
-                Write to me
-              </a>
-            </div>
-            <a href="#map" className="text-[13px] font-semibold uppercase tracking-[0.12em] laptop:justify-self-end">
-              ↓ The practice, as a map
-            </a>
-          </div>
-        </section>
-
         <GraphStage projects={projects} />
 
         {/* ——— Works ——— */}

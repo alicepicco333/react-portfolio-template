@@ -11,7 +11,6 @@ const WorkCard = ({ img, name, description, tags, category, cardNumber, date, ac
   return (
     <article className="flex flex-col gap-3" style={projectStyle(accent)}>
       <div className="relative aspect-square overflow-hidden" style={{ background: accent || tone }}>
-        {accent && <span className="absolute inset-x-0 top-0 z-10 h-[6px] bg-olive" aria-hidden="true" />}
         {moving && motion.endsWith(".mp4") ? (
           <video
             src={withBase(motion)}

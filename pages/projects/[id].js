@@ -81,7 +81,7 @@ export default function ProjectPage({ project, number, next }) {
               <ProjectGraph projectId={project.id} />
             </div>
           </div>
-          <div className={`flex flex-col gap-8 ${project.notes?.length ? "laptop:col-span-2" : "laptop:col-span-3"}`}>
+          <div className="flex flex-col gap-8 laptop:col-span-3">
             <h1 className="fu-display max-w-[900px] text-[44px] tablet:text-phi3">{project.title}</h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
             {project.summary && (
@@ -129,19 +129,6 @@ export default function ProjectPage({ project, number, next }) {
               </a>
             )}
           </div>
-          {project.notes?.length > 0 && (
-            <aside className="flex flex-col gap-4 border-t border-ink pt-4 laptop:border-l laptop:border-t-0 laptop:pl-6 laptop:pt-2" aria-label="Margin notes">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-fieldgrey">Margin notes</p>
-              <ol className="flex flex-col gap-4">
-                {project.notes.map((note, i) => (
-                  <li key={note} className="flex gap-3 text-[14px] leading-snug text-graphite">
-                    <span className="font-semibold tabular-nums text-olive">{i + 1}</span>
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ol>
-            </aside>
-          )}
         </section>
 
         {project.highlightImage && (

@@ -25,7 +25,7 @@ function fan(x, y, n, radius, g, spread = 1.5) {
   });
 }
 
-const PracticeMap = ({ projects = [], progress = null, initialSkill = null }) => {
+const PracticeMap = ({ projects = [], progress = null, initialSkill = null, fill = false }) => {
   const reducedMotion = usePrefersReducedMotion();
   const router = useRouter();
   const [angle, setAngle] = useState(REST);
@@ -138,7 +138,7 @@ const PracticeMap = ({ projects = [], progress = null, initialSkill = null }) =>
       <svg
         viewBox={`0 0 ${g.W} ${g.H}`}
         className="absolute inset-0 h-full w-full"
-        preserveAspectRatio="xMidYMid meet"
+        preserveAspectRatio={fill ? (narrow ? "xMidYMax meet" : "xMaxYMid meet") : "xMidYMid meet"}
         role="group"
         aria-label="Practice map: connected skills; select one to see its tools and the projects that use it"
       >
@@ -265,7 +265,7 @@ const PracticeMap = ({ projects = [], progress = null, initialSkill = null }) =>
 
       {/* desktop: where the selected skill shows up */}
       {!narrow && (
-        <div className="pointer-events-none absolute inset-x-6 bottom-6" aria-live="polite">
+        <div className={`pointer-events-none absolute bottom-5 ${fill ? "left-4 max-w-[620px] tablet:left-10" : "inset-x-6"}`} aria-live="polite">
           {activeNode ? (
             <div className="pointer-events-auto bg-bone px-4 py-3 text-ink">
               <p className="flex flex-wrap items-baseline gap-x-3 text-[15px]">

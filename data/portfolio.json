@@ -78,10 +78,6 @@
       ],
       "reworkNote": "The Stolen Archive began as a group project with Corrado Consiglio and Marco Lamorte for Information Modelling and Web Technologies. I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#b83312",
-      "notes": [
-        "Each object page sets the claimant's and the holder's positions side by side, each with its sources, instead of giving one verdict.",
-        "Every text exists in nine versions per tour, so a visitor chooses how much to read and how complex it gets."
-      ],
       "summary": {
         "brief": "Museums rarely show how colonial-era objects left home, who claims them and who holds them today.",
         "role": "Information modelling and web development; the 2026 redesign on my own.",
@@ -127,10 +123,6 @@
       ],
       "reworkNote": "Digitalian Folktales began as a group project with Nikolai Gorbachev. I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#1f1fe0",
-      "notes": [
-        "The rework keeps the original typewriter identity: the dialect is typed like a field record, the Italian set in a book serif.",
-        "Only 3 of the 5 catalogued episodes are transcribed; the edition says so instead of hiding the gaps."
-      ],
       "summary": {
         "brief": "Calvino retold Italy's folktales in standard Italian; the dialect versions he drew on are hard to read against his.",
         "role": "Edition design and web development; the 2026 rework on my own.",
@@ -179,10 +171,6 @@
       ],
       "reworkNote": "The ontologies were built as a group project with Marco Lamorte, Corrado Consiglio and Salvatore Di Marzo for Knowledge Representation and Extraction (2022/23). In 2026 I independently built a visual explorer from the group's OWL files and documentation; the images here come from it.",
       "accent": "#111111",
-      "notes": [
-        "The explorer draws only what the OWL files assert: no reasoning, no invented links.",
-        "Eight ontologies, including my four, came without SPARQL queries; the explorer shows that gap instead of filling it."
-      ],
       "summary": {
         "brief": "Cognitive biases are described in prose; there was no shared formal model to query them.",
         "role": "Four of the sixteen ontologies, in a team of four; the 2026 explorer on my own.",
@@ -234,10 +222,6 @@
       ],
       "reworkNote": "wipEU began as a group project with Salvatore Di Marzo and Matteo Guenci for Open Access and Digital Ethics (2023/24). I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#b62f63",
-      "notes": [
-        "The old map coloured raw headcounts and never matched Czechia, North Macedonia or Türkiye; the rework maps shares and fixes the codes.",
-        "Pace to parity is a straight line through ten years of data, labelled as a projection, not a forecast."
-      ],
       "summary": {
         "brief": "Data on women in EU decision-making is scattered across EIGE tables, and headcounts hide how far each body is from parity.",
         "role": "Idea, data retrieval, visualisation, quality and legal analysis, website; the 2026 rework on my own.",
@@ -269,7 +253,6 @@
       "collaborators": [
         "Karolis Lasys"
       ],
-      "notes": [],
       "summary": {
         "brief": "A live audiovisual performance for the Institute of Network Cultures' Expanded Publishing Fest 2.",
         "role": "Live-coded visuals, performing with Karolis Lasys.",
@@ -350,7 +333,6 @@
       "dateLabel": "Jul 2024",
       "context": "HDSC2024 open programme, Hackers & Designers, Het Wilde Weg, Amsterdam",
       "collaborators": [],
-      "notes": [],
       "summary": {
         "brief": "An open workshop in the Hackers & Designers summer programme.",
         "role": "Proposed and led the workshop.",
@@ -406,7 +388,6 @@
       "context": "Commission for Teigetje & Woelrat, Amsterdam",
       "collaborators": [],
       "accent": "#111111",
-      "notes": [],
       "summary": {
         "brief": "A collection website for an Amsterdam label working across fashion, design and interior art.",
         "role": "Design in Figma and front-end development.",
@@ -462,9 +443,6 @@
       "context": "Master's thesis (supervisor Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna; begun as a research internship at the Institute of Network Cultures",
       "collaborators": [],
       "accent": "#3a3733",
-      "notes": [
-        "The project began as a research internship at the Institute of Network Cultures in 2024 and became my master's thesis."
-      ],
       "summary": {
         "brief": "Memes are a vast visual culture with no structured way to classify or query them.",
         "role": "Sole researcher: data collection, ontology, classification and visualisation.",
@@ -493,7 +471,6 @@
       "dateLabel": "2026 –",
       "context": "Archivio Luki Massa, Bologna",
       "collaborators": null,
-      "notes": [],
       "summary": {
         "brief": "Digitising the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015.",
         "role": "Digitisation and cataloguing.",
@@ -541,7 +518,6 @@
       "dateLabel": "Jan 2026",
       "context": "Live set as 5PIC3, Fullfillment Music Center",
       "collaborators": [],
-      "notes": [],
       "summary": {
         "brief": "A live visual set at Fullfillment Music Center.",
         "role": "Visuals, performing as 5PIC3.",
@@ -598,9 +574,6 @@
       ],
       "reworkNote": "Culture for All began as a group project with Corrado Consiglio and Salvatore Di Marzo for Information Visualization (2023/24). I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#1f3fd1",
-      "notes": [
-        "The repository had population figures only for 2012, so the per-capita map uses ISTAT's own 2012 rate rather than new estimates."
-      ],
       "summary": {
         "brief": "Access to culture in Italy is unequal, but raw counts of libraries and museums mostly show where people live.",
         "role": "Data visualisation and web development; the 2026 rework on my own.",
@@ -667,7 +640,6 @@
       "dateLabel": "Sep 2026",
       "context": "Data Systems Project, MSc Information Studies, 2026/27, with Q42 and Curamando as stakeholders",
       "collaborators": null,
-      "notes": [],
       "summary": {
         "brief": "Conversational interfaces are everywhere, but they rarely enrich a visit inside the museum.",
         "role": "Team member, MSc Information Studies Data Systems Project.",
@@ -695,7 +667,6 @@
       "dateLabel": "Sep 2026",
       "context": "Multimodal Interaction Design course",
       "collaborators": null,
-      "notes": [],
       "summary": {
         "brief": "Colonists on Proxima Centauri b reopen buried nuclear waste, and radio fails under the star's flares.",
         "role": "Concept and interaction design (course project).",
@@ -724,7 +695,6 @@
       "dateLabel": "Sep 2026",
       "context": "HCI Theory and Data course",
       "collaborators": [],
-      "notes": [],
       "summary": {
         "brief": "Learning-analytics data sorts students into categories: what do they capture, and what do they leave out?",
         "role": "Sole author.",
@@ -1158,17 +1128,13 @@
       "context": "HCI course project, MA Digital Humanities and Digital Knowledge, University of Bologna",
       "collaborators": [],
       "accent": "#b23821",
-      "notes": [
-        "The biggest problem wasn't visual: the home page tried to be a marketing page, a guide and an onboarding flow at once."
-      ],
       "summary": {
         "brief": "People hesitate to start online therapy: how the service works, matching, prices and privacy were hard to understand.",
         "role": "Solo: research, UX and UI design, prototyping and testing.",
         "method": "Interviews, expert review and think-aloud tests; three design iterations; a summative usability test.",
         "outcome": "SUS rose from 75 to 91.25, with 100% task success and zero errors (4 participants).",
         "stack": "Figma · prototyping · SUS"
-      },
-      "tileMotion": "/images/projects/unobravo/motion-booked.mp4"
+      }
     },
     {
       "id": "21",
@@ -1215,7 +1181,6 @@
       ],
       "reworkNote": "Words of Gender began as a group project with Nicole Liggeri, Lucia Bertoldini and Chiara Parravicini for Digital Text in the Humanities. I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#9c2f55",
-      "notes": [],
       "summary": {
         "brief": "Women authors are under-represented in the literary canon and in course readings.",
         "role": "Encoding and web development in a team of four; the 2026 rework on my own.",
