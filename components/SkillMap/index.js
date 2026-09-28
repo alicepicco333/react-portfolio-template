@@ -144,7 +144,7 @@ const SkillMap = ({ projects }) => {
       if (s && s.offsetParent !== null) {
         const q = (sel) => Array.from(s.querySelectorAll(sel));
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(q(".map-intro > *"), { y: 26, opacity: 0, duration: 0.9, stagger: 0.1 }, 0);
+        tl.from(q(".map-intro > *"), { y: 26, duration: 0.9, stagger: 0.1 }, 0);
         drawIn(gsap, q(".map-edge"), { at: 0.25, step: 0.035, duration: 0.7 });
         tl.from(q(".map-node"), { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.035, ease: "back.out(2.2)" }, 0.35);
         tl.from(q(".map-chip-g"), { opacity: 0, y: 6, duration: 0.5, stagger: 0.025 }, 0.7);
@@ -154,7 +154,7 @@ const SkillMap = ({ projects }) => {
       const n = narrowRef.current;
       if (n && n.offsetParent !== null) {
         const q = (sel) => Array.from(n.querySelectorAll(sel));
-        gsap.from(q(".map-intro > *"), { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" });
+        gsap.from(q(".map-intro > *"), { y: 20, duration: 0.8, stagger: 0.1, ease: "power3.out" });
         drawIn(gsap, q(".map-edge"), { at: 0.2, step: 0.03, duration: 0.6 });
         gsap.from(q(".map-node"), { scale: 0, transformOrigin: "50% 50%", duration: 0.45, stagger: 0.03, delay: 0.3, ease: "back.out(2)" });
       }

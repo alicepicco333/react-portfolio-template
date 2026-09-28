@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import Seo from "../components/Seo";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import A11yControls from "../components/A11yControls";
@@ -7,10 +7,11 @@ import data from "../data/portfolio.json";
 
 const Accessibility = () => (
   <div className="min-h-screen bg-bone text-ink">
-    <Head>
-      <title>Accessibility statement — Alice Picco</title>
-      <meta name="description" content="How this portfolio aims to meet WCAG 2.1 AA, and the controls it offers for motion and contrast." />
-    </Head>
+    <Seo
+      title="Accessibility statement — Alice Picco"
+      description="How this portfolio aims to meet WCAG 2.1 AA, and the controls it offers for motion and contrast."
+      path="/accessibility/"
+    />
     <Header />
     <main id="main-content" tabIndex={-1} className="px-4 pb-24 pt-10 tablet:px-10">
       <article className="max-w-[760px]">
@@ -34,7 +35,7 @@ const Accessibility = () => (
               It is off by default if your device asks for reduced motion.
             </li>
             <li>
-              <strong>High contrast</strong> switches the accent colour to a dark grey on every page, turns all secondary text and outlines black, and removes glows and transparency. The page background stays the same.
+              <strong>High contrast</strong> switches the accent color to a dark gray on every page, turns all secondary text and outlines black, and removes glows and transparency. The page background stays the same.
             </li>
           </ul>
         </section>

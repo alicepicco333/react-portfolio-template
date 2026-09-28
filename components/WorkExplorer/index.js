@@ -100,7 +100,7 @@ function wheelLayout(projects) {
 const Media = ({ project, className = "" }) => {
   const reduced = usePrefersReducedMotion() || !motionOn();
   const motion = project.tileMotion && !reduced ? project.tileMotion : null;
-  const still = project.cardImage || project.imageSrc;
+  const still = project.cardWebp || project.cardImage || project.imageSrc;
   const src = motion || still;
   if (motion && motion.endsWith(".mp4")) {
     return <video src={withBase(motion)} poster={withBase(still)} className={className} autoPlay muted loop playsInline aria-label={project.title} />;
@@ -324,9 +324,6 @@ const WorkExplorer = ({ projects: given }) => {
       <div className="flex flex-col gap-6 pb-6 desktop:flex-row desktop:items-end desktop:justify-between">
         <div className="fu-reveal flex flex-col gap-2">
           <h2 id="work-title" className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>
-          <p className="font-mono text-[13px] text-graphite">
-            {years[years.length - 1]}–{years[0]}
-          </p>
         </div>
         <div className="flex w-full flex-wrap items-end gap-3 desktop:w-auto">
           {view === "Compass" && (

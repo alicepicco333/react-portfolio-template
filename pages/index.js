@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Seo from "../components/Seo";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { motionOn } from "../utils/motion";
@@ -17,15 +18,11 @@ import { useIsomorphicLayoutEffect, byDateDesc } from "../utils";
 const FINISHED = ["Design", "Research", "Live Coding"];
 
 const Home = () => {
-  const { resume, about } = portfolioData;
+  const { about } = portfolioData;
   const projects = [...portfolioData.projects].sort(byDateDesc);
   const finished = projects.filter((p) => FINISHED.includes(p.category));
   const wip = projects.filter((p) => p.category === "Work in Progress");
 
-  const record = [
-    ...resume.experiences,
-    ...resume.educationList.map((e) => ({ id: e.id, dates: e.dates, position: e.name, bullets: e.detail, type: "Education" })),
-  ];
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -35,9 +32,7 @@ const Home = () => {
       gsap.utils.toArray(".fu-reveal").forEach((el) => {
         gsap.from(el, { opacity: 0, y: 24, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
       });
-      gsap.utils.toArray(".record-row").forEach((el, i) => {
-        gsap.from(el, { opacity: 0, x: -16, duration: 0.5, delay: (i % 4) * 0.05, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 92%", once: true } });
-      });
+
     });
     // the map, the work views and images change the page height after load: keep triggers in step
     let timer;
@@ -55,9 +50,8 @@ const Home = () => {
 
   return (
     <div id="top" className="min-h-screen bg-bone text-ink">
+      <Seo title="Alice Picco — HCI researcher & designer" description={about.lead} />
       <Head>
-        <title>Alice Picco — HCI researcher &amp; designer</title>
-        <meta name="description" content={about.lead} />
         <meta name="theme-color" content="#D5D6DB" />
       </Head>
 
@@ -92,31 +86,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="record" aria-labelledby="record-title" className="scroll-mt-16 px-4 pb-20 pt-8 tablet:px-8">
-          <div className="grid gap-x-8 gap-y-8 laptop:grid-cols-4">
-            <div className="fu-reveal flex flex-col gap-2">
-              <h2 id="record-title" className="text-[28px] font-semibold tracking-[-0.02em]">Record</h2>
-              <p className="font-mono text-[13px] text-graphite">Experience and education</p>
-            </div>
-            <div className="laptop:col-span-3">
-              <ol className="border-t border-ink">
-                {record.map((entry) => (
-                  <li key={entry.id} className="record-row grid gap-y-1 border-b border-ink/25 py-4 tablet:grid-cols-[190px_1fr_150px] tablet:gap-x-4">
-                    <span className="pt-0.5 font-mono text-[13px] text-graphite">{entry.dates}</span>
-                    <span className="flex flex-col gap-1">
-                      <span className="text-[17px] font-semibold leading-snug">{entry.position}</span>
-                      <span className="text-[15px] text-ink/80">{entry.bullets}</span>
-                    </span>
-                    <span className="pt-0.5 font-mono text-[13px] text-graphite tablet:text-right">{entry.type}</span>
-                  </li>
-                ))}
-              </ol>
-              <Link href="/resume" className="mt-8 inline-flex min-h-[44px] items-center bg-ink px-5 text-[14px] font-semibold text-bone transition-colors hover:bg-olive">
-                Full CV →
-              </Link>
-            </div>
-          </div>
-        </section>
+
       </main>
 
       <Footer />

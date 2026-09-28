@@ -62,7 +62,7 @@ const Header = () => {
 
       {open && (
         <nav id="mobile-menu" className="border-t border-ink bg-bone px-4 pb-6 tablet:hidden" aria-label="Mobile">
-          {[...SECTIONS, { id: "contact", label: "contact" }].map((s) => (
+          {[...SECTIONS.filter((s) => s.id !== "map"), { id: "contact", label: "contact" }].map((s) => (
             <Link key={s.id} href={`/#${s.id}`} onClick={() => setOpen(false)} className="block border-b border-ink/20 py-4 text-[32px] font-semibold tracking-[-0.02em]">
               {s.label}
             </Link>

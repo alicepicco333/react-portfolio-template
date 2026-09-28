@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import Head from "next/head";
+import Seo from "../../components/Seo";
 import Link from "next/link";
 import portfolioData from "../../data/portfolio.json";
 import Header from "../../components/Header";
@@ -31,7 +31,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const projects = ORDER.flatMap((category) => portfolioData.projects.filter((p) => p.category === category).sort(byDateDesc));
+  // the same order as the home page: finished work by its curated rank, then work in progress
+  const finished = portfolioData.projects.filter((p) => ORDER.includes(p.category) && p.category !== "Work in Progress");
+  const wip = portfolioData.projects.filter((p) => p.category === "Work in Progress").sort(byDateDesc);
+  const projects = [...finished.sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99) || byDateDesc(a, b)), ...wip];
   const index = projects.findIndex((p) => p.id === params.id);
   const project = projects[index];
   const next = projects[(index + 1) % projects.length];
@@ -62,10 +65,13 @@ export default function ProjectPage({ project, number, next }) {
 
   return (
     <div className={`min-h-screen bg-bone text-ink ${project.accent ? "project-theme" : ""}`} style={projectStyle(project.accent, project.accentHC)}>
-      <Head>
-        <title>{`${project.title} — Alice Picco`}</title>
-        <meta name="description" content={project.description} />
-      </Head>
+      <Seo
+        title={`${project.title} — Alice Picco`}
+        description={project.description}
+        path={`/projects/${project.id}/`}
+        image={project.cardImage || project.imageSrc || undefined}
+        type="article"
+      />
 
       <Header />
 
@@ -73,7 +79,7 @@ export default function ProjectPage({ project, number, next }) {
         <section className="grid gap-x-4 gap-y-8 px-4 pb-16 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
           <div className="flex flex-col gap-1">
             <Link href="/#work" className="fu-meta text-fieldgrey hover:text-ink">
-              ← Works
+              ← Selected work
             </Link>
             <span className="fu-meta pt-4 text-fieldgrey">{number}</span>
             <span className="fu-title text-xl">{short}</span>
@@ -83,7 +89,9 @@ export default function ProjectPage({ project, number, next }) {
           </div>
           <div className="flex flex-col gap-8 laptop:col-span-3">
             <h1 className="fu-display max-w-[980px] text-[44px] tablet:text-phi3">
-              {project.title}
+              {project.title.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="whitespace-nowrap">
+              {project.title.split(" ").slice(-1)[0]}
               {project.url && (
                 <a
                   href={project.url}
@@ -95,6 +103,7 @@ export default function ProjectPage({ project, number, next }) {
                   ↗
                 </a>
               )}
+              </span>
             </h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
             {project.facts?.length > 0 && (
@@ -121,7 +130,9 @@ export default function ProjectPage({ project, number, next }) {
                   ["Method", project.summary.method],
                   ["Outcome", project.summary.outcome],
                   ["Stack", project.summary.stack],
-                ].map(([label, value]) => (
+                ]
+                  .filter(([, value]) => value)
+                  .map(([label, value]) => (
                   <div key={label} className="flex flex-col gap-1">
                     <dt className="font-mono text-[14px] uppercase tracking-[0.1em] text-olive">{label}</dt>
                     <dd className="text-[17px] leading-snug">{value}</dd>
@@ -146,8 +157,6 @@ export default function ProjectPage({ project, number, next }) {
               )}
               <dt className="text-fieldgrey">Category</dt>
               <dd>{project.category}</dd>
-              <dt className="text-fieldgrey">Techniques</dt>
-              <dd>{project.tags?.join(", ")}</dd>
             </dl>
             {project.reworkNote && (
               <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[16px] leading-snug text-graphite">{project.reworkNote}</p>
@@ -159,6 +168,22 @@ export default function ProjectPage({ project, number, next }) {
           <figure className="px-4 tablet:px-10">
             <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="max-h-[80vh] w-full object-cover" />
             {project.highlightCaption && <figcaption className="mt-3 max-w-[720px] text-[16px] leading-snug text-graphite">{project.highlightCaption}</figcaption>}
+          </figure>
+        )}
+
+        {project.embed && (
+          <figure className="px-4 pt-10 tablet:px-10">
+            <div className="relative aspect-video w-full max-w-[1200px] border border-ink bg-ink">
+              <iframe
+                src={project.embed}
+                title={`${project.title}: performance recording`}
+                className="absolute inset-0 h-full w-full"
+                loading="lazy"
+                allow="fullscreen; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <figcaption className="mt-3 text-[16px] leading-snug text-graphite">The full recording, published by the Institute of Network Cultures.</figcaption>
           </figure>
         )}
 

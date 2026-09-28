@@ -8,7 +8,7 @@
     "HCI researcher",
     "UX designer",
     "Front-end developer",
-    "Data visualisation",
+    "Data visualization",
     "Semantic web"
   ],
   "darkMode": false,
@@ -30,7 +30,7 @@
     {
       "id": "0",
       "title": "The Stolen Archive",
-      "description": "A customizable fictional museum showcasing looted colonial artifacts.",
+      "description": "A virtual museum of 30 looted colonial objects that shows how each one left home, who claims it and who holds it today.",
       "introText": "The Stolen Archive is a virtual exhibition of thirty objects taken during colonial wars, conquests and excavations, from the Benin Bronzes to the Parthenon Marbles. It works as a companion to a museum visit and as a museum of its own, and asks who was able to take these objects, who keeps them and who has managed to get them back.",
       "gridImages": [
         {
@@ -60,7 +60,7 @@
       ],
       "middleText": "Visitors pick one of three tours (Timeline, Colonial Conquests, Geo) and choose how long and how complex the texts should be: every object has nine versions of its text for each tour, 810 in all. Each object page explains how the object left, who claims it and who holds it, with the sources for each position. An atlas traces the thirty routes on a map, and a floor plan places the objects in thirteen rooms over two floors.",
       "highlightImage": "/images/projects/0-hl.jpg",
-      "conclusionText": "Developed for Information Modelling and Web Technologies (prof. Fabio Vitali) in the Digital Humanities and Digital Knowledge master's at the University of Bologna. Built in HTML, CSS and JavaScript, with inline SVG maps, 3D views of the objects, an RDF graph for every record, and dark and light themes.",
+      "conclusionText": "Developed for Information Modeling and Web Technologies (prof. Fabio Vitali) in the Digital Humanities and Digital Knowledge master's at the University of Bologna. Built in HTML, CSS and JavaScript, with inline SVG maps, 3D views of the objects, an RDF graph for every record, and dark and light themes.",
       "imageSrc": "/images/projects/0.jpg",
       "url": "https://alicepicco333.github.io/Looted-items-collection/",
       "category": "Design",
@@ -71,16 +71,16 @@
       "highlightCaption": "Home page: the thirty objects, five continents, thirteen rooms, two floors and three tours.",
       "date": "2026-09-01",
       "dateLabel": "2024 · reworked 2026",
-      "context": "Information Modelling and Web Technologies (prof. Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna",
+      "context": "Information Modeling and Web Technologies (prof. Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna",
       "collaborators": [
         "Corrado Consiglio",
         "Marco Lamorte"
       ],
-      "reworkNote": "The Stolen Archive began as a group project with Corrado Consiglio and Marco Lamorte for Information Modelling and Web Technologies. I reworked it independently in 2026; the version shown here is that rework.",
+      "reworkNote": "The Stolen Archive began as a group project with Corrado Consiglio and Marco Lamorte for Information Modeling and Web Technologies. I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#aa2f10",
       "summary": {
         "brief": "Museums rarely show how colonial-era objects left home, who claims them and who holds them today.",
-        "role": "Information modelling and web development; the 2026 redesign on my own.",
+        "role": "Information modeling and web development; the 2026 redesign on my own.",
         "method": "A metadata model for 30 objects; 810 texts across 3 tours, 3 lengths and 3 reading levels; maps, floor plans and 3D views.",
         "outcome": "A virtual exhibition of 30 objects in 13 rooms on two floors, each with the claims, holdings and sources behind it.",
         "stack": "HTML · CSS · JavaScript · Leaflet · three.js · RDF"
@@ -106,12 +106,13 @@
       "shows": "Information architecture for difficult, contested content, and a public interface built end to end.",
       "cardImage": "/images/projects/0-card-v2.jpg",
       "rank": 3,
-      "accentHC": "#75210c"
+      "accentHC": "#75210c",
+      "cardWebp": "/images/projects/0-card-v2-800.webp"
     },
     {
       "id": "1",
       "title": "Digitalian Folktales",
-      "description": "A digital edition of Calvino's Fiabe Italiane, with regional language comparison.",
+      "description": "A searchable digital edition that sets Calvino's Italian folktales beside the dialect versions he drew on.",
       "introText": "Digitalian Folktales is a digital edition of tales from Italo Calvino's Fiabe italiane, read alongside the regional versions Calvino drew on.",
       "gridImages": [
         {
@@ -120,7 +121,7 @@
         },
         {
           "src": "/images/projects/1-g2.jpg",
-          "caption": "Comparing stories: the Friulian and Sicilian cycles as catalogue cards, showing the tale type (ATU 774) they share."
+          "caption": "Comparing stories: the Friulian and Sicilian cycles as catalog cards, showing the tale type (ATU 774) they share."
         },
         {
           "src": "/images/projects/1-g3.jpg",
@@ -129,7 +130,7 @@
       ],
       "middleText": "The comparison view sets two versions of the same tale side by side, such as Gesù e San Pietro in Friuli and in Sicilia, each with its original dialect text and an Italian translation. For every tale the edition records where it comes from, its narrators, Calvino's source collection, its ATU tale type and a Propp-based reading of its outcome, animals and places, and an advanced search runs across the corpus.",
       "highlightImage": "/images/projects/1-hl.jpg",
-      "conclusionText": "The 2026 version makes the edition usable: a search that finds tales and episodes, the dialect record beside the Italian passage by passage, a map of the tales, catalogue cards comparing the two cycles, an Italian and English interface and a guide to the sources (Calvino, Zorzùt, Pitrè).",
+      "conclusionText": "The 2026 version makes the edition usable: a search that finds tales and episodes, the dialect record beside the Italian passage by passage, a map of the tales, catalog cards comparing the two cycles, an Italian and English interface and a guide to the sources (Calvino, Zorzùt, Pitrè).",
       "imageSrc": "/images/projects/1.jpg",
       "url": "https://alicepicco333.github.io/digitalian-folktales/",
       "category": "Research",
@@ -149,7 +150,7 @@
         "brief": "Calvino retold Italy's folktales in standard Italian; the dialect versions he drew on are hard to read against his.",
         "role": "Edition design and web development; the 2026 rework on my own.",
         "method": "Dialect texts aligned with Italian translations passage by passage; tale types (ATU) and a structural reading recorded for each episode.",
-        "outcome": "A searchable edition of two tale cycles, Friuli and Sicily: 5 episodes catalogued, 15 aligned passages.",
+        "outcome": "A searchable edition of two tale cycles, Friuli and Sicily: 5 episodes cataloged, 15 aligned passages.",
         "stack": "HTML · CSS · JavaScript · D3.js · TopoJSON"
       },
       "facts": [
@@ -159,7 +160,7 @@
         ],
         [
           "5",
-          "episodes catalogued"
+          "episodes cataloged"
         ],
         [
           "15",
@@ -173,12 +174,13 @@
       "shows": "Turning scholarly source material into something people can search and read side by side.",
       "cardImage": "/images/projects/1-card-v2.jpg",
       "rank": 8,
-      "accentHC": "#1b1bbe"
+      "accentHC": "#1b1bbe",
+      "cardWebp": "/images/projects/1-card-v2-800.webp"
     },
     {
       "id": "2",
       "title": "Cognitive Bias Ontology",
-      "description": "Ontology development for cognitive biases.",
+      "description": "Sixteen OWL ontologies that model cognitive biases, and a visual explorer that draws each ontology's user story as a graph.",
       "introText": "An ontology for a cluster of cognitive biases, part of a collective ontology of human biases built by the whole class of Knowledge Representation and Extraction (prof. Aldo Gangemi, University of Bologna, 2022/23).",
       "gridImages": [
         {
@@ -194,9 +196,9 @@
           "caption": "Filtering by design pattern: selecting Affected By picks out the seven ontologies whose user stories are built on it."
         }
       ],
-      "middleText": "Our group, Marco Lamorte, Corrado Consiglio, Salvatore Di Marzo and I, modelled sixteen biases, from the gambler's fallacy and the hot hand fallacy to pareidolia, naive realism and the blind spot bias. Each went through the same eXtreme Design workflow: research and documentation, ideation and design, modelling and implementation, then presentation and visualisation. ChatGPT and Gemini were used early on for definitions, scenarios and user stories, and Framester among the resources for modelling.",
+      "middleText": "Our group, Marco Lamorte, Corrado Consiglio, Salvatore Di Marzo and I, modeled sixteen biases, from the gambler's fallacy and the hot hand fallacy to pareidolia, naive realism and the blind spot bias. Each went through the same eXtreme Design workflow: research and documentation, ideation and design, modeling and implementation, then presentation and visualization. ChatGPT and Gemini were used early on for definitions, scenarios and user stories, and Framester among the resources for modeling.",
       "highlightImage": "/images/projects/2-hl.jpg",
-      "conclusionText": "The process is documented in a public GitBook. It showed how much understanding of a domain an ontology needs before any modelling starts, and where language models help and where their answers had to be corrected. The 2026 explorer draws each user story as a graph of the individuals in its OWL file and shows where each class comes from (the team's own model, Framester or a design pattern); maps which design patterns and Framester frames each ontology reuses; and shows the vocabulary the group shared.",
+      "conclusionText": "The process is documented in a public GitBook. It showed how much understanding of a domain an ontology needs before any modeling starts, and where language models help and where their answers had to be corrected. The 2026 explorer draws each user story as a graph of the individuals in its OWL file and shows where each class comes from (the team's own model, Framester or a design pattern); maps which design patterns and Framester frames each ontology reuses; and shows the vocabulary the group shared.",
       "imageSrc": "/images/projects/2.jpg",
       "url": "https://alicepicco333.github.io/cognitive-bias-explorer/",
       "category": "Research",
@@ -240,15 +242,16 @@
           "people in the team"
         ]
       ],
-      "shows": "Structured knowledge modelling in a team, and a visual tool that makes the model explorable.",
+      "shows": "Structured knowledge modeling in a team, and a visual tool that makes the model explorable.",
       "cardImage": "/images/projects/2-card-v2.jpg",
       "rank": 4,
-      "accentHC": "#111111"
+      "accentHC": "#111111",
+      "cardWebp": "/images/projects/2-card-v2-800.webp"
     },
     {
       "id": "3",
       "title": "wipEU",
-      "description": "Analyzing women's representation in the EU.",
+      "description": "An open-data visualization of women in EU decision-making: every seat as a real person, with the pace to parity.",
       "introText": "wipEU is an open data project on how the representation of women in positions of power and decision-making correlates across the European Union, and how it has changed over time.",
       "gridImages": [
         {
@@ -257,7 +260,7 @@
         },
         {
           "src": "/images/projects/3-g2.jpg",
-          "caption": "Pace to parity: a straight-line trend through the last ten years, labelled as a projection."
+          "caption": "Pace to parity: a straight-line trend through the last ten years, labeled as a projection."
         },
         {
           "src": "/images/projects/3-g3.jpg",
@@ -270,7 +273,7 @@
       ],
       "middleText": "We combined EIGE datasets across six areas (public administration, business and finance, politics, environment and climate change, education and research, law and institutions) into new mashup datasets, and assessed their quality, legal and ethical aspects as open data. In 2023, for example, women made up 20% of the highest decision-making bodies of European financial institutions and led 26.8% of major political parties. In 2026 I redesigned the site around seats: a hemicycle for each body with one dot per real person and a year playback, a pace-to-parity projection, a country map and profiles you can compare and share.",
       "highlightImage": "/images/projects/3-hl.jpg",
-      "conclusionText": "Final project for Open Access and Digital Ethics (2023/24, University of Bologna) with Salvatore Di Marzo and Matteo Guenci. I worked on the idea, data retrieval, the visualisations, the quality and legal analyses and the website, built with Leaflet and Plotly.js. The mashup datasets are released under CC BY 4.0.",
+      "conclusionText": "Final project for Open Access and Digital Ethics (2023/24, University of Bologna) with Salvatore Di Marzo and Matteo Guenci. I worked on the idea, data retrieval, the visualizations, the quality and legal analyses and the website, built with Leaflet and Plotly.js. The mashup datasets are released under CC BY 4.0.",
       "imageSrc": "/images/projects/3.jpg",
       "url": "https://alicepicco333.github.io/wipEU/",
       "category": "Research",
@@ -290,7 +293,7 @@
       "accent": "#a12957",
       "summary": {
         "brief": "Data on women in EU decision-making is scattered across EIGE tables, and headcounts hide how far each body is from parity.",
-        "role": "Idea, data retrieval, visualisation, quality and legal analysis, website; the 2026 rework on my own.",
+        "role": "Idea, data retrieval, visualization, quality and legal analysis, website; the 2026 rework on my own.",
         "method": "EIGE datasets for six areas merged into mashups; shares computed from headcounts and checked against EIGE's own percentages.",
         "outcome": "No area reaches parity. The site shows every body as seats, with a pace-to-parity projection and country profiles.",
         "stack": "D3.js · JavaScript · Python · EIGE open data"
@@ -316,19 +319,20 @@
       "shows": "Open-data research with a quality, legal and ethics review, and a policy question made visible.",
       "cardImage": "/images/projects/3-card-v2.jpg",
       "rank": 5,
-      "accentHC": "#701e3c"
+      "accentHC": "#701e3c",
+      "cardWebp": "/images/projects/3-card-v2-800.webp"
     },
     {
       "id": "5",
       "title": "Glitching Materiality - @THEVOID",
       "description": "Algorithmic performance: a real-time, live-coded visual system for the Institute of Network Cultures.",
-      "introText": "A live coding performance with Karolis Lasys at Expanded Publishing Fest 2: Space-in / Space-out, organised by the Institute of Network Cultures in Amsterdam in 2024.",
+      "introText": "A live coding performance with Karolis Lasys at Expanded Publishing Fest 2: Space-in / Space-out, organized by the Institute of Network Cultures in Amsterdam in 2024.",
       "gridImages": [],
       "middleText": "The visuals were live-coded in Hydra Video Synth. The recording, about 18 minutes long, is published by the Institute of Network Cultures.",
       "highlightImage": "/images/projects/5-hl.jpg",
       "conclusionText": "",
       "imageSrc": "/images/projects/5.jpg",
-      "url": "https://player.vimeo.com/video/980415428?loop=1&mute=1",
+      "url": "https://vimeo.com/980415428",
       "category": "Live Coding",
       "tags": [
         "Live Coding",
@@ -363,15 +367,17 @@
         ]
       ],
       "shows": "Real-time interactive systems and collaboration: visuals generated and rewritten live, in dialogue with another performer.",
-      "tileMotion": "/images/projects/5-loop.webp",
+      "tileMotion": "/images/projects/5-loop-sm.webp",
       "cardImage": "/images/projects/5-card-v2.jpg",
-      "rank": 11
+      "rank": 11,
+      "embed": "https://player.vimeo.com/video/980415428?dnt=1",
+      "cardWebp": "/images/projects/5-card-v2-800.webp"
     },
     {
       "id": "10",
       "title": "Collaboratory Creative Coding Jam",
-      "description": "A hands-on workshop on real-time visual programming, closing with a collective live jam.",
-      "introText": "A Hydra Video Synth workshop I proposed and led in the HDSC2024 open programme of Hackers & Designers, at Het Wilde Weg in Amsterdam on 20 July 2024.",
+      "description": "A hands-on workshop on real-time visual programming for newcomers, closing with a collective live jam.",
+      "introText": "A Hydra Video Synth workshop I proposed and led in the HDSC2024 open program of Hackers & Designers, at Het Wilde Weg in Amsterdam on 20 July 2024.",
       "gridImages": [
         {
           "src": "/images/projects/10-g1.jpg",
@@ -390,10 +396,10 @@
       ],
       "date": "2024-07-20",
       "dateLabel": "Jul 2024",
-      "context": "HDSC2024 open programme, Hackers & Designers, Het Wilde Weg, Amsterdam",
+      "context": "HDSC2024 open program, Hackers & Designers, Het Wilde Weg, Amsterdam",
       "collaborators": [],
       "summary": {
-        "brief": "An open workshop in the Hackers & Designers summer programme.",
+        "brief": "An open workshop in the Hackers & Designers summer program.",
         "role": "Proposed and led the workshop.",
         "method": "An introduction to Hydra's primitives, textures and commands, then a collective live jam.",
         "outcome": "A three-hour workshop and jam at Het Wilde Weg, Amsterdam, on 20 July 2024.",
@@ -411,17 +417,18 @@
         ],
         [
           "2024",
-          "Hackers & Designers summer programme"
+          "Hackers & Designers summer program"
         ]
       ],
       "shows": "Teaching and facilitation: introducing newcomers to real-time interactive programming.",
       "cardImage": "/images/projects/10-card-v2.jpg",
-      "rank": 12
+      "rank": 12,
+      "cardWebp": "/images/projects/10-card-v2-800.webp"
     },
     {
       "id": "11",
       "title": "Teigetje & Woelrat",
-      "description": "Collection website for the Amsterdam fashion label Teigetje & Woelrat, designed in Figma and built for the web.",
+      "description": "A bilingual collection website for an Amsterdam fashion and design label, from Figma design to a React build.",
       "introText": "A collection website for Teigetje & Woelrat, an Amsterdam label working across fashion, design and interior art. I designed it in Figma and built it as a React site.",
       "gridImages": [
         {
@@ -489,7 +496,8 @@
       "shows": "A client commission taken from Figma design to a working bilingual website.",
       "cardImage": "/images/projects/11-card-v2.jpg",
       "rank": 6,
-      "accentHC": "#111111"
+      "accentHC": "#111111",
+      "cardWebp": "/images/projects/11-card-v2-800.webp"
     },
     {
       "id": "12",
@@ -515,7 +523,7 @@
         },
         {
           "src": "/images/projects/12-g5.jpg",
-          "caption": "Variant family tree: one meme and its variants, with the colour spectrum of the set."
+          "caption": "Variant family tree: one meme and its variants, with the color spectrum of the set."
         },
         {
           "src": "/images/projects/12-g6.jpg",
@@ -524,7 +532,7 @@
       ],
       "middleText": "Following Lev Manovich's cultural analytics, it treats memes as a large dataset rather than isolated texts. Around 5,000 images and their metadata, scraped from Know Your Meme, are described in an OWL ontology informed by FRBR across three areas: visual content, cultural references and format. CLIP is used to classify them semi-automatically.",
       "highlightImage": "/images/projects/12-hl.jpg",
-      "conclusionText": "The ontology is published with LODE documentation, interactive visualisations of formats, platforms, periods and variants, and a SPARQL explorer with example queries, including links to Wikidata for regions and platforms.",
+      "conclusionText": "The ontology is published with LODE documentation, interactive visualizations of formats, platforms, periods and variants, and a SPARQL explorer with example queries, including links to Wikidata for regions and platforms.",
       "imageSrc": "/images/projects/12.jpg",
       "url": "",
       "category": "Research",
@@ -540,9 +548,9 @@
       "accent": "#3a3733",
       "summary": {
         "brief": "A large, messy cultural dataset with no structured model to classify, link or query it.",
-        "role": "Sole researcher: data collection, ontology, classification and visualisation.",
+        "role": "Sole researcher: data collection, ontology, classification and visualization.",
         "method": "About 5,000 Know Your Meme entries scraped; an OWL ontology informed by FRBR; CLIP for semi-automatic classification.",
-        "outcome": "A published ontology with documentation, visualisations and a SPARQL explorer linked to Wikidata.",
+        "outcome": "A published ontology with documentation, visualizations and a SPARQL explorer linked to Wikidata.",
         "stack": "Python · CLIP · OWL · SPARQL · D3.js"
       },
       "facts": [
@@ -552,7 +560,7 @@
         ],
         [
           "3",
-          "areas modelled: content, references, format"
+          "areas modeled: content, references, format"
         ],
         [
           "CLIP",
@@ -563,16 +571,17 @@
           "explorer linked to Wikidata"
         ]
       ],
-      "shows": "Data modelling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
+      "shows": "Data modeling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
       "cardImage": "/images/projects/12-card-v4.jpg",
       "rank": 9,
-      "accentHC": "#3a3733"
+      "accentHC": "#3a3733",
+      "cardWebp": "/images/projects/12-card-v4-800.webp"
     },
     {
       "id": "13",
       "title": "Archivio Fondazione Luki Massa",
-      "description": "Digitisation of the Luki Massa Foundation archive, cataloguing its series with a shared file nomenclature and inventory.",
-      "introText": "Digitisation of the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015 and was inventoried by Emanuela Fiorletta in 2023.",
+      "description": "Digitization and cataloging of an archive of lesbian and feminist activism in Bologna, 1976–2015.",
+      "introText": "Digitization of the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015 and was inventoried by Emanuela Fiorletta in 2023.",
       "gridImages": [],
       "middleText": "The work covers five of the archive's series: political groups, lesbian and feminist conferences, seminars and demonstrations, other lesbian, feminist and LGBTQI+ groups, the lesbian and feminist press, and Luki Massa's own notes and writings. Every scan follows a shared nomenclature (archive, series, subseries, file, documentary unit, page), and spreadsheets record the title, date, medium, material and a short description of each unit.",
       "highlightImage": "",
@@ -582,37 +591,37 @@
       "category": "Work in Progress",
       "tags": [
         "Digital Archives",
-        "Digitisation"
+        "Digitization"
       ],
       "date": "2026-09-03",
       "dateLabel": "2026 –",
       "context": "Archivio Luki Massa, Bologna",
       "collaborators": null,
       "summary": {
-        "brief": "Digitising the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015.",
-        "role": "Digitisation and cataloguing.",
-        "method": "A shared file nomenclature (archive, series, file, unit, page) and a catalogue record for every unit.",
-        "outcome": "In progress: five series being digitised.",
+        "brief": "Digitizing the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015.",
+        "role": "Digitization and cataloging.",
+        "method": "A shared file nomenclature (archive, series, file, unit, page) and a catalog record for every unit.",
+        "outcome": "In progress: five series being digitized.",
         "stack": "Scanning · spreadsheets"
       },
       "short": "Luki Massa archive",
       "facts": [
         [
           "5",
-          "series being digitised"
+          "series being digitized"
         ],
         [
           "1976–2015",
           "years of activism documented"
         ]
       ],
-      "shows": "Careful, standards-based cataloguing of a community archive."
+      "shows": "Careful, standards-based cataloging of a community archive."
     },
     {
       "id": "14",
-      "title": "5PIC3 live at Fullfillment Music Center",
-      "description": "An audio-reactive interactive system performed live: real-time multimodal feedback between sound, code and projection.",
-      "introText": "An audio-reactive visual set performed live as 5PIC3 at Fullfillment Music Center, written in Hydra Video Synth in real time.",
+      "title": "5PIC3 live at Fulfillment Music Center",
+      "description": "An audio-reactive visual system performed live: real-time feedback between sound, code and projection.",
+      "introText": "An audio-reactive visual set performed live as 5PIC3 at Fulfillment Music Center, written in Hydra Video Synth in real time.",
       "gridImages": [
         {
           "src": "/images/projects/14-g1.jpg",
@@ -628,7 +637,7 @@
         },
         {
           "src": "/images/projects/14-g4.jpg",
-          "caption": "Stretched colour bands near the end of the set."
+          "caption": "Stretched color bands near the end of the set."
         }
       ],
       "middleText": "As is usual in live coding, the code was projected together with the visuals, so the room could watch the patches being typed, changed and broken as the music moved.",
@@ -645,7 +654,7 @@
       "highlightCaption": "The projection across the wall of the venue.",
       "date": "2026-01-30",
       "dateLabel": "Jan 2026",
-      "context": "Live set as 5PIC3, Fullfillment Music Center",
+      "context": "Live set as 5PIC3, Fulfillment Music Center",
       "collaborators": [],
       "summary": {
         "brief": "A real-time audiovisual system for a live music event.",
@@ -668,12 +677,13 @@
       ],
       "shows": "Building and operating a real-time interactive system under live conditions, with the code open to the audience.",
       "cardImage": "/images/projects/14-card-v2.jpg",
-      "rank": 10
+      "rank": 10,
+      "cardWebp": "/images/projects/14-card-v2-800.webp"
     },
     {
       "id": "15",
       "title": "Culture4All",
-      "description": "Information visualization of access to culture across Italian regions, built on ISTAT and dati.cultura open data, with Corrado Consiglio and Salvatore Di Marzo.",
+      "description": "A data story on unequal access to culture in Italy, built on ISTAT open data and measured per inhabitant rather than in raw counts.",
       "introText": "Culture for All maps access to culture across Italy: where libraries, archives and museums are, how people use libraries, and how reading habits differ from region to region.",
       "gridImages": [
         {
@@ -699,7 +709,7 @@
       ],
       "middleText": "Built on open data from ISTAT and the Ministry of Culture, the 2026 version is a data story on unequal access to culture: headline figures, a per-capita map from ISTAT's own rate of libraries per 10,000 inhabitants next to the raw counts, ranked bars instead of a pie chart, loans per library, reading habits by region and a loans-versus-reading comparison, with the finding stated and a data table under every chart.",
       "highlightImage": "/images/projects/15-hl.jpg",
-      "conclusionText": "Institutions cluster in Lombardy, Veneto, Tuscany and Lazio, cities borrow more than rural areas, and reading habits vary widely, which points to where cultural infrastructure needs investment. Made for Information Visualization (2023/24, University of Bologna) with Corrado Consiglio and Salvatore Di Marzo, who gathered and cleaned the data. I designed the visualisations and built the site with Leaflet, D3.js and Chart.js.",
+      "conclusionText": "Institutions cluster in Lombardy, Veneto, Tuscany and Lazio, cities borrow more than rural areas, and reading habits vary widely, which points to where cultural infrastructure needs investment. Made for Information Visualization (2023/24, University of Bologna) with Corrado Consiglio and Salvatore Di Marzo, who gathered and cleaned the data. I designed the visualizations and built the site with Leaflet, D3.js and Chart.js.",
       "imageSrc": "/images/projects/15.jpg",
       "url": "https://alicepicco333.github.io/culture4all/",
       "category": "Research",
@@ -719,7 +729,7 @@
       "accent": "#1f3fd1",
       "summary": {
         "brief": "Access to culture in Italy is unequal, but raw counts of libraries and museums mostly show where people live.",
-        "role": "Data visualisation and web development; the 2026 rework on my own.",
+        "role": "Data visualization and web development; the 2026 rework on my own.",
         "method": "ISTAT and Ministry of Culture open data, with rates per inhabitant wherever the data allows.",
         "outcome": "A data story: one municipality in four has no library, and southern libraries lend a fraction of what northern ones do.",
         "stack": "D3.js · GeoJSON · Python"
@@ -741,12 +751,13 @@
       "shows": "Data storytelling: choosing fair measures, rates rather than counts, and stating findings plainly.",
       "cardImage": "/images/projects/15-card-v2.jpg",
       "rank": 2,
-      "accentHC": "#18309d"
+      "accentHC": "#18309d",
+      "cardWebp": "/images/projects/15-card-v2-800.webp"
     },
     {
       "id": "17",
       "title": "Rijksmuseum Conversational AI Interface",
-      "description": "A conversational AI interface for the Rijksmuseum.",
+      "description": "Research into a conversational interface that enriches visits inside the Rijksmuseum, with Q42 and Curamando.",
       "introText": "A conversational interface that helps visitors learn about and engage with the Rijksmuseum collection inside the museum. It is the Data Systems Project of the MSc Information Studies (2026/27), with Q42 and Curamando as stakeholders.",
       "gridImages": [],
       "middleText": "The brief asks what a visitor needs for a rich experience in the galleries and which interface attributes contribute to it, from input and output modalities to visual widgets and the context a conversation sits in, and how that experience can be measured.",
@@ -767,8 +778,7 @@
         "brief": "Conversational interfaces are everywhere, but they rarely enrich a visit inside the museum.",
         "role": "Team member, MSc Information Studies Data Systems Project.",
         "method": "Research into what makes a rich visit and which interface attributes support it, with Q42 and Curamando.",
-        "outcome": "In progress (2026/27).",
-        "stack": "To be decided"
+        "outcome": "In progress (2026/27)."
       },
       "short": "Rijksmuseum AI guide",
       "facts": [
@@ -786,7 +796,7 @@
     {
       "id": "20",
       "title": "Unobravo Redesign",
-      "description": "A research-led redesign of Unobravo's website and app, the Italian online therapy platform, to make the service easier to understand and trust.",
+      "description": "A research-led redesign of Unobravo's website and app that makes starting online therapy easier to understand, compare and trust.",
       "introText": "Unobravo connects people with therapists over video call. Its website tried to be a marketing page, a guide and an onboarding flow at once, and the app offered no explanation of the service at all. I redesigned both, from interviews to a tested Figma prototype.",
       "gridImages": [
         "/images/projects/20-a.jpg",
@@ -855,7 +865,7 @@
               "text": "Explain data practices, pricing and the matching process clearly, so privacy concerns can be resolved rather than hidden in a footer."
             },
             {
-              "title": "Personalisation",
+              "title": "Personalization",
               "text": "Adapt the journey to different needs and levels of readiness, from someone just exploring to someone ready to book."
             }
           ]
@@ -1084,12 +1094,12 @@
           "poster": "/images/projects/unobravo/hero.jpg"
         },
         "system": {
-          "text": "Behind the screens is a small design system: 34 variables (10 primitives, 13 semantic colours, 7 spacing and 4 radius values), 14 text styles and 29 components. Every text colour passes WCAG AA contrast and every touch target is at least 44 px.",
+          "text": "Behind the screens is a small design system: 34 variables (10 primitives, 13 semantic colors, 7 spacing and 4 radius values), 14 text styles and 29 components. Every text color passes WCAG AA contrast and every touch target is at least 44 px.",
           "images": [
             {
               "src": "/images/projects/unobravo/system/colour.jpg",
-              "alt": "Colour tokens",
-              "caption": "Colour: primitives feed semantic tokens"
+              "alt": "Color tokens",
+              "caption": "Color: primitives feed semantic tokens"
             },
             {
               "src": "/images/projects/unobravo/system/cards.jpg",
@@ -1184,15 +1194,16 @@
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
       "cardImage": "/images/projects/20-card-v3.jpg",
       "rank": 1,
-      "accentHC": "#712316"
+      "accentHC": "#712316",
+      "cardWebp": "/images/projects/20-card-v3-800.webp"
     },
     {
       "id": "21",
       "title": "Words of Gender",
-      "description": "A prototype digital archive of women authors, tracing how writers across five centuries wrote about the same gendered concepts.",
+      "description": "A digital archive of women authors that follows how writers across five centuries wrote about the same gendered concepts.",
       "introText": "Words of Gender is the prototype of an archive of women authors. Taking its lead from Vera Gheno's Parole d'altro genere (Rizzoli, 2023), it asks how different authors, in different historical and cultural contexts, have written about the same concepts tied to gender: beauty, grace, strength, independence, marriage, maternity.",
       "middleText": "Excerpts from nine women authors spanning five centuries (1558 to 1958), in Italian, French and English, are encoded in TEI XML and linked to VIAF, Wikidata and WorldCat. 172 passages are tagged with 27 concepts, so each concept can be followed across texts as a network of variations and cross-references rather than read one author at a time.",
-      "conclusionText": "The 2026 version turns the prototype into a reading edition: a reading view where up to four concepts are highlighted at once, never by colour alone; an author-by-concept matrix that opens every passage on a concept side by side; and a timeline of first editions.",
+      "conclusionText": "The 2026 version turns the prototype into a reading edition: a reading view where up to four concepts are highlighted at once, never by color alone; an author-by-concept matrix that opens every passage on a concept side by side; and a timeline of first editions.",
       "gridImages": [
         {
           "src": "/images/projects/21-g1.jpg",
@@ -1200,7 +1211,7 @@
         },
         {
           "src": "/images/projects/21-g2.jpg",
-          "caption": "A letter by Mary Wollstonecraft with four concepts highlighted, each marked by colour, line style and label."
+          "caption": "A letter by Mary Wollstonecraft with four concepts highlighted, each marked by color, line style and label."
         },
         {
           "src": "/images/projects/21-g3.jpg",
@@ -1259,20 +1270,21 @@
       "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
       "cardImage": "/images/projects/21-card-v2.jpg",
       "rank": 7,
-      "accentHC": "#70223d"
+      "accentHC": "#70223d",
+      "cardWebp": "/images/projects/21-card-v2-800.webp"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
   "resume": {
-    "tagline": "HCI researcher & designer · user research, accessibility, interaction design, data visualisation",
-    "description": "I work at the intersection of culture, technology, and design, weaving together critical research and creative experimentation. With a background in cultural anthropology and a strong foundation in digital humanities, my projects range from interactive archives and feminist data visualizations to live-coded performances and augmented reality design. Whether I’m mapping digital territories, building ontologies of cognitive bias, or glitching visual narratives in real time, I’m driven by curiosity and a commitment to inclusive, ethical tech. I enjoy working across media and disciplines — from semantic web development to storytelling with code — always with a reflexive, research-oriented approach.",
+    "tagline": "HCI researcher & designer · user research, accessibility, interaction design, data visualization",
+    "description": "I'm an HCI researcher and designer based in Amsterdam. I start from how people actually use technology, test ideas with them, and turn what I learn into clear, inclusive interfaces, data visualizations and working prototypes. My background is in cultural anthropology and digital humanities; I'm now doing an MSc in Human-Computer Interaction at the University of Amsterdam.",
     "experiences": [
       {
         "id": "1",
         "dates": "2025 - Present",
         "type": "Freelance",
         "position": "Freelance Designer and Archive Specialist",
-        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitisation and cataloguing, such as the Archivio Luki Massa.",
+        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitization and cataloging, such as the Archivio Luki Massa.",
         "short": "Freelance designer & archivist",
         "org": "Freelance",
         "skills": [
@@ -1288,7 +1300,7 @@
         "dates": "Jul 2025 - Nov 2025",
         "type": "Full-time",
         "position": "UX Researcher/Designer at BrainBite",
-        "bullets": "BrainBite is a personalised ed-tech platform with one-to-one conversational AI tutoring for children. I researched UX patterns and best practice for neurodiverse learners, assessed interaction flows for neurodiversity support, proposed changes and built the iterations in Figma.",
+        "bullets": "BrainBite is a personalized ed-tech platform with one-to-one conversational AI tutoring for children. I researched UX patterns and best practice for neurodiverse learners, assessed interaction flows for neurodiversity support, proposed changes and built the iterations in Figma.",
         "short": "UX researcher · BrainBite",
         "org": "BrainBite",
         "skills": [
@@ -1320,7 +1332,7 @@
       {
         "id": "4",
         "dates": "Mar 2024 - Jun 2024",
-        "type": "Funded programme",
+        "type": "Funded program",
         "position": "UX Consultant at The Hmm",
         "bullets": "Selected for Voices of Makers, with DEN (Cultural Knowledge Institute): mapping digital cultural spaces, exploring emerging technologies and co-developing strategies for the digital transformation of the Dutch cultural sector.",
         "short": "UX consultant · The Hmm",
@@ -1377,7 +1389,7 @@
         "id": "e2",
         "dates": "Oct 2022 - Jul 2026",
         "name": "MA Digital Humanities and Digital Knowledge, University of Bologna",
-        "detail": "110/110 cum laude. Focus on UX and web development, with data science, the semantic web and visualisation.",
+        "detail": "110/110 cum laude. Focus on UX and web development, with data science, the semantic web and visualization.",
         "short": "MA Digital Humanities · Bologna",
         "start": 2022.75,
         "end": 2026.5
@@ -1441,10 +1453,10 @@
     ]
   },
   "about": {
-    "lead": "I'm an HCI researcher and designer. I start from how people actually use technology, test it with them, and turn what I learn into clear, inclusive interfaces, data visualisations and working prototypes.",
+    "lead": "Research comes first: I start from how people actually use technology, test ideas with them, and turn what I learn into clear, inclusive interfaces, data visualizations and working prototypes.",
     "paragraphs": [
       "My background is in cultural anthropology and digital humanities, so research comes first: interviews, usability tests, fieldwork and data analysis. From there I design and build, in Figma and in code.",
-      "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers programme with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
+      "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers program with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
     ],
     "practice": [
       {
@@ -1475,14 +1487,14 @@
         "from": 2022,
         "to": 2024,
         "title": "Digital humanities",
-        "text": "An MA in digital humanities: data, the semantic web and visualisation, applied to archives, texts and open data.",
+        "text": "An MA in digital humanities: data, the semantic web and visualization, applied to archives, texts and open data.",
         "short": "Digital humanities"
       },
       {
         "from": 2024,
         "to": 2025,
         "title": "Research in practice",
-        "text": "A research fellowship at the Institute of Network Cultures and The Hmm’s Voices of Makers programme, with live coding on the side.",
+        "text": "A research fellowship at the Institute of Network Cultures and The Hmm’s Voices of Makers program, with live coding on the side.",
         "short": "Research"
       },
       {

@@ -1,8 +1,9 @@
 import React from "react";
-import Head from "next/head";
+import Seo from "../components/Seo";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import data from "../data/portfolio.json";
+import { withBase } from "../utils";
 
 export async function getStaticProps() {
   if (!data.showResume) return { notFound: true };
@@ -10,7 +11,7 @@ export async function getStaticProps() {
 }
 
 const Section = ({ label, children }) => (
-  <section className="grid gap-x-4 gap-y-6 border-t border-ink pb-16 pt-4 laptop:grid-cols-4">
+  <section className="grid gap-x-4 gap-y-6 border-t border-ink pb-16 pt-4 print:gap-y-2 print:pb-6 laptop:grid-cols-4">
     <h2 className="fu-title text-phi1">
       {label}
     </h2>
@@ -23,23 +24,28 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-bone text-ink">
-      <Head>
-        <title>{`Record — ${name}`}</title>
-        <meta name="description" content={resume.tagline} />
-      </Head>
+      <Seo title={`CV — ${name}`} description={resume.description || resume.tagline} path="/resume/" />
 
       <Header />
 
       <main id="main-content" tabIndex={-1} className="px-4 tablet:px-10">
-        <div className="grid gap-x-4 gap-y-8 pb-16 pt-6 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
-          <h1 className="fu-display text-[48px] tablet:text-phi3">
-            Record
-          </h1>
+        {/* on paper (and in the PDF) the page opens with name and contact details instead of the site header */}
+        <div className="hidden print:block">
+          <p className="fu-display text-[40px]">{name}</p>
+          <p className="mt-2 font-mono text-[12px] text-graphite">
+            {email} · alicepicco333.github.io/react-portfolio-template · linkedin.com/in/alice-picco-791157114 · github.com/alicepicco333
+          </p>
+        </div>
+        <div className="grid gap-x-4 gap-y-8 pb-16 pt-6 print:!pb-6 print:!pt-4 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
+          <h1 className="fu-display text-[48px] print:hidden tablet:text-phi3">CV</h1>
           <div className="flex max-w-[720px] flex-col gap-5 laptop:col-span-3">
             <p className="fu-meta text-fieldgrey">{resume.tagline}</p>
             <p className="text-lg leading-relaxed">{resume.description}</p>
-            <div className="flex flex-wrap gap-2">
-              <a href={`mailto:${email}`} className="fu-btn fu-btn-primary">
+            <div className="flex flex-wrap gap-2 print:hidden">
+              <a href={withBase("/alice-picco-cv.pdf")} download className="fu-btn fu-btn-primary">
+                Download CV (PDF) ↓
+              </a>
+              <a href={`mailto:${email}`} className="fu-btn fu-btn-secondary">
                 {email}
               </a>
               {socials.map((social) => (
@@ -54,7 +60,7 @@ const Resume = () => {
         <Section label="Experience">
           <ol>
             {resume.experiences.map((exp) => (
-              <li key={exp.id} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr_130px] tablet:gap-4">
+              <li key={exp.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-5 print:py-3 tablet:grid-cols-[200px_1fr_130px] tablet:gap-4">
                 <span className="fu-meta text-fieldgrey">{exp.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-lg font-semibold">{exp.position}</span>
@@ -69,7 +75,7 @@ const Resume = () => {
         <Section label="Education">
           <ol>
             {resume.educationList.map((edu) => (
-              <li key={edu.id} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr] tablet:gap-4">
+              <li key={edu.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-5 print:py-3 tablet:grid-cols-[200px_1fr] tablet:gap-4">
                 <span className="fu-meta text-fieldgrey">{edu.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-lg font-semibold">{edu.name}</span>
@@ -84,7 +90,7 @@ const Resume = () => {
           <Section label="Certifications">
             <ol>
               {resume.certifications.map((c) => (
-                <li key={c.id} className="grid gap-1 border-b border-concrete py-4 tablet:grid-cols-[200px_1fr_220px] tablet:gap-4">
+                <li key={c.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr_220px] tablet:gap-4">
                   <span className="fu-meta text-fieldgrey">{c.date}</span>
                   <span className="text-[17px] font-semibold leading-snug">{c.name}</span>
                   <span className="fu-meta text-graphite tablet:text-right">{c.issuer}</span>
