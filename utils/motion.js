@@ -1,4 +1,6 @@
-// Shared GSAP helpers. Callers wrap these in gsap.matchMedia("(prefers-reduced-motion: no-preference)").
+// Shared GSAP helpers. Callers wrap these in gsap.matchMedia("(prefers-reduced-motion: no-preference)")
+// and also check motionOn(), the visitor's own setting (see components/A11yControls).
+export const motionOn = () => typeof document === "undefined" || document.documentElement.dataset.motion !== "off";
 
 const GLYPHS = "#/|_-=+*<>:01";
 

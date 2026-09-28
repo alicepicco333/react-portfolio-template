@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { motionOn } from "../../utils/motion";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { labelOf, skillsOfProject } from "../Graph/data";
 import { SigilG } from "../Sigil";
@@ -16,6 +17,7 @@ const InProgress = ({ projects }) => {
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (!motionOn()) return;
       const root = ref.current;
       const q = (s, el = root) => Array.from(el.querySelectorAll(s));
       gsap.from(q(".wip-card"), { y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", scrollTrigger: { trigger: root, start: "top 80%", once: true } });
@@ -38,10 +40,10 @@ const InProgress = ({ projects }) => {
   if (!projects.length) return null;
 
   return (
-    <section id="in-progress" ref={ref} className="scroll-mt-16 px-4 pb-20 tablet:px-8">
+    <section id="in-progress" aria-labelledby="wip-title" ref={ref} className="scroll-mt-16 px-4 pb-20 tablet:px-8">
       <div className="flex flex-col gap-4 border-t border-ink pt-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-[28px] font-semibold tracking-[-0.02em]">In progress</h2>
+          <h2 id="wip-title" className="text-[28px] font-semibold tracking-[-0.02em]">In progress</h2>
           <p className="font-mono text-[13px] text-graphite">{projects.length} projects · case studies still being written</p>
         </div>
         <ul className="grid gap-5 tablet:grid-cols-2 laptop:grid-cols-3">

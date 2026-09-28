@@ -15,7 +15,7 @@ import {
 } from "../Graph/data";
 import { useIsomorphicLayoutEffect } from "../../utils";
 import { textWidth, overlapArea } from "../../utils/layout";
-import { scramble, drawIn } from "../../utils/motion";
+import { scramble, drawIn, motionOn } from "../../utils/motion";
 
 const shortTitle = (title) => title.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
@@ -139,6 +139,7 @@ const SkillMap = ({ projects }) => {
     if (!fit) return undefined;
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (!motionOn()) return;
       const s = stageRef.current;
       if (s && s.offsetParent !== null) {
         const q = (sel) => Array.from(s.querySelectorAll(sel));
@@ -166,6 +167,7 @@ const SkillMap = ({ projects }) => {
     if (!fit || !active) return undefined;
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (!motionOn()) return;
       const s = stageRef.current;
       if (!s) return;
       const [x, y] = MAP.pos[active];
@@ -208,7 +210,8 @@ const SkillMap = ({ projects }) => {
   const [ax, ay] = active ? MAP.pos[active] : [0, 0];
 
   return (
-    <section id="map" aria-label="My practice, as a map" className="relative scroll-mt-16 bg-bone">
+    <section id="map" aria-labelledby="map-title" className="relative scroll-mt-16 bg-bone">
+      <h2 id="map-title" className="sr-only">Skill map</h2>
       {/* ——— desktop and tablet: the fixed stage ——— */}
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
@@ -219,9 +222,9 @@ const SkillMap = ({ projects }) => {
             <svg viewBox={`0 0 ${MAP.W} ${MAP.H}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
               <defs>
                 <radialGradient id="map-glow-fill">
-                  <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.55" />
-                  <stop offset="45%" stopColor="rgb(26, 26, 255)" stopOpacity="0.22" />
-                  <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
+                  <stop offset="0%" stopColor="rgb(37, 82, 133)" stopOpacity="0.55" />
+                  <stop offset="45%" stopColor="rgb(37, 82, 133)" stopOpacity="0.22" />
+                  <stop offset="100%" stopColor="rgb(37, 82, 133)" stopOpacity="0" />
                 </radialGradient>
                 <filter id="map-glow-blur" x="-50%" y="-50%" width="200%" height="200%">
                   <feGaussianBlur stdDeviation="10" />
@@ -239,7 +242,7 @@ const SkillMap = ({ projects }) => {
                     fontWeight="500"
                     letterSpacing="0.18em"
                     style={{ fill: "rgb(var(--olive))" }}
-                    opacity={active && clusterOf(active).id === c.id ? 1 : 0.9}
+                    opacity={1}
                   >
                     {c.label.toUpperCase()}
                   </text>
@@ -356,10 +359,10 @@ const SkillMap = ({ projects }) => {
               })}
             </svg>
 
-            <div className="map-intro absolute left-8 top-9 flex w-[610px] flex-col gap-3">
-              <h1 className="text-[40px] font-medium leading-[1.18] tracking-[-0.015em]">
-                I turn research about people, culture and information into interfaces, data visualisations and interactive prototypes.
-              </h1>
+            <div className="map-intro absolute left-8 top-9 flex w-[640px] flex-col gap-3">
+              <p className="text-[34px] font-medium leading-[1.16] tracking-[-0.015em]">
+                I&rsquo;m an HCI researcher and designer. I combine user research, accessibility and front-end prototyping to build clear, inclusive interfaces and data systems.
+              </p>
             </div>
 
             <div className="map-card absolute bottom-3 left-[1020px] flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]" aria-live="polite">
@@ -389,9 +392,9 @@ const SkillMap = ({ projects }) => {
       <div ref={narrowRef} className="relative overflow-hidden px-4 pb-16 pt-14 tablet:px-8 tablet:pb-24 tablet:pt-20 map:hidden">
         <div className="hero-glow pointer-events-none absolute -right-24 -top-24 h-[360px] w-[360px] rounded-full tablet:h-[520px] tablet:w-[520px]" aria-hidden="true" />
         <div className="map-intro relative flex max-w-[720px] flex-col gap-6">
-          <h1 className="text-[34px] font-medium leading-[1.12] tracking-[-0.02em] tablet:text-[52px]">
-            I turn research about people, culture and information into interfaces, data visualisations and interactive prototypes.
-          </h1>
+          <p className="text-[34px] font-medium leading-[1.12] tracking-[-0.02em] tablet:text-[52px]">
+            I&rsquo;m an HCI researcher and designer. I combine user research, accessibility and front-end prototyping to build clear, inclusive interfaces and data systems.
+          </p>
           <a href="#work" className="w-max border-b-2 border-olive pb-1 font-mono text-[14px] text-olive">
             see the work ↓
           </a>

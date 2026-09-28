@@ -11,7 +11,13 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
         {/* the colour shuffle is gone: forget any palette a visitor saved earlier */}
-        <script dangerouslySetInnerHTML={{ __html: 'try{localStorage.removeItem("fu-palette")}catch(e){}' }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{localStorage.removeItem("fu-palette");var h=document.documentElement,m=localStorage.getItem("ap-motion"),c=localStorage.getItem("ap-contrast");' +
+              'if(!m&&window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)m="off";if(m)h.dataset.motion=m;if(c)h.dataset.contrast=c;}catch(e){}',
+          }}
+        />
       </Head>
       <body>
         <Main />

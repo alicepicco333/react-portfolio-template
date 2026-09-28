@@ -5,11 +5,11 @@
   "headerTaglineFour": "based in Amsterdam.",
   "name": "Alice Picco",
   "roles": [
-    "HCI specialist",
-    "Creative technologist",
-    "Designer",
-    "Digital humanist",
-    "Researcher"
+    "HCI researcher",
+    "UX designer",
+    "Front-end developer",
+    "Data visualisation",
+    "Semantic web"
   ],
   "darkMode": false,
   "showResume": true,
@@ -104,7 +104,8 @@
         ]
       ],
       "shows": "Information architecture for difficult, contested content, and a public interface built end to end.",
-      "cardImage": "/images/projects/0-card-v2.jpg"
+      "cardImage": "/images/projects/0-card-v2.jpg",
+      "rank": 5
     },
     {
       "id": "1",
@@ -169,7 +170,8 @@
         ]
       ],
       "shows": "Turning scholarly source material into something people can search and read side by side.",
-      "cardImage": "/images/projects/1-card-v2.jpg"
+      "cardImage": "/images/projects/1-card-v2.jpg",
+      "rank": 8
     },
     {
       "id": "2",
@@ -237,7 +239,8 @@
         ]
       ],
       "shows": "Structured knowledge modelling in a team, and a visual tool that makes the model explorable.",
-      "cardImage": "/images/projects/2-card-v2.jpg"
+      "cardImage": "/images/projects/2-card-v2.jpg",
+      "rank": 4
     },
     {
       "id": "3",
@@ -308,12 +311,13 @@
         ]
       ],
       "shows": "Open-data research with a quality, legal and ethics review, and a policy question made visible.",
-      "cardImage": "/images/projects/3-card-v2.jpg"
+      "cardImage": "/images/projects/3-card-v2.jpg",
+      "rank": 3
     },
     {
       "id": "5",
       "title": "Glitching Materiality - @THEVOID",
-      "description": "Live performance using Hydra Video Synth.",
+      "description": "Algorithmic performance: a real-time, live-coded visual system for the Institute of Network Cultures.",
       "introText": "A live coding performance with Karolis Lasys at Expanded Publishing Fest 2: Space-in / Space-out, organised by the Institute of Network Cultures in Amsterdam in 2024.",
       "gridImages": [],
       "middleText": "The visuals were live-coded in Hydra Video Synth. The recording, about 18 minutes long, is published by the Institute of Network Cultures.",
@@ -336,7 +340,7 @@
       "summary": {
         "brief": "A live audiovisual performance for the Institute of Network Cultures' Expanded Publishing Fest 2.",
         "role": "Live-coded visuals, performing with Karolis Lasys.",
-        "method": "Hydra sketches written and rewritten in real time during the set.",
+        "method": "Hydra sketches written and rewritten in real time, responding to the other performer's sound.",
         "outcome": "An 18-minute performance, recorded and published by the Institute of Network Cultures.",
         "stack": "Hydra · JavaScript"
       },
@@ -354,14 +358,15 @@
           "visuals coded in real time"
         ]
       ],
-      "shows": "Live creative coding in front of an audience, in collaboration with another artist.",
+      "shows": "Real-time interactive systems and collaboration: visuals generated and rewritten live, in dialogue with another performer.",
       "tileMotion": "/images/projects/5-loop.webp",
-      "cardImage": "/images/projects/5-card-v2.jpg"
+      "cardImage": "/images/projects/5-card-v2.jpg",
+      "rank": 11
     },
     {
       "id": "10",
       "title": "Collaboratory Creative Coding Jam",
-      "description": "Hydra live coding workshop and collective performance.",
+      "description": "A hands-on workshop on real-time visual programming, closing with a collective live jam.",
       "introText": "A Hydra Video Synth workshop I proposed and led in the HDSC2024 open programme of Hackers & Designers, at Het Wilde Weg in Amsterdam on 20 July 2024.",
       "gridImages": [
         {
@@ -405,8 +410,9 @@
           "Hackers & Designers summer programme"
         ]
       ],
-      "shows": "Designing and facilitating a hands-on workshop for newcomers.",
-      "cardImage": "/images/projects/10-card-v2.jpg"
+      "shows": "Teaching and facilitation: introducing newcomers to real-time interactive programming.",
+      "cardImage": "/images/projects/10-card-v2.jpg",
+      "rank": 12
     },
     {
       "id": "11",
@@ -477,12 +483,13 @@
         ]
       ],
       "shows": "A client commission taken from Figma design to a working bilingual website.",
-      "cardImage": "/images/projects/11-card-v2.jpg"
+      "cardImage": "/images/projects/11-card-v2.jpg",
+      "rank": 6
     },
     {
       "id": "12",
       "title": "The Meme Ontology",
-      "description": "MEMO: an OWL ontology of internet memes, built from scraped meme data, linked to Wikidata and queryable with SPARQL.",
+      "description": "Semantic web engineering: an OWL 2 knowledge graph of 5,000 internet memes, linked to Wikidata and queryable with SPARQL.",
       "introText": "MEMO is an ontology of internet memes, from my master's research Towards an Ontology of Memes (supervisor Fabio Vitali), which I began as a visiting research fellow at the Institute of Network Cultures in Amsterdam, for its Viral Image Cultures project.",
       "gridImages": [
         {
@@ -527,7 +534,7 @@
       "collaborators": [],
       "accent": "#3a3733",
       "summary": {
-        "brief": "Memes are a vast visual culture with no structured way to classify or query them.",
+        "brief": "A large, messy cultural dataset with no structured model to classify, link or query it.",
         "role": "Sole researcher: data collection, ontology, classification and visualisation.",
         "method": "About 5,000 Know Your Meme entries scraped; an OWL ontology informed by FRBR; CLIP for semi-automatic classification.",
         "outcome": "A published ontology with documentation, visualisations and a SPARQL explorer linked to Wikidata.",
@@ -551,8 +558,9 @@
           "explorer linked to Wikidata"
         ]
       ],
-      "shows": "Independent research at scale: data collection, classification and a queryable knowledge graph.",
-      "cardImage": "/images/projects/12-card-v4.jpg"
+      "shows": "Data modelling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
+      "cardImage": "/images/projects/12-card-v4.jpg",
+      "rank": 9
     },
     {
       "id": "13",
@@ -597,7 +605,7 @@
     {
       "id": "14",
       "title": "5PIC3 live at Fullfillment Music Center",
-      "description": "Live-coded, audio-reactive visuals in Hydra at Fullfillment Music Center.",
+      "description": "An audio-reactive interactive system performed live: real-time multimodal feedback between sound, code and projection.",
       "introText": "An audio-reactive visual set performed live as 5PIC3 at Fullfillment Music Center, written in Hydra Video Synth in real time.",
       "gridImages": [
         {
@@ -634,9 +642,9 @@
       "context": "Live set as 5PIC3, Fullfillment Music Center",
       "collaborators": [],
       "summary": {
-        "brief": "A live visual set at Fullfillment Music Center.",
+        "brief": "A real-time audiovisual system for a live music event.",
         "role": "Visuals, performing as 5PIC3.",
-        "method": "Audio-reactive Hydra patches, with the code projected alongside the visuals.",
+        "method": "Algorithmic, audio-reactive Hydra patches driven by the music's frequency bands, with the code projected alongside the output.",
         "outcome": "A 23-minute set, recorded in full.",
         "stack": "Hydra · JavaScript"
       },
@@ -652,8 +660,9 @@
           "code projected with the visuals"
         ]
       ],
-      "shows": "Real-time visual design under performance conditions.",
-      "cardImage": "/images/projects/14-card-v2.jpg"
+      "shows": "Building and operating a real-time interactive system under live conditions, with the code open to the audience.",
+      "cardImage": "/images/projects/14-card-v2.jpg",
+      "rank": 10
     },
     {
       "id": "15",
@@ -724,7 +733,8 @@
         ]
       ],
       "shows": "Data storytelling: choosing fair measures, rates rather than counts, and stating findings plainly.",
-      "cardImage": "/images/projects/15-card-v2.jpg"
+      "cardImage": "/images/projects/15-card-v2.jpg",
+      "rank": 2
     },
     {
       "id": "17",
@@ -1203,7 +1213,8 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v3.jpg"
+      "cardImage": "/images/projects/20-card-v3.jpg",
+      "rank": 1
     },
     {
       "id": "21",
@@ -1276,12 +1287,13 @@
         ]
       ],
       "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
-      "cardImage": "/images/projects/21-card-v2.jpg"
+      "cardImage": "/images/projects/21-card-v2.jpg",
+      "rank": 7
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
   "resume": {
-    "tagline": "Creative technologist & researcher · UX research, data visualisation, interaction design",
+    "tagline": "HCI researcher & designer · user research, accessibility, interaction design, data visualisation",
     "description": "I work at the intersection of culture, technology, and design, weaving together critical research and creative experimentation. With a background in cultural anthropology and a strong foundation in digital humanities, my projects range from interactive archives and feminist data visualizations to live-coded performances and augmented reality design. Whether I’m mapping digital territories, building ontologies of cognitive bias, or glitching visual narratives in real time, I’m driven by curiosity and a commitment to inclusive, ethical tech. I enjoy working across media and disciplines — from semantic web development to storytelling with code — always with a reflexive, research-oriented approach.",
     "experiences": [
       {
@@ -1393,7 +1405,7 @@
     ]
   },
   "about": {
-    "lead": "I'm a creative technologist and researcher. I start from how people live with technology, and turn that into interfaces, data visualisations and working prototypes.",
+    "lead": "I'm an HCI researcher and designer. I start from how people actually use technology, test it with them, and turn what I learn into clear, inclusive interfaces, data visualisations and working prototypes.",
     "paragraphs": [
       "My background is in cultural anthropology and digital humanities, so research comes first: interviews, usability tests, fieldwork and data analysis. From there I design and build, in Figma and in code.",
       "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers programme with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."

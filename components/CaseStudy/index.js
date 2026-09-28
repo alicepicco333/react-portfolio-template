@@ -33,7 +33,7 @@ function Figure({ src, alt, caption, className = "" }) {
 
 function Scale({ value, label }) {
   return (
-    <span className="flex items-center gap-2" aria-label={`${label} ${value} out of 5`}>
+    <span className="flex items-center gap-2" role="img" aria-label={`${label} ${value} out of 5`}>
       <span className="fu-meta w-[72px] text-fieldgrey">{label}</span>
       <span className="flex gap-[3px]" aria-hidden="true">
         {[1, 2, 3, 4, 5].map((n) => (

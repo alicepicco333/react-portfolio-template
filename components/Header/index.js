@@ -22,9 +22,6 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-ink bg-bone text-ink">
-      <a href="#main" className="sr-only z-[70] bg-ink px-4 py-3 text-bone focus:not-sr-only focus:absolute focus:left-2 focus:top-2">
-        Skip to content
-      </a>
       <div className="flex h-16 items-center gap-6 px-4 tablet:px-8">
         <Link href="/" className="-m-2 flex items-center gap-3 p-2" aria-label={`${name}, home`}>
           <GraphMark size={34} />
@@ -52,6 +49,7 @@ const Header = () => {
         <button
           type="button"
           className="ml-auto flex min-h-[44px] items-center px-2 font-mono text-[14px] tablet:hidden"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((value) => !value)}

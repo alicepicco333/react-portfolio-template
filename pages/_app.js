@@ -1,11 +1,13 @@
 import "../styles/globals.css";
-import { ThemeProvider } from "next-themes";
 
-const App = ({ Component, pageProps }) => {
-  return (
+const App = ({ Component, pageProps }) => (
+  <>
+    <a href="#main-content" className="skip-link">
+      Skip to main content
+    </a>
     <Component {...pageProps} />
-  );
-}
+  </>
+);
 
 
 

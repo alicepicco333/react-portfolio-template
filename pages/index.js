@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { motionOn } from "../utils/motion";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -29,6 +30,7 @@ const Home = () => {
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (!motionOn()) return;
       gsap.utils.toArray(".fu-reveal").forEach((el) => {
         gsap.from(el, { opacity: 0, y: 24, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
       });
@@ -53,21 +55,22 @@ const Home = () => {
   return (
     <div id="top" className="min-h-screen bg-bone text-ink">
       <Head>
-        <title>Alice Picco — creative technologist &amp; researcher</title>
+        <title>Alice Picco — HCI researcher &amp; designer</title>
         <meta name="description" content={about.lead} />
         <meta name="theme-color" content="#D5D6DB" />
       </Head>
 
       <Header />
 
-      <main id="main">
+      <main id="main-content" tabIndex={-1}>
+        <h1 className="sr-only">Alice Picco — HCI researcher and designer</h1>
         <SkillMap projects={finished} />
         <WorkExplorer projects={finished} />
         <InProgress projects={wip} />
 
-        <section id="about" className="scroll-mt-16 bg-olive px-4 pb-20 pt-8 text-white tablet:px-8">
+        <section id="about" aria-labelledby="about-title" className="scroll-mt-16 bg-olive px-4 pb-20 pt-8 text-white tablet:px-8">
           <div className="grid gap-x-8 gap-y-10 laptop:grid-cols-4">
-            <h2 className="fu-reveal text-[28px] font-semibold tracking-[-0.02em]">About</h2>
+            <h2 id="about-title" className="fu-reveal text-[28px] font-semibold tracking-[-0.02em]">About</h2>
             <div className="flex flex-col gap-10 laptop:col-span-3">
               <p className="fu-reveal max-w-[980px] text-[28px] font-medium leading-[1.2] tracking-[-0.01em] tablet:text-[40px]">{about.lead}</p>
               <div className="fu-reveal grid max-w-[980px] gap-6 text-[17px] leading-relaxed tablet:grid-cols-2">
@@ -75,7 +78,7 @@ const Home = () => {
                   <p key={text.slice(0, 20)}>{text}</p>
                 ))}
               </div>
-              <div className="fu-reveal grid max-w-[980px] gap-6 tablet:grid-cols-3" aria-label="How I work">
+              <div className="fu-reveal grid max-w-[980px] gap-6 tablet:grid-cols-3" role="group" aria-label="How I work">
                 {about.practice.map((p) => (
                   <div key={p.title} className="flex flex-col gap-2 border-t-2 border-white pt-3">
                     <span className="font-mono text-[14px] uppercase tracking-[0.12em]">{p.title}</span>
@@ -87,10 +90,10 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="record" className="scroll-mt-16 px-4 pb-20 pt-8 tablet:px-8">
+        <section id="record" aria-labelledby="record-title" className="scroll-mt-16 px-4 pb-20 pt-8 tablet:px-8">
           <div className="grid gap-x-8 gap-y-8 laptop:grid-cols-4">
             <div className="fu-reveal flex flex-col gap-2">
-              <h2 className="text-[28px] font-semibold tracking-[-0.02em]">Record</h2>
+              <h2 id="record-title" className="text-[28px] font-semibold tracking-[-0.02em]">Record</h2>
               <p className="font-mono text-[13px] text-graphite">Experience and education</p>
             </div>
             <div className="laptop:col-span-3">

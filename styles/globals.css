@@ -10,15 +10,15 @@
   --bone: 213 214 219;
   --paper: 236 237 240;
   --ink: 14 14 16;
-  --olive: 26 26 255;
+  --olive: 37 82 133; /* #255285: 5.5:1 on the grey, 8:1 under white text */
   --khaki: 194 197 207;
-  --concrete: 165 166 174;
-  --graphite: 85 85 94;
-  --field-grey: 85 85 94;
+  --concrete: 139 140 148;
+  --graphite: 68 68 76; /* 6.6:1 on the grey */
+  --field-grey: 68 68 76;
   --pink: 194 197 207;
   --lilac: 194 197 207;
   --mint: 194 197 207;
-  --signal: 26 26 255;
+  --signal: 37 82 133;
 }
 
 html {
@@ -54,12 +54,58 @@ a {
   outline: 2px solid rgb(var(--ink));
   outline-offset: 3px;
 }
-.map-focus {
-  outline: none;
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid rgb(var(--olive));
+  outline-offset: 3px;
 }
 .map-focus:focus-visible {
-  outline: 3px solid rgb(var(--olive));
   outline-offset: 4px;
+}
+/* on the blue and black bands the ring turns white */
+.bg-olive :focus-visible,
+.bg-ink :focus-visible,
+footer :focus-visible {
+  outline-color: #fff;
+}
+/* skip link: hidden until focused */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -100px;
+  z-index: 100;
+  background: rgb(var(--ink));
+  color: #fff;
+  padding: 12px 16px;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 8px;
+}
+
+/* ——— visitor settings ——— */
+html[data-contrast="high"] {
+  --graphite: 14 14 16;
+  --field-grey: 14 14 16;
+  --concrete: 68 68 76;
+}
+html[data-contrast="high"] .text-ink\/80,
+html[data-contrast="high"] .text-ink\/85 {
+  color: rgb(var(--ink));
+}
+html[data-motion="off"] {
+  scroll-behavior: auto;
+}
+html[data-motion="off"] *,
+html[data-motion="off"] ::before,
+html[data-motion="off"] ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }
 
 @layer components {
@@ -161,6 +207,12 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   .fu-blink { animation: none; }
   .work-card > a, .work-lift, .work-mini { transition: none; }
   .hero-glow { animation: none; }

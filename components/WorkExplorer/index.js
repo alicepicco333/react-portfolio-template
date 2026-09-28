@@ -5,13 +5,16 @@ import { NODES, RING, CLUSTERS, labelOf, skillsOfProject } from "../Graph/data";
 import Sigil from "../Sigil";
 import { categoryMeta, withBase, useIsomorphicLayoutEffect, usePrefersReducedMotion } from "../../utils";
 import { relaxRects, textWidth } from "../../utils/layout";
-import { scramble, drawIn } from "../../utils/motion";
+import { scramble, drawIn, motionOn } from "../../utils/motion";
 
 const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6, strokeLinejoin: "round" };
 const skillIds = (id) => skillsOfProject(id).map((n) => n.id);
 // A project dates from its first publication, not from a later rework ("2024 · reworked 2026" is 2024).
 const yearOf = (p) => ((p.dateLabel || "").match(/\d{4}/) || [(p.date || "").slice(0, 4)])[0];
 const newestFirst = (a, b) => yearOf(b).localeCompare(yearOf(a)) || (b.date || "").localeCompare(a.date || "");
+// Curated order (`rank` in portfolio.json): applied UX research and design first, then academic and
+// data work, then creative coding and live work. Projects without a rank follow, newest first.
+const curated = (a, b) => (a.rank ?? 99) - (b.rank ?? 99) || newestFirst(a, b);
 const shortTitle = (t) => t.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
 const TYPES = ["Design", "Research", "Live Coding"];
@@ -84,7 +87,7 @@ function wheelLayout(projects) {
 }
 
 const Media = ({ project, className = "" }) => {
-  const reduced = usePrefersReducedMotion();
+  const reduced = usePrefersReducedMotion() || !motionOn();
   const motion = project.tileMotion && !reduced ? project.tileMotion : null;
   const still = project.cardImage || project.imageSrc;
   const src = motion || still;
@@ -173,7 +176,7 @@ const Select = ({ label, value, onChange, options }) => (
 );
 
 const WorkExplorer = ({ projects: given }) => {
-  const projects = useMemo(() => [...given].sort(newestFirst), [given]);
+  const projects = useMemo(() => [...given].sort(curated), [given]);
   const [view, setView] = useState("Grid");
   const [skill, setSkill] = useState("all");
   const [type, setType] = useState("all");
@@ -198,6 +201,7 @@ const WorkExplorer = ({ projects: given }) => {
     if (!root) return undefined;
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (!motionOn()) return;
       const q = (s) => Array.from(root.querySelectorAll(s));
       if (view === "Grid") {
         gsap.from(q(".work-card"), { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out", clearProps: "transform,opacity" });
@@ -226,7 +230,7 @@ const WorkExplorer = ({ projects: given }) => {
   useIsomorphicLayoutEffect(() => {
     if (view !== "Wheel") return undefined;
     const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => drawIn(gsap, Array.from(rootRef.current.querySelectorAll(".wheel-spoke")), { step: 0.08, duration: 0.5 }));
+    mm.add("(prefers-reduced-motion: no-preference)", () => motionOn() && drawIn(gsap, Array.from(rootRef.current.querySelectorAll(".wheel-spoke")), { step: 0.08, duration: 0.5 }));
     return () => mm.revert();
   }, [selected.id, view]);
 
@@ -287,14 +291,14 @@ const WorkExplorer = ({ projects: given }) => {
     onKeyDown: (e) => {
       if (e.key === "Enter") window.location.assign(withBase(`/projects/${p.id}/`));
     },
-    style: { cursor: matches(p) ? "pointer" : "default", outline: "none", opacity: matches(p) ? 1 : 0.15, transition: "opacity .3s" },
+    style: { cursor: matches(p) ? "pointer" : "default", opacity: matches(p) ? 1 : 0.15, transition: "opacity .3s" },
   });
 
   return (
-    <section id="work" ref={rootRef} className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8">
+    <section id="work" aria-labelledby="work-title" ref={rootRef} className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8">
       <div className="flex flex-col gap-6 pb-6 desktop:flex-row desktop:items-end desktop:justify-between">
         <div className="fu-reveal flex flex-col gap-2">
-          <h2 className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>
+          <h2 id="work-title" className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>
           <p className="font-mono text-[13px] text-graphite">
             {years[years.length - 1]}–{years[0]}
           </p>
@@ -378,9 +382,9 @@ const WorkExplorer = ({ projects: given }) => {
             >
               <defs>
                 <radialGradient id="work-glow">
-                  <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.5" />
-                  <stop offset="50%" stopColor="rgb(26, 26, 255)" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
+                  <stop offset="0%" stopColor="rgb(37, 82, 133)" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="rgb(37, 82, 133)" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="rgb(37, 82, 133)" stopOpacity="0" />
                 </radialGradient>
               </defs>
               <g aria-hidden="true">
@@ -409,7 +413,7 @@ const WorkExplorer = ({ projects: given }) => {
                 <text x={C.cx + 10} y={C.H - 12}>↓ INFORMATION</text>
               </g>
               {QUADRANTS.map(([n, x, y, a]) => (
-                <text key={n} className="compass-quadrant" x={x} y={y} textAnchor={a} fontFamily="JetBrains Mono, monospace" fontSize="30" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} opacity="0.75" aria-hidden="true">
+                <text key={n} className="compass-quadrant" x={x} y={y} textAnchor={a} fontFamily="JetBrains Mono, monospace" fontSize="30" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} aria-hidden="true">
                   {n.toUpperCase()}
                 </text>
               ))}
@@ -454,9 +458,9 @@ const WorkExplorer = ({ projects: given }) => {
             <svg viewBox={`0 0 ${WW} ${Wh.H}`} width={WW * ws} height={Wh.H * ws} className="shrink-0" role="group" aria-label="Work wheel: each project is pulled towards the skills it uses">
               <defs>
                 <radialGradient id="work-glow">
-                  <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.5" />
-                  <stop offset="50%" stopColor="rgb(26, 26, 255)" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
+                  <stop offset="0%" stopColor="rgb(37, 82, 133)" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="rgb(37, 82, 133)" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="rgb(37, 82, 133)" stopOpacity="0" />
                 </radialGradient>
               </defs>
               {CLUSTER_TEXT.map((c) => {
@@ -471,7 +475,7 @@ const WorkExplorer = ({ projects: given }) => {
                       strokeWidth="6"
                       opacity="0.16"
                     />
-                    <text className="wheel-cluster" x={c.x} y={c.y} textAnchor={c.anchor} fontFamily="JetBrains Mono, monospace" fontSize="18" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} opacity="0.9">
+                    <text className="wheel-cluster" x={c.x} y={c.y} textAnchor={c.anchor} fontFamily="JetBrains Mono, monospace" fontSize="18" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }}>
                       {c.label.toUpperCase()}
                     </text>
                   </g>

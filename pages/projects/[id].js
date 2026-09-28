@@ -69,7 +69,7 @@ export default function ProjectPage({ project, number, next }) {
 
       <Header />
 
-      <main id="main">
+      <main id="main-content" tabIndex={-1}>
         <section className="grid gap-x-4 gap-y-8 px-4 pb-16 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
           <div className="flex flex-col gap-1">
             <Link href="/#work" className="fu-meta text-fieldgrey hover:text-ink">
