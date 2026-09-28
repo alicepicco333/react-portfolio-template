@@ -25,7 +25,7 @@ function fan(x, y, n, radius, g, spread = 1.5) {
   });
 }
 
-const PracticeMap = ({ projects = [] }) => {
+const PracticeMap = ({ projects = [], progress = null, initialSkill = null }) => {
   const reducedMotion = usePrefersReducedMotion();
   const router = useRouter();
   const [angle, setAngle] = useState(REST);
@@ -48,9 +48,14 @@ const PracticeMap = ({ projects = [] }) => {
     return () => query.removeEventListener("change", update);
   }, []);
 
-  // unfold from the centre on load
+  // open on a skill passed in from a link (e.g. from a project page)
   useEffect(() => {
-    if (reducedMotion) {
+    if (initialSkill) setPinned(initialSkill);
+  }, [initialSkill]);
+
+  // unfold from the centre on load (unless the scroll position drives it)
+  useEffect(() => {
+    if (reducedMotion || progress !== null) {
       setIntro(1);
       return undefined;
     }
@@ -63,7 +68,7 @@ const PracticeMap = ({ projects = [] }) => {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [reducedMotion]);
+  }, [reducedMotion, progress !== null]);
 
   // slow turn and pointer tilt on larger screens; phones get a still, flat map
   useEffect(() => {
@@ -105,8 +110,9 @@ const PracticeMap = ({ projects = [] }) => {
   const togglePin = (id) => setPinned((current) => (current === id ? null : id));
 
   const g = narrow ? GEOMETRY.narrow : GEOMETRY.wide;
+  const open = progress !== null ? easeOut(Math.max(0, Math.min(1, progress))) : intro;
   const points = Object.fromEntries(
-    NODES.map((n) => [n.id, project3d(n.p.map((v) => v * (0.15 + 0.85 * intro)), angle.ay, angle.ax, g)])
+    NODES.map((n) => [n.id, project3d(n.p.map((v) => v * (0.15 + 0.85 * open)), angle.ay, angle.ax, g)])
   );
   const lit = active ? new Set([active, ...neighbours(active)]) : null;
   const depthOpacity = (z) => 0.35 + (1 - (z + 1.2) / 2.4) * 0.65; // nearer = brighter
@@ -150,7 +156,7 @@ const PracticeMap = ({ projects = [] }) => {
                 y2={pb.y}
                 style={{ stroke: on ? "rgb(var(--signal))" : "rgb(var(--bone))" }}
                 strokeWidth={on ? 1.6 : 1}
-                strokeOpacity={(lit ? (on ? 1 : 0.08) : depthOpacity((pa.z + pb.z) / 2) * 0.55) * intro}
+                strokeOpacity={(lit ? (on ? 1 : 0.08) : depthOpacity((pa.z + pb.z) / 2) * 0.55) * open}
               />
             );
           })}
@@ -185,7 +191,7 @@ const PracticeMap = ({ projects = [] }) => {
                   onClick={() => router.push(`/projects/${w.id}`)}
                 >
                   <line x1={sub.x} y1={sub.y} x2={x} y2={y} style={{ stroke: "rgb(var(--bone))" }} strokeOpacity="0.35" />
-                  <rect x={x - 4} y={y - 4} width="8" height="8" style={{ fill: "rgb(var(--bone))" }} />
+                  <rect x={x - 5} y={y - 5} width="10" height="10" style={{ fill: w.accent || "rgb(var(--bone))", stroke: "rgb(var(--bone))" }} strokeWidth="1.2" />
                   <text
                     x={x + (Math.cos(pt.a) >= 0 ? 9 : -9)}
                     y={y + 4}
@@ -208,7 +214,7 @@ const PracticeMap = ({ projects = [] }) => {
           const isActive = active === node.id;
           const isLit = !lit || lit.has(node.id);
           const right = pt.x < g.W / 2 + g.W * 0.14; // label side, so text stays inside the frame
-          const opacity = (isLit ? (lit ? 1 : depthOpacity(pt.z)) : 0.15) * intro;
+          const opacity = (isLit ? (lit ? 1 : depthOpacity(pt.z)) : 0.15) * open;
           return (
             <g
               key={node.id}

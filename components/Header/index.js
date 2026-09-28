@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import data from "../../data/portfolio.json";
-import ShuffleButton from "../ShuffleButton";
 import GraphMark from "../GraphMark";
 import { useActiveSection } from "../../utils";
 
@@ -25,7 +24,7 @@ const AmsterdamClock = () => {
   return <span>Amsterdam {time || "--:--"}</span>;
 };
 
-// Numbered sections of the home page, shared with the left rail.
+// Sections of the home page (the nav follows the one on screen).
 export const SECTIONS = [
   { id: "work", n: "01", label: "Work" },
   { id: "about", n: "02", label: "About" },
@@ -61,7 +60,6 @@ const Header = () => {
                 aria-current={current ? "location" : undefined}
                 className="group relative flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.12em]"
               >
-                <span className="text-olive">{s.n}</span>
                 <span>{s.label}</span>
                 <span
                   className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-olive transition-transform duration-300 ${
@@ -72,9 +70,6 @@ const Header = () => {
               </Link>
             );
           })}
-          <span className="ml-auto flex items-center">
-            <ShuffleButton />
-          </span>
         </nav>
 
         <button
@@ -97,14 +92,10 @@ const Header = () => {
               onClick={() => setOpen(false)}
               className="flex items-baseline gap-4 border-b border-bone/20 py-4"
             >
-              <span className="fu-meta text-signal">{s.n}</span>
               <span className="fu-display text-[40px] uppercase tracking-[0.02em]">{s.label}</span>
             </Link>
           ))}
-          <div className="pt-4 text-[15px]">
-            <ShuffleButton showName={false} />
-          </div>
-          <a href={`mailto:${email}`} className="block pt-2 text-[15px] text-signal">
+          <a href={`mailto:${email}`} className="block pt-5 text-[15px] text-signal">
             {email} ↗
           </a>
         </nav>

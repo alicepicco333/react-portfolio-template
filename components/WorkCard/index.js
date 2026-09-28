@@ -1,15 +1,31 @@
 import React from "react";
-import { categoryMeta, withBase } from "../../utils";
+import { categoryMeta, withBase, projectStyle, usePrefersReducedMotion } from "../../utils";
 
 // Square image tile, flush-left caption underneath. Without an image the square
 // becomes a flat colour field in the project's category tone.
-const WorkCard = ({ img, name, description, tags, category, cardNumber, date }) => {
+const WorkCard = ({ img, name, description, tags, category, cardNumber, date, accent, motion }) => {
   const { tone } = categoryMeta(category);
+  const reducedMotion = usePrefersReducedMotion();
+  const moving = motion && !reducedMotion;
 
   return (
-    <article className="flex flex-col gap-3">
-      <div className="aspect-square overflow-hidden" style={{ background: tone }}>
-        {img ? (
+    <article className="flex flex-col gap-3" style={projectStyle(accent)}>
+      <div className="relative aspect-square overflow-hidden" style={{ background: accent || tone }}>
+        {accent && <span className="absolute inset-x-0 top-0 z-10 h-[6px] bg-olive" aria-hidden="true" />}
+        {moving && motion.endsWith(".mp4") ? (
+          <video
+            src={withBase(motion)}
+            poster={img ? withBase(img) : undefined}
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={name}
+          />
+        ) : moving ? (
+          <img src={withBase(motion)} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
+        ) : img ? (
           <img src={withBase(img)} alt={name} className="h-full w-full object-cover" draggable={false} loading="lazy" />
         ) : (
           <div className="flex h-full items-end p-4">

@@ -76,7 +76,19 @@
         "Corrado Consiglio",
         "Marco Lamorte"
       ],
-      "reworkNote": "The Stolen Archive began as a group project with Corrado Consiglio and Marco Lamorte for Information Modelling and Web Technologies. I reworked it independently in 2026; the version shown here is that rework."
+      "reworkNote": "The Stolen Archive began as a group project with Corrado Consiglio and Marco Lamorte for Information Modelling and Web Technologies. I reworked it independently in 2026; the version shown here is that rework.",
+      "accent": "#b83312",
+      "notes": [
+        "Each object page sets the claimant's and the holder's positions side by side, each with its sources, instead of giving one verdict.",
+        "Every text exists in nine versions per tour, so a visitor chooses how much to read and how complex it gets."
+      ],
+      "summary": {
+        "brief": "Museums rarely show how colonial-era objects left home, who claims them and who holds them today.",
+        "role": "Information modelling and web development; the 2026 redesign on my own.",
+        "method": "A metadata model for 30 objects; 810 texts across 3 tours, 3 lengths and 3 reading levels; maps, floor plans and 3D views.",
+        "outcome": "A virtual exhibition of 30 objects in 13 rooms on two floors, each with the claims, holdings and sources behind it.",
+        "stack": "HTML · CSS · JavaScript · Leaflet · three.js · RDF"
+      }
     },
     {
       "id": "1",
@@ -113,7 +125,19 @@
       "collaborators": [
         "Nikolai Gorbachev"
       ],
-      "reworkNote": "Digitalian Folktales began as a group project with Nikolai Gorbachev. I reworked it independently in 2026; the version shown here is that rework."
+      "reworkNote": "Digitalian Folktales began as a group project with Nikolai Gorbachev. I reworked it independently in 2026; the version shown here is that rework.",
+      "accent": "#1f1fe0",
+      "notes": [
+        "The rework keeps the original typewriter identity: the dialect is typed like a field record, the Italian set in a book serif.",
+        "Only 3 of the 5 catalogued episodes are transcribed; the edition says so instead of hiding the gaps."
+      ],
+      "summary": {
+        "brief": "Calvino retold Italy's folktales in standard Italian; the dialect versions he drew on are hard to read against his.",
+        "role": "Edition design and web development; the 2026 rework on my own.",
+        "method": "Dialect texts aligned with Italian translations passage by passage; tale types (ATU) and a structural reading recorded for each episode.",
+        "outcome": "A searchable edition of two tale cycles, Friuli and Sicily: 5 episodes catalogued, 15 aligned passages.",
+        "stack": "HTML · CSS · JavaScript · D3.js · TopoJSON"
+      }
     },
     {
       "id": "2",
@@ -153,7 +177,19 @@
         "Corrado Consiglio",
         "Salvatore Di Marzo"
       ],
-      "reworkNote": "The ontologies were built as a group project with Marco Lamorte, Corrado Consiglio and Salvatore Di Marzo for Knowledge Representation and Extraction (2022/23). In 2026 I independently built a visual explorer from the group's OWL files and documentation; the images here come from it."
+      "reworkNote": "The ontologies were built as a group project with Marco Lamorte, Corrado Consiglio and Salvatore Di Marzo for Knowledge Representation and Extraction (2022/23). In 2026 I independently built a visual explorer from the group's OWL files and documentation; the images here come from it.",
+      "accent": "#111111",
+      "notes": [
+        "The explorer draws only what the OWL files assert: no reasoning, no invented links.",
+        "Eight ontologies, including my four, came without SPARQL queries; the explorer shows that gap instead of filling it."
+      ],
+      "summary": {
+        "brief": "Cognitive biases are described in prose; there was no shared formal model to query them.",
+        "role": "Four of the sixteen ontologies, in a team of four; the 2026 explorer on my own.",
+        "method": "eXtreme Design: user stories, competency questions, ontology design patterns and alignment to Framester.",
+        "outcome": "16 OWL ontologies (119 classes, 52 object properties) and a visual explorer that draws each user story as a graph.",
+        "stack": "OWL · RDF · SPARQL · Python (rdflib) · JavaScript"
+      }
     },
     {
       "id": "3",
@@ -196,7 +232,19 @@
         "Salvatore Di Marzo",
         "Matteo Guenci"
       ],
-      "reworkNote": "wipEU began as a group project with Salvatore Di Marzo and Matteo Guenci for Open Access and Digital Ethics (2023/24). I reworked it independently in 2026; the version shown here is that rework."
+      "reworkNote": "wipEU began as a group project with Salvatore Di Marzo and Matteo Guenci for Open Access and Digital Ethics (2023/24). I reworked it independently in 2026; the version shown here is that rework.",
+      "accent": "#b62f63",
+      "notes": [
+        "The old map coloured raw headcounts and never matched Czechia, North Macedonia or Türkiye; the rework maps shares and fixes the codes.",
+        "Pace to parity is a straight line through ten years of data, labelled as a projection, not a forecast."
+      ],
+      "summary": {
+        "brief": "Data on women in EU decision-making is scattered across EIGE tables, and headcounts hide how far each body is from parity.",
+        "role": "Idea, data retrieval, visualisation, quality and legal analysis, website; the 2026 rework on my own.",
+        "method": "EIGE datasets for six areas merged into mashups; shares computed from headcounts and checked against EIGE's own percentages.",
+        "outcome": "No area reaches parity. The site shows every body as seats, with a pace-to-parity projection and country profiles.",
+        "stack": "D3.js · JavaScript · Python · EIGE open data"
+      }
     },
     {
       "id": "5",
@@ -220,7 +268,15 @@
       "context": "Expanded Publishing Fest 2: Space-in / Space-out, Institute of Network Cultures, Amsterdam",
       "collaborators": [
         "Karolis Lasys"
-      ]
+      ],
+      "notes": [],
+      "summary": {
+        "brief": "A live audiovisual performance for the Institute of Network Cultures' Expanded Publishing Fest 2.",
+        "role": "Live-coded visuals, performing with Karolis Lasys.",
+        "method": "Hydra sketches written and rewritten in real time during the set.",
+        "outcome": "An 18-minute performance, recorded and published by the Institute of Network Cultures.",
+        "stack": "Hydra · JavaScript"
+      }
     },
     {
       "id": "6",
@@ -293,7 +349,15 @@
       "date": "2024-07-20",
       "dateLabel": "Jul 2024",
       "context": "HDSC2024 open programme, Hackers & Designers, Het Wilde Weg, Amsterdam",
-      "collaborators": []
+      "collaborators": [],
+      "notes": [],
+      "summary": {
+        "brief": "An open workshop in the Hackers & Designers summer programme.",
+        "role": "Proposed and led the workshop.",
+        "method": "An introduction to Hydra's primitives, textures and commands, then a collective live jam.",
+        "outcome": "A three-hour workshop and jam at Het Wilde Weg, Amsterdam, on 20 July 2024.",
+        "stack": "Hydra · OBS"
+      }
     },
     {
       "id": "11",
@@ -340,7 +404,16 @@
       "date": "2026-05-01",
       "dateLabel": "2025 – 2026",
       "context": "Commission for Teigetje & Woelrat, Amsterdam",
-      "collaborators": []
+      "collaborators": [],
+      "accent": "#111111",
+      "notes": [],
+      "summary": {
+        "brief": "A collection website for an Amsterdam label working across fashion, design and interior art.",
+        "role": "Design in Figma and front-end development.",
+        "method": "Collection and archive pages with filters, the label's history as a timeline, English and Dutch throughout.",
+        "outcome": "A bilingual site for the label's collection and archive.",
+        "stack": "Figma · React · TypeScript · Vite"
+      }
     },
     {
       "id": "12",
@@ -387,7 +460,18 @@
       "date": "2026-06-01",
       "dateLabel": "2024 – 2026",
       "context": "Master's thesis (supervisor Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna; begun as a research internship at the Institute of Network Cultures",
-      "collaborators": []
+      "collaborators": [],
+      "accent": "#3a3733",
+      "notes": [
+        "The project began as a research internship at the Institute of Network Cultures in 2024 and became my master's thesis."
+      ],
+      "summary": {
+        "brief": "Memes are a vast visual culture with no structured way to classify or query them.",
+        "role": "Sole researcher: data collection, ontology, classification and visualisation.",
+        "method": "About 5,000 Know Your Meme entries scraped; an OWL ontology informed by FRBR; CLIP for semi-automatic classification.",
+        "outcome": "A published ontology with documentation, visualisations and a SPARQL explorer linked to Wikidata.",
+        "stack": "Python · CLIP · OWL · SPARQL · D3.js"
+      }
     },
     {
       "id": "13",
@@ -408,7 +492,15 @@
       "date": "2026-09-03",
       "dateLabel": "2026 –",
       "context": "Archivio Luki Massa, Bologna",
-      "collaborators": null
+      "collaborators": null,
+      "notes": [],
+      "summary": {
+        "brief": "Digitising the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015.",
+        "role": "Digitisation and cataloguing.",
+        "method": "A shared file nomenclature (archive, series, file, unit, page) and a catalogue record for every unit.",
+        "outcome": "In progress: five series being digitised.",
+        "stack": "Scanning · spreadsheets"
+      }
     },
     {
       "id": "14",
@@ -448,7 +540,16 @@
       "date": "2026-01-30",
       "dateLabel": "Jan 2026",
       "context": "Live set as 5PIC3, Fullfillment Music Center",
-      "collaborators": []
+      "collaborators": [],
+      "notes": [],
+      "summary": {
+        "brief": "A live visual set at Fullfillment Music Center.",
+        "role": "Visuals, performing as 5PIC3.",
+        "method": "Audio-reactive Hydra patches, with the code projected alongside the visuals.",
+        "outcome": "A 23-minute set, recorded in full.",
+        "stack": "Hydra · JavaScript"
+      },
+      "tileMotion": "/images/projects/14-loop.webp"
     },
     {
       "id": "15",
@@ -495,7 +596,18 @@
         "Corrado Consiglio",
         "Salvatore Di Marzo"
       ],
-      "reworkNote": "Culture for All began as a group project with Corrado Consiglio and Salvatore Di Marzo for Information Visualization (2023/24). I reworked it independently in 2026; the version shown here is that rework."
+      "reworkNote": "Culture for All began as a group project with Corrado Consiglio and Salvatore Di Marzo for Information Visualization (2023/24). I reworked it independently in 2026; the version shown here is that rework.",
+      "accent": "#1f3fd1",
+      "notes": [
+        "The repository had population figures only for 2012, so the per-capita map uses ISTAT's own 2012 rate rather than new estimates."
+      ],
+      "summary": {
+        "brief": "Access to culture in Italy is unequal, but raw counts of libraries and museums mostly show where people live.",
+        "role": "Data visualisation and web development; the 2026 rework on my own.",
+        "method": "ISTAT and Ministry of Culture open data, with rates per inhabitant wherever the data allows.",
+        "outcome": "A data story: one municipality in four has no library, and southern libraries lend a fraction of what northern ones do.",
+        "stack": "D3.js · GeoJSON · Python"
+      }
     },
     {
       "id": "16",
@@ -554,7 +666,15 @@
       "date": "2026-09-10",
       "dateLabel": "Sep 2026",
       "context": "Data Systems Project, MSc Information Studies, 2026/27, with Q42 and Curamando as stakeholders",
-      "collaborators": null
+      "collaborators": null,
+      "notes": [],
+      "summary": {
+        "brief": "Conversational interfaces are everywhere, but they rarely enrich a visit inside the museum.",
+        "role": "Team member, MSc Information Studies Data Systems Project.",
+        "method": "Research into what makes a rich visit and which interface attributes support it, with Q42 and Curamando.",
+        "outcome": "In progress (2026/27).",
+        "stack": "To be decided"
+      }
     },
     {
       "id": "18",
@@ -574,7 +694,15 @@
       "date": "2026-09-18",
       "dateLabel": "Sep 2026",
       "context": "Multimodal Interaction Design course",
-      "collaborators": null
+      "collaborators": null,
+      "notes": [],
+      "summary": {
+        "brief": "Colonists on Proxima Centauri b reopen buried nuclear waste, and radio fails under the star's flares.",
+        "role": "Concept and interaction design (course project).",
+        "method": "Every hazard signalled across touch, vision and sound; gesture as the primary input.",
+        "outcome": "In progress: an Arduino glove and helmet rig for the midterm.",
+        "stack": "Arduino · sensors · OLED"
+      }
     },
     {
       "id": "19",
@@ -595,7 +723,15 @@
       "date": "2026-09-15",
       "dateLabel": "Sep 2026",
       "context": "HCI Theory and Data course",
-      "collaborators": []
+      "collaborators": [],
+      "notes": [],
+      "summary": {
+        "brief": "Learning-analytics data sorts students into categories: what do they capture, and what do they leave out?",
+        "role": "Sole author.",
+        "method": "A living notebook: weekly entries, superseded decisions kept visible, a change log and a log of AI use.",
+        "outcome": "In progress over eight weeks.",
+        "stack": "Jupyter · Python"
+      }
     },
     {
       "id": "20",
@@ -1020,7 +1156,19 @@
       "date": "2026-03-08",
       "dateLabel": "2025 – 2026",
       "context": "HCI course project, MA Digital Humanities and Digital Knowledge, University of Bologna",
-      "collaborators": []
+      "collaborators": [],
+      "accent": "#b23821",
+      "notes": [
+        "The biggest problem wasn't visual: the home page tried to be a marketing page, a guide and an onboarding flow at once."
+      ],
+      "summary": {
+        "brief": "People hesitate to start online therapy: how the service works, matching, prices and privacy were hard to understand.",
+        "role": "Solo: research, UX and UI design, prototyping and testing.",
+        "method": "Interviews, expert review and think-aloud tests; three design iterations; a summative usability test.",
+        "outcome": "SUS rose from 75 to 91.25, with 100% task success and zero errors (4 participants).",
+        "stack": "Figma · prototyping · SUS"
+      },
+      "tileMotion": "/images/projects/unobravo/motion-booked.mp4"
     },
     {
       "id": "21",
@@ -1065,7 +1213,16 @@
         "Lucia Bertoldini",
         "Chiara Parravicini"
       ],
-      "reworkNote": "Words of Gender began as a group project with Nicole Liggeri, Lucia Bertoldini and Chiara Parravicini for Digital Text in the Humanities. I reworked it independently in 2026; the version shown here is that rework."
+      "reworkNote": "Words of Gender began as a group project with Nicole Liggeri, Lucia Bertoldini and Chiara Parravicini for Digital Text in the Humanities. I reworked it independently in 2026; the version shown here is that rework.",
+      "accent": "#9c2f55",
+      "notes": [],
+      "summary": {
+        "brief": "Women authors are under-represented in the literary canon and in course readings.",
+        "role": "Encoding and web development in a team of four; the 2026 rework on my own.",
+        "method": "TEI XML excerpts linked to VIAF, Wikidata and WorldCat; 172 passages tagged with 27 concepts.",
+        "outcome": "A reading edition of nine authors from 1558 to 1958 that follows each concept across texts.",
+        "stack": "TEI · XSLT · JavaScript"
+      }
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",

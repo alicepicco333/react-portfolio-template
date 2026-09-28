@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CaseStudy from "../../components/CaseStudy";
 import ProjectGraph from "../../components/ProjectGraph";
-import { byDateDesc, categoryMeta, withBase } from "../../utils";
+import { byDateDesc, categoryMeta, withBase, projectStyle } from "../../utils";
 
 // Template filler ("Introductory paragraph for…") is hidden until real copy is written.
 const PLACEHOLDER = /^(Introductory paragraph|Middle explanatory section|Closing summary)/;
@@ -61,7 +61,7 @@ export default function ProjectPage({ project, number, next }) {
   const { short } = categoryMeta(project.category);
 
   return (
-    <div className="min-h-screen bg-bone text-ink">
+    <div className="min-h-screen bg-bone text-ink" style={projectStyle(project.accent)}>
       <Head>
         <title>{`${project.title} — Alice Picco`}</title>
         <meta name="description" content={project.description} />
@@ -81,9 +81,25 @@ export default function ProjectPage({ project, number, next }) {
               <ProjectGraph projectId={project.id} />
             </div>
           </div>
-          <div className="flex flex-col gap-8 laptop:col-span-3">
+          <div className={`flex flex-col gap-8 ${project.notes?.length ? "laptop:col-span-2" : "laptop:col-span-3"}`}>
             <h1 className="fu-display max-w-[900px] text-[44px] tablet:text-phi3">{project.title}</h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
+            {project.summary && (
+              <dl className="grid max-w-[900px] gap-x-6 gap-y-4 border-t-4 border-olive pt-4 tablet:grid-cols-2 laptopl:grid-cols-3">
+                {[
+                  ["Brief", project.summary.brief],
+                  ["Role", project.summary.role],
+                  ["Method", project.summary.method],
+                  ["Outcome", project.summary.outcome],
+                  ["Stack", project.summary.stack],
+                ].map(([label, value]) => (
+                  <div key={label} className="flex flex-col gap-1">
+                    <dt className="text-[12px] font-semibold uppercase tracking-[0.12em] text-olive">{label}</dt>
+                    <dd className="text-[15px] leading-snug">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
             <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[140px_1fr]">
               <dt className="text-fieldgrey">Date</dt>
               <dd>{project.dateLabel}</dd>
@@ -113,6 +129,19 @@ export default function ProjectPage({ project, number, next }) {
               </a>
             )}
           </div>
+          {project.notes?.length > 0 && (
+            <aside className="flex flex-col gap-4 border-t border-ink pt-4 laptop:border-l laptop:border-t-0 laptop:pl-6 laptop:pt-2" aria-label="Margin notes">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-fieldgrey">Margin notes</p>
+              <ol className="flex flex-col gap-4">
+                {project.notes.map((note, i) => (
+                  <li key={note} className="flex gap-3 text-[14px] leading-snug text-graphite">
+                    <span className="font-semibold tabular-nums text-olive">{i + 1}</span>
+                    <span>{note}</span>
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          )}
         </section>
 
         {project.highlightImage && (

@@ -5,9 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import SectionRail from "../components/SectionRail";
 import WorkCard from "../components/WorkCard";
-import PracticeMap from "../components/PracticeMap";
+import GraphStage from "../components/GraphStage";
 import portfolioData from "../data/portfolio.json";
 import { categoryMeta, useIsomorphicLayoutEffect, byDateDesc } from "../utils";
 
@@ -138,40 +137,39 @@ const Home = () => {
       <Header />
 
       <main>
-        {/* ——— Hero: two equal squares ——— */}
-        <section id="top" className="grid gap-4 bg-lilac px-4 pb-10 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-16 laptop:pt-10">
-          <div className="flex flex-col justify-between gap-12 laptop:col-span-2 laptop:aspect-square laptop:pr-10">
-            <div className="flex flex-col gap-8">
-              <p className="fu-hero-fade text-[13px] font-semibold uppercase tracking-[0.12em]">
-                {portfolioData.name} <span className="text-olive">—</span> researcher &amp; designer, Amsterdam
-              </p>
-              <h1 className="fu-display fu-hero-fade max-w-[640px] text-[44px] leading-[1.02] tablet:text-[64px]">
-                I research and design where <span className="text-olive">culture</span> meets{" "}
-                <span className="text-olive">code</span> and <span className="text-olive">interfaces</span>.
-              </h1>
-              <ul className="fu-hero-fade grid max-w-[420px] grid-cols-2 gap-x-4 gap-y-1 text-[15px]" aria-label="Roles">
-                {roles.map((role) => (
-                  <li key={role}>{role}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="fu-hero-fade flex flex-col gap-6">
-              <div className="flex flex-wrap gap-2">
-                <Link href="#work" className="fu-btn fu-btn-primary">
-                  See the work ↓
-                </Link>
-                <a href={`mailto:${email}`} className="fu-btn fu-btn-secondary bg-bone">
-                  Write to me
-                </a>
-              </div>
-            </div>
+        {/* ——— Hero: text first; the map follows as its own scene ——— */}
+        <section id="top" className="flex min-h-[calc(100svh-56px)] flex-col justify-between gap-12 px-4 pb-8 pt-8 tablet:px-10 laptop:pt-14">
+          <div className="flex flex-col gap-8">
+            <p className="fu-hero-fade text-[13px] font-semibold uppercase tracking-[0.12em]">
+              {portfolioData.name} <span className="text-olive">—</span> researcher &amp; designer, Amsterdam
+            </p>
+            <h1 className="fu-display fu-hero-fade max-w-[1100px] text-[46px] leading-[1.0] tablet:text-[80px] laptop:text-[104px]">
+              I research and design where <span className="text-olive">culture</span> meets{" "}
+              <span className="text-olive">code</span> and <span className="text-olive">interfaces</span>.
+            </h1>
           </div>
 
-          <div className="aspect-square laptop:col-span-2">
-            <PracticeMap projects={projects} />
+          <div className="fu-hero-fade grid gap-8 laptop:grid-cols-4 laptop:items-end">
+            <ul className="grid max-w-[420px] grid-cols-2 gap-x-4 gap-y-1 text-[15px] laptop:col-span-2" aria-label="Roles">
+              {roles.map((role) => (
+                <li key={role}>{role}</li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              <Link href="#work" className="fu-btn fu-btn-primary">
+                See the work ↓
+              </Link>
+              <a href={`mailto:${email}`} className="fu-btn fu-btn-secondary">
+                Write to me
+              </a>
+            </div>
+            <a href="#map" className="text-[13px] font-semibold uppercase tracking-[0.12em] laptop:justify-self-end">
+              ↓ The practice, as a map
+            </a>
           </div>
         </section>
+
+        <GraphStage projects={projects} />
 
         {/* ——— Works ——— */}
         <section id="work" className="scroll-mt-14 border-t border-ink px-4 pb-20 pt-4 tablet:px-10 laptop:pb-[110px]">
@@ -212,6 +210,8 @@ const Home = () => {
                       category={project.category}
                       cardNumber={numberOf(project)}
                       date={project.dateLabel}
+                      accent={project.accent}
+                      motion={project.tileMotion}
                     />
                   </Link>
                 ))}
@@ -263,7 +263,6 @@ const Home = () => {
       </main>
 
       <Footer />
-      <SectionRail />
     </div>
   );
 };

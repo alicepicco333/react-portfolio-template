@@ -39,20 +39,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FIELD/UNIT — flat Swiss system. Tokens are "r g b" triplets so the colour shuffle
-   (utils/palette.js) can swap them; Tailwind reads them in tailwind.config.js. */
+/* FIELD/UNIT — flat Swiss system. Tokens are "r g b" triplets; Tailwind reads them in tailwind.config.js.
+   The house is neutral (paper, ink, one olive accent); projects bring their own colour via --project. */
 :root {
   --bone: 232 228 218;
   --paper: 241 238 231;
   --ink: 21 22 19;
   --olive: 75 82 56;
-  --khaki: 207 198 232;
+  --khaki: 217 212 199;
   --concrete: 189 184 172;
   --graphite: 74 75 68;
   --field-grey: 96 99 88;
-  --pink: 207 198 232;
-  --lilac: 207 198 232;
-  --mint: 207 198 232;
+  --pink: 217 212 199;
+  --lilac: 217 212 199;
+  --mint: 217 212 199;
   --signal: 215 255 60;
 }
 
@@ -64,7 +64,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden makes body a scroll container and breaks sticky */
 }
 
 body {
