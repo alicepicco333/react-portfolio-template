@@ -3,7 +3,6 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { NODES, RING, CLUSTERS, labelOf, skillsOfProject } from "../Graph/data";
 import Sigil from "../Sigil";
-import { ProjectIconG } from "../ProjectIcon";
 import { categoryMeta, withBase, useIsomorphicLayoutEffect, usePrefersReducedMotion } from "../../utils";
 import { relaxRects, textWidth } from "../../utils/layout";
 import { scramble, drawIn } from "../../utils/motion";
@@ -39,7 +38,7 @@ function compassLayout(projects) {
     const s = skillIds(p.id);
     const mx = s.reduce((a, k) => a + MAKE[k], 0) / s.length;
     const py = s.reduce((a, k) => a + PEOP[k], 0) / s.length;
-    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -22, -22, 42 + textWidth(mapTitle(p), 17) * 1.1, 22];
+    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -(12 + textWidth(mapTitle(p), 17) * 0.55), -18, 12 + textWidth(mapTitle(p), 17) * 0.55, 18];
   });
   const fixed = [
     [0, C.cy - 26, 190, C.cy + 4],
@@ -78,7 +77,7 @@ function wheelLayout(projects) {
     const x = s.reduce((a, k) => a + anchorOf(k)[0], 0) / s.length;
     const y = s.reduce((a, k) => a + anchorOf(k)[1], 0) / s.length;
     const w = textWidth(mapTitle(p), 16) * 1.1 + 18;
-    items[p.id] = [Wh.CX + (x - Wh.CX) * 0.78, Wh.CY + (y - Wh.CY) * 0.78, -Math.max(16, w / 2), -16, Math.max(16, w / 2), 46];
+    items[p.id] = [Wh.CX + (x - Wh.CX) * 0.78, Wh.CY + (y - Wh.CY) * 0.78, -Math.max(16, w / 2), -16, Math.max(16, w / 2), 16];
   });
   const inner = Wh.R * 0.78;
   return relaxRects(items, { fixed: CLUSTER_TEXT.map((c) => c.box), box: [Wh.CX - inner, Wh.CY - inner, Wh.CX + inner, Wh.CY + inner], pad: 7 });
@@ -422,16 +421,15 @@ const WorkExplorer = ({ projects: given }) => {
                 return (
                   <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     {on && <circle className="work-glow" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
-                    <ProjectIconG id={p.id} x={x} y={y} size={on ? 34 : 28} />
                     <rect
-                      x={x + (on ? 22 : 19)}
+                      x={x - (widthOf(`c${p.id}`, mapTitle(p), 17) + 18) / 2}
                       y={y - 14}
                       width={widthOf(`c${p.id}`, mapTitle(p), 17) + 18}
                       height="28"
                       style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }}
                       strokeWidth="1"
                     />
-                    <text data-chip={`c${p.id}`} x={x + (on ? 31 : 28)} y={y + 6} fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
+                    <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -510,15 +508,14 @@ const WorkExplorer = ({ projects: given }) => {
                 return (
                   <g key={p.id} className="wheel-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     {on && <circle className="work-glow" cx={x} cy={y} r="44" fill="url(#work-glow)" />}
-                    <ProjectIconG id={p.id} x={x} y={y} size={on ? 32 : 26} />
                     {(() => {
                       const w = widthOf(`w${p.id}`, mapTitle(p), 16) + 16;
-                      const top = y + (on ? 21 : 18);
+                      const top = y - 13;
                       return (
                         <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }} strokeWidth="1" />
                       );
                     })()}
-                    <text data-chip={`w${p.id}`} x={x} y={y + (on ? 39 : 36)} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>
+                    <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>
                       {mapTitle(p)}
                     </text>
                   </g>
