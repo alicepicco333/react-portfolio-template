@@ -8,20 +8,17 @@ import {
   neighbours,
   nodeOf,
   labelOf,
-  skillsOfProject,
   CLUSTERS,
   clusterOf,
   SKILL_NOTES,
   MAP,
 } from "../Graph/data";
-import { SigilG } from "../Sigil";
 import { useIsomorphicLayoutEffect } from "../../utils";
 import { textWidth, overlapArea } from "../../utils/layout";
 import { scramble, drawIn } from "../../utils/motion";
 
 const shortTitle = (title) => title.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
-const skillIds = (projectId) => skillsOfProject(projectId).map((n) => n.id);
 const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6, strokeLinejoin: "round" };
 
 // ——— desktop geometry ———
@@ -325,9 +322,9 @@ const SkillMap = ({ projects }) => {
                   {fan.leafPts.map(({ p, x, y, right }) => (
                     <g key={`w-${p.id}`} className="fan-item" data-x={x} data-y={y} {...nodeProps(`Open ${mapTitle(p)}`, () => goTo(p.id))} role="link">
                       <line className="fan-line" x1={ax} y1={ay} x2={x} y2={y} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" />
-                      <SigilG cx={x} cy={y} r={17} skills={skillIds(p.id)} />
+                      <circle cx={x} cy={y} r="6" style={{ fill: "rgb(var(--olive))" }} />
                       <text
-                        x={right ? x + 26 : x - 26}
+                        x={right ? x + 14 : x - 14}
                         y={y + 5}
                         textAnchor={right ? "start" : "end"}
                         fontFamily="Inter Tight, sans-serif"

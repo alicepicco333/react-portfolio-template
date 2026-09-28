@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { NODES, RING, CLUSTERS, labelOf, skillsOfProject } from "../Graph/data";
-import Sigil, { SigilG } from "../Sigil";
+import { SigilG } from "../Sigil";
 import { categoryMeta, withBase, useIsomorphicLayoutEffect, usePrefersReducedMotion } from "../../utils";
 import { relaxRects, textWidth } from "../../utils/layout";
 import { scramble, drawIn } from "../../utils/motion";
@@ -111,9 +111,7 @@ const Media = ({ project, className = "" }) => {
   }
   if (src) return <img src={withBase(src)} alt="" className={className} loading="lazy" draggable={false} />;
   return (
-    <div className={`flex items-center justify-center bg-khaki ${className}`}>
-      <Sigil skills={skillIds(project.id)} size={130} bg="rgb(var(--khaki))" width={2.5} className="work-bigsig" />
-    </div>
+    <div className={`bg-khaki ${className}`} />
   );
 };
 
@@ -185,7 +183,6 @@ const WorkExplorer = ({ projects: given }) => {
       const q = (s) => Array.from(root.querySelectorAll(s));
       if (view === "Grid") {
         gsap.from(q(".work-card"), { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out", clearProps: "transform,opacity" });
-        drawIn(gsap, q(".work-grid .work-bigsig .sigil-edge"), { at: 0.35, step: 0.04, duration: 0.6 });
       }
       if (view === "Compass") {
         drawIn(gsap, q(".compass-axis"), { duration: 0.9 });
@@ -290,7 +287,6 @@ const WorkExplorer = ({ projects: given }) => {
                       <span className="text-olive">
                         {categoryMeta(p.category).short.toUpperCase()} · {yearOf(p)}
                       </span>
-                      <Sigil skills={skillIds(p.id)} size={26} bg="rgb(var(--paper))" className="work-mini" />
                     </div>
                     <h3 className="text-[18px] font-bold leading-tight">{shortTitle(p.title)}</h3>
                     <p className="text-[15px] leading-snug text-ink/85">{p.description}</p>
