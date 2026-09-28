@@ -39,12 +39,12 @@ const Header = () => {
               key={s.id}
               href={`/#${s.id}`}
               aria-current={current(s.id) ? "location" : undefined}
-              className={`border-b-2 py-1 transition-colors ${current(s.id) ? "border-olive" : "border-transparent hover:border-ink"}`}
+              className={`nav-glow py-1 ${current(s.id) ? "is-active" : ""}`}
             >
               {s.label}
             </Link>
           ))}
-          <Link href="/resume" className={`flex min-h-[44px] items-center px-4 text-white transition-colors ${pathname === "/resume" ? "bg-ink" : "bg-olive hover:bg-ink"}`}>
+          <Link href="/resume" className={`cv-glow flex min-h-[44px] items-center px-4 text-white ${pathname === "/resume" ? "bg-ink" : "bg-olive"}`}>
             cv
           </Link>
         </nav>

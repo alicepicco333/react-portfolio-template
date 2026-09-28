@@ -2,7 +2,8 @@ import React, { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { NODES, RING, CLUSTERS, labelOf, skillsOfProject } from "../Graph/data";
-import { SigilG } from "../Sigil";
+import Sigil from "../Sigil";
+import { ProjectIconG } from "../ProjectIcon";
 import { categoryMeta, withBase, useIsomorphicLayoutEffect, usePrefersReducedMotion } from "../../utils";
 import { relaxRects, textWidth } from "../../utils/layout";
 import { scramble, drawIn } from "../../utils/motion";
@@ -105,9 +106,10 @@ const Fit = ({ W, H, children }) => {
 const Media = ({ project, className = "" }) => {
   const reduced = usePrefersReducedMotion();
   const motion = project.tileMotion && !reduced ? project.tileMotion : null;
-  const src = motion || project.imageSrc;
+  const still = project.cardImage || project.imageSrc;
+  const src = motion || still;
   if (motion && motion.endsWith(".mp4")) {
-    return <video src={withBase(motion)} poster={withBase(project.imageSrc)} className={className} autoPlay muted loop playsInline aria-label={project.title} />;
+    return <video src={withBase(motion)} poster={withBase(still)} className={className} autoPlay muted loop playsInline aria-label={project.title} />;
   }
   if (src) return <img src={withBase(src)} alt="" className={className} loading="lazy" draggable={false} />;
   return (
@@ -328,13 +330,28 @@ const WorkExplorer = ({ projects: given }) => {
               onMouseMove={onCompassMove}
               onMouseLeave={onCompassLeave}
             >
-              <rect x="0" y="0" width={C.PW} height={C.H} fill="none" style={{ stroke: "rgb(var(--ink))" }} />
-              {[1, 2, 3, 5, 6, 7].map((i) => (
-                <g key={i} aria-hidden="true" style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="0.6" strokeDasharray="1 5">
-                  <line x1={(C.PW * i) / 8} y1="0" x2={(C.PW * i) / 8} y2={C.H} />
-                  <line x1="0" y1={(C.H * i) / 8} x2={C.PW} y2={(C.H * i) / 8} />
+              <defs>
+                <radialGradient id="work-glow">
+                  <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="rgb(26, 26, 255)" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              <g aria-hidden="true">
+                <rect x="0" y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.09)" }} />
+                <rect x={C.cx} y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.16)" }} />
+                <rect x="0" y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--ink) / 0.06)" }} />
+                <rect x={C.cx} y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.04)" }} />
+                <g style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="0.7">
+                  {Array.from({ length: 19 }, (_, i) => i + 1).map((i) => (
+                    <React.Fragment key={i}>
+                      <line x1={(C.PW * i) / 20} y1="0" x2={(C.PW * i) / 20} y2={C.H} />
+                      <line x1="0" y1={(C.H * i) / 20} x2={C.PW} y2={(C.H * i) / 20} />
+                    </React.Fragment>
+                  ))}
                 </g>
-              ))}
+              </g>
+              <rect x="0" y="0" width={C.PW} height={C.H} fill="none" style={{ stroke: "rgb(var(--ink))" }} />
               <line className="compass-axis" x1={C.cx} y1="0" x2={C.cx} y2={C.H} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
               <line className="compass-axis" x1="0" y1={C.cy} x2={C.PW} y2={C.cy} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
               <g fontFamily="JetBrains Mono, monospace" fontSize="14" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
@@ -357,9 +374,9 @@ const WorkExplorer = ({ projects: given }) => {
                 const on = selected.id === p.id;
                 return (
                   <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
-                    {on && <circle cx={x} cy={y} r="27" style={{ fill: "rgb(var(--khaki))", stroke: "rgb(var(--olive))" }} strokeWidth="1.5" />}
-                    <SigilG cx={x} cy={y} r={on ? 20 : 16} skills={skillIds(p.id)} />
-                    <text x={x + (on ? 30 : 24)} y={y + 6} fontFamily="Inter Tight, sans-serif" fontSize={on ? 18 : 17} fontWeight={on ? 700 : 500} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))", ...HALO }}>
+                    {on && <circle className="work-glow" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
+                    <ProjectIconG id={p.id} x={x} y={y} size={on ? 34 : 28} />
+                    <text x={x + (on ? 28 : 24)} y={y + 6} fontFamily="Inter Tight, sans-serif" fontSize={on ? 18 : 17} fontWeight={on ? 700 : 500} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))", ...HALO }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -384,6 +401,13 @@ const WorkExplorer = ({ projects: given }) => {
         <div className="hidden desktop:block">
           <Fit W={Wh.W} H={Wh.H}>
             <svg viewBox={`0 0 ${Wh.CX * 2 + 40} ${Wh.H}`} width={Wh.CX * 2 + 40} height={Wh.H} className="absolute left-0 top-0" role="group" aria-label="Work wheel: each project is pulled towards the skills it uses">
+              <defs>
+                <radialGradient id="work-glow">
+                  <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="rgb(26, 26, 255)" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
+                </radialGradient>
+              </defs>
               {CLUSTER_TEXT.map((c) => {
                 const r = Wh.R - 12;
                 const [a0, a1] = c.arc;
@@ -440,7 +464,8 @@ const WorkExplorer = ({ projects: given }) => {
                 const col = on ? "rgb(var(--olive))" : "rgb(var(--ink))";
                 return (
                   <g key={p.id} className="wheel-pt" data-x={x} data-y={y} {...pointProps(p)}>
-                    <SigilG cx={x} cy={y} r={on ? 20 : 14} skills={skillIds(p.id)} color={col} />
+                    {on && <circle className="work-glow" cx={x} cy={y} r="44" fill="url(#work-glow)" />}
+                    <ProjectIconG id={p.id} x={x} y={y} size={on ? 32 : 26} />
                     <text x={x} y={y + (on ? 39 : 33)} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize={on ? 17 : 16} fontWeight={on ? 700 : 500} style={{ fill: col, ...HALO }}>
                       {mapTitle(p)}
                     </text>
@@ -450,6 +475,12 @@ const WorkExplorer = ({ projects: given }) => {
             </svg>
             <div className="absolute right-0 top-5 flex w-[330px] flex-col gap-5">
               <ProjectCard project={selected} where="Wheel" />
+              <figure className="flex items-center gap-4">
+                <Sigil skills={skillIds(selected.id)} size={140} width={2} />
+                <figcaption className="font-mono text-[13px] leading-relaxed text-graphite">
+                  {`${mapTitle(selected)} on its own: the pin between its ${skillIds(selected.id).length} skills.`}
+                </figcaption>
+              </figure>
               <p className="font-mono text-[13px] leading-relaxed text-graphite">
                 Every project is pulled towards the skills it uses, like a weight on strings. Near the centre: projects that mix many skills. Near the rim: specialists.
               </p>

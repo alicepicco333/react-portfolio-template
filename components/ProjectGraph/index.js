@@ -18,7 +18,7 @@ const ProjectGraph = ({ projectId }) => {
 
   return (
     <div className="flex max-w-[320px] flex-col gap-4">
-      <Sigil skills={used.map((n) => n.id)} size={96} width={2.5} />
+      <Sigil skills={used.map((n) => n.id)} size={200} width={2.5} />
       <ul className="flex flex-col border-t border-ink/30" aria-label="Skills in this project">
         {used.map((n) => (
           <li key={n.id}>

@@ -82,7 +82,20 @@ export default function ProjectPage({ project, number, next }) {
             </div>
           </div>
           <div className="flex flex-col gap-8 laptop:col-span-3">
-            <h1 className="fu-display max-w-[900px] text-[44px] tablet:text-phi3">{project.title}</h1>
+            <h1 className="fu-display max-w-[980px] text-[44px] tablet:text-phi3">
+              {project.title}
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="title-link ml-3 inline-block align-baseline text-olive transition-transform hover:-translate-y-1 hover:translate-x-1"
+                  aria-label={`Open ${project.title} (opens in a new tab)`}
+                >
+                  ↗
+                </a>
+              )}
+            </h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
             {project.facts?.length > 0 && (
               <dl className="grid max-w-[980px] grid-cols-2 gap-x-6 gap-y-5 border-y border-ink py-5 laptop:grid-cols-4" aria-label="Key facts">
@@ -138,11 +151,6 @@ export default function ProjectPage({ project, number, next }) {
             </dl>
             {project.reworkNote && (
               <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[16px] leading-snug text-graphite">{project.reworkNote}</p>
-            )}
-            {project.url && (
-              <a href={project.url} target="_blank" rel="noreferrer" className="fu-btn fu-btn-primary self-start">
-                Visit project ↗
-              </a>
             )}
           </div>
         </section>

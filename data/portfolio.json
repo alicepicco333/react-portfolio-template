@@ -103,7 +103,8 @@
           "ways through: timeline, conquests, geography"
         ]
       ],
-      "shows": "Information architecture for difficult, contested content, and a public interface built end to end."
+      "shows": "Information architecture for difficult, contested content, and a public interface built end to end.",
+      "cardImage": "/images/projects/0-card.jpg"
     },
     {
       "id": "1",
@@ -167,7 +168,8 @@
           "interface languages"
         ]
       ],
-      "shows": "Turning scholarly source material into something people can search and read side by side."
+      "shows": "Turning scholarly source material into something people can search and read side by side.",
+      "cardImage": "/images/projects/1-card.jpg"
     },
     {
       "id": "2",
@@ -234,7 +236,8 @@
           "people in the team"
         ]
       ],
-      "shows": "Structured knowledge modelling in a team, and a visual tool that makes the model explorable."
+      "shows": "Structured knowledge modelling in a team, and a visual tool that makes the model explorable.",
+      "cardImage": "/images/projects/2-card.jpg"
     },
     {
       "id": "3",
@@ -304,7 +307,8 @@
           "open mashup datasets"
         ]
       ],
-      "shows": "Open-data research with a quality, legal and ethics review, and a policy question made visible."
+      "shows": "Open-data research with a quality, legal and ethics review, and a policy question made visible.",
+      "tileMotion": "/images/projects/3-loop.webp"
     },
     {
       "id": "5",
@@ -350,7 +354,8 @@
           "visuals coded in real time"
         ]
       ],
-      "shows": "Live creative coding in front of an audience, in collaboration with another artist."
+      "shows": "Live creative coding in front of an audience, in collaboration with another artist.",
+      "tileMotion": "/images/projects/5-loop.webp"
     },
     {
       "id": "10",
@@ -469,7 +474,8 @@
           "where the label's timeline starts"
         ]
       ],
-      "shows": "A client commission taken from Figma design to a working bilingual website."
+      "shows": "A client commission taken from Figma design to a working bilingual website.",
+      "cardImage": "/images/projects/11-card.jpg"
     },
     {
       "id": "12",
@@ -514,7 +520,7 @@
       ],
       "highlightCaption": "Home page: a wall of memes from the Know Your Meme sample, around the project title.",
       "date": "2026-06-01",
-      "dateLabel": "2024 – 2026",
+      "dateLabel": "2026",
       "context": "Master's thesis (supervisor Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna; begun as a research internship at the Institute of Network Cultures",
       "collaborators": [],
       "accent": "#3a3733",
@@ -543,7 +549,8 @@
           "explorer linked to Wikidata"
         ]
       ],
-      "shows": "Independent research at scale: data collection, classification and a queryable knowledge graph."
+      "shows": "Independent research at scale: data collection, classification and a queryable knowledge graph.",
+      "cardImage": "/images/projects/12-card.jpg"
     },
     {
       "id": "13",
@@ -713,7 +720,8 @@
           "has its data table"
         ]
       ],
-      "shows": "Data storytelling: choosing fair measures, rates rather than counts, and stating findings plainly."
+      "shows": "Data storytelling: choosing fair measures, rates rather than counts, and stating findings plainly.",
+      "tileMotion": "/images/projects/15-loop.webp"
     },
     {
       "id": "17",
@@ -1078,58 +1086,6 @@
             "text": "Three proposals with match explanations, filters to compare profiles, change therapist from the first screen, quick actions."
           }
         ],
-        "beforeAfter": [
-          {
-            "src": "/images/projects/unobravo/research/ba-onboarding.jpg",
-            "alt": "Before and after: Onboarding",
-            "caption": "Onboarding"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-test-question-example.jpg",
-            "alt": "Before and after: Questionnaire",
-            "caption": "Questionnaire"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-therapist-choice.jpg",
-            "alt": "Before and after: Therapist choice",
-            "caption": "Therapist choice"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-therapist-profile.jpg",
-            "alt": "Before and after: Therapist profile",
-            "caption": "Therapist profile"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-filtered-search.jpg",
-            "alt": "Before and after: Filtered search",
-            "caption": "Filtered search"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-pick-appointment.jpg",
-            "alt": "Before and after: Pick an appointment",
-            "caption": "Pick an appointment"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-calendar.jpg",
-            "alt": "Before and after: Calendar",
-            "caption": "Calendar"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-dashboard.jpg",
-            "alt": "Before and after: Dashboard",
-            "caption": "Dashboard"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-change-therapist.jpg",
-            "alt": "Before and after: Change therapist",
-            "caption": "Change therapist"
-          },
-          {
-            "src": "/images/projects/unobravo/research/ba-homepage.jpg",
-            "alt": "Before and after: Homepage",
-            "caption": "Homepage"
-          }
-        ],
         "flows": [
           {
             "src": "/images/projects/unobravo/flow-01-onboarding.jpg",
@@ -1283,7 +1239,9 @@
           "participants finished every task, no errors"
         ]
       ],
-      "shows": "End-to-end UX: research, iteration and a measured improvement in usability."
+      "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
+      "cardImage": "/images/projects/20-card.jpg",
+      "tileMotion": "/images/projects/20-loop.webp"
     },
     {
       "id": "21",
@@ -1355,7 +1313,8 @@
           "concepts followed across texts"
         ]
       ],
-      "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries."
+      "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
+      "cardImage": "/images/projects/21-card.jpg"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
@@ -1363,6 +1322,13 @@
     "tagline": "Creative technologist & researcher · UX research, data visualisation, interaction design",
     "description": "I work at the intersection of culture, technology, and design, weaving together critical research and creative experimentation. With a background in cultural anthropology and a strong foundation in digital humanities, my projects range from interactive archives and feminist data visualizations to live-coded performances and augmented reality design. Whether I’m mapping digital territories, building ontologies of cognitive bias, or glitching visual narratives in real time, I’m driven by curiosity and a commitment to inclusive, ethical tech. I enjoy working across media and disciplines — from semantic web development to storytelling with code — always with a reflexive, research-oriented approach.",
     "experiences": [
+      {
+        "id": "0",
+        "dates": "2025 - Present",
+        "type": "Freelance",
+        "position": "Freelance Designer and Archive Specialist",
+        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitisation and cataloguing, such as the Archivio Luki Massa"
+      },
       {
         "id": "1",
         "dates": "March 2024 - June 2024",
@@ -1383,20 +1349,6 @@
         "type": "Part Time",
         "position": "Digital Literacy Educator at NINA",
         "bullets": "Home visits to enhance elderly digital literacy"
-      },
-      {
-        "id": "4",
-        "dates": "August 2023 - September 2023",
-        "type": "Freelance",
-        "position": "Digital Designer at MONINGA",
-        "bullets": "Created Instagram filter for Vitamina Festival using Blender and Meta Spark AR"
-      },
-      {
-        "id": "5",
-        "dates": "May 2022 - October 2022",
-        "type": "Full Time",
-        "position": "Customer Service Agent at Concentrix",
-        "bullets": "Customer support and issue resolution on Meta social media platforms"
       }
     ],
     "education": {

@@ -108,6 +108,22 @@ a {
 }
 
 /* ——— Motion ——— */
+/* nav links glow instead of carrying an underline */
+.nav-glow {
+  transition: color 0.2s, text-shadow 0.35s;
+}
+.nav-glow:hover,
+.nav-glow.is-active {
+  color: rgb(var(--olive));
+  text-shadow: 0 0 10px rgb(var(--olive) / 0.55), 0 0 24px rgb(var(--olive) / 0.35);
+}
+.cv-glow {
+  transition: box-shadow 0.35s;
+}
+.cv-glow:hover,
+.cv-glow:focus-visible {
+  box-shadow: 0 0 14px rgb(var(--olive) / 0.6), 0 0 32px rgb(var(--olive) / 0.35);
+}
 /* a soft blue glow with a radial blur, breathing */
 .hero-glow {
   background: radial-gradient(circle, rgb(var(--olive) / 0.5) 0%, rgb(var(--olive) / 0.18) 45%, rgb(var(--olive) / 0) 70%);
