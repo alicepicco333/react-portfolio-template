@@ -51,8 +51,8 @@ function compassLayout(projects) {
   // roles take part in the layout even when hidden, so projects do not jump when they appear
   ROLES.forEach((r) => {
     const [x, y] = placeOf(r.skills);
-    const half = 6 + textWidth(r.short, 19) * 0.56;
-    items[roleKey(r)] = [x, y, -half, -17, half, 9];
+    const half = 8 + textWidth(r.short, 14) * 0.5;
+    items[roleKey(r)] = [x, y, -half, -14, half, 8];
   });
   const fixed = [
     [0, C.cy - 26, 190, C.cy + 4],
@@ -329,6 +329,20 @@ const WorkExplorer = ({ projects: given }) => {
           </p>
         </div>
         <div className="flex w-full flex-wrap items-end gap-3 desktop:w-auto">
+          {view === "Compass" && (
+            <button
+              type="button"
+              aria-pressed={showRoles}
+              onClick={() => {
+                setShowRoles((v) => !v);
+                setRole(null);
+              }}
+              className={`hidden min-h-[44px] items-center gap-2 self-end border border-ink px-4 font-mono text-[14px] desktop:flex ${showRoles ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
+            >
+              <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${showRoles ? "bg-current" : ""}`} />
+              My roles
+            </button>
+          )}
           <Select label="Type" value={type} onChange={setType} options={[["all", "All types"], ...TYPES.map((t) => [t, categoryMeta(t).short])]} />
           <Select label="Year" value={year} onChange={setYear} options={[["all", "All years"], ...years.map((y) => [y, y])]} />
           <div className="hidden flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex">
@@ -347,20 +361,6 @@ const WorkExplorer = ({ projects: given }) => {
               ))}
             </div>
           </div>
-          {view === "Compass" && (
-            <button
-              type="button"
-              aria-pressed={showRoles}
-              onClick={() => {
-                setShowRoles((v) => !v);
-                setRole(null);
-              }}
-              className={`hidden min-h-[44px] items-center gap-2 border border-ink px-4 font-mono text-[14px] desktop:flex ${showRoles ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
-            >
-              <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${showRoles ? "bg-current" : ""}`} />
-              My roles
-            </button>
-          )}
         </div>
       </div>
 
@@ -470,7 +470,7 @@ const WorkExplorer = ({ projects: given }) => {
                       width={widthOf(`c${p.id}`, mapTitle(p), 17) + 18}
                       height="28"
                       style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
-                      strokeWidth={hot === p.id && !on ? 1.5 : 1}
+                      strokeWidth={hot === p.id && !on ? 2.5 : 1}
                     />
                     <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
                       {mapTitle(p)}
@@ -504,16 +504,16 @@ const WorkExplorer = ({ projects: given }) => {
                       }}
                       style={{ cursor: "pointer" }}
                     >
-                      {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 6} r="60" fill="url(#work-glow)" />}
+                      {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 5} r="46" fill="url(#work-glow)" />}
                       <text
                         x={x}
                         y={y}
                         textAnchor="middle"
                         fontFamily="Inter Tight, sans-serif"
-                        fontSize="19"
-                        fontWeight="800"
+                        fontSize="14"
+                        fontWeight={on ? 700 : 400}
                         letterSpacing="0.01em"
-                        style={{ fill: on ? "rgb(var(--ink))" : over ? "rgb(var(--olive) / 0.35)" : "rgb(var(--paper))", stroke: over && !on ? "rgb(var(--olive))" : "rgb(var(--ink))", strokeWidth: 1.1, strokeLinejoin: "round", transition: "fill .2s" }}
+                        style={{ fill: on || over ? "rgb(var(--olive))" : "rgb(var(--ink))", stroke: "#fff", strokeWidth: 5, strokeLinejoin: "round", paintOrder: "stroke", transition: "fill .2s" }}
                       >
                         {r.short}
                       </text>
@@ -629,7 +629,7 @@ const WorkExplorer = ({ projects: given }) => {
                       const w = widthOf(`w${p.id}`, mapTitle(p), 16) + 16;
                       const top = y - 13;
                       return (
-                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 1.5 : 1} />
+                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 2.5 : 1} />
                       );
                     })()}
                     <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>

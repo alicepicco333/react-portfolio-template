@@ -105,7 +105,6 @@ html[data-contrast="high"] .map-edge:not([stroke-width="3"]) { stroke-width: 1.5
 html[data-contrast="high"] .map-glow,
 html[data-contrast="high"] .work-glow,
 html[data-contrast="high"] .hero-glow { display: none; }
-html[data-contrast="high"] .map-chip { stroke: rgb(var(--ink)) !important; stroke-width: 1.5px; }
 html[data-contrast="high"] .nav-glow:hover,
 html[data-contrast="high"] .nav-glow.is-active { text-shadow: none; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 html[data-contrast="high"] a { text-decoration-thickness: 2px; }

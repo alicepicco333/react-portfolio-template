@@ -334,7 +334,7 @@ const SkillMap = ({ projects }) => {
                             width={tw + 20}
                             height="25"
                             style={{ fill: isActive ? "rgb(var(--olive))" : hovered === n.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: isActive || hovered === n.id ? "rgb(var(--olive))" : isLit ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .2s, stroke .2s" }}
-                            strokeWidth={isLit ? 1.5 : 1}
+                            strokeWidth={hovered === n.id && !isActive ? 2.5 : isLit ? 1.5 : 1}
                           />
                         );
                       })()}
