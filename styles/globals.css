@@ -169,6 +169,16 @@ html[data-motion="off"] ::after {
 }
 
 /* ——— Motion ——— */
+/* the selected point on the compass and the wheel: a slow, breathing glow */
+.glow-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glow-pulse 2.2s ease-in-out infinite alternate;
+}
+@keyframes glow-pulse {
+  from { transform: scale(0.75); opacity: 0.55; }
+  to { transform: scale(1.15); opacity: 1; }
+}
 /* nav links glow instead of carrying an underline */
 .nav-glow {
   transition: color 0.2s, text-shadow 0.35s;

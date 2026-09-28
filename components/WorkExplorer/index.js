@@ -6,6 +6,11 @@ import Sigil from "../Sigil";
 import { categoryMeta, withBase, useIsomorphicLayoutEffect, usePrefersReducedMotion } from "../../utils";
 import { relaxRects, textWidth } from "../../utils/layout";
 import { scramble, drawIn, motionOn } from "../../utils/motion";
+import portfolioData from "../../data/portfolio.json";
+
+// CV roles, placed on the compass by the skills each role used
+const ROLES = portfolioData.resume.experiences.filter((r) => r.skills?.length);
+const roleKey = (r) => `r${r.id}`;
 
 const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6, strokeLinejoin: "round" };
 const skillIds = (id) => skillsOfProject(id).map((n) => n.id);
@@ -35,13 +40,19 @@ const QUADRANTS = [
   ["Instruments", C.PW - 24, C.H - 40, "end"],
 ];
 
+const placeOf = (s) => [C.cx + (s.reduce((a, k) => a + MAKE[k], 0) / s.length) * C.sx, C.cy - (s.reduce((a, k) => a + PEOP[k], 0) / s.length) * C.sy];
+
 function compassLayout(projects) {
   const items = {};
   projects.forEach((p) => {
-    const s = skillIds(p.id);
-    const mx = s.reduce((a, k) => a + MAKE[k], 0) / s.length;
-    const py = s.reduce((a, k) => a + PEOP[k], 0) / s.length;
-    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -(12 + textWidth(mapTitle(p), 17) * 0.55), -18, 12 + textWidth(mapTitle(p), 17) * 0.55, 18];
+    const [x, y] = placeOf(skillIds(p.id));
+    items[p.id] = [x, y, -(12 + textWidth(mapTitle(p), 17) * 0.55), -18, 12 + textWidth(mapTitle(p), 17) * 0.55, 18];
+  });
+  // roles take part in the layout even when hidden, so projects do not jump when they appear
+  ROLES.forEach((r) => {
+    const [x, y] = placeOf(r.skills);
+    const half = 6 + textWidth(r.short, 19) * 0.56;
+    items[roleKey(r)] = [x, y, -half, -17, half, 9];
   });
   const fixed = [
     [0, C.cy - 26, 190, C.cy + 4],
@@ -182,6 +193,9 @@ const WorkExplorer = ({ projects: given }) => {
   const [type, setType] = useState("all");
   const [year, setYear] = useState("all");
   const [picked, setPicked] = useState(null);
+  const [hot, setHot] = useState(null);
+  const [showRoles, setShowRoles] = useState(false);
+  const [role, setRole] = useState(null);
   const rootRef = useRef(null);
   const chx = useRef(null);
   const chy = useRef(null);
@@ -285,10 +299,21 @@ const WorkExplorer = ({ projects: given }) => {
     role: "button",
     "aria-pressed": selected.id === p.id,
     "aria-label": `${mapTitle(p)}, ${categoryMeta(p.category).short}, ${yearOf(p)}`,
-    onClick: () => matches(p) && setPicked(p.id),
-    onMouseEnter: () => matches(p) && setPicked(p.id),
-    onFocus: () => setPicked(p.id),
+    onClick: () => {
+      if (!matches(p)) return;
+      setPicked(p.id);
+      setRole(null);
+    },
+    onMouseEnter: () => matches(p) && setHot(p.id),
+    onMouseLeave: () => setHot(null),
+    onFocus: () => setHot(p.id),
+    onBlur: () => setHot(null),
     onKeyDown: (e) => {
+      if (e.key === " ") {
+        e.preventDefault();
+        setPicked(p.id);
+        setRole(null);
+      }
       if (e.key === "Enter") window.location.assign(withBase(`/projects/${p.id}/`));
     },
     style: { cursor: matches(p) ? "pointer" : "default", opacity: matches(p) ? 1 : 0.15, transition: "opacity .3s" },
@@ -322,6 +347,20 @@ const WorkExplorer = ({ projects: given }) => {
               ))}
             </div>
           </div>
+          {view === "Compass" && (
+            <button
+              type="button"
+              aria-pressed={showRoles}
+              onClick={() => {
+                setShowRoles((v) => !v);
+                setRole(null);
+              }}
+              className={`hidden min-h-[44px] items-center gap-2 border border-ink px-4 font-mono text-[14px] desktop:flex ${showRoles ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
+            >
+              <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${showRoles ? "bg-current" : ""}`} />
+              My roles
+            </button>
+          )}
         </div>
       </div>
 
@@ -424,14 +463,14 @@ const WorkExplorer = ({ projects: given }) => {
                 const on = selected.id === p.id;
                 return (
                   <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
-                    {on && <circle className="work-glow" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
+                    {on && <circle className="work-glow glow-pulse" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
                     <rect
                       x={x - (widthOf(`c${p.id}`, mapTitle(p), 17) + 18) / 2}
                       y={y - 14}
                       width={widthOf(`c${p.id}`, mapTitle(p), 17) + 18}
                       height="28"
-                      style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }}
-                      strokeWidth="1"
+                      style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
+                      strokeWidth={hot === p.id && !on ? 1.5 : 1}
                     />
                     <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
                       {mapTitle(p)}
@@ -439,12 +478,86 @@ const WorkExplorer = ({ projects: given }) => {
                   </g>
                 );
               })}
+              {showRoles &&
+                ROLES.map((r) => {
+                  const [x, y] = compass[roleKey(r)];
+                  const on = role === r.id;
+                  const over = hot === roleKey(r);
+                  return (
+                    <g
+                      key={r.id}
+                      className="compass-role"
+                      tabIndex={0}
+                      role="button"
+                      aria-pressed={on}
+                      aria-label={`Role: ${r.position}, ${r.dates}`}
+                      onMouseEnter={() => setHot(roleKey(r))}
+                      onMouseLeave={() => setHot(null)}
+                      onFocus={() => setHot(roleKey(r))}
+                      onBlur={() => setHot(null)}
+                      onClick={() => setRole(r.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setRole(r.id);
+                        }
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 6} r="60" fill="url(#work-glow)" />}
+                      <text
+                        x={x}
+                        y={y}
+                        textAnchor="middle"
+                        fontFamily="Inter Tight, sans-serif"
+                        fontSize="19"
+                        fontWeight="800"
+                        letterSpacing="0.01em"
+                        style={{ fill: on ? "rgb(var(--ink))" : over ? "rgb(var(--olive) / 0.35)" : "rgb(var(--paper))", stroke: over && !on ? "rgb(var(--olive))" : "rgb(var(--ink))", strokeWidth: 1.1, strokeLinejoin: "round", transition: "fill .2s" }}
+                      >
+                        {r.short}
+                      </text>
+                    </g>
+                  );
+                })}
             </svg>
             <div className="sticky top-20 flex w-[400px] shrink-0 flex-col gap-5 self-start">
-              <ProjectCard project={selected} skills={false} />
-              <Uses project={selected} row>
-                <MiniCompass at={compass[selected.id]} />
-              </Uses>
+              {showRoles && role ? (
+                (() => {
+                  const r = ROLES.find((x) => x.id === role);
+                  return (
+                    <>
+                      <div className="work-side flex flex-col gap-2 border-2 border-ink bg-paper p-4 text-[16px] leading-snug">
+                        <span className="font-mono text-[13px] uppercase text-olive">
+                          Role · {r.dates}
+                        </span>
+                        <span className="text-[22px] font-bold leading-tight">{r.position}</span>
+                        <span>{r.bullets}</span>
+                        <span className="font-mono text-[13px] text-graphite">{r.type}</span>
+                        <Link href="/resume" className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
+                          View CV →
+                        </Link>
+                      </div>
+                      <figure className="flex flex-row items-start gap-4 border border-ink bg-paper p-4">
+                        <div className="w-[180px] shrink-0">
+                          <MiniCompass at={compass[roleKey(r)]} />
+                        </div>
+                        <dl className="grid flex-1 grid-cols-1 gap-y-1 text-[15px] leading-snug [&>dd]:mb-2">
+                          <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
+                          <dd>{r.skills.map(labelOf).join(" · ")}</dd>
+                        </dl>
+                      </figure>
+                    </>
+                  );
+                })()
+              ) : (
+                <>
+                  <ProjectCard project={selected} skills={false} />
+                  <Uses project={selected} row>
+                    <MiniCompass at={compass[selected.id]} />
+                  </Uses>
+                </>
+              )}
               <p ref={readout} className="font-mono text-[13px] text-olive" aria-hidden="true">
                 Move over the compass to read its axes
               </p>
@@ -511,12 +624,12 @@ const WorkExplorer = ({ projects: given }) => {
                 const col = on ? "rgb(var(--olive))" : "rgb(var(--ink))";
                 return (
                   <g key={p.id} className="wheel-pt" data-x={x} data-y={y} {...pointProps(p)}>
-                    {on && <circle className="work-glow" cx={x} cy={y} r="44" fill="url(#work-glow)" />}
+                    {on && <circle className="work-glow glow-pulse" cx={x} cy={y} r="44" fill="url(#work-glow)" />}
                     {(() => {
                       const w = widthOf(`w${p.id}`, mapTitle(p), 16) + 16;
                       const top = y - 13;
                       return (
-                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }} strokeWidth="1" />
+                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 1.5 : 1} />
                       );
                     })()}
                     <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>

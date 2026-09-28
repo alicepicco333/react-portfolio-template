@@ -89,7 +89,7 @@ const SkillMap = ({ projects }) => {
   const frameRef = useRef(null);
   const stageRef = useRef(null);
   const narrowRef = useRef(null);
-  const active = hovered || pinned;
+  const active = pinned;
 
   // `?skill=<id>` opens the map on that skill
   useEffect(() => {
@@ -333,7 +333,7 @@ const SkillMap = ({ projects }) => {
                             y={y + dy - 18}
                             width={tw + 20}
                             height="25"
-                            style={{ fill: isActive ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: isActive ? "rgb(var(--olive))" : isLit ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .25s, stroke .25s" }}
+                            style={{ fill: isActive ? "rgb(var(--olive))" : hovered === n.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: isActive || hovered === n.id ? "rgb(var(--olive))" : isLit ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .2s, stroke .2s" }}
                             strokeWidth={isLit ? 1.5 : 1}
                           />
                         );

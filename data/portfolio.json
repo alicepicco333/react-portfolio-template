@@ -1310,42 +1310,95 @@
         "dates": "2025 - Present",
         "type": "Freelance",
         "position": "Freelance Designer and Archive Specialist",
-        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitisation and cataloguing, such as the Archivio Luki Massa."
+        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitisation and cataloguing, such as the Archivio Luki Massa.",
+        "short": "Freelance designer & archivist",
+        "org": "Freelance",
+        "skills": [
+          "ux",
+          "vis",
+          "arch"
+        ],
+        "start": 2025.0,
+        "end": null
       },
       {
         "id": "2",
         "dates": "Jul 2025 - Nov 2025",
         "type": "Full-time",
         "position": "UX Researcher/Designer at BrainBite",
-        "bullets": "BrainBite is a personalised ed-tech platform with one-to-one conversational AI tutoring for children. I researched UX patterns and best practice for neurodiverse learners, assessed interaction flows for neurodiversity support, proposed changes and built the iterations in Figma."
+        "bullets": "BrainBite is a personalised ed-tech platform with one-to-one conversational AI tutoring for children. I researched UX patterns and best practice for neurodiverse learners, assessed interaction flows for neurodiversity support, proposed changes and built the iterations in Figma.",
+        "short": "UX researcher · BrainBite",
+        "org": "BrainBite",
+        "skills": [
+          "ur",
+          "hci",
+          "ux",
+          "ixd"
+        ],
+        "start": 2025.5,
+        "end": 2025.9
       },
       {
         "id": "3",
         "dates": "Mar 2024 - Jun 2024",
         "type": "Full-time",
         "position": "Visiting Research Fellow at the Institute of Network Cultures",
-        "bullets": "Practice-based research in digital culture and cultural analytics in Amsterdam. For the Viral Image Cultures project I developed an ontology of internet memes and designed and built an interactive interface to explore the dataset and the ontology."
+        "bullets": "Practice-based research in digital culture and cultural analytics in Amsterdam. For the Viral Image Cultures project I developed an ontology of internet memes and designed and built an interactive interface to explore the dataset and the ontology.",
+        "short": "Research fellow · INC",
+        "org": "Institute of Network Cultures",
+        "skills": [
+          "cult",
+          "onto",
+          "sem",
+          "dv"
+        ],
+        "start": 2024.17,
+        "end": 2024.5
       },
       {
         "id": "4",
         "dates": "Mar 2024 - Jun 2024",
         "type": "Funded programme",
         "position": "UX Consultant at The Hmm",
-        "bullets": "Selected for Voices of Makers, with DEN (Cultural Knowledge Institute): mapping digital cultural spaces, exploring emerging technologies and co-developing strategies for the digital transformation of the Dutch cultural sector."
+        "bullets": "Selected for Voices of Makers, with DEN (Cultural Knowledge Institute): mapping digital cultural spaces, exploring emerging technologies and co-developing strategies for the digital transformation of the Dutch cultural sector.",
+        "short": "UX consultant · The Hmm",
+        "org": "The Hmm",
+        "skills": [
+          "hci",
+          "ixd"
+        ],
+        "start": 2024.17,
+        "end": 2024.5
       },
       {
         "id": "5",
         "dates": "Nov 2023 - Feb 2024",
         "type": "Part-time",
         "position": "IT Support Specialist at Nina",
-        "bullets": "IT support for medical staff at the Fondazione ANT headquarters in Bologna."
+        "bullets": "IT support for medical staff at the Fondazione ANT headquarters in Bologna.",
+        "short": "IT support · Nina",
+        "org": "Nina",
+        "skills": [
+          "ur",
+          "hci"
+        ],
+        "start": 2023.83,
+        "end": 2024.12
       },
       {
         "id": "6",
         "dates": "Sep 2023 - Feb 2024",
         "type": "Part-time",
         "position": "Digital Literacy Educator at Nina",
-        "bullets": "Home visits helping older people use smartphones and online services and keep in touch with family and healthcare providers."
+        "bullets": "Home visits helping older people use smartphones and online services and keep in touch with family and healthcare providers.",
+        "short": "Digital literacy educator · Nina",
+        "org": "Nina",
+        "skills": [
+          "anth",
+          "ur"
+        ],
+        "start": 2023.67,
+        "end": 2024.12
       }
     ],
     "educationList": [
@@ -1353,25 +1406,37 @@
         "id": "e1",
         "dates": "Aug 2026 - Present",
         "name": "MSc Information Studies, Human-Computer Interaction, University of Amsterdam",
-        "detail": "In progress."
+        "detail": "In progress.",
+        "short": "MSc HCI · University of Amsterdam",
+        "start": 2026.58,
+        "end": null
       },
       {
         "id": "e2",
         "dates": "Oct 2022 - Jul 2026",
         "name": "MA Digital Humanities and Digital Knowledge, University of Bologna",
-        "detail": "110/110 cum laude. Focus on UX and web development, with data science, the semantic web and visualisation."
+        "detail": "110/110 cum laude. Focus on UX and web development, with data science, the semantic web and visualisation.",
+        "short": "MA Digital Humanities · Bologna",
+        "start": 2022.75,
+        "end": 2026.5
       },
       {
         "id": "e3",
         "dates": "Mar 2021 - Aug 2021",
         "name": "Erasmus exchange, Area Studies (IIAW), Humboldt-Universität zu Berlin",
-        "detail": "Digital ethnography and interviews."
+        "detail": "Digital ethnography and interviews.",
+        "short": "Erasmus · Humboldt Berlin",
+        "start": 2021.17,
+        "end": 2021.6
       },
       {
         "id": "e4",
         "dates": "Oct 2018 - Mar 2022",
         "name": "BA Cultural Anthropology, University of Bologna",
-        "detail": "Thesis on queer Muslim youth, through ethnography on social media."
+        "detail": "Thesis on queer Muslim youth, through ethnography on social media.",
+        "short": "BA Cultural Anthropology · Bologna",
+        "start": 2018.75,
+        "end": 2022.2
       }
     ],
     "certifications": [
@@ -1431,6 +1496,39 @@
       {
         "title": "Build",
         "items": "React · D3.js · Leaflet · Python · RDF, SPARQL and OWL · Hydra"
+      }
+    ]
+  },
+  "journey": {
+    "lead": "How I got here: from studying how people live with technology to designing and testing it with them.",
+    "chapters": [
+      {
+        "from": 2018,
+        "to": 2022,
+        "title": "Anthropology",
+        "text": "A BA in cultural anthropology in Bologna and an Erasmus term in Berlin: fieldwork, interviews and digital ethnography.",
+        "short": "Anthropology"
+      },
+      {
+        "from": 2022,
+        "to": 2024,
+        "title": "Digital humanities",
+        "text": "An MA in digital humanities: data, the semantic web and visualisation, applied to archives, texts and open data.",
+        "short": "Digital humanities"
+      },
+      {
+        "from": 2024,
+        "to": 2025,
+        "title": "Research in practice",
+        "text": "A research fellowship at the Institute of Network Cultures and The Hmm’s Voices of Makers programme, with live coding on the side.",
+        "short": "Research"
+      },
+      {
+        "from": 2025,
+        "to": 2027,
+        "title": "HCI and UX",
+        "text": "UX research and design for BrainBite and Unobravo, freelance work, and now an MSc in Human-Computer Interaction in Amsterdam.",
+        "short": "HCI & UX"
       }
     ]
   }
