@@ -11,7 +11,7 @@ export const NODES = [
   { id: "arch", label: "Digital archives", p: [-0.95, 0.55, -0.5], work: ["13", "0", "21"], tools: ["Cataloguing", "Digitisation"] },
   { id: "sem", label: "Semantic web", p: [-0.3, 0.25, -0.95], work: ["12", "2", "21"], tools: ["RDF", "SPARQL", "Wikidata"] },
   { id: "onto", label: "Ontologies", p: [-0.55, 0.8, -0.75], work: ["2", "12"], tools: ["OWL", "eXtreme Design", "Framester"] },
-  { id: "hci", label: "HCI", p: [0.15, -0.55, 0.35], work: ["20", "17", "19", "18"], tools: ["Usability testing", "SUS", "Critical data studies"] },
+  { id: "hci", label: "HCI", p: [0.15, -0.55, 0.35], work: ["20", "17", "18"], tools: ["Usability testing", "SUS", "Critical data studies"] },
   { id: "ux", label: "UX design", p: [0.55, -0.8, 0.15], work: ["20", "11", "0"], tools: ["Figma", "Prototyping", "Information architecture"] },
   { id: "ixd", label: "Interaction design", p: [0.35, -0.05, 0.75], work: ["18", "20", "0", "3"], tools: ["Multimodal interaction", "Arduino"] },
   { id: "dv", label: "Data visualisation", p: [0.05, 0.2, -0.35], work: ["3", "15", "12"], tools: ["D3.js", "Leaflet", "Chart.js"] },

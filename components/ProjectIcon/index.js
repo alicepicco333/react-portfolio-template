@@ -97,13 +97,6 @@ const GLYPHS = {
       <circle cx="16" cy="16" r="2.2" {...F} />
     </>
   ),
-  // OULAD critique: a notebook
-  19: (
-    <>
-      <rect x="8" y="5" width="17" height="22" rx="2" {...S} />
-      <path d="M12 11 h9 M12 15 h9 M12 19 h6 M5.5 9 h4 M5.5 16 h4 M5.5 23 h4" {...S} strokeWidth="2" />
-    </>
-  ),
   // Unobravo: a conversation
   20: (
     <>

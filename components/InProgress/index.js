@@ -44,7 +44,7 @@ const InProgress = ({ projects }) => {
           <h2 className="text-[28px] font-semibold tracking-[-0.02em]">In progress</h2>
           <p className="font-mono text-[13px] text-graphite">{projects.length} projects · case studies still being written</p>
         </div>
-        <ul className="grid gap-5 tablet:grid-cols-2 desktop:grid-cols-4">
+        <ul className="grid gap-5 tablet:grid-cols-2 laptop:grid-cols-3">
           {projects.map((p) => (
             <li key={p.id} className="wip-card">
               <Link href={`/projects/${p.id}`} className="work-lift flex h-full flex-col border border-dashed border-ink bg-bone">
