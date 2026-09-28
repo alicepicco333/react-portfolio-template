@@ -48,7 +48,7 @@ function spans(px, list, getStart, getEnd, label) {
         const x1b = Math.max(px(end), x0 + 8);
         const w = textWidth(label(e), 15) * 1.05 + 14;
         const inside = x1b - x0 >= w;
-        const flip = !inside && x1b + w > W - PAD;
+        const flip = !inside && x1b + w > px(NOW) - 6;
         return { e, s, end, x0: flip ? x0 - w : x0, bx: x0, x1b, inside, flip, x1: inside || flip ? x1b : x1b + 8 + w - 14 };
       })
       .sort((a, b) => a.s - b.s)
@@ -68,7 +68,7 @@ const Journey = ({ projects }) => {
         const t = timeOf(p);
         const x = px(t);
         const w = 12 + textWidth(shortTitle(p), 15) * 1.05;
-        const flip = x + w > W - PAD;
+        const flip = x + w > px(NOW) - 6; // never run past the "now" line
         return { p, t, x, flip, x0: flip ? x - w : x - 6, x1: flip ? x + 6 : x + w };
       })
       .sort((a, b) => a.t - b.t)
@@ -97,21 +97,18 @@ const Journey = ({ projects }) => {
           x={it.bx}
           y={y}
           width={w}
-          height={ROW - 8}
-          style={{
-            fill: kind === "study" ? "rgb(var(--khaki))" : "rgb(var(--paper))",
-            stroke: "rgb(var(--ink))",
-          }}
+          height={ROW - 10}
+          style={{ fill: "color-mix(in srgb, rgb(var(--olive)) 14%, #fff)", stroke: "rgb(var(--olive))" }}
           strokeWidth="1"
-          strokeDasharray={ongoing ? "4 3" : undefined}
+          strokeDasharray={ongoing ? "5 3" : undefined}
         />
         <text
           x={it.inside ? it.bx + 8 : it.flip ? it.bx - 8 : it.x1b + 8}
-          y={y + 18}
+          y={y + 17}
           textAnchor={it.flip ? "end" : "start"}
           fontFamily="Inter Tight, sans-serif"
           fontSize="15"
-          fontWeight="600"
+          fontWeight="500"
           style={{ fill: "rgb(var(--ink))" }}
         >
           {e.short}
@@ -151,13 +148,13 @@ const Journey = ({ projects }) => {
         {/* ——— large screens: the drawn timeline ——— */}
         <div className="fu-reveal hidden desktop:block">
           <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="group" aria-label="Timeline of studies, roles and projects, 2018 to today">
-            {journey.chapters.filter((c) => c.to > T0).map((c, i) => {
+            {journey.chapters.filter((c) => c.to > T0).map((c) => {
               const x0 = px(Math.max(c.from, T0));
               const x1 = px(Math.min(c.to, T1));
               return (
                 <g key={c.title} aria-hidden="true">
-                  <rect x={x0} y={yChapters} width={x1 - x0} height={H} style={{ fill: i % 2 ? "rgb(var(--ink) / 0.035)" : "transparent" }} />
-                  <text x={x0 + 8} y={yChapters + 24} fontFamily="JetBrains Mono, monospace" fontSize="14" letterSpacing="0.1em" style={{ fill: "rgb(var(--olive))" }}>
+                  {c.from > T0 && <line x1={x0} y1={yChapters} x2={x0} y2={H} style={{ stroke: "rgb(var(--concrete))" }} strokeDasharray="2 4" />}
+                  <text x={x0 + 8} y={yChapters + 24} fontFamily="JetBrains Mono, monospace" fontSize="13" letterSpacing="0.1em" style={{ fill: "rgb(var(--ink))" }}>
                     {(c.short || c.title).toUpperCase()}
                   </text>
                   <text x={x0 + 8} y={yChapters + 44} fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--graphite))" }}>
@@ -180,10 +177,7 @@ const Journey = ({ projects }) => {
                   </text>
                 </g>
               ))}
-              {work.map(({ p, x }) => (
-                <line key={p.id} x1={x} y1={yAxis - 4} x2={x} y2={yAxis + 4} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="3" />
-              ))}
-              <line x1={px(NOW)} y1={yChapters + 56} x2={px(NOW)} y2={H} style={{ stroke: "rgb(var(--olive))" }} strokeDasharray="3 4" />
+              <line x1={px(NOW)} y1={yChapters + 56} x2={px(NOW)} y2={H} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" />
               <text x={px(NOW) + 6} y={yChapters + 70} fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--olive))" }}>
                 now
               </text>
@@ -196,8 +190,8 @@ const Journey = ({ projects }) => {
               const wip = p.category === "Work in Progress";
               return (
                 <a key={p.id} href={withBase(`/projects/${p.id}/`)} aria-label={`${shortTitle(p)}, ${yearOf(p)}${wip ? ", in progress" : ""}`}>
-                  <circle cx={x} cy={y} r="6" style={{ fill: wip ? "rgb(var(--bone))" : "rgb(var(--olive))", stroke: "rgb(var(--olive))" }} strokeWidth="2" strokeDasharray={wip ? "2 2" : undefined} />
-                  <text x={flip ? x - 12 : x + 12} y={y + 5} textAnchor={flip ? "end" : "start"} fontFamily="Inter Tight, sans-serif" fontSize="15" fontWeight="600" className="hover:underline" style={{ fill: "rgb(var(--ink))" }}>
+                  <rect x={x - 5} y={y - 5} width="10" height="10" style={{ fill: wip ? "rgb(var(--bone))" : "rgb(var(--ink))", stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
+                  <text x={flip ? x - 12 : x + 12} y={y + 5} textAnchor={flip ? "end" : "start"} fontFamily="Inter Tight, sans-serif" fontSize="15" fontWeight="500" className="hover:underline" style={{ fill: "rgb(var(--ink))" }}>
                     {shortTitle(p)}
                   </text>
                 </a>
@@ -206,7 +200,7 @@ const Journey = ({ projects }) => {
           </svg>
           <ol className="mt-6 grid grid-cols-4 gap-6">
             {journey.chapters.map((c) => (
-              <li key={c.title} className="flex flex-col gap-1 border-t-2 border-olive pt-3">
+              <li key={c.title} className="flex flex-col gap-1 border-t border-ink pt-3">
                 <span className="font-mono text-[13px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</span>
                 <span className="text-[18px] font-bold">{c.title}</span>
                 <span className="text-[15px] leading-snug">{c.text}</span>
