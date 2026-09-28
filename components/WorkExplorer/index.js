@@ -101,7 +101,7 @@ const Media = ({ project, className = "" }) => {
 // the card beside the compass and the wheel
 const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
-    <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
+    <Media project={project} className="aspect-[4/3] max-h-[40vh] w-full border-b border-ink object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
       <div className="flex items-center justify-between font-mono text-[13px]">
         <span className="text-olive">
@@ -118,10 +118,10 @@ const ProjectCard = ({ project, skills = true }) => (
   </div>
 );
 
-const Uses = ({ project, children }) => (
-  <figure className="flex flex-col gap-4 border border-ink bg-paper p-4">
-    {children}
-    <dl className="grid grid-cols-[112px_1fr] gap-x-3 gap-y-2 text-[15px] leading-snug">
+const Uses = ({ project, row = false, children }) => (
+  <figure className={`flex gap-4 border border-ink bg-paper p-4 ${row ? "flex-row items-start" : "flex-col"}`}>
+    {row ? <div className="w-[180px] shrink-0">{children}</div> : children}
+    <dl className={`grid flex-1 gap-x-3 text-[15px] leading-snug ${row ? "grid-cols-1 gap-y-1 [&>dd]:mb-2" : "grid-cols-[112px_1fr] gap-y-2"}`}>
       <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
       <dd>{skillIds(project.id).map(labelOf).join(" · ")}</dd>
       {project.summary?.stack && (
@@ -152,18 +152,7 @@ const MiniCompass = ({ at }) => (
     <rect x="0" y="0" width={C.PW} height={C.H} fill="none" style={{ stroke: "rgb(var(--ink))" }} strokeWidth="3" />
     <line x1={C.cx} y1="0" x2={C.cx} y2={C.H} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="4" />
     <line x1="0" y1={C.cy} x2={C.PW} y2={C.cy} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="4" />
-    <circle cx={at[0]} cy={at[1]} r="90" fill="url(#mini-glow)" />
-    <defs>
-      <radialGradient id="mini-glow">
-        <stop offset="0%" stopColor="rgb(26, 26, 255)" stopOpacity="0.55" />
-        <stop offset="100%" stopColor="rgb(26, 26, 255)" stopOpacity="0" />
-      </radialGradient>
-    </defs>
-    <circle cx={at[0]} cy={at[1]} r="22" style={{ fill: "rgb(var(--olive))", stroke: "#fff" }} strokeWidth="6" />
-    <g fontFamily="JetBrains Mono, monospace" fontSize="40" style={{ fill: "rgb(var(--graphite))" }}>
-      <text x={C.cx + 16} y="48">PEOPLE</text>
-      <text x={C.PW - 16} y={C.cy - 18} textAnchor="end">MAKING</text>
-    </g>
+    <circle cx={at[0]} cy={at[1]} r="26" style={{ fill: "rgb(var(--olive))" }} />
   </svg>
 );
 
@@ -450,9 +439,9 @@ const WorkExplorer = ({ projects: given }) => {
                 );
               })}
             </svg>
-            <div className="flex min-w-[330px] max-w-[440px] flex-1 flex-col gap-5">
+            <div className="flex min-w-[330px] flex-1 flex-col gap-5">
               <ProjectCard project={selected} skills={false} />
-              <Uses project={selected}>
+              <Uses project={selected} row>
                 <MiniCompass at={compass[selected.id]} />
               </Uses>
               <p ref={readout} className="font-mono text-[13px] text-olive" aria-hidden="true">
@@ -537,7 +526,7 @@ const WorkExplorer = ({ projects: given }) => {
                 );
               })}
             </svg>
-            <div className="flex min-w-[330px] max-w-[440px] flex-1 flex-col gap-5">
+            <div className="flex min-w-[330px] flex-1 flex-col gap-5">
               <ProjectCard project={selected} skills={false} />
               <Uses project={selected}>
                 <Sigil skills={skillIds(selected.id)} size={296} width={2.5} />
