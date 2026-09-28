@@ -128,7 +128,7 @@ const GLYPHS = {
 // Inside an existing <svg>, centred on (x, y).
 export const ProjectIconG = ({ id, x, y, size = 28, tile = "rgb(var(--olive))", className }) => (
   <g className={className} transform={`translate(${x - size / 2} ${y - size / 2}) scale(${size / 32})`}>
-    <rect width="32" height="32" rx="6" style={{ fill: tile }} />
+    <rect width="32" height="32" style={{ fill: tile }} />
     {GLYPHS[id] || <circle cx="16" cy="16" r="5" {...F} />}
   </g>
 );

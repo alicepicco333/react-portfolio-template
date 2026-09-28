@@ -380,7 +380,6 @@ const SkillMap = ({ projects }) => {
                             y={y + dy - 18}
                             width={tw + 20}
                             height="25"
-                            rx="6"
                             style={{ fill: isActive ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: isActive ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .25s" }}
                             strokeWidth={isLit ? 1.5 : 1}
                           />

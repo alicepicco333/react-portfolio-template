@@ -481,7 +481,7 @@
       "id": "12",
       "title": "The Meme Ontology",
       "description": "MEMO: an OWL ontology of internet memes, built from scraped meme data, linked to Wikidata and queryable with SPARQL.",
-      "introText": "MEMO is an ontology of internet memes, from my master's research Towards an Ontology of Memes (supervisor Fabio Vitali), which I began as a research intern at the Institute of Network Cultures in Amsterdam.",
+      "introText": "MEMO is an ontology of internet memes, from my master's research Towards an Ontology of Memes (supervisor Fabio Vitali), which I began as a visiting research fellow at the Institute of Network Cultures in Amsterdam, for its Viral Image Cultures project.",
       "gridImages": [
         {
           "src": "/images/projects/12-g1.jpg",
@@ -521,7 +521,7 @@
       "highlightCaption": "Home page: a wall of memes from the Know Your Meme sample, around the project title.",
       "date": "2026-06-01",
       "dateLabel": "2026",
-      "context": "Master's thesis (supervisor Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna; begun as a research internship at the Institute of Network Cultures",
+      "context": "Master's thesis (supervisor Fabio Vitali), MA Digital Humanities and Digital Knowledge, University of Bologna; begun as a visiting research fellowship at the Institute of Network Cultures (Viral Image Cultures)",
       "collaborators": [],
       "accent": "#3a3733",
       "summary": {
@@ -741,7 +741,7 @@
       ],
       "date": "2026-09-10",
       "dateLabel": "Sep 2026",
-      "context": "Data Systems Project, MSc Information Studies, 2026/27, with Q42 and Curamando as stakeholders",
+      "context": "Data Systems Project, MSc Information Studies (University of Amsterdam), 2026/27, with Q42 and Curamando as stakeholders",
       "collaborators": null,
       "summary": {
         "brief": "Conversational interfaces are everywhere, but they rarely enrich a visit inside the museum.",
@@ -780,7 +780,7 @@
       ],
       "date": "2026-09-18",
       "dateLabel": "Sep 2026",
-      "context": "Multimodal Interaction Design course",
+      "context": "Multimodal Interaction Design course, MSc Information Studies, University of Amsterdam",
       "collaborators": null,
       "summary": {
         "brief": "Colonists on Proxima Centauri b reopen buried nuclear waste, and radio fails under the star's flares.",
@@ -819,7 +819,7 @@
       ],
       "date": "2026-09-15",
       "dateLabel": "Sep 2026",
-      "context": "HCI Theory and Data course",
+      "context": "HCI Theory and Data course, MSc Information Studies, University of Amsterdam",
       "collaborators": [],
       "summary": {
         "brief": "Learning-analytics data sorts students into categories: what do they capture, and what do they leave out?",
@@ -1323,50 +1323,118 @@
     "description": "I work at the intersection of culture, technology, and design, weaving together critical research and creative experimentation. With a background in cultural anthropology and a strong foundation in digital humanities, my projects range from interactive archives and feminist data visualizations to live-coded performances and augmented reality design. Whether I’m mapping digital territories, building ontologies of cognitive bias, or glitching visual narratives in real time, I’m driven by curiosity and a commitment to inclusive, ethical tech. I enjoy working across media and disciplines — from semantic web development to storytelling with code — always with a reflexive, research-oriented approach.",
     "experiences": [
       {
-        "id": "0",
+        "id": "1",
         "dates": "2025 - Present",
         "type": "Freelance",
         "position": "Freelance Designer and Archive Specialist",
-        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitisation and cataloguing, such as the Archivio Luki Massa"
-      },
-      {
-        "id": "1",
-        "dates": "March 2024 - June 2024",
-        "type": "Full Time Internship",
-        "position": "Research and Development Intern at Institute of Network Cultures",
-        "bullets": "Practice-based research on digital cultures with cultural analytics and visualization methods"
+        "bullets": "Web design and front-end development for cultural clients, such as the collection website for Teigetje & Woelrat, and archive digitisation and cataloguing, such as the Archivio Luki Massa."
       },
       {
         "id": "2",
-        "dates": "March 2024 - Present",
-        "type": "Funded Program",
-        "position": "Digital Maker at The Hmm, DEN",
-        "bullets": "Mapping cultural digital spaces for digital transformation in the Netherlands"
+        "dates": "Jul 2025 - Nov 2025",
+        "type": "Full-time",
+        "position": "UX Researcher/Designer at BrainBite",
+        "bullets": "BrainBite is a personalised ed-tech platform with one-to-one conversational AI tutoring for children. I researched UX patterns and best practice for neurodiverse learners, assessed interaction flows for neurodiversity support, proposed changes and built the iterations in Figma."
       },
       {
         "id": "3",
-        "dates": "September 2023 - January 2024",
-        "type": "Part Time",
-        "position": "Digital Literacy Educator at NINA",
-        "bullets": "Home visits to enhance elderly digital literacy"
+        "dates": "Mar 2024 - Jun 2024",
+        "type": "Full-time",
+        "position": "Visiting Research Fellow at the Institute of Network Cultures",
+        "bullets": "Practice-based research in digital culture and cultural analytics in Amsterdam. For the Viral Image Cultures project I developed an ontology of internet memes and designed and built an interactive interface to explore the dataset and the ontology."
+      },
+      {
+        "id": "4",
+        "dates": "Mar 2024 - Jun 2024",
+        "type": "Funded programme",
+        "position": "UX Consultant at The Hmm",
+        "bullets": "Selected for Voices of Makers, with DEN (Cultural Knowledge Institute): mapping digital cultural spaces, exploring emerging technologies and co-developing strategies for the digital transformation of the Dutch cultural sector."
+      },
+      {
+        "id": "5",
+        "dates": "Nov 2023 - Feb 2024",
+        "type": "Part-time",
+        "position": "IT Support Specialist at Nina",
+        "bullets": "IT support for medical staff at the Fondazione ANT headquarters in Bologna."
+      },
+      {
+        "id": "6",
+        "dates": "Sep 2023 - Feb 2024",
+        "type": "Part-time",
+        "position": "Digital Literacy Educator at Nina",
+        "bullets": "Home visits helping older people use smartphones and online services and keep in touch with family and healthcare providers."
       }
     ],
-    "education": {
-      "universityName": "International Master's Degree - Digital Humanities and Digital Knowledge at University of Bologna",
-      "universityDate": "2022-2025",
-      "universityPara": "Focus on UX and Web Dev, courses in Data Science, Semantic Web, Visualization, etc."
-    },
-    "education2": {
-      "universityName": "Bachelor's Degree - Cultural Anthropology at University of Bologna",
-      "universityDate": "2018-2022",
-      "universityPara": "Thesis on queer Muslim youth through ethnography on social media"
-    }
+    "educationList": [
+      {
+        "id": "e1",
+        "dates": "Aug 2026 - Present",
+        "name": "MSc Information Studies, Human-Computer Interaction, University of Amsterdam",
+        "detail": "In progress."
+      },
+      {
+        "id": "e2",
+        "dates": "Oct 2022 - Jul 2026",
+        "name": "MA Digital Humanities and Digital Knowledge, University of Bologna",
+        "detail": "110/110 cum laude. Focus on UX and web development, with data science, the semantic web and visualisation."
+      },
+      {
+        "id": "e3",
+        "dates": "Mar 2021 - Aug 2021",
+        "name": "Erasmus exchange, Area Studies (IIAW), Humboldt-Universität zu Berlin",
+        "detail": "Digital ethnography and interviews."
+      },
+      {
+        "id": "e4",
+        "dates": "Oct 2018 - Mar 2022",
+        "name": "BA Cultural Anthropology, University of Bologna",
+        "detail": "Thesis on queer Muslim youth, through ethnography on social media."
+      }
+    ],
+    "certifications": [
+      {
+        "id": "c1",
+        "date": "Jul 2024",
+        "name": "Summer Academy: Unruly Currents and Everyday Piracy",
+        "issuer": "Hackers & Designers"
+      },
+      {
+        "id": "c2",
+        "date": "Jul 2024",
+        "name": "Digital Methods Summer School: Visual Methods for Digital Research",
+        "issuer": "University of Amsterdam"
+      },
+      {
+        "id": "c3",
+        "date": "Jan 2024",
+        "name": "DHIALOGUE: Digital Humanities and Communication Strategies for Cultural and Creative Industries",
+        "issuer": "University of Modena and Reggio Emilia"
+      },
+      {
+        "id": "c4",
+        "date": "Nov 2023",
+        "name": "3D Animation for Film and Creative Media",
+        "issuer": "Demetra Formazione"
+      },
+      {
+        "id": "c5",
+        "date": "Jul 2023",
+        "name": "Summer Academy: Reknitting Collective Infrastructures",
+        "issuer": "Hackers & Designers"
+      },
+      {
+        "id": "c6",
+        "date": "Nov 2022",
+        "name": "TOEFL iBT (English, C1)",
+        "issuer": "ETS"
+      }
+    ]
   },
   "about": {
     "lead": "I'm a creative technologist and researcher. I start from how people live with technology, and turn that into interfaces, data visualisations and working prototypes.",
     "paragraphs": [
       "My background is in cultural anthropology and digital humanities, so research comes first: interviews, usability tests, fieldwork and data analysis. From there I design and build, in Figma and in code.",
-      "I've done practice-based research at the Institute of Network Cultures and mapped digital cultural spaces with The Hmm and DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
+      "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers programme with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
     ],
     "practice": [
       {

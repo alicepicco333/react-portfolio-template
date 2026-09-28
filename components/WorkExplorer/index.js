@@ -39,7 +39,7 @@ function compassLayout(projects) {
     const s = skillIds(p.id);
     const mx = s.reduce((a, k) => a + MAKE[k], 0) / s.length;
     const py = s.reduce((a, k) => a + PEOP[k], 0) / s.length;
-    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -22, -22, 32 + textWidth(mapTitle(p), 18), 22];
+    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -22, -22, 42 + textWidth(mapTitle(p), 17) * 1.1, 22];
   });
   const fixed = [
     [0, C.cy - 26, 190, C.cy + 4],
@@ -77,8 +77,8 @@ function wheelLayout(projects) {
     const s = skillIds(p.id);
     const x = s.reduce((a, k) => a + anchorOf(k)[0], 0) / s.length;
     const y = s.reduce((a, k) => a + anchorOf(k)[1], 0) / s.length;
-    const w = textWidth(mapTitle(p), 16);
-    items[p.id] = [Wh.CX + (x - Wh.CX) * 0.78, Wh.CY + (y - Wh.CY) * 0.78, -Math.max(16, w / 2), -16, Math.max(16, w / 2), 40];
+    const w = textWidth(mapTitle(p), 16) * 1.1 + 18;
+    items[p.id] = [Wh.CX + (x - Wh.CX) * 0.78, Wh.CY + (y - Wh.CY) * 0.78, -Math.max(16, w / 2), -16, Math.max(16, w / 2), 46];
   });
   const inner = Wh.R * 0.78;
   return relaxRects(items, { fixed: CLUSTER_TEXT.map((c) => c.box), box: [Wh.CX - inner, Wh.CY - inner, Wh.CX + inner, Wh.CY + inner], pad: 7 });
@@ -214,6 +214,23 @@ const WorkExplorer = ({ projects: given }) => {
     mm.add("(prefers-reduced-motion: no-preference)", () => drawIn(gsap, Array.from(rootRef.current.querySelectorAll(".wheel-spoke")), { step: 0.08, duration: 0.5 }));
     return () => mm.revert();
   }, [selected.id, view]);
+
+  const [chipW, setChipW] = useState({});
+  useIsomorphicLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root) return undefined;
+    const measure = () => {
+      const w = {};
+      root.querySelectorAll("text[data-chip]").forEach((t) => {
+        w[t.dataset.chip] = t.getComputedTextLength();
+      });
+      setChipW((prev) => (JSON.stringify(prev) === JSON.stringify(w) ? prev : w));
+    };
+    measure();
+    if (document.fonts?.ready) document.fonts.ready.then(measure);
+    return undefined;
+  }, [view, selected.id]);
+  const widthOf = (key, text, px) => chipW[key] || textWidth(text, px) * 1.05;
 
   const onCompassMove = (e) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -376,7 +393,15 @@ const WorkExplorer = ({ projects: given }) => {
                   <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     {on && <circle className="work-glow" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
                     <ProjectIconG id={p.id} x={x} y={y} size={on ? 34 : 28} />
-                    <text x={x + (on ? 28 : 24)} y={y + 6} fontFamily="Inter Tight, sans-serif" fontSize={on ? 18 : 17} fontWeight={on ? 700 : 500} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))", ...HALO }}>
+                    <rect
+                      x={x + (on ? 22 : 19)}
+                      y={y - 14}
+                      width={widthOf(`c${p.id}`, mapTitle(p), 17) + 18}
+                      height="28"
+                      style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }}
+                      strokeWidth="1"
+                    />
+                    <text data-chip={`c${p.id}`} x={x + (on ? 31 : 28)} y={y + 6} fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -466,7 +491,14 @@ const WorkExplorer = ({ projects: given }) => {
                   <g key={p.id} className="wheel-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     {on && <circle className="work-glow" cx={x} cy={y} r="44" fill="url(#work-glow)" />}
                     <ProjectIconG id={p.id} x={x} y={y} size={on ? 32 : 26} />
-                    <text x={x} y={y + (on ? 39 : 33)} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize={on ? 17 : 16} fontWeight={on ? 700 : 500} style={{ fill: col, ...HALO }}>
+                    {(() => {
+                      const w = widthOf(`w${p.id}`, mapTitle(p), 16) + 16;
+                      const top = y + (on ? 21 : 18);
+                      return (
+                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }} strokeWidth="1" />
+                      );
+                    })()}
+                    <text data-chip={`w${p.id}`} x={x} y={y + (on ? 39 : 36)} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>
                       {mapTitle(p)}
                     </text>
                   </g>

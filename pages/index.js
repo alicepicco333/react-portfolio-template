@@ -22,13 +22,7 @@ const Home = () => {
 
   const record = [
     ...resume.experiences,
-    ...[resume.education, resume.education2].map((e, i) => ({
-      id: `edu-${i}`,
-      dates: e.universityDate,
-      position: e.universityName,
-      bullets: e.universityPara,
-      type: "Education",
-    })),
+    ...resume.educationList.map((e) => ({ id: e.id, dates: e.dates, position: e.name, bullets: e.detail, type: "Education" })),
   ];
 
   useIsomorphicLayoutEffect(() => {

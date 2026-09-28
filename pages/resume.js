@@ -20,7 +20,6 @@ const Section = ({ label, children }) => (
 
 const Resume = () => {
   const { resume, name, socials, email } = data;
-  const education = [resume.education, resume.education2].filter(Boolean);
 
   return (
     <div className="min-h-screen bg-bone text-ink">
@@ -59,7 +58,7 @@ const Resume = () => {
                 <span className="fu-meta text-fieldgrey">{exp.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-lg font-semibold">{exp.position}</span>
-                  <span className="text-[15px] text-graphite">{exp.bullets}</span>
+                  <span className="text-[16px] leading-snug text-graphite">{exp.bullets}</span>
                 </span>
                 <span className="fu-meta text-graphite tablet:text-right">{exp.type}</span>
               </li>
@@ -69,17 +68,31 @@ const Resume = () => {
 
         <Section label="Education">
           <ol>
-            {education.map((edu) => (
-              <li key={edu.universityName} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr] tablet:gap-4">
-                <span className="fu-meta text-fieldgrey">{edu.universityDate}</span>
+            {resume.educationList.map((edu) => (
+              <li key={edu.id} className="grid gap-1 border-b border-concrete py-5 tablet:grid-cols-[200px_1fr] tablet:gap-4">
+                <span className="fu-meta text-fieldgrey">{edu.dates}</span>
                 <span className="flex flex-col gap-1">
-                  <span className="text-lg font-semibold">{edu.universityName}</span>
-                  <span className="text-[15px] text-graphite">{edu.universityPara}</span>
+                  <span className="text-lg font-semibold">{edu.name}</span>
+                  <span className="text-[16px] text-graphite">{edu.detail}</span>
                 </span>
               </li>
             ))}
           </ol>
         </Section>
+
+        {resume.certifications?.length > 0 && (
+          <Section label="Certifications">
+            <ol>
+              {resume.certifications.map((c) => (
+                <li key={c.id} className="grid gap-1 border-b border-concrete py-4 tablet:grid-cols-[200px_1fr_220px] tablet:gap-4">
+                  <span className="fu-meta text-fieldgrey">{c.date}</span>
+                  <span className="text-[17px] font-semibold leading-snug">{c.name}</span>
+                  <span className="fu-meta text-graphite tablet:text-right">{c.issuer}</span>
+                </li>
+              ))}
+            </ol>
+          </Section>
+        )}
 
         {(resume.languages || resume.others) && (
           <Section label="Skills">
