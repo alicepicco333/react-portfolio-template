@@ -68,7 +68,7 @@ const Home = () => {
 
       <main id="main">
         <SkillMap projects={finished} />
-        <WorkExplorer projects={finished} wipCount={wip.length} />
+        <WorkExplorer projects={finished} />
         <InProgress projects={wip} />
 
         <section id="about" className="scroll-mt-16 bg-olive px-4 pb-20 pt-8 text-white tablet:px-8">

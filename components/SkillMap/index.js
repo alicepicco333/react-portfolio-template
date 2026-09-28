@@ -28,9 +28,9 @@ const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6,
 function labelBox(id) {
   const [x, y] = MAP.pos[id];
   const [dx, dy, anchor] = MAP.label[id];
-  const w = textWidth(labelOf(id), 21) * 1.08;
+  const w = textWidth(labelOf(id), 18) * 1.1;
   const left = anchor === "end" ? x + dx - w : x + dx;
-  return [left, y + dy - 19, left + w, y + dy + 6];
+  return [left - 10, y + dy - 18, left + w + 10, y + dy + 7];
 }
 const nodeBox = (id) => [MAP.pos[id][0] - 15, MAP.pos[id][1] - 15, MAP.pos[id][0] + 15, MAP.pos[id][1] + 15];
 const clusterBox = (c) => {
@@ -84,7 +84,9 @@ function fanLayout(id, works) {
 const SkillMap = ({ projects }) => {
   const router = useRouter();
   const [hovered, setHovered] = useState(null);
-  const [pinned, setPinned] = useState("dv");
+  const [pinned, setPinned] = useState("ixd");
+  const [chipW, setChipW] = useState({});
+  const labelRefs = useRef({});
   const [fit, setFit] = useState(null);
   const [frameH, setFrameH] = useState(null);
   const frameRef = useRef(null);
@@ -117,6 +119,21 @@ const SkillMap = ({ projects }) => {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
+  // size each skill chip to its label once the fonts are in
+  useEffect(() => {
+    if (!fit) return;
+    const measure = () => {
+      const w = {};
+      NODES.forEach((n) => {
+        const el = labelRefs.current[n.id];
+        if (el) w[n.id] = el.getComputedTextLength();
+      });
+      setChipW(w);
+    };
+    if (document.fonts?.ready) document.fonts.ready.then(measure);
+    else measure();
+  }, [fit]);
+
   const workOf = (id) => nodeOf(id).work.map((pid) => projects.find((p) => p.id === pid)).filter(Boolean);
   const activeNode = active ? nodeOf(active) : null;
   const activeWork = activeNode ? workOf(active) : [];
@@ -135,7 +152,7 @@ const SkillMap = ({ projects }) => {
         tl.from(q(".map-intro > *"), { y: 26, opacity: 0, duration: 0.9, stagger: 0.1 }, 0);
         drawIn(gsap, q(".map-edge"), { at: 0.25, step: 0.035, duration: 0.7 });
         tl.from(q(".map-node"), { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.035, ease: "back.out(2.2)" }, 0.35);
-        tl.from(q(".map-label"), { opacity: 0, y: 6, duration: 0.5, stagger: 0.025 }, 0.7);
+        tl.from(q(".map-chip-g"), { opacity: 0, y: 6, duration: 0.5, stagger: 0.025 }, 0.7);
         q(".map-cluster").forEach((el, i) => scramble(gsap, el, 0.9 + i * 0.18));
         tl.from(q(".map-card"), { x: 60, opacity: 0, duration: 0.8 }, 1.4);
         gsap.to(q(".map-ghost"), { rotation: 360, transformOrigin: "50% 50%", duration: 16, repeat: -1, ease: "none" });
@@ -355,18 +372,39 @@ const SkillMap = ({ projects }) => {
                       }}
                       strokeWidth="1.5"
                     />
-                    <text
-                      className="map-label"
-                      x={x + dx}
-                      y={y + dy}
-                      textAnchor={anchor}
-                      fontFamily="Inter Tight, sans-serif"
-                      fontSize={isActive ? 21 : 20}
-                      fontWeight={isActive ? 700 : isLit ? 600 : 400}
-                      style={{ fill: isActive ? "rgb(var(--olive))" : "rgb(var(--ink))", ...HALO }}
-                    >
-                      {n.label}
-                    </text>
+                    <g className="map-chip-g">
+                      {(() => {
+                        const tw = (chipW[n.id] || textWidth(n.label, 18)) * (isActive || isLit ? 1.05 : 1);
+                        const left = anchor === "end" ? x + dx - tw : x + dx;
+                        return (
+                          <rect
+                            className="map-chip"
+                            x={left - 10}
+                            y={y + dy - 18}
+                            width={tw + 20}
+                            height="25"
+                            rx="6"
+                            style={{ fill: isActive ? "rgb(var(--olive))" : "rgb(var(--paper))", stroke: isActive ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .25s" }}
+                            strokeWidth={isLit ? 1.5 : 1}
+                          />
+                        );
+                      })()}
+                      <text
+                        ref={(el) => {
+                          labelRefs.current[n.id] = el;
+                        }}
+                        className="map-label"
+                        x={x + dx}
+                        y={y + dy}
+                        textAnchor={anchor}
+                        fontFamily="Inter Tight, sans-serif"
+                        fontSize="18"
+                        fontWeight={isActive ? 700 : isLit ? 600 : 400}
+                        style={{ fill: isActive ? "#fff" : "rgb(var(--ink))" }}
+                      >
+                        {n.label}
+                      </text>
+                    </g>
                   </g>
                 );
               })}
@@ -381,12 +419,6 @@ const SkillMap = ({ projects }) => {
             <div className="map-card absolute bottom-3 left-[1020px] flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]" aria-live="polite">
               {activeNode ? (
                 <>
-                  <div className="flex justify-between font-mono text-[14px]">
-                    <span className="text-olive">SKILL · {clusterOf(active).label.toUpperCase()}</span>
-                    <span>
-                      {`${neighbours(active).length} links · ${activeWork.length} ${activeWork.length === 1 ? "project" : "projects"}`}
-                    </span>
-                  </div>
                   <span className="text-[26px] font-bold leading-tight">{activeNode.label}</span>
                   <span>{SKILL_NOTES[active]}</span>
                   <span className="font-mono text-[14px] text-graphite">{activeNode.tools.join(" · ")}</span>

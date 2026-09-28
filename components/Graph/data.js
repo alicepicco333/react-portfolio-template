@@ -68,7 +68,7 @@ export const SKILL_NOTES = {
 };
 
 // The home map is a fixed, hand-placed 2D layout, drawn at 1440 × 920 and scaled to the screen,
-// so no node, label or card can leave the frame. `label` is [dx, dy, text-anchor] from the node.
+// so no node, label or card can leave the frame. `label` is [dx, dy, text-anchor] of the skill chip's text.
 export const MAP = {
   W: 1440,
   H: 920,
@@ -78,10 +78,9 @@ export const MAP = {
     dh: [150, 470], arch: [110, 660], sem: [300, 790], onto: [520, 840],
   },
   label: {
-    anth: [-10, -14, "start"], ur: [12, -10, "start"], hci: [12, -10, "start"], ux: [14, -8, "start"],
-    vis: [-6, -16, "start"], ixd: [14, 22, "start"], cc: [14, -10, "start"], live: [-10, 28, "start"],
-    perf: [8, -16, "end"], dv: [-18, 36, "end"], cult: [-14, -14, "start"], dh: [14, -8, "start"],
-    arch: [14, 6, "start"], sem: [14, 20, "start"], onto: [14, 6, "start"],
+    anth: [22, 6, "start"], ur: [22, 6, "start"], hci: [22, 6, "start"], ux: [22, 6, "start"], vis: [22, 6, "start"],
+    ixd: [22, 6, "start"], cc: [22, 6, "start"], live: [22, 6, "start"], perf: [-22, 6, "end"], dv: [22, 6, "start"],
+    cult: [22, 6, "start"], dh: [22, 6, "start"], arch: [22, 6, "start"], sem: [22, 6, "start"], onto: [22, 6, "start"],
   },
   clusters: { listening: [400, 425], shaping: [980, 110], playing: [1085, 452], counting: [390, 730], ordering: [40, 850] },
   ghost: [1200, 290],

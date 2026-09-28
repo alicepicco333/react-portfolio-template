@@ -9,7 +9,9 @@ import { scramble, drawIn } from "../../utils/motion";
 
 const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6, strokeLinejoin: "round" };
 const skillIds = (id) => skillsOfProject(id).map((n) => n.id);
-const yearOf = (p) => (p.date || "").slice(0, 4);
+// A project dates from its first publication, not from a later rework ("2024 · reworked 2026" is 2024).
+const yearOf = (p) => ((p.dateLabel || "").match(/\d{4}/) || [(p.date || "").slice(0, 4)])[0];
+const newestFirst = (a, b) => yearOf(b).localeCompare(yearOf(a)) || (b.date || "").localeCompare(a.date || "");
 const shortTitle = (t) => t.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
 const TYPES = ["Design", "Research", "Live Coding"];
@@ -153,7 +155,8 @@ const Select = ({ label, value, onChange, options }) => (
   </label>
 );
 
-const WorkExplorer = ({ projects, wipCount }) => {
+const WorkExplorer = ({ projects: given }) => {
+  const projects = useMemo(() => [...given].sort(newestFirst), [given]);
   const [view, setView] = useState("Grid");
   const [skill, setSkill] = useState("all");
   const [type, setType] = useState("all");
@@ -182,7 +185,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
       const q = (s) => Array.from(root.querySelectorAll(s));
       if (view === "Grid") {
         gsap.from(q(".work-card"), { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out", clearProps: "transform,opacity" });
-        drawIn(gsap, q(".work-grid .work-bigsig .sigil-spoke"), { at: 0.35, step: 0.04, duration: 0.6 });
+        drawIn(gsap, q(".work-grid .work-bigsig .sigil-edge"), { at: 0.35, step: 0.04, duration: 0.6 });
       }
       if (view === "Compass") {
         drawIn(gsap, q(".compass-axis"), { duration: 0.9 });
@@ -244,9 +247,9 @@ const WorkExplorer = ({ projects, wipCount }) => {
     <section id="work" ref={rootRef} className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8">
       <div className="flex flex-col gap-6 pb-6 desktop:flex-row desktop:items-end desktop:justify-between">
         <div className="fu-reveal flex flex-col gap-2">
-          <h2 className="text-[40px] font-semibold leading-none tracking-[-0.02em]">All work</h2>
+          <h2 className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>
           <p className="font-mono text-[13px] text-graphite">
-            {projects.length} projects · {wipCount} in progress · {years[years.length - 1]}–{years[0]}
+            {years[years.length - 1]}–{years[0]}
           </p>
         </div>
         <div className="flex w-full flex-wrap items-end gap-3 desktop:w-auto">

@@ -21,13 +21,15 @@ const InProgress = ({ projects }) => {
       gsap.from(q(".wip-card"), { y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", scrollTrigger: { trigger: root, start: "top 80%", once: true } });
       q(".wip-ring").forEach((el, i) => gsap.to(el, { rotation: 360, transformOrigin: "50% 50%", duration: 22 + i * 4, repeat: -1, ease: "none" }));
       q(".wip-sigil").forEach((sg, i) => {
-        const spokes = q(".sigil-spoke", sg);
+        const dots = q(".sigil-dot", sg);
+        const edges = q(".sigil-edge", sg);
         const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.4, delay: 1 + i * 0.5 });
-        spokes.forEach((l, j) => {
+        tl.fromTo(dots, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, stagger: 0.2, ease: "back.out(2.5)" });
+        edges.forEach((l, j) => {
           const length = l.getTotalLength();
-          tl.fromTo(l, { strokeDasharray: length, strokeDashoffset: length }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, j * 0.3);
+          tl.fromTo(l, { strokeDasharray: length, strokeDashoffset: length }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 0.3 + j * 0.3);
         });
-        tl.to(spokes, { opacity: 0.2, duration: 0.8 }, "+=1.6").set(spokes, { opacity: 1 });
+        tl.to([...dots, ...edges], { opacity: 0.2, duration: 0.8 }, "+=1.6").set([...dots, ...edges], { opacity: 1 });
       });
     });
     return () => mm.revert();
