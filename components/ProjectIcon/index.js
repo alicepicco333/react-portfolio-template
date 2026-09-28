@@ -7,14 +7,6 @@ const S = { fill: "none", stroke: "#fff", strokeWidth: 2.4, strokeLinecap: "roun
 const F = { fill: "#fff" };
 const B = { fill: "rgb(var(--olive))" };
 
-const trefoil = () =>
-  [-90, 30, 150].map((a) => {
-    const r0 = 4;
-    const r1 = 11;
-    const p = (r, d) => `${16 + r * Math.cos(((a + d) * Math.PI) / 180)} ${16 + r * Math.sin(((a + d) * Math.PI) / 180)}`;
-    return <path key={a} d={`M ${p(r0, -30)} L ${p(r1, -30)} A ${r1} ${r1} 0 0 1 ${p(r1, 30)} L ${p(r0, 30)} A ${r0} ${r0} 0 0 0 ${p(r0, -30)} Z`} {...F} />;
-  });
-
 const GLYPHS = {
   // The Stolen Archive: the luggage tag from its favicon
   0: (
@@ -88,13 +80,6 @@ const GLYPHS = {
     <>
       <path d="M5 12 L16 6 L27 12 Z" {...F} />
       <path d="M9 14.5 v8.5 M14 14.5 v8.5 M18 14.5 v8.5 M23 14.5 v8.5 M5 25.5 h22" {...S} strokeWidth="2.2" />
-    </>
-  ),
-  // The Excavation Suit: the hazard it signals
-  18: (
-    <>
-      {trefoil()}
-      <circle cx="16" cy="16" r="2.2" {...F} />
     </>
   ),
   // Unobravo: a conversation
