@@ -57,7 +57,7 @@ function compassLayout(projects) {
 }
 
 // ——— wheel: projects pulled towards the skills they use (RadViz) ———
-const Wh = { W: 1376, H: 1000, CX: 520, CY: 500, R: 360 };
+const Wh = { W: 1376, H: 1040, CX: 520, CY: 500, R: 360 };
 const angleOf = (id) => -Math.PI / 2 + (2 * Math.PI * RING.indexOf(id)) / RING.length;
 const anchorOf = (id) => [Wh.CX + Wh.R * Math.cos(angleOf(id)), Wh.CY + Wh.R * Math.sin(angleOf(id))];
 const CLUSTER_TEXT = CLUSTERS.map((c) => {
@@ -85,18 +85,24 @@ function wheelLayout(projects) {
 }
 
 // scale a fixed-size design to the width it is given
-const Fit = ({ W, H, children }) => {
+const Fit = ({ W, H, fitHeight = false, children }) => {
   const ref = useRef(null);
   const [scale, setScale] = useState(null);
+  const [left, setLeft] = useState(0);
   useIsomorphicLayoutEffect(() => {
-    const measure = () => ref.current && setScale(Math.min(1, ref.current.clientWidth / W));
+    const measure = () => {
+      if (!ref.current) return;
+      const s = Math.min(1, ref.current.clientWidth / W, fitHeight ? (window.innerHeight - 96) / H : 1);
+      setScale(s);
+      setLeft(Math.max(0, (ref.current.clientWidth - W * s) / 2));
+    };
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [W]);
   return (
     <div ref={ref} className="relative w-full" style={{ height: H * (scale || 1) }}>
-      <div className="absolute left-0 top-0 origin-top-left" style={{ width: W, height: H, transform: `scale(${scale || 1})`, visibility: scale ? "visible" : "hidden" }}>
+      <div className="absolute top-0 origin-top-left" style={{ left, width: W, height: H, transform: `scale(${scale || 1})`, visibility: scale ? "visible" : "hidden" }}>
         {children}
       </div>
     </div>
@@ -118,9 +124,9 @@ const Media = ({ project, className = "" }) => {
 };
 
 // the card beside the compass and the wheel
-const ProjectCard = ({ project, where }) => (
+const ProjectCard = ({ project, where, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
-    <Media project={project} className="h-[190px] w-full border-b border-ink object-cover" />
+    <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
       <div className="flex items-center justify-between font-mono text-[13px]">
         <span className="text-olive">
@@ -130,7 +136,7 @@ const ProjectCard = ({ project, where }) => (
       </div>
       <span className="text-[22px] font-bold leading-tight">{shortTitle(project.title)}</span>
       <span>{project.description}</span>
-      <span className="font-mono text-[13px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>
+      {skills && <span className="font-mono text-[13px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>}
       <Link href={`/projects/${project.id}`} className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
         Read the story →
       </Link>
@@ -166,7 +172,6 @@ const WorkExplorer = ({ projects: given }) => {
   const chx = useRef(null);
   const chy = useRef(null);
   const readout = useRef(null);
-  const sweep = useRef(null);
 
   const years = [...new Set(projects.map(yearOf))].sort().reverse();
   const matches = (p) => (skill === "all" || skillIds(p.id).includes(skill)) && (type === "all" || p.category === type) && (year === "all" || yearOf(p) === year);
@@ -200,7 +205,6 @@ const WorkExplorer = ({ projects: given }) => {
           gsap.from(el, { x: Wh.CX - Number(el.dataset.x), y: Wh.CY - Number(el.dataset.y), opacity: 0, duration: 1.1, delay: 0.5 + i * 0.04, ease: "expo.out" })
         );
         q(".wheel-cluster").forEach((el, i) => scramble(gsap, el, 0.4 + i * 0.12));
-        if (sweep.current) gsap.to(sweep.current, { rotation: 360, svgOrigin: `${Wh.CX} ${Wh.CY}`, duration: 18, repeat: -1, ease: "none" });
       }
       if (view !== "Grid") gsap.from(q(".work-side"), { x: 50, opacity: 0, duration: 0.8, delay: 0.5, ease: "power3.out" });
     });
@@ -336,7 +340,7 @@ const WorkExplorer = ({ projects: given }) => {
       {/* ——— compass ——— */}
       {view === "Compass" && (
         <div className="hidden desktop:block">
-          <Fit W={C.W} H={C.H + 40}>
+          <Fit W={C.W} H={C.H + 40} fitHeight>
             <svg
               viewBox={`0 0 ${C.PW} ${C.H}`}
               width={C.PW}
@@ -410,9 +414,6 @@ const WorkExplorer = ({ projects: given }) => {
             </svg>
             <div className="absolute right-0 top-0 flex w-[330px] flex-col gap-5">
               <ProjectCard project={selected} where="Compass" />
-              <p className="font-mono text-[13px] leading-relaxed text-graphite">
-                Each project sits at the average of its skills. Left is understanding, right is making; up is people, down is information. Filters dim what does not match.
-              </p>
               <p ref={readout} className="font-mono text-[13px] text-olive" aria-hidden="true">
                 Move over the compass to read its axes
               </p>
@@ -455,14 +456,6 @@ const WorkExplorer = ({ projects: given }) => {
                 <circle key={f} cx={Wh.CX} cy={Wh.CY} r={Wh.R * f} fill="none" style={{ stroke: "rgb(var(--concrete))" }} strokeDasharray="1 5" aria-hidden="true" />
               ))}
               <circle className="wheel-ring" cx={Wh.CX} cy={Wh.CY} r={Wh.R} fill="none" style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
-              <g ref={sweep} aria-hidden="true">
-                <path
-                  d={`M ${Wh.CX} ${Wh.CY} L ${Wh.CX} ${Wh.CY - Wh.R} A ${Wh.R} ${Wh.R} 0 0 0 ${Wh.CX - Wh.R * Math.sin(0.49)} ${Wh.CY - Wh.R * Math.cos(0.49)} Z`}
-                  style={{ fill: "rgb(var(--olive))" }}
-                  opacity="0.07"
-                />
-                <line x1={Wh.CX} y1={Wh.CY} x2={Wh.CX} y2={Wh.CY - Wh.R} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" opacity="0.55" />
-              </g>
               {skillIds(selected.id).map((k) => (
                 <line key={k} className="wheel-spoke" x1={wheel[selected.id][0]} y1={wheel[selected.id][1]} x2={anchorOf(k)[0]} y2={anchorOf(k)[1]} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="2" aria-hidden="true" />
               ))}
@@ -506,16 +499,20 @@ const WorkExplorer = ({ projects: given }) => {
               })}
             </svg>
             <div className="absolute right-0 top-5 flex w-[330px] flex-col gap-5">
-              <ProjectCard project={selected} where="Wheel" />
-              <figure className="flex items-center gap-4">
-                <Sigil skills={skillIds(selected.id)} size={140} width={2} />
-                <figcaption className="font-mono text-[13px] leading-relaxed text-graphite">
-                  {`${mapTitle(selected)} on its own: the pin between its ${skillIds(selected.id).length} skills.`}
-                </figcaption>
+              <ProjectCard project={selected} where="Wheel" skills={false} />
+              <figure className="flex flex-col gap-4 border border-ink bg-paper p-4">
+                <Sigil skills={skillIds(selected.id)} size={296} width={2.5} />
+                <dl className="grid grid-cols-[112px_1fr] gap-x-3 gap-y-2 text-[15px] leading-snug">
+                  <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
+                  <dd>{skillIds(selected.id).map(labelOf).join(" · ")}</dd>
+                  {selected.summary?.stack && (
+                    <>
+                      <dt className="font-mono text-[13px] uppercase text-olive">Technologies</dt>
+                      <dd>{selected.summary.stack}</dd>
+                    </>
+                  )}
+                </dl>
               </figure>
-              <p className="font-mono text-[13px] leading-relaxed text-graphite">
-                Every project is pulled towards the skills it uses, like a weight on strings. Near the centre: projects that mix many skills. Near the rim: specialists.
-              </p>
             </div>
           </Fit>
         </div>

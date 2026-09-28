@@ -50,13 +50,12 @@ const GLYPHS = {
       <path d="M16 18.5 V28 M11.5 23.5 H20.5" {...S} strokeWidth="3" strokeLinecap="square" />
     </>
   ),
-  // Glitching Materiality: shifted scanlines
+  // Glitching Materiality: an old monitor, its picture torn by a glitch
   5: (
     <>
-      <rect x="5" y="7" width="14" height="3.2" {...F} />
-      <rect x="11" y="12.5" width="16" height="3.2" {...F} />
-      <rect x="5" y="18" width="19" height="3.2" {...F} />
-      <rect x="14" y="23.5" width="9" height="3.2" {...F} />
+      <rect x="5" y="6" width="22" height="16" {...S} />
+      <path d="M9 12 h8 M13 16 h10" {...S} strokeWidth="2.6" />
+      <path d="M12 26 h8 M16 22 v4" {...S} />
     </>
   ),
   // Collaboratory Creative Coding Jam: code
@@ -114,13 +113,12 @@ const GLYPHS = {
       <circle cx="20.5" cy="15" r="1.5" {...F} />
     </>
   ),
-  // Words of Gender: the letter from its favicon
+  // Words of Gender: an open book, one passage highlighted
   21: (
     <>
-      <text x="16" y="22" textAnchor="middle" fontFamily="Georgia, serif" fontSize="19" fontStyle="italic" {...F}>
-        W
-      </text>
-      <rect x="8" y="25" width="16" height="2.2" {...F} />
+      <path d="M16 9 C 12.5 7, 8.5 7, 5 8 V 25 C 8.5 24, 12.5 24, 16 26 C 19.5 24, 23.5 24, 27 25 V 8 C 23.5 7, 19.5 7, 16 9 Z M16 9 V 26" {...S} strokeWidth="2.2" />
+      <rect x="18.5" y="13" width="6" height="3" {...F} />
+      <path d="M8 14.5 h5 M8 18.5 h5 M19 20 h5" {...S} strokeWidth="1.8" />
     </>
   ),
 };

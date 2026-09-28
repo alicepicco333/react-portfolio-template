@@ -355,7 +355,8 @@
         ]
       ],
       "shows": "Live creative coding in front of an audience, in collaboration with another artist.",
-      "tileMotion": "/images/projects/5-loop.webp"
+      "tileMotion": "/images/projects/5-loop.webp",
+      "cardImage": "/images/projects/5-card.jpg"
     },
     {
       "id": "10",
@@ -404,7 +405,8 @@
           "Hackers & Designers summer programme"
         ]
       ],
-      "shows": "Designing and facilitating a hands-on workshop for newcomers."
+      "shows": "Designing and facilitating a hands-on workshop for newcomers.",
+      "cardImage": "/images/projects/10-card.jpg"
     },
     {
       "id": "11",
@@ -638,7 +640,7 @@
         "outcome": "A 23-minute set, recorded in full.",
         "stack": "Hydra · JavaScript"
       },
-      "tileMotion": "/images/projects/14-loop.webp",
+      "tileMotion": "/images/projects/14-loop43.webp",
       "short": "5PIC3 live",
       "facts": [
         [
@@ -650,7 +652,8 @@
           "code projected with the visuals"
         ]
       ],
-      "shows": "Real-time visual design under performance conditions."
+      "shows": "Real-time visual design under performance conditions.",
+      "cardImage": "/images/projects/14-card.jpg"
     },
     {
       "id": "15",
