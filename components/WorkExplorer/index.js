@@ -469,7 +469,7 @@ const WorkExplorer = ({ projects: given }) => {
                       y={y - 14}
                       width={widthOf(`c${p.id}`, mapTitle(p), 17) + 18}
                       height="28"
-                      style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
+                      style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
                       strokeWidth={hot === p.id && !on ? 2.5 : 1}
                     />
                     <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : "rgb(var(--ink))" }}>
@@ -633,7 +633,7 @@ const WorkExplorer = ({ projects: given }) => {
                       const w = widthOf(`w${p.id}`, mapTitle(p), 16) + 16;
                       const top = y - 13;
                       return (
-                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "rgb(var(--olive) / 0.2)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 2.5 : 1} />
+                        <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 2.5 : 1} />
                       );
                     })()}
                     <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : col }}>
