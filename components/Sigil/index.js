@@ -1,7 +1,7 @@
 import React from "react";
 import { RING } from "../Graph/data";
 
-// A project's sigil: a ring with one spoke per skill it uses, read clockwise from Anthropology.
+// A project's sigil: a ring with one spoke per skill it uses, read clockwise from Ethnography.
 // `SigilG` draws inside an existing <svg>; `Sigil` is a standalone icon.
 export const SigilG = ({ cx, cy, r, skills, color = "rgb(var(--olive))", bg = "rgb(var(--bone))", width = 2, ring = true, className }) => {
   const pts = RING.map((id, i) => {

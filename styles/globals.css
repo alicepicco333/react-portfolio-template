@@ -54,6 +54,13 @@ a {
   outline: 2px solid rgb(var(--ink));
   outline-offset: 3px;
 }
+.map-focus {
+  outline: none;
+}
+.map-focus:focus-visible {
+  outline: 3px solid rgb(var(--olive));
+  outline-offset: 4px;
+}
 
 @layer components {
   /* big type: tight, flush-left, sentence case */
@@ -69,7 +76,7 @@ a {
   }
   /* small labels and numbers */
   .fu-meta {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.005em;
   }
@@ -101,6 +108,16 @@ a {
 }
 
 /* ——— Motion ——— */
+/* a soft blue glow with a radial blur, breathing */
+.hero-glow {
+  background: radial-gradient(circle, rgb(var(--olive) / 0.5) 0%, rgb(var(--olive) / 0.18) 45%, rgb(var(--olive) / 0) 70%);
+  filter: blur(24px);
+  animation: hero-glow 3.6s ease-in-out infinite alternate;
+}
+@keyframes hero-glow {
+  from { transform: scale(0.8); opacity: 0.6; }
+  to { transform: scale(1.1); opacity: 1; }
+}
 /* cards lift onto a hard blue shadow; the mini sigil turns */
 .work-card > a,
 .work-lift {
@@ -130,4 +147,5 @@ a {
   html { scroll-behavior: auto; }
   .fu-blink { animation: none; }
   .work-card > a, .work-lift, .work-mini { transition: none; }
+  .hero-glow { animation: none; }
 }

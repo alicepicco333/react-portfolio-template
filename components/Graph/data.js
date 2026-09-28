@@ -4,7 +4,7 @@
 // `work` lists the projects (by id) where each skill shows up; `tools` are the methods and
 // tools behind the skill, taken from what those projects actually used.
 export const NODES = [
-  { id: "anth", label: "Anthropology", p: [-0.9, -0.7, 0.3], work: ["0"], tools: ["Ethnography", "Critical theory"] },
+  { id: "anth", label: "Ethnography", p: [-0.9, -0.7, 0.3], work: ["0"], tools: ["Fieldwork", "Critical theory"] },
   { id: "ur", label: "User research", p: [-0.2, -0.85, 0.55], work: ["20", "11", "17"], tools: ["Interviews", "Personas", "Think-aloud tests"] },
   { id: "cult", label: "Cultural analytics", p: [-0.75, 0.05, -0.1], work: ["12", "3", "15"], tools: ["Web scraping", "CLIP", "Open data"] },
   { id: "dh", label: "Digital humanities", p: [-0.45, -0.35, -0.6], work: ["21", "1", "0", "13"], tools: ["TEI XML", "Digital editions", "HTR"] },
@@ -50,7 +50,7 @@ export const clusterOf = (id) => CLUSTERS.find((c) => c.skills.includes(id));
 
 // One line per skill for the map's card.
 export const SKILL_NOTES = {
-  anth: "Fieldwork and ethnography: how people actually live with technology, observed rather than assumed.",
+  anth: "Fieldwork and participant observation: how people actually live with technology, observed rather than assumed.",
   ur: "Interviews, personas and think-aloud tests that turn what people need into design decisions.",
   hci: "Usability testing and a critical eye on how interfaces shape what people can do.",
   ux: "Information architecture, flows and prototypes in Figma, taken through to tested screens.",
@@ -83,26 +83,14 @@ export const MAP = {
     perf: [8, -16, "end"], dv: [-18, 36, "end"], cult: [-14, -14, "start"], dh: [14, -8, "start"],
     arch: [14, 6, "start"], sem: [14, 20, "start"], onto: [14, 6, "start"],
   },
-  clusters: { listening: [400, 425], shaping: [980, 110], playing: [1110, 650], counting: [390, 730], ordering: [40, 850] },
+  clusters: { listening: [400, 425], shaping: [980, 110], playing: [1085, 452], counting: [390, 730], ordering: [40, 850] },
   ghost: [1200, 290],
   // areas kept clear for the statement, the legend, the card and the "your team" node
   reserved: [
-    [24, 24, 590, 300],
-    [1040, 680, 1420, 912],
-    [24, 880, 1000, 918],
+    [24, 24, 660, 250],
+    [1010, 620, 1420, 912],
     [1170, 262, 1400, 372],
   ],
-};
-
-// Phones get their own, narrower layout (labels always to the right of the node).
-export const MAP_NARROW = {
-  W: 400,
-  H: 620,
-  pos: {
-    anth: [24, 40], cult: [24, 110], dh: [24, 180], arch: [24, 250], sem: [24, 320], onto: [24, 390],
-    ur: [214, 75], hci: [214, 145], ux: [214, 215], vis: [214, 285], ixd: [214, 355], cc: [214, 425],
-    dv: [110, 480], live: [214, 545], perf: [214, 610],
-  },
 };
 
 // Rotate a 3D point and project it onto a W×H canvas.

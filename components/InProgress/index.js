@@ -40,7 +40,7 @@ const InProgress = ({ projects }) => {
       <div className="flex flex-col gap-4 border-t border-ink pt-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-[28px] font-semibold tracking-[-0.02em]">In progress</h2>
-          <p className="font-mono text-[12px] text-graphite">{projects.length} projects · case studies still being written</p>
+          <p className="font-mono text-[13px] text-graphite">{projects.length} projects · case studies still being written</p>
         </div>
         <ul className="grid gap-5 tablet:grid-cols-2 desktop:grid-cols-4">
           {projects.map((p) => (
@@ -53,10 +53,10 @@ const InProgress = ({ projects }) => {
                   </svg>
                 </div>
                 <div className="flex flex-grow flex-col gap-1.5 px-3.5 pb-3.5 pt-3">
-                  <span className="font-mono text-[11px] text-graphite">IN PROGRESS · STARTED {(p.date || "").slice(0, 4)}</span>
+                  <span className="font-mono text-[13px] text-graphite">IN PROGRESS · STARTED {(p.date || "").slice(0, 4)}</span>
                   <h3 className="text-[18px] font-bold leading-tight">{p.title.split(" - ")[0]}</h3>
-                  <p className="text-[14px] leading-snug text-ink/85">{p.description}</p>
-                  <p className="mt-auto pt-1.5 font-mono text-[11px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
+                  <p className="text-[15px] leading-snug text-ink/85">{p.description}</p>
+                  <p className="mt-auto pt-1.5 font-mono text-[13px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
                 </div>
               </Link>
             </li>

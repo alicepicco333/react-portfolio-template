@@ -5,7 +5,7 @@ import { NODES, clusterOf } from "../Graph/data";
 import Sigil from "../Sigil";
 
 // A project's place in the practice: its sigil (one spoke per skill, read clockwise from
-// Anthropology) and the skills as a list. Select one to see its tools and the other projects
+// Ethnography) and the skills as a list. Select one to see its tools and the other projects
 // that use it, and jump to the home map opened on that skill.
 const titleOf = (id) => portfolioData.projects.find((p) => p.id === id);
 
@@ -17,13 +17,8 @@ const ProjectGraph = ({ projectId }) => {
   const others = node ? node.work.filter((id) => id !== projectId).map(titleOf).filter(Boolean) : [];
 
   return (
-    <figure className="flex max-w-[320px] flex-col gap-4">
-      <div className="flex items-center gap-4">
-        <Sigil skills={used.map((n) => n.id)} size={96} width={2.5} />
-        <figcaption className="font-mono text-[12px] leading-relaxed text-graphite">
-          This project&apos;s sigil: one spoke for each of the {used.length} skills it uses.
-        </figcaption>
-      </div>
+    <div className="flex max-w-[320px] flex-col gap-4">
+      <Sigil skills={used.map((n) => n.id)} size={96} width={2.5} />
       <ul className="flex flex-col border-t border-ink/30" aria-label="Skills in this project">
         {used.map((n) => (
           <li key={n.id}>
@@ -31,14 +26,14 @@ const ProjectGraph = ({ projectId }) => {
               type="button"
               aria-expanded={picked === n.id}
               onClick={() => setPicked((v) => (v === n.id ? null : n.id))}
-              className="flex min-h-[40px] w-full items-center justify-between border-b border-ink/30 text-left text-[15px] hover:text-olive"
+              className="flex min-h-[44px] w-full items-center justify-between border-b border-ink/30 text-left text-[16px] hover:text-olive"
             >
               <span className={picked === n.id ? "font-semibold text-olive" : ""}>{n.label}</span>
-              <span className="font-mono text-[11px] text-graphite">{clusterOf(n.id).label.toUpperCase()}</span>
+              <span className="font-mono text-[13px] text-graphite">{clusterOf(n.id).label.toUpperCase()}</span>
             </button>
             {picked === n.id && (
-              <div className="flex flex-col gap-1.5 border-b border-ink/30 py-3 text-[13px] leading-snug" aria-live="polite">
-                <span className="font-mono text-[12px] text-graphite">{n.tools.join(" · ")}</span>
+              <div className="flex flex-col gap-1.5 border-b border-ink/30 py-3 text-[15px] leading-snug" aria-live="polite">
+                <span className="font-mono text-[14px] text-graphite">{n.tools.join(" · ")}</span>
                 {others.length > 0 && (
                   <span>
                     Also in:{" "}
@@ -60,7 +55,7 @@ const ProjectGraph = ({ projectId }) => {
           </li>
         ))}
       </ul>
-    </figure>
+    </div>
   );
 };
 

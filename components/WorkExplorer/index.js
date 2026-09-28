@@ -36,7 +36,7 @@ function compassLayout(projects) {
     const s = skillIds(p.id);
     const mx = s.reduce((a, k) => a + MAKE[k], 0) / s.length;
     const py = s.reduce((a, k) => a + PEOP[k], 0) / s.length;
-    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -22, -22, 30 + textWidth(mapTitle(p), 16), 22];
+    items[p.id] = [C.cx + mx * C.sx, C.cy - py * C.sy, -22, -22, 32 + textWidth(mapTitle(p), 18), 22];
   });
   const fixed = [
     [0, C.cy - 26, 190, C.cy + 4],
@@ -74,8 +74,8 @@ function wheelLayout(projects) {
     const s = skillIds(p.id);
     const x = s.reduce((a, k) => a + anchorOf(k)[0], 0) / s.length;
     const y = s.reduce((a, k) => a + anchorOf(k)[1], 0) / s.length;
-    const w = textWidth(mapTitle(p), 14);
-    items[p.id] = [Wh.CX + (x - Wh.CX) * 0.78, Wh.CY + (y - Wh.CY) * 0.78, -Math.max(16, w / 2), -16, Math.max(16, w / 2), 38];
+    const w = textWidth(mapTitle(p), 16);
+    items[p.id] = [Wh.CX + (x - Wh.CX) * 0.78, Wh.CY + (y - Wh.CY) * 0.78, -Math.max(16, w / 2), -16, Math.max(16, w / 2), 40];
   });
   const inner = Wh.R * 0.78;
   return relaxRects(items, { fixed: CLUSTER_TEXT.map((c) => c.box), box: [Wh.CX - inner, Wh.CY - inner, Wh.CX + inner, Wh.CY + inner], pad: 7 });
@@ -117,10 +117,10 @@ const Media = ({ project, className = "" }) => {
 
 // the card beside the compass and the wheel
 const ProjectCard = ({ project, where }) => (
-  <div className="work-side flex flex-col border border-ink bg-paper text-[14px] leading-normal shadow-[6px_6px_0_rgb(var(--olive))]">
+  <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
     <Media project={project} className="h-[190px] w-full border-b border-ink object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
-      <div className="flex items-center justify-between font-mono text-[12px]">
+      <div className="flex items-center justify-between font-mono text-[13px]">
         <span className="text-olive">
           {categoryMeta(project.category).short.toUpperCase()} · {yearOf(project)}
         </span>
@@ -128,7 +128,7 @@ const ProjectCard = ({ project, where }) => (
       </div>
       <span className="text-[22px] font-bold leading-tight">{shortTitle(project.title)}</span>
       <span>{project.description}</span>
-      <span className="font-mono text-[12px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>
+      <span className="font-mono text-[13px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>
       <Link href={`/projects/${project.id}`} className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
         Read the story →
       </Link>
@@ -137,12 +137,12 @@ const ProjectCard = ({ project, where }) => (
 );
 
 const Select = ({ label, value, onChange, options }) => (
-  <label className="flex flex-col gap-1 font-mono text-[11px] text-graphite">
+  <label className="flex min-w-[150px] flex-1 flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex-none">
     {label}
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="min-h-[40px] min-w-[150px] cursor-pointer border border-ink bg-paper px-2.5 font-mono text-[13px] text-ink"
+      className="min-h-[44px] w-full min-w-[160px] cursor-pointer border border-ink bg-paper px-2.5 font-mono text-[14px] text-ink"
     >
       {options.map(([v, t]) => (
         <option key={v} value={v}>
@@ -245,15 +245,15 @@ const WorkExplorer = ({ projects, wipCount }) => {
       <div className="flex flex-col gap-6 pb-6 desktop:flex-row desktop:items-end desktop:justify-between">
         <div className="fu-reveal flex flex-col gap-2">
           <h2 className="text-[40px] font-semibold leading-none tracking-[-0.02em]">All work</h2>
-          <p className="font-mono text-[12px] text-graphite">
+          <p className="font-mono text-[13px] text-graphite">
             {projects.length} projects · {wipCount} in progress · {years[years.length - 1]}–{years[0]}
           </p>
         </div>
-        <div className="flex flex-wrap items-end gap-3">
+        <div className="flex w-full flex-wrap items-end gap-3 desktop:w-auto">
           <Select label="Skill" value={skill} onChange={setSkill} options={[["all", "All skills"], ...NODES.map((n) => [n.id, n.label])]} />
           <Select label="Type" value={type} onChange={setType} options={[["all", "All types"], ...TYPES.map((t) => [t, categoryMeta(t).short])]} />
           <Select label="Year" value={year} onChange={setYear} options={[["all", "All years"], ...years.map((y) => [y, y])]} />
-          <div className="hidden flex-col gap-1 font-mono text-[11px] text-graphite desktop:flex">
+          <div className="hidden flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex">
             View
             <div className="flex" role="group" aria-label="View">
               {VIEWS.map((v) => (
@@ -262,7 +262,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
                   type="button"
                   aria-pressed={view === v}
                   onClick={() => setView(v)}
-                  className={`-mr-px min-h-[40px] border border-ink px-3.5 font-mono text-[12px] transition-colors ${view === v ? "bg-olive text-white" : "bg-paper text-ink hover:bg-bone"}`}
+                  className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] transition-colors ${view === v ? "bg-olive text-white" : "bg-paper text-ink hover:bg-bone"}`}
                 >
                   {v}
                 </button>
@@ -283,15 +283,15 @@ const WorkExplorer = ({ projects, wipCount }) => {
                     <Media project={p} className="h-full w-full object-cover" />
                   </div>
                   <div className="flex flex-grow flex-col gap-1.5 px-3.5 pb-3.5 pt-3">
-                    <div className="flex items-center justify-between font-mono text-[11px]">
+                    <div className="flex items-center justify-between font-mono text-[13px]">
                       <span className="text-olive">
                         {categoryMeta(p.category).short.toUpperCase()} · {yearOf(p)}
                       </span>
                       <Sigil skills={skillIds(p.id)} size={26} bg="rgb(var(--paper))" className="work-mini" />
                     </div>
                     <h3 className="text-[18px] font-bold leading-tight">{shortTitle(p.title)}</h3>
-                    <p className="text-[14px] leading-snug text-ink/85">{p.description}</p>
-                    <p className="mt-auto pt-1.5 font-mono text-[11px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
+                    <p className="text-[15px] leading-snug text-ink/85">{p.description}</p>
+                    <p className="mt-auto pt-1.5 font-mono text-[13px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
                   </div>
                 </Link>
               </li>
@@ -338,16 +338,16 @@ const WorkExplorer = ({ projects, wipCount }) => {
               ))}
               <line className="compass-axis" x1={C.cx} y1="0" x2={C.cx} y2={C.H} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
               <line className="compass-axis" x1="0" y1={C.cy} x2={C.PW} y2={C.cy} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
-              <g fontFamily="JetBrains Mono, monospace" fontSize="12" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
-                <text x="12" y={C.cy - 10}>← UNDERSTANDING</text>
-                <text x={C.PW - 12} y={C.cy - 10} textAnchor="end">
+              <g fontFamily="JetBrains Mono, monospace" fontSize="14" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
+                <text x="12" y={C.cy - 12}>← UNDERSTANDING</text>
+                <text x={C.PW - 12} y={C.cy - 12} textAnchor="end">
                   MAKING →
                 </text>
-                <text x={C.cx + 10} y="22">↑ PEOPLE</text>
+                <text x={C.cx + 10} y="24">↑ PEOPLE</text>
                 <text x={C.cx + 10} y={C.H - 12}>↓ INFORMATION</text>
               </g>
               {QUADRANTS.map(([n, x, y, a]) => (
-                <text key={n} className="compass-quadrant" x={x} y={y} textAnchor={a} fontFamily="JetBrains Mono, monospace" fontSize="26" fontWeight="500" letterSpacing="0.18em" style={{ fill: "rgb(var(--olive))" }} opacity="0.45" aria-hidden="true">
+                <text key={n} className="compass-quadrant" x={x} y={y} textAnchor={a} fontFamily="JetBrains Mono, monospace" fontSize="30" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} opacity="0.75" aria-hidden="true">
                   {n.toUpperCase()}
                 </text>
               ))}
@@ -360,7 +360,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
                   <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     {on && <circle cx={x} cy={y} r="27" style={{ fill: "rgb(var(--khaki))", stroke: "rgb(var(--olive))" }} strokeWidth="1.5" />}
                     <SigilG cx={x} cy={y} r={on ? 20 : 16} skills={skillIds(p.id)} />
-                    <text x={x + (on ? 30 : 24)} y={y + 5} fontFamily="Inter Tight, sans-serif" fontSize={on ? 16 : 15} fontWeight={on ? 700 : 500} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))", ...HALO }}>
+                    <text x={x + (on ? 30 : 24)} y={y + 6} fontFamily="Inter Tight, sans-serif" fontSize={on ? 18 : 17} fontWeight={on ? 700 : 500} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))", ...HALO }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -369,10 +369,10 @@ const WorkExplorer = ({ projects, wipCount }) => {
             </svg>
             <div className="absolute right-0 top-0 flex w-[330px] flex-col gap-5">
               <ProjectCard project={selected} where="Compass" />
-              <p className="font-mono text-[12px] leading-relaxed text-graphite">
+              <p className="font-mono text-[13px] leading-relaxed text-graphite">
                 Each project sits at the average of its skills. Left is understanding, right is making; up is people, down is information. Filters dim what does not match.
               </p>
-              <p ref={readout} className="font-mono text-[12px] text-olive" aria-hidden="true">
+              <p ref={readout} className="font-mono text-[13px] text-olive" aria-hidden="true">
                 Move over the compass to read its axes
               </p>
             </div>
@@ -397,7 +397,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
                       strokeWidth="6"
                       opacity="0.16"
                     />
-                    <text className="wheel-cluster" x={c.x} y={c.y} textAnchor={c.anchor} fontFamily="JetBrains Mono, monospace" fontSize="18" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} opacity="0.6">
+                    <text className="wheel-cluster" x={c.x} y={c.y} textAnchor={c.anchor} fontFamily="JetBrains Mono, monospace" fontSize="18" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} opacity="0.9">
                       {c.label.toUpperCase()}
                     </text>
                   </g>
@@ -428,8 +428,8 @@ const WorkExplorer = ({ projects, wipCount }) => {
                 const dy = Math.sin(a) < -0.9 ? -4 : Math.sin(a) > 0.9 ? 14 : 5;
                 return (
                   <g key={k} aria-hidden="true">
-                    <rect className="wheel-anchor" x={x - 7} y={y - 7} width="14" height="14" style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--bone))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }} strokeWidth="1.5" />
-                    <text x={lx} y={ly + dy} textAnchor={anchor} fontFamily="Inter Tight, sans-serif" fontSize="15" fontWeight={on ? 700 : 400} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }}>
+                    <circle className="wheel-anchor" cx={x} cy={y} r="7" style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--bone))", stroke: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }} strokeWidth="1.5" />
+                    <text x={lx} y={ly + dy} textAnchor={anchor} fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 400} style={{ fill: on ? "rgb(var(--olive))" : "rgb(var(--ink))" }}>
                       {labelOf(k)}
                     </text>
                   </g>
@@ -442,7 +442,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
                 return (
                   <g key={p.id} className="wheel-pt" data-x={x} data-y={y} {...pointProps(p)}>
                     <SigilG cx={x} cy={y} r={on ? 20 : 14} skills={skillIds(p.id)} color={col} />
-                    <text x={x} y={y + (on ? 38 : 32)} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize={on ? 15 : 14} fontWeight={on ? 700 : 500} style={{ fill: col, ...HALO }}>
+                    <text x={x} y={y + (on ? 39 : 33)} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize={on ? 17 : 16} fontWeight={on ? 700 : 500} style={{ fill: col, ...HALO }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -451,7 +451,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
             </svg>
             <div className="absolute right-0 top-5 flex w-[330px] flex-col gap-5">
               <ProjectCard project={selected} where="Wheel" />
-              <p className="font-mono text-[12px] leading-relaxed text-graphite">
+              <p className="font-mono text-[13px] leading-relaxed text-graphite">
                 Every project is pulled towards the skills it uses, like a weight on strings. Near the centre: projects that mix many skills. Near the rim: specialists.
               </p>
             </div>
@@ -460,7 +460,7 @@ const WorkExplorer = ({ projects, wipCount }) => {
       )}
 
       {filtered && view !== "Grid" && (
-        <p className="mt-4 hidden font-mono text-[12px] text-graphite desktop:block">
+        <p className="mt-4 hidden font-mono text-[13px] text-graphite desktop:block">
           Showing {shown.length} of {projects.length}; the rest are dimmed.
         </p>
       )}

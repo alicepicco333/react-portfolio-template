@@ -31,7 +31,7 @@ const Resume = () => {
 
       <Header />
 
-      <main className="px-4 tablet:px-10">
+      <main id="main" className="px-4 tablet:px-10">
         <div className="grid gap-x-4 gap-y-8 pb-16 pt-6 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
           <h1 className="fu-display text-[48px] tablet:text-phi3">
             Record

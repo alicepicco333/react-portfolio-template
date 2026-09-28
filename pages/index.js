@@ -66,8 +66,8 @@ const Home = () => {
 
       <Header />
 
-      <main>
-        <SkillMap projects={projects} />
+      <main id="main">
+        <SkillMap projects={finished} />
         <WorkExplorer projects={finished} wipCount={wip.length} />
         <InProgress projects={wip} />
 
@@ -84,8 +84,8 @@ const Home = () => {
               <div className="fu-reveal grid max-w-[980px] gap-6 tablet:grid-cols-3" aria-label="How I work">
                 {about.practice.map((p) => (
                   <div key={p.title} className="flex flex-col gap-2 border-t-2 border-white pt-3">
-                    <span className="font-mono text-[12px] uppercase tracking-[0.12em]">{p.title}</span>
-                    <span className="text-[16px] leading-snug">{p.items}</span>
+                    <span className="font-mono text-[14px] uppercase tracking-[0.12em]">{p.title}</span>
+                    <span className="text-[17px] leading-snug">{p.items}</span>
                   </div>
                 ))}
               </div>
@@ -97,18 +97,18 @@ const Home = () => {
           <div className="grid gap-x-8 gap-y-8 laptop:grid-cols-4">
             <div className="fu-reveal flex flex-col gap-2">
               <h2 className="text-[28px] font-semibold tracking-[-0.02em]">Record</h2>
-              <p className="font-mono text-[12px] text-graphite">Experience and education</p>
+              <p className="font-mono text-[13px] text-graphite">Experience and education</p>
             </div>
             <div className="laptop:col-span-3">
               <ol className="border-t border-ink">
                 {record.map((entry) => (
                   <li key={entry.id} className="record-row grid gap-y-1 border-b border-ink/25 py-4 tablet:grid-cols-[190px_1fr_150px] tablet:gap-x-4">
-                    <span className="pt-0.5 font-mono text-[12px] text-graphite">{entry.dates}</span>
+                    <span className="pt-0.5 font-mono text-[13px] text-graphite">{entry.dates}</span>
                     <span className="flex flex-col gap-1">
                       <span className="text-[17px] font-semibold leading-snug">{entry.position}</span>
                       <span className="text-[15px] text-ink/80">{entry.bullets}</span>
                     </span>
-                    <span className="pt-0.5 font-mono text-[12px] text-graphite tablet:text-right">{entry.type}</span>
+                    <span className="pt-0.5 font-mono text-[13px] text-graphite tablet:text-right">{entry.type}</span>
                   </li>
                 ))}
               </ol>
