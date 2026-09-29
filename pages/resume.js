@@ -72,6 +72,19 @@ const Resume = () => {
           </ol>
         </Section>
 
+        {resume.skills?.length > 0 && (
+          <Section label="Skills">
+            <dl>
+              {resume.skills.map((row) => (
+                <div key={row.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr] tablet:gap-4">
+                  <dt className="fu-meta text-fieldgrey">{row.group}</dt>
+                  <dd className="text-[17px] leading-snug">{row.items.join(" · ")}</dd>
+                </div>
+              ))}
+            </dl>
+          </Section>
+        )}
+
         <Section label="Education">
           <ol>
             {resume.educationList.map((edu) => (
@@ -100,26 +113,6 @@ const Resume = () => {
           </Section>
         )}
 
-        {(resume.languages || resume.others) && (
-          <Section label="Skills">
-            <div className="grid gap-8 tablet:grid-cols-2">
-              {[["Languages", resume.languages], ["Others", resume.others]]
-                .filter(([, items]) => items && items.length)
-                .map(([title, items]) => (
-                  <div key={title}>
-                    <h3 className="fu-title text-phi1">{title}</h3>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {items.map((item) => (
-                        <li key={item} className="text-[15px]">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-            </div>
-          </Section>
-        )}
       </main>
 
       <Footer />

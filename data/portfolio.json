@@ -1348,10 +1348,10 @@
         "id": "5",
         "dates": "Nov 2023 - Feb 2024",
         "type": "Part-time",
-        "position": "IT Support Specialist at Nina",
+        "position": "IT Support Specialist at Ninacare",
         "bullets": "IT support for medical staff at the Fondazione ANT headquarters in Bologna.",
-        "short": "IT support · Nina",
-        "org": "Nina",
+        "short": "IT support · Ninacare",
+        "org": "Ninacare",
         "skills": [
           "ur",
           "hci"
@@ -1363,10 +1363,10 @@
         "id": "6",
         "dates": "Sep 2023 - Feb 2024",
         "type": "Part-time",
-        "position": "Digital Literacy Educator at Nina",
+        "position": "Digital Literacy Educator at Ninacare",
         "bullets": "Home visits helping older people use smartphones and online services and keep in touch with family and healthcare providers.",
-        "short": "Digital literacy educator · Nina",
-        "org": "Nina",
+        "short": "Digital literacy educator · Ninacare",
+        "org": "Ninacare",
         "skills": [
           "anth",
           "ur"
@@ -1449,6 +1449,82 @@
         "date": "Nov 2022",
         "name": "TOEFL iBT (English, C1)",
         "issuer": "ETS"
+      }
+    ],
+    "skills": [
+      {
+        "id": "research",
+        "group": "Research",
+        "items": [
+          "User research",
+          "Usability testing (SUS, think-aloud)",
+          "Interviews",
+          "Personas",
+          "Ethnography",
+          "Digital methods"
+        ]
+      },
+      {
+        "id": "design",
+        "group": "Design",
+        "items": [
+          "Interaction design",
+          "UX design",
+          "Prototyping",
+          "Information architecture",
+          "Accessible design (WCAG 2.1 AA)",
+          "Visual design"
+        ]
+      },
+      {
+        "id": "frontend",
+        "group": "Front-end",
+        "items": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "D3.js",
+          "Leaflet",
+          "three.js"
+        ]
+      },
+      {
+        "id": "data",
+        "group": "Data & knowledge",
+        "items": [
+          "Python",
+          "Data visualization",
+          "Open data",
+          "RDF",
+          "OWL",
+          "SPARQL",
+          "Wikidata",
+          "TEI XML",
+          "XSLT"
+        ]
+      },
+      {
+        "id": "creative",
+        "group": "Creative coding",
+        "items": [
+          "Hydra",
+          "Processing",
+          "Arduino",
+          "Audio-reactive visuals",
+          "Live performance"
+        ]
+      },
+      {
+        "id": "tools",
+        "group": "Tools",
+        "items": [
+          "Figma",
+          "Git and GitHub",
+          "OBS"
+        ]
       }
     ]
   },
