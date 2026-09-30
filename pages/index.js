@@ -62,7 +62,6 @@ const Home = () => {
         <SkillMap projects={finished} />
         <WorkExplorer projects={finished} />
         <InProgress projects={wip} />
-        <Journey projects={projects.filter((p) => FINISHED.includes(p.category) || p.category === "Work in Progress")} />
 
         <section id="about" aria-labelledby="about-title" className="scroll-mt-16 bg-olive px-4 pb-20 pt-8 text-white tablet:px-8">
           <div className="grid gap-x-8 gap-y-10 laptop:grid-cols-4">
@@ -85,8 +84,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-
-
+        <Journey projects={projects.filter((p) => FINISHED.includes(p.category) || p.category === "Work in Progress")} />
       </main>
 
       <Footer />
