@@ -34,32 +34,32 @@
       "introText": "The Stolen Archive is a virtual exhibition of thirty objects taken during colonial wars, conquests and excavations, from the Benin Bronzes to the Parthenon Marbles. It works as a companion to a museum visit and as a museum of its own, and asks who was able to take these objects, who keeps them and who has managed to get them back.",
       "gridImages": [
         {
-          "src": "/images/projects/0-g1.jpg",
+          "src": "/images/projects/0-g1-v4.jpg",
           "caption": "Five eras of appropriation, from the spoils of Europe's wars to world wars and returns."
         },
         {
-          "src": "/images/projects/0-g2.jpg",
+          "src": "/images/projects/0-g2-v4.jpg",
           "caption": "Three ways through the archive: choose a tour, then how long and how complex the texts should be."
         },
         {
-          "src": "/images/projects/0-g3.jpg",
+          "src": "/images/projects/0-g3-v4.jpg",
           "caption": "The collection: thirty objects from five continents, filterable by region."
         },
         {
-          "src": "/images/projects/0-g4.jpg",
+          "src": "/images/projects/0-g4-v4.jpg",
           "caption": "Object page for the Benin Bronzes, with where they were made, where they are held and how they left."
         },
         {
-          "src": "/images/projects/0-g5.jpg",
+          "src": "/images/projects/0-g5-v4.jpg",
           "caption": "Whose object is it? The claimant's and the holder's positions side by side, each with its sources."
         },
         {
-          "src": "/images/projects/0-g6.jpg",
+          "src": "/images/projects/0-g6-v4.jpg",
           "caption": "The Timeline tour, one of three readings of the same thirty objects."
         }
       ],
       "middleText": "Visitors pick one of three tours (Timeline, Colonial Conquests, Geo) and choose how long and how complex the texts should be: every object has nine versions of its text for each tour, 810 in all. Each object page explains how the object left, who claims it and who holds it, with the sources for each position. An atlas traces the thirty routes on a map, and a floor plan places the objects in thirteen rooms over two floors.",
-      "highlightImage": "/images/projects/0-hl.jpg",
+      "highlightImage": "/images/projects/0-hl-v4.jpg",
       "conclusionText": "Developed for Information Modeling and Web Technologies (prof. Fabio Vitali) in the Digital Humanities and Digital Knowledge master's at the University of Bologna. Built in HTML, CSS and JavaScript, with inline SVG maps, 3D views of the objects, an RDF graph for every record, and dark and light themes.",
       "imageSrc": "/images/projects/0.jpg",
       "url": "https://alicepicco333.github.io/Looted-items-collection/",
@@ -104,40 +104,44 @@
         ]
       ],
       "shows": "Information architecture for difficult, contested content, and a public interface built end to end.",
-      "cardImage": "/images/projects/0-card-v2.jpg",
+      "cardImage": "/images/projects/0-card-v4.jpg",
       "rank": 3,
       "accentHC": "#75210c",
-      "cardWebp": "/images/projects/0-card-v2-800.webp"
+      "cardWebp": "/images/projects/0-card-v4-800.webp"
     },
     {
       "id": "1",
       "title": "Digitalian Folktales",
-      "description": "A searchable digital edition that sets Calvino's Italian folktales beside the dialect versions he drew on.",
-      "introText": "Digitalian Folktales is a digital edition of tales from Italo Calvino's Fiabe italiane, read alongside the regional versions Calvino drew on.",
+      "description": "A searchable digital edition that sets Calvino’s Italian folktales beside the Friulian and Sicilian versions he drew on, and follows the same tales north and south.",
+      "introText": "Digitalian Folktales is a digital edition of tales from Italo Calvino’s Fiabe italiane, read alongside the dialect versions Calvino drew on: his Jesus-and-Peter cycles from Friuli and from Sicily.",
       "gridImages": [
         {
-          "src": "/images/projects/1-g1.jpg",
-          "caption": "Parallel reading: the Friulian field record beside its Italian translation, aligned passage by passage so each can be cited, with a map of related tales and the tale's record card."
+          "src": "/images/projects/1-g1-v3.jpg",
+          "caption": "A Friulian legend from Pagine friulane (1893): the dialect text beside the English translation, with a dialect gloss, Wikidata-linked record and the map of its places."
         },
         {
-          "src": "/images/projects/1-g2.jpg",
-          "caption": "Comparing stories: the Friulian and Sicilian cycles as catalog cards, showing the tale type (ATU 774) they share."
+          "src": "/images/projects/1-g2-v3.jpg",
+          "caption": "The same tales, north and south: tale types told both in Friuli and in Sicily, each title opening its passage."
         },
         {
-          "src": "/images/projects/1-g3.jpg",
-          "caption": "Search in use: 'lepre' (hare) finds episode II of the Friulian cycle, La coratella di lepre."
+          "src": "/images/projects/1-g3-v3.jpg",
+          "caption": "Three more tales from Pitrè’s 1875 collection, each linked to the page images it was transcribed from."
+        },
+        {
+          "src": "/images/projects/1-g4-v3.jpg",
+          "caption": "The structured reading of each tale: tale type, places in order, people, supernatural figures and resolution."
         }
       ],
-      "middleText": "The comparison view sets two versions of the same tale side by side, such as Gesù e San Pietro in Friuli and in Sicilia, each with its original dialect text and an Italian translation. For every tale the edition records where it comes from, its narrators, Calvino's source collection, its ATU tale type and a Propp-based reading of its outcome, animals and places, and an advanced search runs across the corpus.",
-      "highlightImage": "/images/projects/1-hl.jpg",
-      "conclusionText": "The 2026 version makes the edition usable: a search that finds tales and episodes, the dialect record beside the Italian passage by passage, a map of the tales, catalog cards comparing the two cycles, an Italian and English interface and a guide to the sources (Calvino, Zorzùt, Pitrè).",
+      "middleText": "Each tale is encoded in TEI XML: the dialect text, the Italian translation and an English working translation, aligned passage by passage, with a glossary of dialect words and narrators, collectors and places linked to Wikidata. For every tale the edition records its source, narrators, ATU tale type and a Propp-based reading of its places, people and outcome. In 2026 I added five Friulian legends from the magazine Pagine friulane (1890–94), including the origin of buckwheat, the subject of Calvino’s fourth Friulian tale, for which no source had been found, and three more Sicilian tales from Pitrè, all transcribed from the page images and linked to them.",
+      "highlightImage": "/images/projects/1-hl-v4.jpg",
+      "conclusionText": "The 2026 version makes the edition usable and comparable: a search across every passage in three languages, the TEI of any passage on request, maps of the places of collection, a table of the tale types told both in Friuli and in Sicily (the proud smith, St Peter’s mother, the jests of Christ and Peter), an Italian readability index, and a list of the dialect readings still to be checked by a speaker.",
       "imageSrc": "/images/projects/1.jpg",
       "url": "https://alicepicco333.github.io/digitalian-folktales/",
       "category": "Research",
       "tags": [
         "Digital Edition"
       ],
-      "highlightCaption": "The search page: find a tale or an episode by keyword.",
+      "highlightCaption": "The search page: a tale, an episode or any word of the texts, in Friulian, Sicilian, Italian or English.",
       "date": "2024-01-25",
       "dateLabel": "2023 · reworked 2026",
       "context": "MA Digital Humanities and Digital Knowledge, University of Bologna",
@@ -149,33 +153,33 @@
       "summary": {
         "brief": "Calvino retold Italy's folktales in standard Italian; the dialect versions he drew on are hard to read against his.",
         "role": "Edition design and web development; the 2026 rework on my own.",
-        "method": "Dialect texts aligned with Italian translations passage by passage; tale types (ATU) and a structural reading recorded for each episode.",
-        "outcome": "A searchable edition of two tale cycles, Friuli and Sicily: 5 episodes cataloged, 15 aligned passages.",
-        "stack": "HTML · CSS · JavaScript · D3.js · TopoJSON"
+        "method": "TEI XML with the dialect text, Italian and English aligned passage by passage; ATU types and a structural reading for each tale; Wikidata links.",
+        "outcome": "A searchable edition of 11 Jesus-and-Peter tales from Friuli and Sicily: 56 passages aligned in three languages and compared by tale type.",
+        "stack": "TEI · Python · JavaScript · D3.js · Wikidata"
       },
       "facts": [
         [
-          "2",
-          "tale cycles: Friuli and Sicily"
+          "11",
+          "tales from Friuli and Sicily"
         ],
         [
-          "5",
-          "episodes cataloged"
+          "56",
+          "passages aligned in three languages"
         ],
         [
-          "15",
-          "passages aligned with their translation"
+          "7",
+          "tale types compared north and south"
         ],
         [
-          "2",
-          "interface languages"
+          "1890–1894",
+          "Friulian legends recovered from Pagine friulane"
         ]
       ],
       "shows": "Turning scholarly source material into something people can search and read side by side.",
-      "cardImage": "/images/projects/1-card-v2.jpg",
-      "rank": 8,
+      "cardImage": "/images/projects/1-card-v4.jpg",
+      "rank": 9,
       "accentHC": "#1b1bbe",
-      "cardWebp": "/images/projects/1-card-v2-800.webp"
+      "cardWebp": "/images/projects/1-card-v4-800.webp"
     },
     {
       "id": "2",
@@ -209,7 +213,7 @@
         }
       ],
       "middleText": "Our group, Marco Lamorte, Corrado Consiglio, Salvatore Di Marzo and I, modeled sixteen biases, from the gambler's fallacy and the hot hand fallacy to pareidolia, naive realism and the blind spot bias. Each went through the same eXtreme Design workflow: research and documentation, ideation and design, modeling and implementation, then presentation and visualization. ChatGPT and Gemini were used early on for definitions, scenarios and user stories, and Framester among the resources for modeling.",
-      "highlightImage": "/images/projects/2-hl.jpg",
+      "highlightImage": "/images/projects/2-hl-v4.jpg",
       "conclusionText": "The process is documented in a public GitBook. It showed how much understanding of a domain an ontology needs before any modeling starts, and where language models help and where their answers had to be corrected. In 2026 I built an explorer on the group's OWL files: it walks through each user story sentence by sentence as the graph fills in, compares any two ontologies, and runs every competency question as SPARQL in the browser. Testing showed what the documentation did not: only 12 of the group's 24 written queries answered their question as written, mostly because of reversed properties and typos. Fixed and completed, 37 of the 47 questions are answered by the files, 7 in part, and 3 ask about things the files do not record.",
       "imageSrc": "/images/projects/2.jpg",
       "url": "https://alicepicco333.github.io/cognitive-bias-explorer/",
@@ -255,10 +259,10 @@
         ]
       ],
       "shows": "Structured knowledge modeling in a team, and testing a model against its own requirements.",
-      "cardImage": "/images/projects/2-card-v2.jpg",
+      "cardImage": "/images/projects/2-card-v4.jpg",
       "rank": 4,
       "accentHC": "#111111",
-      "cardWebp": "/images/projects/2-card-v2-800.webp"
+      "cardWebp": "/images/projects/2-card-v4-800.webp"
     },
     {
       "id": "3",
@@ -267,36 +271,36 @@
       "introText": "wipEU is an open data project on how the representation of women in positions of power and decision-making correlates across the European Union, and how it has changed over time.",
       "gridImages": [
         {
-          "src": "/images/projects/3-g1.jpg",
+          "src": "/images/projects/3-g1-v4.jpg",
           "caption": "The chamber: one dot per person. In 2023, 44 of 164 leaders of major EU-27 political parties were women."
         },
         {
-          "src": "/images/projects/3-g7.jpg",
+          "src": "/images/projects/3-g7-v4.jpg",
           "caption": "Two years at once: the dashed line marks where the women's seats ended in 2011, the shaded band the ground gained since."
         },
         {
-          "src": "/images/projects/3-g5.jpg",
+          "src": "/images/projects/3-g5-v4.jpg",
           "caption": "The research question, answered: how closely six roles rank the EU-27 countries alike, for any year, with the scatter of the selected pair."
         },
         {
-          "src": "/images/projects/3-g6.jpg",
+          "src": "/images/projects/3-g6-v4.jpg",
           "caption": "The higher the seat, the fewer the women: in six of eight bodies the top level has a smaller share of women than the level below."
         },
         {
-          "src": "/images/projects/3-g2.jpg",
+          "src": "/images/projects/3-g2-v4.jpg",
           "caption": "Pace to parity: a straight-line trend through the last ten years, labeled as a projection."
         },
         {
-          "src": "/images/projects/3-g3.jpg",
+          "src": "/images/projects/3-g3-v4.jpg",
           "caption": "Across Europe: the share of women by country on a map, with a ranked list against the EU-27 figure."
         },
         {
-          "src": "/images/projects/3-g4.jpg",
+          "src": "/images/projects/3-g4-v4.jpg",
           "caption": "Country profiles: Italy against the EU-27 and parity across three datasets."
         }
       ],
       "middleText": "We combined EIGE datasets across six areas (public administration, business and finance, politics, environment and climate change, education and research, law and institutions) into new mashup datasets, and assessed their quality, legal and ethical aspects as open data. In 2026 I redesigned the site around seats: a hemicycle for each body with one dot per real person, which can show a single country and the first year beside the latest. The site now answers its own question directly: rank correlations between six roles across the EU-27, for every year, with a scatter for each pair and a plain reading of how much to trust it. Alongside them sit a pace-to-parity projection, a country map and profiles.",
-      "highlightImage": "/images/projects/3-hl.jpg",
+      "highlightImage": "/images/projects/3-hl-v4.jpg",
       "conclusionText": "The answer is looser than the question hoped: in 2022 only two of twelve pairs of roles from different areas line up more than chance would give, and one role, senior civil servants in environment ministries, runs the other way. What holds almost everywhere is a ceiling: in six of eight bodies women hold a smaller share of the top seats than of the level below. Final project for Open Access and Digital Ethics (2023/24, University of Bologna) with Salvatore Di Marzo and Matteo Guenci; I worked on the idea, data retrieval, the visualizations, the quality and legal analyses and the website. The mashup datasets are released under CC BY 4.0.",
       "imageSrc": "/images/projects/3.jpg",
       "url": "https://alicepicco333.github.io/wipEU/",
@@ -341,10 +345,10 @@
         ]
       ],
       "shows": "Open-data research with a quality, legal and ethics review, and a research question answered with the data rather than illustrated.",
-      "cardImage": "/images/projects/3-card-v2.jpg",
+      "cardImage": "/images/projects/3-card-v5.jpg",
       "rank": 5,
       "accentHC": "#701e3c",
-      "cardWebp": "/images/projects/3-card-v2-800.webp"
+      "cardWebp": "/images/projects/3-card-v5-800.webp"
     },
     {
       "id": "5",
@@ -555,7 +559,7 @@
         }
       ],
       "middleText": "Following Lev Manovich's cultural analytics, it treats memes as a large dataset rather than isolated texts. Around 5,000 images and their metadata, scraped from Know Your Meme, are described in an OWL ontology informed by FRBR across three areas: visual content, cultural references and format. CLIP is used to classify them semi-automatically.",
-      "highlightImage": "/images/projects/memo/hero.jpg",
+      "highlightImage": "/images/projects/memo/hero-v2.jpg",
       "conclusionText": "The ontology is published with LODE documentation, interactive visualizations of formats, platforms, periods and variants, and a SPARQL explorer with example queries, including links to Wikidata for regions and platforms.",
       "imageSrc": "/images/projects/12.jpg",
       "url": "https://thememeontology.netlify.app/",
@@ -596,10 +600,10 @@
         ]
       ],
       "shows": "Data modeling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
-      "cardImage": "/images/projects/12-card-v5.jpg",
-      "rank": 9,
+      "cardImage": "/images/projects/12-card-v4.jpg",
+      "rank": 8,
       "accentHC": "#3a3733",
-      "cardWebp": "/images/projects/12-card-v5-800.webp",
+      "cardWebp": "/images/projects/12-card-v4-800.webp",
       "caseStudy": {
         "overview": [
           {
@@ -817,7 +821,7 @@
             "kind": "phones",
             "items": [
               {
-                "src": "/images/projects/memo/m-home.jpg",
+                "src": "/images/projects/memo/m-home-v2.jpg",
                 "alt": "Home page on a phone",
                 "caption": "Home"
               },
@@ -1074,10 +1078,10 @@
         ]
       ],
       "shows": "Data storytelling for everyone: fair measures, findings stated plainly, and charts that explain how to read them.",
-      "cardImage": "/images/projects/15-card-v2.jpg",
+      "cardImage": "/images/projects/15-card-v4.jpg",
       "rank": 2,
       "accentHC": "#18309d",
-      "cardWebp": "/images/projects/15-card-v2-800.webp"
+      "cardWebp": "/images/projects/15-card-v4-800.webp"
     },
     {
       "id": "17",
@@ -2460,10 +2464,10 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v10.jpg",
+      "cardImage": "/images/projects/20-card-v11.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v10-800.webp"
+      "cardWebp": "/images/projects/20-card-v11-800.webp"
     },
     {
       "id": "21",
@@ -2536,10 +2540,10 @@
         ]
       ],
       "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
-      "cardImage": "/images/projects/21-card-v3.jpg",
+      "cardImage": "/images/projects/21-card-v5.jpg",
       "rank": 7,
       "accentHC": "#70223d",
-      "cardWebp": "/images/projects/21-card-v3-800.webp"
+      "cardWebp": "/images/projects/21-card-v5-800.webp"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
