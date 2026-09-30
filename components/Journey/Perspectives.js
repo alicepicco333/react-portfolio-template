@@ -140,15 +140,8 @@ export const Spiral = ({ projects }) => {
     const [x, y] = xy(a, phaseR);
     return { id, label, w, x, y, a };
   });
-  const chapterTags = chapters.map((c, i) => {
-    const a = i * 360 - SECTOR / 2;
-    const [x, y] = xy(a);
-    const text = `${c.from}–${c.to > 2026 ? "now" : String(c.to).slice(2)} ${c.title}`;
-    return { key: c.title, x, y, text, w: textWidth(text, 12, true) + 12 };
-  });
   const fixed = [
     ...phaseBoxes.map((p) => [p.x - p.w / 2 - 4, p.y - 17, p.x + p.w / 2 + 4, p.y + 17]),
-    ...chapterTags.map((c) => [c.x - c.w - 8, c.y - 11, c.x - 4, c.y + 11]),
     [SX - 60, SY - 22, SX + 60, SY + 22],
   ];
   const labels = useMemo(() => layoutLabels(items, fixed), [items]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -178,15 +171,6 @@ export const Spiral = ({ projects }) => {
           <text x={SX} y={SY + 12} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="12" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
             the centre ↻
           </text>
-          {/* chapters, where each lap begins */}
-          {chapterTags.map((c) => (
-            <g key={c.key} aria-hidden="true">
-              <circle cx={c.x} cy={c.y} r="3" style={{ fill: "rgb(var(--olive))" }} />
-              <text x={c.x - 8} y={c.y + 4} textAnchor="end" fontFamily="JetBrains Mono, monospace" fontSize="12" paintOrder="stroke" strokeWidth="6" strokeLinejoin="round" style={{ fill: "rgb(var(--olive))", stroke: "rgb(var(--paper))" }}>
-                {c.text}
-              </text>
-            </g>
-          ))}
           {/* phases, outside the last lap */}
           {phaseBoxes.map((p) => (
             <g key={p.id} aria-hidden="true">
