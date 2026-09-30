@@ -472,7 +472,7 @@ const WorkExplorer = ({ projects: given }) => {
                       style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
                       strokeWidth={hot === p.id && !on ? 2.5 : 1}
                     />
-                    <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}>
+                    <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight="500" style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}>
                       {mapTitle(p)}
                     </text>
                   </g>
@@ -507,7 +507,7 @@ const WorkExplorer = ({ projects: given }) => {
                       {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 5} r="46" fill="url(#work-glow)" />}
                       {(() => {
                         const w = widthOf(`role${r.id}`, r.short, 15) + 12;
-                        return <rect x={x - w / 2} y={y - 15} width={w} height="21" style={{ fill: "#fff", stroke: on || over ? "rgb(var(--olive))" : "rgb(var(--concrete))" }} strokeWidth="1.5" />;
+                        return <rect x={x - w / 2} y={y - 15} width={w} height="21" style={{ fill: on ? "rgb(var(--olive))" : over ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "#fff", stroke: on || over ? "rgb(var(--olive))" : "rgb(var(--concrete))", transition: "fill .2s" }} strokeWidth="1.5" />;
                       })()}
                       <text
                         data-chip={`role${r.id}`}
@@ -516,8 +516,8 @@ const WorkExplorer = ({ projects: given }) => {
                         textAnchor="middle"
                         fontFamily="Inter Tight, sans-serif"
                         fontSize="15"
-                        fontWeight={on ? 700 : 400}
-                        style={{ fill: on || over ? "rgb(var(--olive))" : "rgb(var(--graphite))", transition: "fill .2s" }}
+                        fontWeight="400"
+                        style={{ fill: on ? "#fff" : over ? "rgb(var(--olive))" : "rgb(var(--graphite))", transition: "fill .2s" }}
                       >
                         {r.short}
                       </text>
@@ -525,7 +525,7 @@ const WorkExplorer = ({ projects: given }) => {
                   );
                 })}
             </svg>
-            <div className="sticky top-20 flex w-[400px] shrink-0 flex-col gap-5 self-start">
+            <div className="sticky top-20 flex min-w-[400px] flex-1 flex-col gap-5 self-start">
               {showRoles && role ? (
                 (() => {
                   const r = ROLES.find((x) => x.id === role);
@@ -636,14 +636,14 @@ const WorkExplorer = ({ projects: given }) => {
                         <rect x={x - w / 2} y={top} width={w} height="26" style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }} strokeWidth={hot === p.id && !on ? 2.5 : 1} />
                       );
                     })()}
-                    <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight={on ? 700 : 500} style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : col, transition: "fill .2s" }}>
+                    <text data-chip={`w${p.id}`} x={x} y={y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="16" fontWeight="500" style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : col, transition: "fill .2s" }}>
                       {mapTitle(p)}
                     </text>
                   </g>
                 );
               })}
             </svg>
-            <div className="sticky top-20 flex w-[400px] shrink-0 flex-col gap-5 self-start">
+            <div className="sticky top-20 flex min-w-[400px] flex-1 flex-col gap-5 self-start">
               <ProjectCard project={selected} skills={false} />
               <Uses project={selected} row>
                 <Sigil skills={skillIds(selected.id)} size={180} width={2} />
