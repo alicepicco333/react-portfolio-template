@@ -108,13 +108,13 @@ const spiralData = (projects) => {
 const layoutLabels = (items, fixed) => {
   const init = {};
   items.forEach((it) => {
-    const w = textWidth(it.label, 14) * 1.05 + 16;
+    const w = textWidth(it.label, 13) * 1.05 + 14;
     const s = Math.sin(deg(it.a));
     const c = -Math.cos(deg(it.a));
     const ox = it.x + s * 16;
     const oy = it.y + c * 14;
     const l = s > 0.25 ? 0 : s < -0.25 ? -w : -w / 2;
-    init[it.key] = [ox, oy, l, -12, l + w, 12];
+    init[it.key] = [ox, oy, l, -11, l + w, 11];
   });
   const pos = relaxRects(init, { fixed, box: [8, 8, SW - 8, SH - 8], pad: 3, iters: 4000 });
   return Object.fromEntries(items.map((it) => [it.key, { x: pos[it.key][0], y: pos[it.key][1], l: init[it.key][2], w: init[it.key][4] - init[it.key][2] }]));
@@ -156,7 +156,7 @@ export const Spiral = ({ projects }) => {
   return (
     <>
       {/* large screens: the spiral */}
-      <div className="hidden desktop:block">
+      <div className="mx-auto hidden w-full max-w-[1160px] desktop:block">
         <svg viewBox={`0 0 ${SW} ${SH}`} className="h-auto w-full" role="group" aria-label="Projects, roles and studies on a spiral: each lap a chapter from the centre outwards, each direction one of five phases: listen, order, count, shape, play">
           <defs>
             <marker id="spiral-arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="9" markerHeight="9" orient="auto">
@@ -199,24 +199,24 @@ export const Spiral = ({ projects }) => {
           {/* items: a dot on the curve, a label nearby, a leader between them */}
           {items.map((it) => {
             const L = labels[it.key];
-            const over = hot === it.key;
             const project = it.kind === "project";
+            const over = project && hot === it.key;
             const bx = L.x + L.l;
-            const by = L.y - 12;
+            const by = L.y - 11;
             const cx = Math.min(Math.max(it.x, bx), bx + L.w);
-            const cy = Math.min(Math.max(it.y, by), by + 24);
+            const cy = Math.min(Math.max(it.y, by), by + 22);
             const body = (
               <>
                 <line x1={it.x} y1={it.y} x2={cx} y2={cy} style={{ stroke: over ? "rgb(var(--olive))" : "rgb(var(--concrete))" }} strokeWidth="1" />
                 <circle
                   cx={it.x}
                   cy={it.y}
-                  r={project ? 5.5 : 4.5}
+                  r={project ? 5 : 4}
                   style={{ fill: project ? (over ? "rgb(var(--olive))" : "rgb(var(--ink))") : "#fff", stroke: project ? "none" : over ? "rgb(var(--olive))" : "rgb(var(--graphite))" }}
                   strokeWidth="1.5"
                 />
-                <rect x={bx} y={by} width={L.w} height="24" style={{ fill: over ? TINT : project ? "rgb(var(--paper))" : "#fff", stroke: over ? "rgb(var(--olive))" : project ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .2s" }} strokeWidth={over ? 2 : 1} />
-                <text x={bx + L.w / 2} y={L.y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="14" fontWeight={project ? 500 : 400} style={{ fill: over ? "rgb(var(--olive))" : project ? "rgb(var(--ink))" : "rgb(var(--graphite))" }}>
+                <rect x={bx} y={by} width={L.w} height="22" style={{ fill: over ? TINT : project ? "rgb(var(--paper))" : "#fff", stroke: over ? "rgb(var(--olive))" : project ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .2s" }} strokeWidth={over ? 2 : 1} />
+                <text x={bx + L.w / 2} y={L.y + 4.5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="13" fontWeight={project ? 500 : 400} style={{ fill: over ? "rgb(var(--olive))" : project ? "rgb(var(--ink))" : "rgb(var(--graphite))" }}>
                   {it.label}
                 </text>
               </>
@@ -230,8 +230,7 @@ export const Spiral = ({ projects }) => {
                 {body}
               </a>
             ) : (
-              <g key={it.key} tabIndex={0} role="img" aria-label={`${it.kind === "role" ? "Role" : "Study"}: ${it.title}, ${chapter}, ${phase} phase`} {...hover}>
-                <title>{it.title}</title>
+              <g key={it.key} role="img" aria-label={`${it.kind === "role" ? "Role" : "Study"}: ${it.title}, ${chapter}, ${phase} phase`}>
                 {body}
               </g>
             );
