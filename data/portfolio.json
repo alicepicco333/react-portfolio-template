@@ -1957,7 +1957,7 @@
           "poster": "/images/projects/unobravo/hero.jpg"
         },
         "system": {
-          "text": "Behind the screens is a small design system: 36 variables, 14 text styles, 34 components, 40 icons and six calm illustrations. Eleven primitive colours feed fourteen semantic tokens; the neutrals are warm so they sit comfortably next to the coral, and a soft coral carries quiet accents like inactive icons.",
+          "text": "Behind the screens is a small design system: 36 variables, 14 text styles, 34 components, 47 icons and six calm illustrations. Eleven primitive colours feed fourteen semantic tokens; the neutrals are warm so they sit comfortably next to the coral, and a soft coral carries quiet accents like inactive icons.",
           "stats": [
             {
               "value": "36",
@@ -1972,7 +1972,7 @@
               "label": "components"
             },
             {
-              "value": "40",
+              "value": "47",
               "label": "icons"
             }
           ],
@@ -2450,10 +2450,10 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v7.jpg",
+      "cardImage": "/images/projects/20-card-v9.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v7-800.webp"
+      "cardWebp": "/images/projects/20-card-v9-800.webp"
     },
     {
       "id": "21",
