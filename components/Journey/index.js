@@ -14,6 +14,7 @@ const T1 = 2027.1;
 const W = 1200;
 const PAD = 16;
 const ROW = 34;
+const BAR_ROW = 40;
 const scale = (t0) => (t) => PAD + ((t - t0) / (T1 - t0)) * (W - PAD * 2);
 
 const yearOf = (p) =>
@@ -40,28 +41,20 @@ function pack(items) {
   });
 }
 
+// roles and studies: a thin bar for the span, its label always above it, from where the bar starts
+// (or ending where it ends, when the label would run past "now")
 function spans(px, list, getStart, getEnd, label) {
   return pack(
     list
       .map((e) => {
         const s = getStart(e);
         const end = getEnd(e) ?? NOW;
-        const x0 = px(s);
-        const x1b = Math.max(px(end), x0 + 8);
-        const w = textWidth(label(e), 15) * 1.05 + 14;
-        const inside = x1b - x0 >= w;
-        const flip = !inside && x1b + w > px(NOW) - 6;
-        return {
-          e,
-          s,
-          end,
-          x0: flip ? x0 - w : x0,
-          bx: x0,
-          x1b,
-          inside,
-          flip,
-          x1: inside || flip ? x1b : x1b + 8 + w - 14,
-        };
+        const bx = px(s);
+        const x1b = Math.max(px(end), bx + 6);
+        const w = textWidth(label(e), 14) * 1.05;
+        const flip = bx + w > px(NOW) - 6;
+        const lx0 = flip ? Math.min(x1b, px(NOW) - 8) - w : bx;
+        return { e, s, end, bx, x1b, flip, x0: Math.min(bx, lx0), x1: Math.max(x1b, lx0 + w) };
       })
       .sort((a, b) => a.s - b.s),
   );
@@ -112,7 +105,7 @@ const Journey = ({ projects }) => {
   const yChapters = 0;
   const yStudies = 88;
   const yRoles = yStudies;
-  const yAxis = yStudies + barRows * ROW + 20;
+  const yAxis = yStudies + barRows * BAR_ROW + 14;
   const yWork = yAxis + 64;
   const H = yWork + workRows * ROW + 10;
   const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].filter(
@@ -121,35 +114,32 @@ const Journey = ({ projects }) => {
 
   const bar = (it, kind) => {
     const e = it.e;
-    const y = (kind === "study" ? yStudies : yRoles) + it.row * ROW;
-    const w = it.x1b - it.bx;
+    const y = (kind === "study" ? yStudies : yRoles) + it.row * BAR_ROW;
     const ongoing = e.end == null;
     return (
       <g key={`${kind}${e.id}`}>
         <title>{`${kind === "study" ? e.name : e.position} (${e.dates})`}</title>
-        <rect
-          x={it.bx}
-          y={y}
-          width={w}
-          height={ROW - 10}
-          style={{
-            fill: "color-mix(in srgb, rgb(var(--olive)) 14%, #fff)",
-            stroke: "rgb(var(--olive))",
-          }}
-          strokeWidth="1"
-          strokeDasharray={ongoing ? "5 3" : undefined}
-        />
         <text
-          x={it.inside ? it.bx + 8 : it.flip ? it.bx - 8 : it.x1b + 8}
-          y={y + 17}
+          x={it.flip ? Math.min(it.x1b, px(NOW) - 8) : it.bx}
+          y={y + 15}
           textAnchor={it.flip ? "end" : "start"}
           fontFamily="Inter Tight, sans-serif"
-          fontSize="15"
+          fontSize="14"
           fontWeight="500"
           style={{ fill: "rgb(var(--ink))" }}
         >
           {e.short}
         </text>
+        <line
+          x1={it.bx + 3}
+          y1={y + 24}
+          x2={Math.max(it.bx + 3, it.x1b - 3)}
+          y2={y + 24}
+          style={{ stroke: "rgb(var(--olive))" }}
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeDasharray={ongoing ? "6 5" : undefined}
+        />
       </g>
     );
   };

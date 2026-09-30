@@ -261,9 +261,11 @@ const WorkExplorer = ({ projects: given }) => {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [view]);
-  const cs = plotW ? Math.min(1.35, plotW / C.PW) : 0.9;
+  // both plots at the same share of the space, a little under full width
+  const FIT = 0.88;
+  const cs = plotW ? Math.min(1.2, (plotW / C.PW) * FIT) : 0.8;
   const WW = Wh.CX * 2 + 40;
-  const ws = plotW ? Math.min(1.35, plotW / WW) : 0.9;
+  const ws = plotW ? Math.min(1.2, (plotW / WW) * FIT) : 0.8;
 
   const [chipW, setChipW] = useState({});
   useIsomorphicLayoutEffect(() => {
