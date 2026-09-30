@@ -345,10 +345,10 @@
         ]
       ],
       "shows": "Open-data research with a quality, legal and ethics review, and a research question answered with the data rather than illustrated.",
-      "cardImage": "/images/projects/3-card-v4.jpg",
+      "cardImage": "/images/projects/3-card-v5.jpg",
       "rank": 5,
       "accentHC": "#701e3c",
-      "cardWebp": "/images/projects/3-card-v4-800.webp"
+      "cardWebp": "/images/projects/3-card-v5-800.webp"
     },
     {
       "id": "5",
@@ -2530,10 +2530,10 @@
         ]
       ],
       "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
-      "cardImage": "/images/projects/21-card-v4.jpg",
+      "cardImage": "/images/projects/21-card-v5.jpg",
       "rank": 7,
       "accentHC": "#70223d",
-      "cardWebp": "/images/projects/21-card-v4-800.webp"
+      "cardWebp": "/images/projects/21-card-v5-800.webp"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
