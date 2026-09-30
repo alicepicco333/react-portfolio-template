@@ -1527,28 +1527,28 @@
       "title": "Words of Gender",
       "description": "A digital archive of women authors that follows how writers across five centuries wrote about the same gendered concepts.",
       "introText": "Words of Gender is the prototype of an archive of women authors. Taking its lead from Vera Gheno's Parole d'altro genere (Rizzoli, 2023), it asks how different authors, in different historical and cultural contexts, have written about the same concepts tied to gender: beauty, grace, strength, independence, marriage, maternity.",
-      "middleText": "Excerpts from nine women authors spanning five centuries (1558 to 1958), in Italian, French and English, are encoded in TEI XML and linked to VIAF, Wikidata and WorldCat. 172 passages are tagged with 27 concepts, so each concept can be followed across texts as a network of variations and cross-references rather than read one author at a time.",
-      "conclusionText": "The 2026 version turns the prototype into a reading edition: a reading view where up to four concepts are highlighted at once, never by color alone; an author-by-concept matrix that opens every passage on a concept side by side; and a timeline of first editions.",
+      "middleText": "Excerpts from nine women authors spanning five centuries (1558 to 1958), in Italian, French and English, are encoded in TEI XML and linked to VIAF, Wikidata and WorldCat. The 2023 encoding tagged 172 passages with 27 concepts; in 2026 I reviewed every untagged occurrence of a concept word in context, tagged the 128 that are instances of the concept, kept them apart from the encoders' own tags, and recorded why the other 59 are not.",
+      "conclusionText": "The 2026 version turns the prototype into a reading edition: a reading view where up to four concepts are highlighted at once, never by color alone, with working English translations of all 127 French and Italian passages and the TEI of any passage on request; an author-by-concept matrix that opens every passage on a concept side by side; the concepts on a proportional time axis; a search across the texts and translations; and a timeline of first editions with each author's life and portrait from Wikidata.",
       "gridImages": [
         {
-          "src": "/images/projects/21-g1.jpg",
-          "caption": "Voices: short quotations from the archive, with the authors who wrote them."
+          "src": "/images/projects/21-g1-v3.jpg",
+          "caption": "The contents in time: each first edition, the edition transcribed, and the author's life from Wikidata."
         },
         {
-          "src": "/images/projects/21-g2.jpg",
-          "caption": "A letter by Mary Wollstonecraft with four concepts highlighted, each marked by color, line style and label."
+          "src": "/images/projects/21-g2-v3.jpg",
+          "caption": "Ada Negri's Nella nebbia with two concepts on, and the working English translation of each tagged passage under the paragraph."
         },
         {
-          "src": "/images/projects/21-g3.jpg",
-          "caption": "The author × concept matrix: every passage on 'Marriage', side by side across authors."
+          "src": "/images/projects/21-g3-v3.jpg",
+          "caption": "Concepts in time: one row per concept, each author at the year of her first edition on a proportional axis."
         },
         {
-          "src": "/images/projects/21-g4.jpg",
-          "caption": "Timeline of the nine authors, from 1558 to 1958."
+          "src": "/images/projects/21-g4-v3.jpg",
+          "caption": "How the words were tagged: for each concept, the occurrences tagged in 2023, those tagged in the 2026 review, and why the rest are not the concept."
         }
       ],
-      "highlightImage": "/images/projects/21-hl.jpg",
-      "highlightCaption": "The opening: the research question, after Vera Gheno, and the archive in numbers: 9 authors, 3 languages, 27 concepts, 172 tagged passages, 1558 to 1958.",
+      "highlightImage": "/images/projects/21-hl-v3.jpg",
+      "highlightCaption": "The opening: the research question, after Vera Gheno, and the archive in numbers: 9 authors, 3 languages, 27 concepts, 300 tagged passages, 1558 to 1958.",
       "imageSrc": "/images/projects/21.jpg",
       "url": "https://alicepicco333.github.io/DigitalTextInTheHumanities/",
       "category": "Research",
@@ -1570,9 +1570,9 @@
       "summary": {
         "brief": "Women authors are under-represented in the literary canon and in course readings.",
         "role": "Encoding and web development in a team of four; the 2026 rework on my own.",
-        "method": "TEI XML excerpts linked to VIAF, Wikidata and WorldCat; 172 passages tagged with 27 concepts.",
+        "method": "TEI XML excerpts linked to VIAF, Wikidata and WorldCat; 300 passages tagged with 27 concepts, 128 of them in a 2026 review of every occurrence.",
         "outcome": "A reading edition of nine authors from 1558 to 1958 that follows each concept across texts.",
-        "stack": "TEI · XSLT · JavaScript"
+        "stack": "TEI · Python · JavaScript · Wikidata"
       },
       "facts": [
         [
@@ -1584,19 +1584,19 @@
           "first editions"
         ],
         [
-          "172",
+          "300",
           "passages tagged"
         ],
         [
-          "27",
-          "concepts followed across texts"
+          "127",
+          "passages translated into English"
         ]
       ],
       "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
-      "cardImage": "/images/projects/21-card-v2.jpg",
+      "cardImage": "/images/projects/21-card-v3.jpg",
       "rank": 7,
       "accentHC": "#70223d",
-      "cardWebp": "/images/projects/21-card-v2-800.webp"
+      "cardWebp": "/images/projects/21-card-v3-800.webp"
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
