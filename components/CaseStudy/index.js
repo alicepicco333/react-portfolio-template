@@ -86,6 +86,68 @@ function PrototypeEmbed({ src, poster }) {
   );
 }
 
+// Generic, data-driven section used by research case studies (e.g. The Meme Ontology).
+// kind: "cards" (numbered text cards) · "figures" (screens with captions) · "phones" · "list" · "text"
+function FlexibleSection({ index, section }) {
+  const { title, lead, kind = "text", items = [], columns = 2, note } = section;
+  return (
+    <Section index={index} title={title}>
+      {lead && <Lead>{lead}</Lead>}
+      {kind === "cards" && (
+        <div className={`grid gap-4 tablet:grid-cols-2 ${columns === 3 ? "laptop:grid-cols-3" : ""}`}>
+          {items.map((c) => (
+            <div key={c.title} className="flex flex-col gap-2 border-t-4 border-olive bg-paper p-5">
+              {c.meta && <span className="fu-meta text-fieldgrey">{c.meta}</span>}
+              <h3 className="fu-title text-xl">{c.title}</h3>
+              <p className="text-[15px] leading-relaxed text-graphite">{c.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      {kind === "figures" && (
+        <div className="grid gap-x-4 gap-y-8 tablet:grid-cols-2">
+          {items.map((f) => (
+            <Figure key={f.src} {...f} className={f.wide ? "tablet:col-span-2" : ""} />
+          ))}
+        </div>
+      )}
+      {kind === "phones" && (
+        <div className="grid grid-cols-2 gap-4 tablet:grid-cols-4">
+          {items.map((f) => (
+            <figure key={f.src} className="flex flex-col gap-2">
+              <div className="overflow-hidden rounded-[28px] border-[8px] border-ink bg-ink">
+                <img src={withBase(f.src)} alt={f.alt} loading="lazy" className="block h-auto w-full rounded-[20px]" />
+              </div>
+              {f.caption && <figcaption className="fu-meta text-fieldgrey">{f.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
+      {kind === "list" && (
+        <ol className="flex max-w-[820px] flex-col">
+          {items.map((it, i) => (
+            <li key={it.title} className="grid gap-2 border-t border-concrete py-4 tablet:grid-cols-[56px_1fr] tablet:gap-4">
+              <span className="fu-meta pt-1 text-fieldgrey">{it.id || String(i + 1).padStart(2, "0")}</span>
+              <div className="flex flex-col gap-1">
+                <span className="text-lg font-semibold leading-snug">{it.title}</span>
+                <span className="text-[15px] leading-relaxed text-graphite">{it.text}</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+      {kind === "text" && (
+        <div className="flex max-w-[720px] flex-col gap-4 text-lg leading-relaxed">
+          {items.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+      )}
+      {note && <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[15px] leading-snug text-graphite">{note}</p>}
+    </Section>
+  );
+}
+
 export default function CaseStudy({ data }) {
   const {
     stats = [],
@@ -104,6 +166,8 @@ export default function CaseStudy({ data }) {
     system,
     results,
     reflection = [],
+    sections = [],
+    links = [],
   } = data;
   let n = 0;
   const next = () => String(++n).padStart(2, "0");
@@ -146,6 +210,10 @@ export default function CaseStudy({ data }) {
           )}
         </Section>
       )}
+
+      {sections.map((section) => (
+        <FlexibleSection key={section.title} index={next()} section={section} />
+      ))}
 
       {methods.length > 0 && (
         <Section index={next()} title="Research">
@@ -350,6 +418,24 @@ export default function CaseStudy({ data }) {
           <div className="flex max-w-[720px] flex-col gap-4 text-lg leading-relaxed">
             {reflection.map((p) => (
               <p key={p}>{p}</p>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {links.length > 0 && (
+        <Section index={next()} title="Explore">
+          <div className="flex flex-wrap gap-3">
+            {links.map((l, i) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`fu-btn ${i === 0 ? "fu-btn-primary" : ""}`}
+              >
+                {l.label} ↗
+              </a>
             ))}
           </div>
         </Section>
