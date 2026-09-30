@@ -97,9 +97,10 @@ function wheelLayout(projects) {
   return relaxRects(items, { fixed: CLUSTER_TEXT.map((c) => c.box), box: [Wh.CX - inner, Wh.CY - inner, Wh.CX + inner, Wh.CY + inner], pad: 7 });
 }
 
-const Media = ({ project, className = "" }) => {
+// stillOnly: the grid always shows the still; the compass and wheel cards play the loop unless motion is off
+const Media = ({ project, className = "", stillOnly = false }) => {
   const reduced = usePrefersReducedMotion() || !motionOn();
-  const motion = project.tileMotion && !reduced ? project.tileMotion : null;
+  const motion = project.tileMotion && !reduced && !stillOnly ? project.tileMotion : null;
   const still = project.cardWebp || project.cardImage || project.imageSrc;
   const src = motion || still;
   if (motion && motion.endsWith(".mp4")) {
@@ -369,7 +370,7 @@ const WorkExplorer = ({ projects: given }) => {
               <li key={p.id} className="work-card">
                 <Link href={`/projects/${p.id}`} className="flex h-full flex-col border border-ink bg-paper">
                   <div className="aspect-[4/3] overflow-hidden border-b border-ink">
-                    <Media project={p} className="h-full w-full object-cover" />
+                    <Media project={p} stillOnly className="h-full w-full object-cover" />
                   </div>
                   <div className="flex flex-grow flex-col gap-1.5 px-3.5 pb-3.5 pt-3">
                     <div className="flex items-center justify-between font-mono text-[13px]">

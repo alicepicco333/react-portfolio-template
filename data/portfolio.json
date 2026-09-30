@@ -396,10 +396,11 @@
       ],
       "shows": "Real-time interactive systems and collaboration: visuals generated and rewritten live, in dialogue with another performer.",
       "tileMotion": "/images/projects/5-loop-sm.webp",
-      "cardImage": "/images/projects/5-card-v2.jpg",
+      "cardImage": "/images/projects/5-card-v3.jpg",
       "rank": 11,
       "embed": "https://player.vimeo.com/video/980415428?dnt=1",
-      "cardWebp": "/images/projects/5-card-v2-800.webp"
+      "cardWebp": "/images/projects/5-card-v3-800.webp",
+      "embedCaption": "The full recording, published by the Institute of Network Cultures."
     },
     {
       "id": "10",
@@ -961,7 +962,7 @@
       "highlightImage": "/images/projects/14-hl.jpg",
       "conclusionText": "",
       "imageSrc": "/images/projects/14.jpg",
-      "url": "",
+      "url": "https://odysee.com/@alicepicco:0/5pic3_livingFull:d",
       "category": "Live Coding",
       "tags": [
         "Live Coding",
@@ -993,9 +994,13 @@
         ]
       ],
       "shows": "Building and operating a real-time interactive system under live conditions, with the code open to the audience.",
-      "cardImage": "/images/projects/14-card-v2.jpg",
+      "cardImage": "/images/projects/14-card-v3.jpg",
       "rank": 10,
-      "cardWebp": "/images/projects/14-card-v2-800.webp"
+      "cardWebp": "/images/projects/14-card-v3-800.webp",
+      "embed": "https://odysee.com/$/embed/@alicepicco:0/5pic3_livingFull:d",
+      "embedAspect": "4 / 3",
+      "embedTitle": "full set",
+      "embedCaption": "The full set, recorded at Fulfillment Music Center (Odysee)."
     },
     {
       "id": "15",
