@@ -173,17 +173,17 @@ export default function ProjectPage({ project, number, next }) {
 
         {project.embed && (
           <figure className="px-4 pt-10 tablet:px-10">
-            <div className="relative aspect-video w-full max-w-[1200px] border border-ink bg-ink">
+            <div className="relative w-full max-w-[1200px] border border-ink bg-ink" style={{ aspectRatio: project.embedAspect || "16 / 9" }}>
               <iframe
                 src={project.embed}
-                title={`${project.title}: performance recording`}
+                title={`${project.title}: ${project.embedTitle || "performance recording"}`}
                 className="absolute inset-0 h-full w-full"
                 loading="lazy"
                 allow="fullscreen; picture-in-picture"
                 allowFullScreen
               />
             </div>
-            <figcaption className="mt-3 text-[16px] leading-snug text-graphite">The full recording, published by the Institute of Network Cultures.</figcaption>
+            <figcaption className="mt-3 text-[16px] leading-snug text-graphite">{project.embedCaption || "The full recording."}</figcaption>
           </figure>
         )}
 
