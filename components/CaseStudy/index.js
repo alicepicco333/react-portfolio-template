@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { usePrefersReducedMotion, withBase } from "../../utils";
+import { BeforeAfterPairs, Cast, DesignSystem, Interviews, UrgencyExplorer } from "./research";
 
 // Long-form case study, rendered when a project in portfolio.json has a `caseStudy` block.
 // Every block is optional so the data can grow or shrink without touching this file.
@@ -148,12 +149,53 @@ function FlexibleSection({ index, section }) {
   );
 }
 
+// With `views` in the data, design comes first and a switcher lets readers show only design or research.
+const VIEW_LABELS = { all: "Everything", design: "Design", research: "Research" };
+
+function ViewSwitcher({ view, setView, views }) {
+  return (
+    <div className="sticky top-[65px] z-20 border-y border-ink bg-bone/95 px-4 py-3 backdrop-blur tablet:px-10">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <span className="fu-meta text-fieldgrey" id="cs-view-label">
+          Show
+        </span>
+        <div className="flex flex-wrap gap-2" role="group" aria-labelledby="cs-view-label">
+          {["all", "design", "research"].map((v) => (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={view === v}
+              onClick={() => setView(v)}
+              className={`fu-btn ${view === v ? "fu-btn-primary" : "fu-btn-secondary"}`}
+            >
+              {VIEW_LABELS[v]}
+            </button>
+          ))}
+        </div>
+        {views?.[view] && <span className="text-[14px] text-graphite">{views[view]}</span>}
+      </div>
+    </div>
+  );
+}
+
+function PartHeader({ part, title, text }) {
+  return (
+    <div className="border-t border-ink bg-ink px-4 py-10 text-bone tablet:px-10">
+      <span className="fu-meta text-bone/70">{part}</span>
+      <h2 className="fu-display mt-1 text-[40px] leading-none tablet:text-phi2">{title}</h2>
+      {text && <p className="mt-3 max-w-[640px] text-[17px] leading-relaxed text-bone/80">{text}</p>}
+    </div>
+  );
+}
+
 export default function CaseStudy({ data }) {
   const {
     stats = [],
     overview = [],
     context,
     methods = [],
+    interviews,
+    cast,
     persona,
     issues = [],
     urgency = [],
@@ -168,96 +210,97 @@ export default function CaseStudy({ data }) {
     reflection = [],
     sections = [],
     links = [],
+    views,
+    beforeAfterPairs,
   } = data;
-  let n = 0;
-  const next = () => String(++n).padStart(2, "0");
 
-  return (
-    <div>
-      {stats.length > 0 && (
-        <section className="grid grid-cols-2 gap-x-4 gap-y-8 px-4 py-14 tablet:px-10 laptop:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="flex flex-col gap-2 border-t border-ink pt-3">
-              <span className="fu-display text-[48px] tablet:text-phi3">{s.value}</span>
-              <span className="max-w-[240px] text-[15px] leading-snug text-graphite">{s.label}</span>
-            </div>
-          ))}
-        </section>
-      )}
+  const [view, setViewState] = useState("all");
+  useEffect(() => {
+    if (!views) return undefined;
+    const read = () => {
+      const h = window.location.hash.replace("#", "");
+      setViewState(h === "design" || h === "research" ? h : "all");
+    };
+    read();
+    window.addEventListener("hashchange", read);
+    return () => window.removeEventListener("hashchange", read);
+  }, [views]);
+  const setView = (v) => {
+    setViewState(v);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", v === "all" ? window.location.pathname : `#${v}`);
+    }
+  };
 
-      {(overview.length > 0 || context) && (
-        <Section index={next()} title="Context">
-          {context?.text && <Lead>{context.text}</Lead>}
-          {overview.length > 0 && (
-            <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[160px_1fr]">
-              {overview.map((row) => (
-                <div key={row.label} className="contents">
-                  <dt className="text-fieldgrey">{row.label}</dt>
-                  <dd>{row.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
-          {context?.goals && (
-            <div className="grid gap-4 tablet:grid-cols-2">
-              {context.goals.map((g) => (
-                <div key={g.title} className="bg-paper p-5">
-                  <h3 className="fu-title mb-2 text-xl">{g.title}</h3>
-                  <p className="text-[15px] leading-relaxed text-graphite">{g.text}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </Section>
-      )}
-
-      {sections.map((section) => (
-        <FlexibleSection key={section.title} index={next()} section={section} />
-      ))}
-
-      {methods.length > 0 && (
-        <Section index={next()} title="Research">
+  // Each block: [group, show?, title, render]. group is "design", "research" or "always".
+  const blocks = {
+    context: ["always", overview.length > 0 || context, "Context", () => (
+      <>
+        {context?.text && <Lead>{context.text}</Lead>}
+        {overview.length > 0 && (
+          <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[160px_1fr]">
+            {overview.map((row) => (
+              <div key={row.label} className="contents">
+                <dt className="text-fieldgrey">{row.label}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {context?.goals && (
           <div className="grid gap-4 tablet:grid-cols-2">
-            {methods.map((m) => (
-              <div key={m.title} className="flex flex-col gap-2 border-t border-ink pt-3">
-                <span className="fu-meta text-fieldgrey">{m.meta}</span>
-                <h3 className="fu-title text-xl">{m.title}</h3>
-                <p className="text-[15px] leading-relaxed text-graphite">{m.text}</p>
+            {context.goals.map((g) => (
+              <div key={g.title} className="bg-paper p-5">
+                <h3 className="fu-title mb-2 text-xl">{g.title}</h3>
+                <p className="text-[15px] leading-relaxed text-graphite">{g.text}</p>
               </div>
             ))}
           </div>
-        </Section>
-      )}
-
-      {persona && (
-        <Section index={next()} title="Persona">
-          <div className="grid gap-6 bg-paper p-6 tablet:grid-cols-[1fr_1.4fr] tablet:p-8">
-            <div className="flex flex-col gap-3">
-              <span className="fu-meta text-fieldgrey">{persona.segment}</span>
-              <h3 className="fu-display text-[40px]">{persona.name}</h3>
-              <p className="text-[15px] text-graphite">{persona.facts}</p>
-              <blockquote className="border-l-4 border-ink pl-4 text-xl leading-snug">“{persona.quote}”</blockquote>
-            </div>
-            <div className="flex flex-col gap-3">
-              <p className="text-[15px] leading-relaxed">{persona.story}</p>
-              <ul className="flex flex-col gap-2 border-t border-ink pt-3 text-[15px]">
-                {persona.needs.map((need) => (
-                  <li key={need} className="flex gap-2">
-                    <span aria-hidden="true">→</span>
-                    <span>{need}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        )}
+      </>
+    )],
+    methods: ["research", methods.length > 0, "Research", () => (
+      <div className="grid gap-4 tablet:grid-cols-2">
+        {methods.map((m) => (
+          <div key={m.title} className="flex flex-col gap-2 border-t border-ink pt-3">
+            <span className="fu-meta text-fieldgrey">{m.meta}</span>
+            <h3 className="fu-title text-xl">{m.title}</h3>
+            <p className="text-[15px] leading-relaxed text-graphite">{m.text}</p>
           </div>
-        </Section>
-      )}
-
-      {issues.length > 0 && (
-        <Section index={next()} title="Findings">
+        ))}
+      </div>
+    )],
+    interviews: ["research", interviews, "Interviews", () => <Interviews data={interviews} />],
+    cast: ["research", cast, "Cast and personas", () => <Cast data={cast} />],
+    persona: ["research", persona && !cast, "Persona", () => (
+      <div className="grid gap-6 bg-paper p-6 tablet:grid-cols-[1fr_1.4fr] tablet:p-8">
+        <div className="flex flex-col gap-3">
+          <span className="fu-meta text-fieldgrey">{persona.segment}</span>
+          <h3 className="fu-display text-[40px]">{persona.name}</h3>
+          <p className="text-[15px] text-graphite">{persona.facts}</p>
+          <blockquote className="border-l-4 border-ink pl-4 text-xl leading-snug">“{persona.quote}”</blockquote>
+        </div>
+        <div className="flex flex-col gap-3">
+          <p className="text-[15px] leading-relaxed">{persona.story}</p>
+          <ul className="flex flex-col gap-2 border-t border-ink pt-3 text-[15px]">
+            {persona.needs.map((need) => (
+              <li key={need} className="flex gap-2">
+                <span aria-hidden="true">→</span>
+                <span>{need}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )],
+    findings: ["research", (!Array.isArray(urgency) && urgency.versions) || (Array.isArray(urgency) && issues.length > 0), "Findings", () =>
+      !Array.isArray(urgency) ? (
+        <UrgencyExplorer data={urgency} />
+      ) : (
+        <>
           <Lead>
-            Assessment, expert review and preliminary testing surfaced nine usability issues, each scored for
-            impact and persistence (1–5).
+            Assessment, expert review and preliminary testing surfaced nine usability issues, each scored for impact
+            and persistence (1–5).
           </Lead>
           <ol className="flex flex-col">
             {issues.map((issue) => (
@@ -281,165 +324,198 @@ export default function CaseStudy({ data }) {
               ))}
             </div>
           )}
-        </Section>
-      )}
-
-      {recommendations.length > 0 && (
-        <Section index={next()} title="Design principles">
-          <div className="grid gap-4 tablet:grid-cols-2">
-            {recommendations.map((r) => (
-              <div key={r.id} className="flex flex-col gap-2 bg-paper p-5">
-                <span className="fu-meta text-fieldgrey">
-                  {r.id} · addresses {r.addresses}
-                </span>
-                <h3 className="fu-title text-xl">{r.title}</h3>
-                <p className="text-[15px] leading-relaxed text-graphite">{r.text}</p>
-              </div>
-            ))}
+        </>
+      ),
+    ],
+    recommendations: ["research", recommendations.length > 0, "Design principles", () => (
+      <div className="grid gap-4 tablet:grid-cols-2">
+        {recommendations.map((r) => (
+          <div key={r.id} className="flex flex-col gap-2 bg-paper p-5">
+            <span className="fu-meta text-fieldgrey">
+              {r.id} · addresses {r.addresses}
+            </span>
+            <h3 className="fu-title text-xl">{r.title}</h3>
+            <p className="text-[15px] leading-relaxed text-graphite">{r.text}</p>
           </div>
-        </Section>
-      )}
-
-      {iterations.length > 0 && (
-        <Section index={next()} title="Iterations">
-          <ol className="grid gap-4 tablet:grid-cols-3">
-            {iterations.map((it) => (
-              <li key={it.name} className="flex flex-col gap-2 border-t-4 border-ink pt-3">
-                <span className="fu-meta text-fieldgrey">{it.date}</span>
-                <h3 className="fu-title text-xl">{it.name}</h3>
-                <span className="text-[15px] font-medium">{it.evaluation}</span>
-                <p className="text-[15px] leading-relaxed text-graphite">{it.text}</p>
-              </li>
-            ))}
-          </ol>
-        </Section>
-      )}
-
-      {beforeAfter.length > 0 && (
-        <Section index={next()} title="Before & after">
-          <Lead>Each board traces one screen from the original product through ver0, ver1 and the final version.</Lead>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 tablet:mx-0 tablet:px-0">
-            {beforeAfter.map((b) => (
-              <Figure key={b.src} {...b} className="w-[82%] shrink-0 snap-start tablet:w-[46%]" />
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {flows.length > 0 && (
-        <Section index={next()} title="Final design">
-          <Lead>83 screens across six flows, built from 29 components and 34 design tokens.</Lead>
-          {flows.map((f) => (
-            <Figure key={f.src} {...f} />
+        ))}
+      </div>
+    )],
+    iterations: ["research", iterations.length > 0, "Iterations", () => (
+      <ol className="grid gap-4 tablet:grid-cols-3">
+        {iterations.map((it) => (
+          <li key={it.name} className="flex flex-col gap-2 border-t-4 border-ink pt-3">
+            <span className="fu-meta text-fieldgrey">{it.date}</span>
+            <h3 className="fu-title text-xl">{it.name}</h3>
+            <span className="text-[15px] font-medium">{it.evaluation}</span>
+            <p className="text-[15px] leading-relaxed text-graphite">{it.text}</p>
+          </li>
+        ))}
+      </ol>
+    )],
+    beforeAfter: ["research", beforeAfter.length > 0, "Before & after", () => (
+      <>
+        <Lead>Each board traces one screen from the original product through ver0, ver1 and the final version.</Lead>
+        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 tablet:mx-0 tablet:px-0">
+          {beforeAfter.map((b) => (
+            <Figure key={b.src} {...b} className="w-[82%] shrink-0 snap-start tablet:w-[46%]" />
           ))}
-        </Section>
-      )}
-
-      {motion.length > 0 && (
-        <Section index={next()} title="Motion">
-          <Lead>
-            Motion is kept calm and purposeful: content rises in on arrival, confirmations settle with a soft pop,
-            and the live-session indicator pulses. Transitions in the prototype use push for forward navigation,
-            sheets for filters and smart animate for questionnaire progress.
-          </Lead>
-          <div className="grid gap-8 tablet:grid-cols-3">
-            {motion.map((m) => (
-              <PhoneVideo key={m.src} {...m} />
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {prototype && (
-        <Section index={next()} title="Prototype">
-          <Lead>{prototype.text}</Lead>
-          {prototype.embed && <PrototypeEmbed src={prototype.embed} poster={prototype.poster} />}
-          {prototype.url && (
-            <a href={prototype.url} target="_blank" rel="noreferrer" className="fu-btn fu-btn-primary self-start">
-              Open the prototype in Figma ↗
-            </a>
-          )}
-        </Section>
-      )}
-
-      {system && (
-        <Section index={next()} title="Design system">
+        </div>
+      </>
+    )],
+    flows: ["design", flows.length > 0, "Final design", () => (
+      <>
+        <Lead>{data.flowsLead || "83 screens across six flows, built from 29 components and 34 design tokens."}</Lead>
+        {flows.map((f) => (
+          <Figure key={f.src} {...f} />
+        ))}
+      </>
+    )],
+    pairs: ["design", beforeAfterPairs, "Before & after", () => <BeforeAfterPairs data={beforeAfterPairs} />],
+    motion: ["design", motion.length > 0, "Motion", () => (
+      <>
+        <Lead>
+          Motion is kept calm and purposeful: content rises in on arrival, confirmations settle with a soft pop, and
+          the live-session indicator pulses, and the breathing guide expands and releases at a resting pace. Transitions in the prototype use push for forward navigation, sheets for
+          filters and smart animate for questionnaire progress.
+        </Lead>
+        <div className={`grid gap-8 tablet:grid-cols-2 ${motion.length > 3 ? "laptop:grid-cols-4" : "laptop:grid-cols-3"}`}>
+          {motion.map((m) => (
+            <PhoneVideo key={m.src} {...m} />
+          ))}
+        </div>
+      </>
+    )],
+    prototype: ["design", prototype, "Prototype", () => (
+      <>
+        <Lead>{prototype.text}</Lead>
+        {prototype.embed && <PrototypeEmbed src={prototype.embed} poster={prototype.poster} />}
+        {prototype.url && (
+          <a href={prototype.url} target="_blank" rel="noreferrer" className="fu-btn fu-btn-primary self-start">
+            Open the prototype in Figma ↗
+          </a>
+        )}
+      </>
+    )],
+    system: ["design", system, "Design system", () =>
+      system.images ? (
+        <>
           <Lead>{system.text}</Lead>
           <div className="grid gap-4 tablet:grid-cols-2">
             {system.images.map((img, i) => (
               <Figure key={img.src} {...img} className={i === 0 ? "tablet:col-span-2" : ""} />
             ))}
           </div>
-        </Section>
-      )}
-
-      {results && (
-        <Section index={next()} title="Results">
-          <Lead>{results.text}</Lead>
-          <div className="flex max-w-[720px] flex-col gap-3">
-            {results.sus.map((s) => (
-              <div key={s.label} className="grid grid-cols-[140px_1fr_56px] items-center gap-3 text-[15px]">
-                <span className="text-fieldgrey">{s.label}</span>
-                <span className="h-4 bg-concrete">
-                  <span className="block h-full bg-ink" style={{ width: `${s.value}%` }} />
-                </span>
-                <span className="text-right font-semibold">{s.value}</span>
-              </div>
-            ))}
-            <span className="fu-meta text-fieldgrey">System Usability Scale, 0–100</span>
-          </div>
-          <div className="max-w-[720px] overflow-x-auto">
-            <table className="w-full text-left text-[15px]">
-              <thead>
-                <tr className="border-b border-ink">
-                  <th className="py-2 pr-4 font-medium text-fieldgrey">Task (final version)</th>
-                  <th className="py-2 pr-4 font-medium text-fieldgrey">Avg time</th>
-                  <th className="py-2 pr-4 font-medium text-fieldgrey">Success</th>
-                  <th className="py-2 font-medium text-fieldgrey">Errors</th>
+        </>
+      ) : (
+        <DesignSystem data={system} />
+      ),
+    ],
+    results: ["research", results, "Results", () => (
+      <>
+        <Lead>{results.text}</Lead>
+        <div className="flex max-w-[720px] flex-col gap-3">
+          {results.sus.map((s) => (
+            <div key={s.label} className="grid grid-cols-[140px_1fr_56px] items-center gap-3 text-[15px]">
+              <span className="text-fieldgrey">{s.label}</span>
+              <span className="h-4 bg-concrete">
+                <span className="block h-full bg-ink" style={{ width: `${s.value}%` }} />
+              </span>
+              <span className="text-right font-semibold">{s.value}</span>
+            </div>
+          ))}
+          <span className="fu-meta text-fieldgrey">System Usability Scale, 0–100</span>
+        </div>
+        <div className="max-w-[720px] overflow-x-auto">
+          <table className="w-full text-left text-[15px]">
+            <thead>
+              <tr className="border-b border-ink">
+                <th className="py-2 pr-4 font-medium text-fieldgrey">Task (final version)</th>
+                <th className="py-2 pr-4 font-medium text-fieldgrey">Avg time</th>
+                <th className="py-2 pr-4 font-medium text-fieldgrey">Success</th>
+                <th className="py-2 font-medium text-fieldgrey">Errors</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.tasks.map((t) => (
+                <tr key={t.task} className="border-b border-concrete">
+                  <td className="py-2 pr-4">{t.task}</td>
+                  <td className="py-2 pr-4">{t.time}</td>
+                  <td className="py-2 pr-4">{t.success}</td>
+                  <td className="py-2">{t.errors}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {results.tasks.map((t) => (
-                  <tr key={t.task} className="border-b border-concrete">
-                    <td className="py-2 pr-4">{t.task}</td>
-                    <td className="py-2 pr-4">{t.time}</td>
-                    <td className="py-2 pr-4">{t.success}</td>
-                    <td className="py-2">{t.errors}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Section>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )],
+    reflection: ["always", reflection.length > 0, "Reflection", () => (
+      <div className="flex max-w-[720px] flex-col gap-4 text-lg leading-relaxed">
+        {reflection.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+      </div>
+    )],
+    links: ["always", links.length > 0, "Explore", () => (
+      <div className="flex flex-wrap gap-3">
+        {links.map((l, i) => (
+          <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className={`fu-btn ${i === 0 ? "fu-btn-primary" : ""}`}>
+            {l.label} ↗
+          </a>
+        ))}
+      </div>
+    )],
+  };
+
+  const DEFAULT_ORDER = ["context", "methods", "interviews", "cast", "persona", "findings", "recommendations", "iterations",
+    "beforeAfter", "flows", "pairs", "motion", "prototype", "system", "results", "reflection", "links"];
+  const DESIGN_FIRST = ["context", "flows", "pairs", "motion", "prototype", "system", "methods", "interviews", "cast", "persona",
+    "findings", "recommendations", "iterations", "beforeAfter", "results", "reflection", "links"];
+  const order = (views ? DESIGN_FIRST : DEFAULT_ORDER).filter((k) => blocks[k][1]);
+  const visible = order.filter((k) => view === "all" || blocks[k][0] === "always" || blocks[k][0] === view);
+  const firstOf = (group) => visible.find((k) => blocks[k][0] === group);
+
+  let n = 0;
+  const next = () => String(++n).padStart(2, "0");
+  const renderBlock = (k) => (
+    <Section key={k} index={next()} title={blocks[k][2]}>
+      {blocks[k][3]()}
+    </Section>
+  );
+
+  const flexible = () => sections.map((section) => <FlexibleSection key={section.title} index={next()} section={section} />);
+
+  return (
+    <div>
+      {stats.length > 0 && (
+        <section className="grid grid-cols-2 gap-x-4 gap-y-8 px-4 py-14 tablet:px-10 laptop:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col gap-2 border-t border-ink pt-3">
+              <span className="fu-display text-[48px] tablet:text-phi3">{s.value}</span>
+              <span className="max-w-[240px] text-[15px] leading-snug text-graphite">{s.label}</span>
+            </div>
+          ))}
+        </section>
       )}
 
-      {reflection.length > 0 && (
-        <Section index={next()} title="Reflection">
-          <div className="flex max-w-[720px] flex-col gap-4 text-lg leading-relaxed">
-            {reflection.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
-        </Section>
-      )}
+      {views && <ViewSwitcher view={view} setView={setView} views={views} />}
 
-      {links.length > 0 && (
-        <Section index={next()} title="Explore">
-          <div className="flex flex-wrap gap-3">
-            {links.map((l, i) => (
-              <a
-                key={l.href}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`fu-btn ${i === 0 ? "fu-btn-primary" : ""}`}
-              >
-                {l.label} ↗
-              </a>
-            ))}
-          </div>
-        </Section>
-      )}
+      {!visible.includes("context") && flexible()}
+
+      {visible.map((k) => {
+        const group = blocks[k][0];
+        const header =
+          views && view === "all" && group !== "always" && firstOf(group) === k ? (
+            <PartHeader key={`part-${group}`} {...views.parts[group]} />
+          ) : null;
+        return (
+          <Fragment key={k}>
+            {header}
+            {renderBlock(k)}
+            {k === "context" && flexible()}
+          </Fragment>
+        );
+      })}
     </div>
   );
 }

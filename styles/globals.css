@@ -228,6 +228,13 @@ html[data-motion="off"] ::after {
 .fu-blink {
   animation: fu-blink 1.2s steps(1) infinite;
 }
+/* urgency curve points pop in when the version changes (uses `scale`, so Tailwind's translate stays intact) */
+@keyframes urgency-pop {
+  from { opacity: 0; scale: 0.4; }
+}
+.urgency-point {
+  animation: urgency-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -240,6 +247,7 @@ html[data-motion="off"] ::after {
   .fu-blink { animation: none; }
   .work-card > a, .work-lift, .work-mini { transition: none; }
   .hero-glow { animation: none; }
+  .urgency-point { animation: none; }
 }
 
 /* project pages: the project's own accent; its darker version in high contrast */
