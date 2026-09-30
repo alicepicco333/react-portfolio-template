@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-<rect width="320" height="200" fill="#F3ECE6"/>
-<circle cx="250" cy="60" r="34" fill="#FBD3C2"/>
-<rect x="0" y="160" width="320" height="40" fill="#FBD3C2"/>
-<rect x="0" y="160" width="320" height="40" rx="0" fill="#FBD3C2"/>
-<path d="M126 196 L134 150 L186 150 L194 196 Z" fill="#E06B3E"/>
-<rect x="128" y="142" width="64" height="12" rx="4" fill="#B83D0C"/>
-<path d="M160 142 C 160 110 158 84 164 56" stroke="#B83D0C" stroke-width="3" fill="none" stroke-linecap="round"/>
-<g transform="translate(162 120) rotate(-150) scale(1.4)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#9CCB5E"/></g><g transform="translate(160 104) rotate(-30) scale(1.35)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#CAF189"/></g><g transform="translate(162 86) rotate(-150) scale(1.15)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#CAF189"/></g><g transform="translate(163 70) rotate(-35) scale(1.0)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#9CCB5E"/></g><g transform="translate(164 58) rotate(-100) scale(0.8)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#CAF189"/></g>
-<g fill="#F4A582"><rect x="40" y="122" width="14" height="38" rx="4"/><rect x="62" y="104" width="14" height="56" rx="4"/><rect x="84" y="86" width="14" height="74" rx="4" fill="#E06B3E"/></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160"><ellipse cx="160" cy="138" rx="138" ry="16" fill="#FBD3C2"/><circle cx="244" cy="46" r="26" fill="#FBD3C2"/><rect x="72" y="92" width="14" height="40" rx="4" fill="#F4A582"/><rect x="94" y="74" width="14" height="58" rx="4" fill="#F4A582"/><rect x="116" y="56" width="14" height="76" rx="4" fill="#E06B3E"/><path d="M168 98 H222 L214 134 H176 Z" fill="#E06B3E"/><rect x="164" y="92" width="62" height="10" rx="4" fill="#B83D0C"/><path d="M195 92 C 196 70 194 50 196 26" stroke="#B83D0C" stroke-width="3" fill="none" stroke-linecap="round"/><g transform="translate(196 78) rotate(-150) scale(1.1)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#9CCB5E"/></g><g transform="translate(196 62) rotate(-30) scale(1.15)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#9CCB5E"/></g><g transform="translate(196 46) rotate(-145) scale(0.95)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#9CCB5E"/></g><g transform="translate(196 32) rotate(-40) scale(0.85)"><path d="M0 0 C 8 -14 26 -16 34 -4 C 22 4 8 6 0 0 Z" fill="#9CCB5E"/></g></svg>
