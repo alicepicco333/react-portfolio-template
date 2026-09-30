@@ -375,8 +375,8 @@ export default function CaseStudy({ data }) {
       <>
         <Lead>
           Motion makes the app feel alive without raising the pulse. Every illustration breathes on a slow loop, every
-          screen rises in with a short stagger, and moments that ask something of the user are celebrated: booking the
-          first session and finishing a questionnaire section end in a small burst of leaves. In the prototype, screens
+          screen rises in with a short stagger, and moments that ask something of the user are acknowledged: booking the
+          first session and finishing a questionnaire section end with a check that springs in and softly pulses. In the prototype, screens
           morph into each other with gentle springs, the tab bar pill slides between tabs and answers pop when chosen.
         </Lead>
         <div className={`grid gap-8 tablet:grid-cols-2 ${motion.length === 4 ? "laptop:grid-cols-4" : "laptop:grid-cols-3"}`}>
