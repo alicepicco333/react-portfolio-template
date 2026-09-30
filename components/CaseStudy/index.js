@@ -374,11 +374,12 @@ export default function CaseStudy({ data }) {
     motion: ["design", motion.length > 0, "Motion", () => (
       <>
         <Lead>
-          Motion is kept calm and purposeful: content rises in on arrival, confirmations settle with a soft pop, and
-          the live-session indicator pulses, and the breathing guide expands and releases at a resting pace. Transitions in the prototype use push for forward navigation, sheets for
-          filters and smart animate for questionnaire progress.
+          Motion makes the app feel alive without raising the pulse. Every illustration breathes on a slow loop, every
+          screen rises in with a short stagger, and moments that ask something of the user are celebrated: booking the
+          first session and finishing a questionnaire section end in a small burst of leaves. In the prototype, screens
+          morph into each other with gentle springs, the tab bar pill slides between tabs and answers pop when chosen.
         </Lead>
-        <div className={`grid gap-8 tablet:grid-cols-2 ${motion.length > 3 ? "laptop:grid-cols-4" : "laptop:grid-cols-3"}`}>
+        <div className={`grid gap-8 tablet:grid-cols-2 ${motion.length === 4 ? "laptop:grid-cols-4" : "laptop:grid-cols-3"}`}>
           {motion.map((m) => (
             <PhoneVideo key={m.src} {...m} />
           ))}

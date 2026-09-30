@@ -1940,9 +1940,19 @@
             "caption": "Guided breathing: the circle expands, holds and releases while the cue changes"
           },
           {
+            "src": "/images/projects/unobravo/motion-section.mp4",
+            "poster": "/images/projects/unobravo/motion-section-poster.jpg",
+            "caption": "Section completed: the badge pops, leaves scatter over the path and the finished step bumps into place"
+          },
+          {
+            "src": "/images/projects/unobravo/motion-medita.mp4",
+            "poster": "/images/projects/unobravo/motion-medita-poster.jpg",
+            "caption": "Living illustrations: suns breathe, stars twinkle and leaves sway on a slow three-second loop"
+          },
+          {
             "src": "/images/projects/unobravo/motion-booked.mp4",
             "poster": "/images/projects/unobravo/motion-booked-poster.jpg",
-            "caption": "Booking confirmed: the headline, the meeting card and a first practice rise in one after another"
+            "caption": "Booking confirmed: the check springs in, a burst of leaves and petals celebrates the effort, then the details rise"
           },
           {
             "src": "/images/projects/unobravo/motion-call.mp4",
@@ -2450,10 +2460,10 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v9.jpg",
+      "cardImage": "/images/projects/20-card-v10.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v9-800.webp"
+      "cardWebp": "/images/projects/20-card-v10-800.webp"
     },
     {
       "id": "21",
