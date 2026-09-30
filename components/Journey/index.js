@@ -3,7 +3,7 @@ import Link from "next/link";
 import portfolioData from "../../data/portfolio.json";
 import { withBase } from "../../utils";
 import { textWidth } from "../../utils/layout";
-import { MODELS, ModelSwitch, Ahead, Cycle } from "./Perspectives";
+import { MODELS, ModelSwitch, Spiral } from "./Perspectives";
 
 // Timeline: studies, roles and projects on one axis. Large screens get the drawn
 // timeline; smaller ones get the same content as a list by year.
@@ -173,7 +173,7 @@ const Journey = ({ projects }) => {
           </div>
           <div className="flex flex-wrap items-end gap-4">
             <ModelSwitch model={model} setModel={setModel} />
-            {model !== "cycle" && (
+            {model !== "spiral" && (
               <div
                 className="flex"
                 role="group"
@@ -205,8 +205,7 @@ const Journey = ({ projects }) => {
           {MODELS.find((m) => m.id === model).note}
         </p>
 
-        {model === "ahead" && <Ahead layer={layer} projects={projects} />}
-        {model === "cycle" && <Cycle projects={projects} />}
+        {model === "spiral" && <Spiral projects={projects} />}
 
         {model === "linear" && (
           <>

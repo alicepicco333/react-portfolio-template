@@ -1,24 +1,19 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import portfolioData from "../../data/portfolio.json";
 import { CLUSTERS, skillsOfProject } from "../Graph/data";
 import { withBase } from "../../utils";
-import { textWidth } from "../../utils/layout";
+import { textWidth, relaxRects } from "../../utils/layout";
 
-// Two alternative ways to read the timeline. Linear stays the default; these are opt-in views
-// of the same data, each also available as plain lists for small screens and assistive tech.
+// Two ways to read the timeline. Linear stays the default; the spiral is an opt-in view of the same
+// data, also available as a plain list for small screens and assistive tech.
 
 export const MODELS = [
   { id: "linear", label: "Linear", note: "Left to right, oldest to newest: the usual way to read a career." },
   {
-    id: "ahead",
-    label: "Past in front",
-    note: "In Aymara, the known past is spoken of as lying ahead, in view, and the unknown future behind (Núñez & Sweetser, 2006). Read from the top: what I have already done is in front of you; what comes next is behind.",
-  },
-  {
-    id: "cycle",
-    label: "Cycle",
-    note: "Time read as a loop instead of a line. Each project and role sits in the phase it leans on most, and the work keeps coming back around: listen, order, count, shape, play, listen again.",
+    id: "spiral",
+    label: "Spiral",
+    note: "Time as a spiral: the work keeps coming back to the same five phases (listen, order, count, shape, play) but never to the same place. Each lap is a chapter, from the centre outwards; each item sits where its chapter meets the phase it leans on most.",
   },
 ];
 
@@ -48,80 +43,10 @@ export const ModelSwitch = ({ model, setModel }) => (
   </fieldset>
 );
 
-// items of one chapter, oldest first
-export const chapterItems = (c, layer, projects) => {
-  const { resume } = portfolioData;
-  const inChapter = (t) => t >= c.from && t < c.to;
-  return [
-    ...(layer === "studies" ? resume.educationList.filter((e) => inChapter(e.start)).map((e) => ({ t: e.start, kind: "Study", label: e.name, dates: e.dates })) : []),
-    ...(layer === "roles" ? resume.experiences.filter((e) => inChapter(e.start)).map((e) => ({ t: e.start, kind: "Role", label: e.position, dates: e.dates })) : []),
-    ...projects.filter((p) => inChapter(timeOf(p))).map((p) => ({ t: timeOf(p), kind: "Project", label: shortTitle(p), dates: String(yearOf(p)), href: `/projects/${p.id}` })),
-  ].sort((a, b) => a.t - b.t);
-};
-
-// ——— Past in front: the earliest chapter is nearest and largest; later ones recede ———
-export const Ahead = ({ layer, projects }) => {
-  const { chapters } = portfolioData.journey;
-  const n = chapters.length;
-  return (
-    <div className="flex flex-col">
-      <p className="mb-4 flex items-center gap-2 font-mono text-[13px] text-graphite">
-        <span aria-hidden="true">↑</span> In front of you: the past, in view
-      </p>
-      <ol className="flex flex-col gap-0">
-        {chapters.map((c, i) => {
-          const depth = i / (n - 1); // 0 = nearest (oldest), 1 = furthest back (latest)
-          const items = chapterItems(c, layer, projects);
-          return (
-            <li
-              key={c.title}
-              className="border-t border-ink py-5"
-              style={{ marginLeft: `${depth * 12}%`, marginRight: `${depth * 12}%` }}
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="font-semibold tracking-[-0.02em]" style={{ fontSize: `${34 - depth * 12}px`, lineHeight: 1.1 }}>
-                  {c.title}
-                </h3>
-                <span className="font-mono text-[13px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</span>
-              </div>
-              <p className="mt-2 max-w-[720px] leading-snug" style={{ fontSize: `${18 - depth * 2}px` }}>
-                {c.text}
-              </p>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {items.map((it) =>
-                  it.href ? (
-                    <li key={it.kind + it.label}>
-                      <Link href={it.href} className="work-lift inline-flex min-h-[36px] items-center border border-ink bg-paper px-3 text-[15px] font-medium hover:border-olive hover:text-olive">
-                        {it.label}
-                      </Link>
-                    </li>
-                  ) : (
-                    <li key={it.kind + it.label} className="inline-flex min-h-[36px] items-center gap-2 border border-concrete bg-white px-3 text-[15px] text-graphite">
-                      <span className="font-mono text-[12px] uppercase">{it.kind}</span>
-                      {it.label}
-                    </li>
-                  )
-                )}
-              </ul>
-            </li>
-          );
-        })}
-      </ol>
-      <div className="mx-[12%] mt-2 flex flex-wrap items-center justify-between gap-3 border border-dashed border-ink px-5 py-4" style={{ marginLeft: "14%", marginRight: "14%" }}>
-        <p className="text-[16px]">
-          <span className="font-mono text-[13px] text-graphite">↓ Behind you: </span>
-          what comes next, not yet in view.
-        </p>
-        <a href="#contact" className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
-          It could involve your team →
-        </a>
-      </div>
-    </div>
-  );
-};
-
-// ——— Cycle: the five clusters as phases of one loop ———
+// ——— Spiral: phases as directions, chapters as laps ———
 const PHASE_VERB = { listening: "listen", ordering: "order", counting: "count", shaping: "shape", playing: "play" };
+// clockwise reading order, starting at the top
+const LOOP = ["listening", "ordering", "counting", "shaping", "playing"];
 const phaseOf = (skills) => {
   let best = null;
   CLUSTERS.forEach((c) => {
@@ -130,165 +55,231 @@ const phaseOf = (skills) => {
   });
   return best?.id;
 };
-// the loop, in reading order (the same for the ring and the list)
-const LOOP = ["listening", "ordering", "counting", "shaping", "playing"];
-// positions around the loop (clockwise, in SVG degrees), chosen so no column hits the top edge
-const ANGLE = { listening: 162, ordering: 234, counting: 306, shaping: 18, playing: 90 };
-const CW = 1200;
-const CH = 710;
-const CX = 600;
-const CY = 360;
-const R = 150;
-const pt = (deg, r) => [CX + r * Math.cos((deg * Math.PI) / 180), CY + r * Math.sin((deg * Math.PI) / 180)];
+// studies carry no skills: their phase by subject
+const STUDY_PHASE = { e1: "listening", e2: "ordering", e3: "listening", e4: "listening" };
 
-const cycleData = (projects) => {
-  const byPhase = Object.fromEntries(CLUSTERS.map((c) => [c.id, []]));
+const SW = 1200;
+const SH = 1060;
+const SX = 600;
+const SY = 530;
+const R0 = 62; // radius where the spiral starts
+const LAP = 88; // growth per lap
+const SECTOR = 360 / LOOP.length;
+const deg = (d) => (d * Math.PI) / 180;
+// an angle along the spiral, in degrees from the top, clockwise; 360 = one lap
+const rAt = (a) => R0 + (LAP * a) / 360;
+const xy = (a, r = rAt(a)) => [SX + r * Math.sin(deg(a)), SY - r * Math.cos(deg(a))];
+
+const spiralData = (projects) => {
+  const chapters = portfolioData.journey.chapters;
+  const lapOf = (t) => Math.max(0, chapters.findIndex((c) => t >= c.from && t < c.to));
+  const items = [];
   projects.forEach((p) => {
     const ph = phaseOf(skillsOfProject(p.id).map((n) => n.id));
-    if (ph) byPhase[ph].push({ key: `p${p.id}`, label: shortTitle(p), href: `/projects/${p.id}`, kind: "project" });
+    if (ph) items.push({ key: `p${p.id}`, label: shortTitle(p), href: `/projects/${p.id}`, kind: "project", t: timeOf(p), ph, title: `${p.title} (${yearOf(p)})` });
   });
   portfolioData.resume.experiences.forEach((r) => {
     const ph = phaseOf(r.skills || []);
-    if (ph) byPhase[ph].push({ key: `r${r.id}`, label: r.short, kind: "role", title: `${r.position} (${r.dates})` });
+    if (ph) items.push({ key: `r${r.id}`, label: r.short.split(" · ")[0], kind: "role", t: r.start, ph, title: `${r.position} (${r.dates})` });
   });
-  return byPhase;
+  portfolioData.resume.educationList.forEach((e) => {
+    const ph = STUDY_PHASE[e.id];
+    if (ph) items.push({ key: `s${e.id}`, label: e.short.split(" · ")[0], kind: "study", t: e.start, ph, title: `${e.name} (${e.dates})` });
+  });
+  // group by (lap, phase), spread each group along its stretch of the spiral in time order
+  const groups = {};
+  items.forEach((it) => {
+    it.lap = lapOf(it.t);
+    (groups[`${it.lap}-${it.ph}`] ||= []).push(it);
+  });
+  Object.values(groups).forEach((g) => {
+    g.sort((a, b) => a.t - b.t);
+    const spread = Math.min(SECTOR - 16, 13 * (g.length - 1));
+    g.forEach((it, i) => {
+      const off = g.length > 1 ? -spread / 2 + (spread * i) / (g.length - 1) : 0;
+      it.a = it.lap * 360 + LOOP.indexOf(it.ph) * SECTOR + off;
+      [it.x, it.y] = xy(it.a);
+    });
+  });
+  return { items, chapters };
 };
 
-export const Cycle = ({ projects }) => {
+// label placement: start just outside the dot, then push apart until nothing overlaps
+const layoutLabels = (items, fixed) => {
+  const init = {};
+  items.forEach((it) => {
+    const w = textWidth(it.label, 14) * 1.05 + 16;
+    const s = Math.sin(deg(it.a));
+    const c = -Math.cos(deg(it.a));
+    const ox = it.x + s * 16;
+    const oy = it.y + c * 14;
+    const l = s > 0.25 ? 0 : s < -0.25 ? -w : -w / 2;
+    init[it.key] = [ox, oy, l, -12, l + w, 12];
+  });
+  const pos = relaxRects(init, { fixed, box: [8, 8, SW - 8, SH - 8], pad: 3, iters: 4000 });
+  return Object.fromEntries(items.map((it) => [it.key, { x: pos[it.key][0], y: pos[it.key][1], l: init[it.key][2], w: init[it.key][4] - init[it.key][2] }]));
+};
+
+export const Spiral = ({ projects }) => {
   const [hot, setHot] = useState(null);
-  const byPhase = cycleData(projects);
-  const order = LOOP;
+  const { items, chapters } = useMemo(() => spiralData(projects), [projects]);
+  const laps = chapters.length;
+  const now = portfolioData.journey.chapters.length - 1;
+  // the curve: from the start of the first lap to "now", then a dashed stretch for what comes next
+  const curve = (a0, a1) =>
+    Array.from({ length: Math.ceil((a1 - a0) / 3) + 1 }, (_, k) => xy(Math.min(a1, a0 + k * 3)))
+      .map(([x, y], k) => `${k ? "L" : "M"} ${x.toFixed(1)} ${y.toFixed(1)}`)
+      .join(" ");
+  const aStart = -SECTOR / 2;
+  const aNow = now * 360 + 360 - SECTOR / 2;
+  const phaseR = rAt(laps * 360) + 78;
+  const phaseBoxes = LOOP.map((id, i) => {
+    const a = i * SECTOR;
+    const label = CLUSTERS.find((c) => c.id === id).label.toUpperCase();
+    const w = textWidth(label, 13, true) + 18;
+    const [x, y] = xy(a, phaseR);
+    return { id, label, w, x, y, a };
+  });
+  const chapterTags = chapters.map((c, i) => {
+    const a = i * 360 - SECTOR / 2;
+    const [x, y] = xy(a);
+    const text = `${c.from}–${c.to > 2026 ? "now" : String(c.to).slice(2)} ${c.title}`;
+    return { key: c.title, x, y, text, w: textWidth(text, 12, true) + 12 };
+  });
+  const fixed = [
+    ...phaseBoxes.map((p) => [p.x - p.w / 2 - 4, p.y - 17, p.x + p.w / 2 + 4, p.y + 17]),
+    ...chapterTags.map((c) => [c.x - c.w - 8, c.y - 11, c.x - 4, c.y + 11]),
+    [SX - 60, SY - 22, SX + 60, SY + 22],
+  ];
+  const labels = useMemo(() => layoutLabels(items, fixed), [items]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <>
-      {/* large screens: the ring */}
+      {/* large screens: the spiral */}
       <div className="hidden desktop:block">
-        <svg viewBox={`0 0 ${CW} ${CH}`} className="h-auto w-full" role="group" aria-label="Projects and roles arranged on a loop of five phases: listen, order, count, shape, play">
+        <svg viewBox={`0 0 ${SW} ${SH}`} className="h-auto w-full" role="group" aria-label="Projects, roles and studies on a spiral: each lap a chapter from the centre outwards, each direction one of five phases: listen, order, count, shape, play">
           <defs>
-            <marker id="cycle-arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="8" markerHeight="8" orient="auto">
+            <marker id="spiral-arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="9" markerHeight="9" orient="auto">
               <path d="M0,-4L8,0L0,4" style={{ fill: "rgb(var(--olive))" }} />
             </marker>
           </defs>
-          <circle cx={CX} cy={CY} r={R} fill="none" style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="1" aria-hidden="true" />
-          {order.map((id, i) => {
-            // clockwise from this phase to the next, leaving room for the two labels
-            const a0 = ANGLE[id] + 22;
-            let a1 = ANGLE[order[(i + 1) % order.length]] - 22;
-            while (a1 <= a0) a1 += 360;
-            const steps = 24;
-            const d = Array.from({ length: steps + 1 }, (_, k) => pt(a0 + ((a1 - a0) * k) / steps, R))
-              .map(([x, y], k) => `${k ? "L" : "M"} ${x.toFixed(1)} ${y.toFixed(1)}`)
-              .join(" ");
-            return <path key={id} d={d} fill="none" style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" markerEnd="url(#cycle-arrow)" aria-hidden="true" />;
+          {/* phase directions: faint spokes between the sectors */}
+          {LOOP.map((id, i) => {
+            const [x0, y0] = xy(i * SECTOR + SECTOR / 2, R0 - 20);
+            const [x1, y1] = xy(i * SECTOR + SECTOR / 2, phaseR + 6);
+            return <line key={id} x1={x0} y1={y0} x2={x1} y2={y1} style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="1" strokeDasharray="2 5" aria-hidden="true" />;
           })}
-          <text x={CX} y={CY - 6} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
-            one loop,
+          {/* the spiral itself */}
+          <path d={curve(aStart, aNow)} fill="none" style={{ stroke: "rgb(var(--olive))" }} strokeWidth="2" markerEnd="url(#spiral-arrow)" aria-hidden="true" />
+          <path d={curve(aNow + 4, aNow + 70)} fill="none" style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" strokeDasharray="4 5" aria-hidden="true" />
+          <text x={SX} y={SY - 4} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="12" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
+            2018, from
           </text>
-          <text x={CX} y={CY + 14} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
-            read clockwise ↻
+          <text x={SX} y={SY + 12} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="12" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
+            the centre ↻
           </text>
-          {order.map((id) => {
-            const c = CLUSTERS.find((x) => x.id === id);
-            const [nx, ny] = pt(ANGLE[id], R);
-            const cos = Math.cos((ANGLE[id] * Math.PI) / 180);
-            const anchor = cos > 0.3 ? "start" : cos < -0.3 ? "end" : "middle";
-            const items = byPhase[id];
-            const [ax, ay] = pt(ANGLE[id], R + 100);
-            const down = ANGLE[id] === 90;
-            const y0 = down ? ay : ay - ((items.length - 1) * 34) / 2;
-            const label = c.label.toUpperCase();
-            const lw = textWidth(label, 13, true) + 18;
-            return (
-              <g key={id}>
-                <rect x={nx - lw / 2} y={ny - 13} width={lw} height="26" style={{ fill: "rgb(var(--olive))" }} aria-hidden="true" />
-                <text x={nx} y={ny + 5} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "#fff" }} aria-hidden="true">
-                  {label}
+          {/* chapters, where each lap begins */}
+          {chapterTags.map((c) => (
+            <g key={c.key} aria-hidden="true">
+              <circle cx={c.x} cy={c.y} r="3" style={{ fill: "rgb(var(--olive))" }} />
+              <text x={c.x - 8} y={c.y + 4} textAnchor="end" fontFamily="JetBrains Mono, monospace" fontSize="12" paintOrder="stroke" strokeWidth="6" strokeLinejoin="round" style={{ fill: "rgb(var(--olive))", stroke: "rgb(var(--paper))" }}>
+                {c.text}
+              </text>
+            </g>
+          ))}
+          {/* phases, outside the last lap */}
+          {phaseBoxes.map((p) => (
+            <g key={p.id} aria-hidden="true">
+              <rect x={p.x - p.w / 2} y={p.y - 13} width={p.w} height="26" style={{ fill: "rgb(var(--olive))" }} />
+              <text x={p.x} y={p.y + 5} textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="13" style={{ fill: "#fff" }}>
+                {p.label}
+              </text>
+            </g>
+          ))}
+          {/* items: a dot on the curve, a label nearby, a leader between them */}
+          {items.map((it) => {
+            const L = labels[it.key];
+            const over = hot === it.key;
+            const project = it.kind === "project";
+            const bx = L.x + L.l;
+            const by = L.y - 12;
+            const cx = Math.min(Math.max(it.x, bx), bx + L.w);
+            const cy = Math.min(Math.max(it.y, by), by + 24);
+            const body = (
+              <>
+                <line x1={it.x} y1={it.y} x2={cx} y2={cy} style={{ stroke: over ? "rgb(var(--olive))" : "rgb(var(--concrete))" }} strokeWidth="1" />
+                <circle
+                  cx={it.x}
+                  cy={it.y}
+                  r={project ? 5.5 : 4.5}
+                  style={{ fill: project ? (over ? "rgb(var(--olive))" : "rgb(var(--ink))") : "#fff", stroke: project ? "none" : over ? "rgb(var(--olive))" : "rgb(var(--graphite))" }}
+                  strokeWidth="1.5"
+                />
+                <rect x={bx} y={by} width={L.w} height="24" style={{ fill: over ? TINT : project ? "rgb(var(--paper))" : "#fff", stroke: over ? "rgb(var(--olive))" : project ? "rgb(var(--ink))" : "rgb(var(--concrete))", transition: "fill .2s" }} strokeWidth={over ? 2 : 1} />
+                <text x={bx + L.w / 2} y={L.y + 5} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="14" fontWeight={project ? 500 : 400} style={{ fill: over ? "rgb(var(--olive))" : project ? "rgb(var(--ink))" : "rgb(var(--graphite))" }}>
+                  {it.label}
                 </text>
-                {items.map((it, j) => {
-                  const w = textWidth(it.label, 15) * 1.06 + 20;
-                  const y = y0 + j * 34;
-                  const x = anchor === "start" ? ax : anchor === "end" ? ax - w : ax - w / 2;
-                  const over = hot === it.key;
-                  const role = it.kind === "role";
-                  const box = (
-                    <>
-                      <rect
-                        x={x}
-                        y={y - 14}
-                        width={w}
-                        height="28"
-                        style={{
-                          fill: over ? TINT : role ? "#fff" : "rgb(var(--paper))",
-                          stroke: over ? "rgb(var(--olive))" : role ? "rgb(var(--concrete))" : "rgb(var(--ink))",
-                          transition: "fill .2s",
-                        }}
-                        strokeWidth={over ? 2.5 : role ? 1.5 : 1}
-                      />
-                      <text
-                        x={x + w / 2}
-                        y={y + 5}
-                        textAnchor="middle"
-                        fontFamily="Inter Tight, sans-serif"
-                        fontSize="15"
-                        fontWeight={role ? 400 : 500}
-                        style={{ fill: over ? "rgb(var(--olive))" : role ? "rgb(var(--graphite))" : "rgb(var(--ink))" }}
-                      >
-                        {it.label}
-                      </text>
-                    </>
-                  );
-                  return it.href ? (
-                    <a
-                      key={it.key}
-                      href={withBase(`${it.href}/`)}
-                      aria-label={`${it.label}, ${c.label} phase`}
-                      onMouseEnter={() => setHot(it.key)}
-                      onMouseLeave={() => setHot(null)}
-                      onFocus={() => setHot(it.key)}
-                      onBlur={() => setHot(null)}
-                    >
-                      {box}
-                    </a>
-                  ) : (
-                    <g key={it.key} tabIndex={0} role="img" aria-label={`Role: ${it.title}, ${c.label} phase`} onMouseEnter={() => setHot(it.key)} onMouseLeave={() => setHot(null)} onFocus={() => setHot(it.key)} onBlur={() => setHot(null)}>
-                      <title>{it.title}</title>
-                      {box}
-                    </g>
-                  );
-                })}
+              </>
+            );
+            const phase = CLUSTERS.find((c) => c.id === it.ph).label;
+            const chapter = chapters[it.lap].title;
+            const hover = { onMouseEnter: () => setHot(it.key), onMouseLeave: () => setHot(null), onFocus: () => setHot(it.key), onBlur: () => setHot(null) };
+            return it.href ? (
+              <a key={it.key} href={withBase(`${it.href}/`)} aria-label={`${it.label}: ${chapter}, ${phase} phase`} {...hover}>
+                <title>{it.title}</title>
+                {body}
+              </a>
+            ) : (
+              <g key={it.key} tabIndex={0} role="img" aria-label={`${it.kind === "role" ? "Role" : "Study"}: ${it.title}, ${chapter}, ${phase} phase`} {...hover}>
+                <title>{it.title}</title>
+                {body}
               </g>
             );
           })}
         </svg>
+        <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px] text-graphite" aria-hidden="true">
+          <span className="flex items-center gap-2"><span className="inline-block h-[11px] w-[11px] rounded-full bg-ink" /> project</span>
+          <span className="flex items-center gap-2"><span className="inline-block h-[9px] w-[9px] rounded-full border-[1.5px] border-graphite bg-white" /> role or study</span>
+          <span className="flex items-center gap-2"><span className="inline-block h-0 w-6 border-t-2 border-dashed border-olive" /> what comes next</span>
+        </div>
       </div>
-      {/* smaller screens and a plain reading order: the same loop as a list */}
-      <ol className="flex flex-col gap-5 desktop:hidden">
-        {order.map((id, i) => {
-          const c = CLUSTERS.find((x) => x.id === id);
+      {/* smaller screens and a plain reading order: lap by lap, phase by phase */}
+      <ol className="flex flex-col gap-6 desktop:hidden">
+        {chapters.map((c, lap) => {
+          const inLap = items.filter((it) => it.lap === lap);
+          if (!inLap.length) return null;
           return (
-            <li key={id} className="border-l-2 border-olive pl-4">
+            <li key={c.title} className="border-l-2 border-olive pl-4">
               <h3 className="text-[20px] font-bold">
-                {i + 1}. {c.label} <span className="font-mono text-[13px] font-normal text-graphite">· {PHASE_VERB[id]}</span>
+                {c.title} <span className="font-mono text-[13px] font-normal text-graphite">· {c.from}–{c.to > 2026 ? "now" : c.to}</span>
               </h3>
-              <ul className="mt-2 flex flex-col gap-1.5">
-                {byPhase[id].map((it) => (
-                  <li key={it.key} className="text-[15px]">
-                    {it.href ? (
-                      <Link href={it.href} className="font-semibold underline underline-offset-2">
-                        {it.label}
-                      </Link>
-                    ) : (
-                      <span className="text-graphite">
-                        <span className="font-mono text-[12px] uppercase">Role </span>
-                        {it.label}
-                      </span>
-                    )}
-                  </li>
-                ))}
+              <ul className="mt-2 flex flex-col gap-2">
+                {LOOP.map((ph) => {
+                  const here = inLap.filter((it) => it.ph === ph).sort((a, b) => a.t - b.t);
+                  if (!here.length) return null;
+                  return (
+                    <li key={ph} className="text-[15px]">
+                      <span className="font-mono text-[12px] uppercase text-olive">{PHASE_VERB[ph]} </span>
+                      {here.map((it, i) => (
+                        <React.Fragment key={it.key}>
+                          {i ? ", " : ""}
+                          {it.href ? (
+                            <Link href={it.href} className="font-semibold underline underline-offset-2">
+                              {it.label}
+                            </Link>
+                          ) : (
+                            <span className="text-graphite">{it.label}</span>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </li>
+                  );
+                })}
               </ul>
             </li>
           );
         })}
-        <li className="pl-4 font-mono text-[13px] text-graphite">↻ and back to Listening</li>
+        <li className="pl-4 font-mono text-[13px] text-graphite">↻ and outwards, into the next lap</li>
       </ol>
     </>
   );
