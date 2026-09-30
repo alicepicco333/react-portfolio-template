@@ -2263,7 +2263,7 @@
           "typeMeta": "Fraunces for display and headings, DM Sans for everything else",
           "illustrations": {
             "meta": "Six calm scenes in the brand palette",
-            "lead": "Flat, layered shapes in coral, peach and lime, echoing the landscapes of the original app. They sit at the top of cards so every key moment has a quiet image, never a stock photo.",
+            "lead": "Flat, layered shapes in coral, peach and lime, echoing the landscapes of the original app. Each scene floats on a soft island or floor shadow with no background of its own, so it sits on any surface in the app without a hard edge or crop.",
             "items": [
               {
                 "src": "/images/projects/unobravo/illustrations/colline.svg",
@@ -2450,10 +2450,10 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v6.jpg",
+      "cardImage": "/images/projects/20-card-v7.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v6-800.webp"
+      "cardWebp": "/images/projects/20-card-v7-800.webp"
     },
     {
       "id": "21",

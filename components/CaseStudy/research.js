@@ -833,14 +833,16 @@ export function DesignSystem({ data }) {
           <ul className="grid gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
             {illustrations.items.map((it) => (
               <li key={it.name} className="flex flex-col gap-3 bg-paper p-3">
-                <img
-                  src={withBase(it.src)}
-                  alt={`${it.name} illustration`}
-                  loading="lazy"
-                  width={320}
-                  height={200}
-                  className="block aspect-[8/5] h-auto w-full rounded-[20px] object-cover"
-                />
+                <div className="rounded-[20px] bg-[#FFF6F2] px-4 py-5">
+                  <img
+                    src={withBase(it.src)}
+                    alt={`${it.name} illustration`}
+                    loading="lazy"
+                    width={320}
+                    height={160}
+                    className="block aspect-[2/1] h-auto w-full object-contain"
+                  />
+                </div>
                 <span className="flex items-baseline justify-between gap-3 px-1 pb-1">
                   <span className="text-[15px] font-semibold">{it.name}</span>
                   <span className="text-right text-[13px] text-graphite">{it.use}</span>
