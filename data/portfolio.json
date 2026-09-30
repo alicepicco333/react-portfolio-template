@@ -1413,7 +1413,7 @@
           }
         ],
         "prototype": {
-          "text": "The full prototype is wired in Figma as one continuous prototype, from first visit to the video session: about 200 connections across six flows, with interactive answer options, filter sheets and smart-animated questionnaire progress. Try it below, or open it in Figma.",
+          "text": "The full prototype is wired in Figma as one continuous prototype, from first visit to the video session: about 240 connections across six flows, with interactive answer options, filter sheets and smart-animated questionnaire progress. Try it below, or open it in Figma.",
           "embed": "https://embed.figma.com/proto/g15NKSEccuWdV7a2z9HCoI/Unobravo-Redesign?node-id=5-2&starting-point-node-id=5-2&scaling=scale-down&content-scaling=fixed&embed-host=share",
           "url": "https://www.figma.com/proto/g15NKSEccuWdV7a2z9HCoI/Unobravo-Redesign?node-id=5-2&starting-point-node-id=5-2&scaling=scale-down&content-scaling=fixed",
           "poster": "/images/projects/unobravo/hero.jpg"
@@ -1517,10 +1517,10 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v3.jpg",
+      "cardImage": "/images/projects/20-card-v4.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v3-800.webp"
+      "cardWebp": "/images/projects/20-card-v4-800.webp"
     },
     {
       "id": "21",
