@@ -177,7 +177,7 @@
       ],
       "shows": "Turning scholarly source material into something people can search and read side by side.",
       "cardImage": "/images/projects/1-card-v4.jpg",
-      "rank": 8,
+      "rank": 9,
       "accentHC": "#1b1bbe",
       "cardWebp": "/images/projects/1-card-v4-800.webp"
     },
@@ -601,7 +601,7 @@
       ],
       "shows": "Data modeling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
       "cardImage": "/images/projects/12-card-v4.jpg",
-      "rank": 9,
+      "rank": 8,
       "accentHC": "#3a3733",
       "cardWebp": "/images/projects/12-card-v4-800.webp",
       "caseStudy": {
