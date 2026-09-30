@@ -1413,13 +1413,13 @@
           }
         ],
         "prototype": {
-          "text": "The full prototype is wired in Figma: about 200 connections across six flows, with interactive answer options, filter sheets and smart-animated questionnaire progress. Try it below, or open it in Figma to switch between flows.",
+          "text": "The full prototype is wired in Figma as one continuous prototype, from first visit to the video session: about 200 connections across six flows, with interactive answer options, filter sheets and smart-animated questionnaire progress. Try it below, or open it in Figma.",
           "embed": "https://embed.figma.com/proto/g15NKSEccuWdV7a2z9HCoI/Unobravo-Redesign?node-id=5-2&starting-point-node-id=5-2&scaling=scale-down&content-scaling=fixed&embed-host=share",
           "url": "https://www.figma.com/proto/g15NKSEccuWdV7a2z9HCoI/Unobravo-Redesign?node-id=5-2&starting-point-node-id=5-2&scaling=scale-down&content-scaling=fixed",
           "poster": "/images/projects/unobravo/hero.jpg"
         },
         "system": {
-          "text": "Behind the screens is a small design system: 34 variables (10 primitives, 13 semantic colors, 7 spacing and 4 radius values), 14 text styles and 29 components. Every text color passes WCAG AA contrast and every touch target is at least 44 px.",
+          "text": "Behind the screens is a small design system: 34 variables (10 primitives, 13 semantic colors, 7 spacing and 4 radius values), 14 text styles, 31 components and 33 icons. Every text color passes WCAG AA contrast and every touch target is at least 44 px.",
           "images": [
             {
               "src": "/images/projects/unobravo/system/colour.jpg",
