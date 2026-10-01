@@ -53,7 +53,6 @@ const Accessibility = () => (
             <li>The skill map and the work charts also exist as plain text: the skill card, the project grid and every project page.</li>
             <li>Touch targets are at least 44 by 44 pixels.</li>
             <li>Two keyboard shortcuts work only while focus is inside their section: in the skill map, keys 1 to 5 jump to listen, order, count, shape and play; in Selected work, G and W switch between the grid and the wheel.</li>
-            <li>Moving from a project card to its page animates the image into place; with motion switched off, or reduced motion set on your device, the page simply loads.</li>
           </ul>
         </section>
 
