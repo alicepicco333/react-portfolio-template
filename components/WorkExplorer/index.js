@@ -355,7 +355,7 @@ const WorkExplorer = ({ projects: given }) => {
             Show
             <div className="flex" role="group" aria-label="Show">
               {[
-                ["all", "All projects"],
+                ["all", "Projects"],
                 ["Live Coding", "Live coding"],
               ].map(([v, t]) => (
                 <button
