@@ -22,7 +22,6 @@ const newestFirst = (a, b) => yearOf(b).localeCompare(yearOf(a)) || (b.date || "
 const curated = (a, b) => (a.rank ?? 99) - (b.rank ?? 99) || newestFirst(a, b);
 const shortTitle = (t) => t.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
-const TYPES = ["Design", "Research", "Live Coding"];
 const VIEWS = ["Grid", "Compass", "Wheel"];
 
 // ——— compass: left = understanding, right = making; up = people, down = information ———
@@ -211,12 +210,12 @@ const WorkExplorer = ({ projects: given }) => {
   const readout = useRef(null);
 
   const years = [...new Set(projects.map(yearOf))].sort().reverse();
-  const matches = (p) => (skill === "all" || skillIds(p.id).includes(skill)) && (type === "all" || p.category === type) && (year === "all" || yearOf(p) === year);
+  const matches = (p) => (skill === "all" || skillIds(p.id).includes(skill)) && (type === "all" ? p.category !== "Live Coding" : p.category === type) && (year === "all" || yearOf(p) === year);
   const shown = projects.filter(matches);
   const selected = shown.find((p) => p.id === picked) || shown[0] || projects[0];
   const compass = useMemo(() => compassLayout(projects), [projects]);
   const wheel = useMemo(() => wheelLayout(projects), [projects]);
-  const filtered = skill !== "all" || type !== "all" || year !== "all";
+  const filtered = skill !== "all" || year !== "all";
 
   // each view makes its entrance when it is switched to
   useIsomorphicLayoutEffect(() => {
@@ -351,7 +350,26 @@ const WorkExplorer = ({ projects: given }) => {
               Show roles
             </button>
           )}
-          <Select label="Type" value={type} onChange={setType} options={[["all", "All types"], ...TYPES.map((t) => [t, categoryMeta(t).short])]} />
+          {/* design and research together; live coding on its own */}
+          <div className="flex flex-col gap-1 font-mono text-[13px] text-graphite">
+            Show
+            <div className="flex" role="group" aria-label="Show">
+              {[
+                ["all", "All projects"],
+                ["Live Coding", "Live coding"],
+              ].map(([v, t]) => (
+                <button
+                  key={v}
+                  type="button"
+                  aria-pressed={type === v}
+                  onClick={() => setType(v)}
+                  className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] transition-colors ${type === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
           <Select label="Year" value={year} onChange={setYear} options={[["all", "All years"], ...years.map((y) => [y, y])]} />
           <div className="hidden flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex">
             View

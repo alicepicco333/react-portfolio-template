@@ -113,6 +113,15 @@
           "choice": "Give every object three positions, how it left, who claims it and who holds it, each with its sources.",
           "why": "The objects are contested: the exhibition asks who was able to take them, who keeps them and who has managed to get them back.",
           "result": "Visitors read each claim beside its evidence, not a single museum’s label."
+        },
+        {
+          "choice": "Write nine versions of every object text: three lengths and three levels of complexity, for each of the three tours.",
+          "why": "Visitors come with different time and needs: a teacher preparing a class visit, someone with thirty minutes, a doctoral student doing research.",
+          "result": "Each visitor sets length and level once before the tour and can change them on any object page."
+        },
+        {
+          "choice": "Show how each of the three tours tells the same object, side by side.",
+          "why": "The tours frame an object differently, as art and history, as conquest, as geography; seeing them together is part of the argument."
         }
       ]
     },
@@ -254,7 +263,7 @@
       "accent": "#111111",
       "summary": {
         "brief": "Cognitive biases are described in prose; there was no shared formal model to query them.",
-        "role": "Four of the sixteen ontologies, in a team of four; the 2026 explorer on my own.",
+        "role": "Four of the sixteen ontologies (bias blind spot, confabulation, naive cynicism and naive realism), in a team of four; the 2026 explorer on my own.",
         "method": "eXtreme Design: user stories, competency questions, ontology design patterns and alignment to Framester; in 2026, every competency question tested as SPARQL.",
         "outcome": "16 OWL ontologies (119 classes, 52 object properties) and an explorer that walks through each story and tests all 47 competency questions: 37 are answered by the files.",
         "stack": "OWL · RDF · SPARQL · Python (rdflib, owlready2) · JavaScript · Oxigraph"
@@ -570,11 +579,27 @@
           "where the label's timeline starts"
         ]
       ],
-      "shows": "A client commission taken from Figma design to a working bilingual website.",
+      "shows": "A client commission taken from Figma to a working bilingual site, built around how visitors browse a label’s collection and its history.",
       "cardImage": "/images/projects/11-card-v2.jpg",
       "rank": 6,
       "accentHC": "#111111",
-      "cardWebp": "/images/projects/11-card-v2-800.webp"
+      "cardWebp": "/images/projects/11-card-v2-800.webp",
+      "decisions": [
+        {
+          "choice": "Keep the current collection and the archive of past pieces apart, each with its own filters.",
+          "why": "The label’s work runs from 1972 to today; current pieces should not be buried among fifty years of past ones.",
+          "result": "Visitors browse what is available now, or explore the label’s history, without one getting in the way of the other."
+        },
+        {
+          "choice": "One language switch for the whole site, rather than separate Dutch and English pages.",
+          "why": "Every page, filter and label exists in both languages, so switching should keep the visitor where they are."
+        },
+        {
+          "choice": "Compress every image to at most 1920 pixels wide, at near-lossless quality, before publishing.",
+          "why": "It is an image-led site served from a standard host.",
+          "result": "The photographs keep their quality at a fraction of the file size."
+        }
+      ]
     },
     {
       "id": "12",
@@ -2626,7 +2651,7 @@
       "accent": "#9c2f55",
       "summary": {
         "brief": "Women authors are under-represented in the literary canon and in course readings.",
-        "role": "Encoding and web development in a team of four; the 2026 rework on my own.",
+        "role": "In a team of four: the TEI encoding of Claude Cahun’s L’Androgyne and Simone de Beauvoir’s Mémoires d’une jeune fille rangée, and work on the website; the 2026 rework on my own.",
         "method": "TEI XML excerpts linked to VIAF, Wikidata and WorldCat; 300 passages tagged with 27 concepts, 128 of them in a 2026 review of every occurrence.",
         "outcome": "A reading edition of nine authors from 1558 to 1958 that follows each concept across texts.",
         "stack": "TEI · Python · JavaScript · Wikidata"
