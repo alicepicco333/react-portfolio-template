@@ -40,7 +40,7 @@ const A11yControls = ({ className = "", compact = false }) => {
   };
 
   const btn = compact
-    ? "flex min-h-[44px] items-center gap-2 px-2 font-mono text-[13px] aria-pressed:text-olive"
+    ? "flex min-h-[44px] items-center gap-2 px-2 font-mono text-[14px] aria-pressed:text-olive"
     : "min-h-[44px] border border-current px-3 font-mono text-[14px]";
   const dot = (on) => (compact ? <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${on ? "bg-current" : ""}`} /> : null);
   return (

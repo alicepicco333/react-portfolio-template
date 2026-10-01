@@ -29,7 +29,7 @@ const shortTitle = (p) => p.short || p.title.split(" - ")[0];
 // the selector: native radios, so arrow keys move between options
 export const ModelSwitch = ({ model, setModel }) => (
   <fieldset className="flex flex-col gap-1">
-    <legend className="mb-1 font-mono text-[13px] text-graphite">Read time as</legend>
+    <legend className="mb-1 font-mono text-[14px] text-graphite">Read time as</legend>
     <div className="flex">
       {MODELS.map((m) => (
         <label key={m.id} className="relative -mr-px">
@@ -281,7 +281,7 @@ export const Spiral = ({ projects }) => {
             );
           })}
         </svg>
-        <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px] text-graphite" aria-hidden="true">
+        <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[14px] text-graphite" aria-hidden="true">
           <span className="flex items-center gap-2"><span className="inline-block h-[11px] w-[11px] rounded-full bg-ink" /> project</span>
           <span className="flex items-center gap-2"><span className="inline-block h-[9px] w-[9px] rounded-full border-[1.5px] border-graphite bg-white" /> role or study</span>
           <span className="flex items-center gap-2"><span className="inline-block h-0 w-6 border-t-2 border-dashed border-olive" /> what comes next</span>
@@ -295,14 +295,14 @@ export const Spiral = ({ projects }) => {
           return (
             <li key={c.title} className="border-l-2 border-olive pl-4">
               <h3 className="text-[20px] font-bold">
-                {c.title} <span className="font-mono text-[13px] font-normal text-graphite">· {c.from}–{c.to > 2026 ? "now" : c.to}</span>
+                {c.title} <span className="font-mono text-[14px] font-normal text-graphite">· {c.from}–{c.to > 2026 ? "now" : c.to}</span>
               </h3>
               <ul className="mt-2 flex flex-col gap-2">
                 {LOOP.map((ph) => {
                   const here = inLap.filter((it) => it.ph === ph).sort((a, b) => a.t - b.t);
                   if (!here.length) return null;
                   return (
-                    <li key={ph} className="text-[15px]">
+                    <li key={ph} className="text-[16px]">
                       <span className="font-mono text-[12px] uppercase text-olive">{PHASE_VERB[ph]} </span>
                       {here.map((it, i) => (
                         <React.Fragment key={it.key}>
@@ -323,7 +323,7 @@ export const Spiral = ({ projects }) => {
             </li>
           );
         })}
-        <li className="pl-4 font-mono text-[13px] text-graphite">↻ and outwards, into the next lap</li>
+        <li className="pl-4 font-mono text-[14px] text-graphite">↻ and outwards, into the next lap</li>
       </ol>
     </>
   );

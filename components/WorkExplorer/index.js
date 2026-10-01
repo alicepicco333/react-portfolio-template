@@ -96,14 +96,14 @@ const IndexList = ({ projects }) => {
                 <div className="mb-2 aspect-[4/3] overflow-hidden border border-ink laptop:hidden">
                   <Media project={p} stillOnly className="h-full w-full object-cover" />
                 </div>
-                <h3 className={`fu-display text-[34px] leading-[1.04] transition-colors duration-150 tablet:text-[44px] group-hover:text-olive ${on ? "laptop:text-olive" : ""}`}>
+                <h3 className={`fu-display text-[34px] leading-[1.04] transition-colors duration-150 tablet:text-phi2 group-hover:text-olive ${on ? "laptop:text-olive" : ""}`}>
                   {shortTitle(p.title)}
                 </h3>
-                <span className="font-mono text-[13px] leading-relaxed text-graphite laptop:row-span-2 laptop:pt-2 laptop:text-right">
+                <span className="font-mono text-[14px] leading-relaxed text-graphite laptop:row-span-2 laptop:pt-2 laptop:text-right">
                   {categoryMeta(p.category).short} · {yearOf(p)}
                   {teamOf(p) && <span className="block">{teamOf(p)}</span>}
                 </span>
-                <p className="max-w-[60ch] text-[16px] leading-snug text-ink/80">{p.description}</p>
+                <p className="max-w-[60ch] text-[18px] leading-snug text-ink/80">{p.description}</p>
               </Link>
             </li>
           );
@@ -121,7 +121,7 @@ const IndexList = ({ projects }) => {
               />
             ))}
           </div>
-          {current && <p className="mt-3 font-mono text-[13px] leading-relaxed text-graphite">{skillIds(current.id).map(labelOf).join(" · ")}</p>}
+          {current && <p className="mt-3 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(current.id).map(labelOf).join(" · ")}</p>}
         </div>
       </div>
     </div>
@@ -133,7 +133,7 @@ const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
     <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
-      <div className="flex items-center justify-between font-mono text-[13px]">
+      <div className="flex items-center justify-between font-mono text-[14px]">
         <span className="text-olive">
           {categoryMeta(project.category).short.toUpperCase()} · {yearOf(project)}
         </span>
@@ -141,7 +141,7 @@ const ProjectCard = ({ project, skills = true }) => (
       </div>
       <span className="text-[22px] font-bold leading-tight">{shortTitle(project.title)}</span>
       <span>{project.description}</span>
-      {skills && <span className="font-mono text-[13px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>}
+      {skills && <span className="font-mono text-[14px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>}
       <Link href={`/projects/${project.id}`} className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
         View project →
       </Link>
@@ -152,12 +152,12 @@ const ProjectCard = ({ project, skills = true }) => (
 const Uses = ({ project, row = false, children }) => (
   <figure className={`flex gap-4 border border-ink bg-paper p-4 ${row ? "flex-row items-start" : "flex-col"}`}>
     {row ? <div className="w-[180px] shrink-0">{children}</div> : children}
-    <dl className={`grid flex-1 gap-x-3 text-[15px] leading-snug ${row ? "grid-cols-1 gap-y-1 [&>dd]:mb-2" : "grid-cols-[112px_1fr] gap-y-2"}`}>
-      <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
+    <dl className={`grid flex-1 gap-x-3 text-[16px] leading-snug ${row ? "grid-cols-1 gap-y-1 [&>dd]:mb-2" : "grid-cols-[112px_1fr] gap-y-2"}`}>
+      <dt className="font-mono text-[14px] uppercase text-olive">Disciplines</dt>
       <dd>{skillIds(project.id).map(labelOf).join(" · ")}</dd>
       {project.summary?.stack && (
         <>
-          <dt className="font-mono text-[13px] uppercase text-olive">Technologies</dt>
+          <dt className="font-mono text-[14px] uppercase text-olive">Technologies</dt>
           <dd>{project.summary.stack}</dd>
         </>
       )}
@@ -167,7 +167,7 @@ const Uses = ({ project, row = false, children }) => (
 
 
 const Select = ({ label, value, onChange, options }) => (
-  <label className="flex min-w-[150px] flex-1 flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex-none">
+  <label className="flex min-w-[150px] flex-1 flex-col gap-1 font-mono text-[14px] text-graphite desktop:flex-none">
     {label}
     <select
       value={value}
@@ -300,20 +300,20 @@ const WorkExplorer = ({ projects: given }) => {
       id="work"
       aria-labelledby="work-title"
       ref={rootRef}
-      className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8"
+      className="scroll-mt-16 border-t border-ink px-4 py-16 tablet:px-8 tablet:py-24"
       onKeyDown={(e) => {
         if (!plainKey(e)) return;
         if (/^[igIG]$/.test(e.key)) setView("Grid");
         if ((e.key === "w" || e.key === "W") && window.matchMedia("(min-width: 1280px)").matches) setView("Wheel");
       }}
     >
-      <div className="flex flex-col gap-6 pb-6 desktop:flex-row desktop:items-end desktop:justify-between">
+      <div className="flex flex-col gap-6 pb-12 desktop:flex-row desktop:items-end desktop:justify-between">
         <div className="fu-reveal flex flex-col gap-2">
-          <h2 id="work-title" className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>
+          <h2 id="work-title" className="fu-section-title">Selected work</h2>
         </div>
         <div className="flex w-full flex-wrap items-end gap-3 desktop:w-auto">
           {/* design and research together; live coding on its own */}
-          <div className="flex flex-col gap-1 font-mono text-[13px] text-graphite">
+          <div className="flex flex-col gap-1 font-mono text-[14px] text-graphite">
             Show
             <div className="flex" role="group" aria-label="Show">
               {[
@@ -333,7 +333,7 @@ const WorkExplorer = ({ projects: given }) => {
             </div>
           </div>
           <Select label="Year" value={year} onChange={setYear} options={[["all", "All years"], ...years.map((y) => [y, y])]} />
-          <div className="hidden flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex">
+          <div className="hidden flex-col gap-1 font-mono text-[14px] text-graphite desktop:flex">
             View
             <div className="flex" role="group" aria-label="View">
               {VIEWS.map((v) => (
@@ -365,15 +365,15 @@ const WorkExplorer = ({ projects: given }) => {
                     <Media project={p} stillOnly className="h-full w-full object-cover" />
                   </div>
                   <div className="flex flex-grow flex-col gap-1.5 px-3.5 pb-3.5 pt-3">
-                    <div className="flex flex-wrap items-center justify-between gap-x-3 font-mono text-[13px]">
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 font-mono text-[14px]">
                       <span className="whitespace-nowrap text-olive">
                         {categoryMeta(p.category).short.toUpperCase()} · {yearOf(p)}
                       </span>
                       {teamOf(p) && <span className="whitespace-nowrap text-graphite">{teamOf(p)}</span>}
                     </div>
                     <h3 className="text-[18px] font-bold leading-tight">{shortTitle(p.title)}</h3>
-                    <p className="text-[15px] leading-snug text-ink/85">{p.description}</p>
-                    <p className="mt-auto pt-1.5 font-mono text-[13px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
+                    <p className="text-[16px] leading-snug text-ink/85">{p.description}</p>
+                    <p className="mt-auto pt-1.5 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
                   </div>
                 </Link>
               </li>
@@ -481,7 +481,7 @@ const WorkExplorer = ({ projects: given }) => {
       )}
 
       {filtered && view !== "Grid" && (
-        <p className="mt-4 hidden font-mono text-[13px] text-graphite desktop:block">
+        <p className="mt-4 hidden font-mono text-[14px] text-graphite desktop:block">
           Showing {shown.length} of {projects.length}; the rest are dimmed.
         </p>
       )}

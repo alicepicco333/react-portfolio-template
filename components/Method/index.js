@@ -19,7 +19,7 @@ const MethodStrip = ({ used = [], current = null, arrows = true, className = "" 
   const named = METHOD.filter(([k]) => used.includes(k) || k === current).map(([, v]) => v);
   const label = current ? `Method step: ${verbOf(current)}` : `Method: ${named.join(", ")}`;
   return (
-    <p className={`flex flex-wrap items-center gap-y-1 font-mono text-[13px] ${arrows ? "gap-x-3" : "gap-x-2.5"} ${className}`} aria-label={label}>
+    <p className={`flex flex-wrap items-center gap-y-1 font-mono text-[14px] ${arrows ? "gap-x-3" : "gap-x-2.5"} ${className}`} aria-label={label}>
       {METHOD.map(([k, verb], i) => {
         const here = current === k;
         const on = here || (!current && used.includes(k));

@@ -25,11 +25,11 @@ const Accessibility = () => (
           <h2 id="a11y-controls" className="text-[28px] font-semibold tracking-[-0.02em]">
             Your settings
           </h2>
-          <p className="mt-3 text-[17px] leading-relaxed">
+          <p className="mt-3 text-[18px] leading-relaxed">
             Both settings are also in the navigation bar of every page (in the menu on phones). They are saved on this device only.
           </p>
           <A11yControls className="mt-4" />
-          <ul className="mt-5 list-disc space-y-2 pl-5 text-[17px] leading-relaxed">
+          <ul className="mt-5 list-disc space-y-2 pl-5 text-[18px] leading-relaxed">
             <li>
               <strong>Motion</strong> turns off the map&rsquo;s entrance, the glow, card transitions and the looping previews.
               It is off by default if your device asks for reduced motion.
@@ -44,7 +44,7 @@ const Accessibility = () => (
           <h2 id="a11y-measures" className="text-[28px] font-semibold tracking-[-0.02em]">
             What the site does
           </h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[17px] leading-relaxed">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-[18px] leading-relaxed">
             <li>Body text and labels reach a contrast ratio of at least 4.5:1; large headings at least 3:1.</li>
             <li>A &ldquo;Skip to main content&rdquo; link is the first thing you reach with the keyboard.</li>
             <li>Every interactive element, including the nodes of the skill map and the work wheel, can be reached and used with the keyboard, with a visible focus ring.</li>
@@ -60,7 +60,7 @@ const Accessibility = () => (
           <h2 id="a11y-limits" className="text-[28px] font-semibold tracking-[-0.02em]">
             Known limits
           </h2>
-          <p className="mt-4 text-[17px] leading-relaxed">
+          <p className="mt-4 text-[18px] leading-relaxed">
             Some project screenshots show interfaces with small text; the same information is written out on each project page.
             The wheel view is shown on large screens only; smaller screens get the project grid.
           </p>
@@ -70,7 +70,7 @@ const Accessibility = () => (
           <h2 id="a11y-contact" className="text-[28px] font-semibold tracking-[-0.02em]">
             Something not working?
           </h2>
-          <p className="mt-4 text-[17px] leading-relaxed">
+          <p className="mt-4 text-[18px] leading-relaxed">
             Please tell me at{" "}
             <a href={`mailto:${data.email}`} className="font-semibold text-olive underline underline-offset-2">
               {data.email}

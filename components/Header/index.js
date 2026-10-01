@@ -27,7 +27,7 @@ const Header = () => {
       <div className="flex h-16 items-center gap-6 px-4 tablet:px-8">
         <Link href="/" className="-m-2 flex items-center gap-3 p-2" aria-label={`${name}, home`}>
           <GraphMark size={34} />
-          <span className="text-[17px] font-semibold lowercase tracking-[-0.01em]" aria-hidden="true">
+          <span className="text-[18px] font-semibold lowercase tracking-[-0.01em]" aria-hidden="true">
             {name}
           </span>
         </Link>
@@ -76,7 +76,7 @@ const Header = () => {
             cv
           </Link>
           <A11yControls className="pt-5" />
-          <a href={`mailto:${email}`} className="block pt-5 text-[15px] text-olive underline">
+          <a href={`mailto:${email}`} className="block pt-5 text-[16px] text-olive underline">
             {email}
           </a>
         </nav>

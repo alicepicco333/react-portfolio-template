@@ -78,7 +78,7 @@ const Resume = () => {
               {resume.skills.map((row) => (
                 <div key={row.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr] tablet:gap-4">
                   <dt className="fu-meta text-fieldgrey">{row.group}</dt>
-                  <dd className="text-[17px] leading-snug">{row.items.join(" · ")}</dd>
+                  <dd className="text-[18px] leading-snug">{row.items.join(" · ")}</dd>
                 </div>
               ))}
             </dl>
@@ -105,7 +105,7 @@ const Resume = () => {
               {resume.certifications.map((c) => (
                 <li key={c.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr_220px] tablet:gap-4">
                   <span className="fu-meta text-fieldgrey">{c.date}</span>
-                  <span className="text-[17px] font-semibold leading-snug">{c.name}</span>
+                  <span className="text-[18px] font-semibold leading-snug">{c.name}</span>
                   <span className="fu-meta text-graphite tablet:text-right">{c.issuer}</span>
                 </li>
               ))}

@@ -146,7 +146,7 @@ function FlexibleSection({ id, index, toc, section }) {
             <div key={c.title} className="flex flex-col gap-2 border-t-4 border-olive bg-paper p-5">
               {c.meta && <span className="fu-meta text-fieldgrey">{c.meta}</span>}
               <h3 className="fu-title text-xl">{c.title}</h3>
-              <p className="text-[15px] leading-relaxed text-graphite">{c.text}</p>
+              <p className="text-[16px] leading-relaxed text-graphite">{c.text}</p>
             </div>
           ))}
         </div>
@@ -177,7 +177,7 @@ function FlexibleSection({ id, index, toc, section }) {
               <span className="fu-meta pt-1 text-fieldgrey">{it.id || String(i + 1).padStart(2, "0")}</span>
               <div className="flex flex-col gap-1">
                 <span className="text-lg font-semibold leading-snug">{it.title}</span>
-                <span className="text-[15px] leading-relaxed text-graphite">{it.text}</span>
+                <span className="text-[16px] leading-relaxed text-graphite">{it.text}</span>
               </div>
             </li>
           ))}
@@ -190,7 +190,7 @@ function FlexibleSection({ id, index, toc, section }) {
           ))}
         </div>
       )}
-      {note && <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[15px] leading-snug text-graphite">{note}</p>}
+      {note && <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[16px] leading-snug text-graphite">{note}</p>}
     </Section>
   );
 }
@@ -229,7 +229,7 @@ function PartHeader({ part, title, text }) {
     <div className="border-t border-ink bg-ink px-4 py-10 text-bone tablet:px-10">
       <span className="fu-meta text-bone/70">{part}</span>
       <h2 className="fu-display mt-1 text-[40px] leading-none tablet:text-phi2">{title}</h2>
-      {text && <p className="mt-3 max-w-[640px] text-[17px] leading-relaxed text-bone/80">{text}</p>}
+      {text && <p className="mt-3 max-w-[640px] text-[18px] leading-relaxed text-bone/80">{text}</p>}
     </div>
   );
 }
@@ -284,7 +284,7 @@ export default function CaseStudy({ data }) {
       <>
         {context?.text && <Lead>{context.text}</Lead>}
         {overview.length > 0 && (
-          <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[15px] tablet:grid-cols-[160px_1fr]">
+          <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[16px] tablet:grid-cols-[160px_1fr]">
             {overview.map((row) => (
               <div key={row.label} className="contents">
                 <dt className="text-fieldgrey">{row.label}</dt>
@@ -298,7 +298,7 @@ export default function CaseStudy({ data }) {
             {context.goals.map((g) => (
               <div key={g.title} className="bg-paper p-5">
                 <h3 className="fu-title mb-2 text-xl">{g.title}</h3>
-                <p className="text-[15px] leading-relaxed text-graphite">{g.text}</p>
+                <p className="text-[16px] leading-relaxed text-graphite">{g.text}</p>
               </div>
             ))}
           </div>
@@ -311,7 +311,7 @@ export default function CaseStudy({ data }) {
           <div key={m.title} className="flex flex-col gap-2 border-t border-ink pt-3">
             <span className="fu-meta text-fieldgrey">{m.meta}</span>
             <h3 className="fu-title text-xl">{m.title}</h3>
-            <p className="text-[15px] leading-relaxed text-graphite">{m.text}</p>
+            <p className="text-[16px] leading-relaxed text-graphite">{m.text}</p>
           </div>
         ))}
       </div>
@@ -323,12 +323,12 @@ export default function CaseStudy({ data }) {
         <div className="flex flex-col gap-3">
           <span className="fu-meta text-fieldgrey">{persona.segment}</span>
           <h3 className="fu-display text-[40px]">{persona.name}</h3>
-          <p className="text-[15px] text-graphite">{persona.facts}</p>
+          <p className="text-[16px] text-graphite">{persona.facts}</p>
           <blockquote className="border-l-4 border-ink pl-4 text-xl leading-snug">“{persona.quote}”</blockquote>
         </div>
         <div className="flex flex-col gap-3">
-          <p className="text-[15px] leading-relaxed">{persona.story}</p>
-          <ul className="flex flex-col gap-2 border-t border-ink pt-3 text-[15px]">
+          <p className="text-[16px] leading-relaxed">{persona.story}</p>
+          <ul className="flex flex-col gap-2 border-t border-ink pt-3 text-[16px]">
             {persona.needs.map((need) => (
               <li key={need} className="flex gap-2">
                 <span aria-hidden="true">→</span>
@@ -354,7 +354,7 @@ export default function CaseStudy({ data }) {
                 <span className="fu-meta pt-1 text-fieldgrey">{issue.id}</span>
                 <div className="flex flex-col gap-1">
                   <span className="text-lg font-semibold leading-snug">{issue.title}</span>
-                  <span className="text-[15px] leading-relaxed text-graphite">{issue.evidence}</span>
+                  <span className="text-[16px] leading-relaxed text-graphite">{issue.evidence}</span>
                 </div>
                 <div className="flex flex-col gap-1 pt-1">
                   <Scale value={issue.impact} label="Impact" />
@@ -381,7 +381,7 @@ export default function CaseStudy({ data }) {
               {r.id} · addresses {r.addresses}
             </span>
             <h3 className="fu-title text-xl">{r.title}</h3>
-            <p className="text-[15px] leading-relaxed text-graphite">{r.text}</p>
+            <p className="text-[16px] leading-relaxed text-graphite">{r.text}</p>
           </div>
         ))}
       </div>
@@ -392,8 +392,8 @@ export default function CaseStudy({ data }) {
           <li key={it.name} className="flex flex-col gap-2 border-t-4 border-ink pt-3">
             <span className="fu-meta text-fieldgrey">{it.date}</span>
             <h3 className="fu-title text-xl">{it.name}</h3>
-            <span className="text-[15px] font-medium">{it.evaluation}</span>
-            <p className="text-[15px] leading-relaxed text-graphite">{it.text}</p>
+            <span className="text-[16px] font-medium">{it.evaluation}</span>
+            <p className="text-[16px] leading-relaxed text-graphite">{it.text}</p>
           </li>
         ))}
       </ol>
@@ -462,7 +462,7 @@ export default function CaseStudy({ data }) {
         <Lead>{results.text}</Lead>
         <div className="flex max-w-[720px] flex-col gap-3">
           {results.sus.map((s) => (
-            <div key={s.label} className="grid grid-cols-[140px_1fr_56px] items-center gap-3 text-[15px]">
+            <div key={s.label} className="grid grid-cols-[140px_1fr_56px] items-center gap-3 text-[16px]">
               <span className="text-fieldgrey">{s.label}</span>
               <span className="h-4 bg-concrete">
                 <span className="block h-full bg-ink" style={{ width: `${s.value}%` }} />
@@ -473,7 +473,7 @@ export default function CaseStudy({ data }) {
           <span className="fu-meta text-fieldgrey">System Usability Scale, 0–100</span>
         </div>
         <div className="max-w-[720px] overflow-x-auto">
-          <table className="w-full text-left text-[15px]">
+          <table className="w-full text-left text-[16px]">
             <thead>
               <tr className="border-b border-ink">
                 <th className="py-2 pr-4 font-medium text-fieldgrey">Task (final version)</th>
@@ -548,7 +548,7 @@ export default function CaseStudy({ data }) {
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col gap-2 border-t border-ink pt-3">
               <span className="fu-display text-[48px] tabular-nums tablet:text-phi3">{s.value}</span>
-              <span className="max-w-[240px] text-[15px] leading-snug text-graphite">{s.label}</span>
+              <span className="max-w-[240px] text-[16px] leading-snug text-graphite">{s.label}</span>
             </div>
           ))}
         </section>

@@ -148,18 +148,18 @@ const Journey = ({ projects }) => {
     <section
       id="journey"
       aria-labelledby="journey-title"
-      className="scroll-mt-16 px-4 pb-20 pt-10 tablet:px-8"
+      className="scroll-mt-16 border-t border-ink px-4 py-16 tablet:px-8 tablet:py-24"
     >
-      <div className="flex flex-col gap-5 border-t border-ink pt-5">
+      <div className="flex flex-col gap-8">
         <div className="fu-reveal flex flex-wrap items-end justify-between gap-4">
           <div className="flex max-w-[720px] flex-col gap-2">
             <h2
               id="journey-title"
-              className="text-[28px] font-semibold tracking-[-0.02em]"
+              className="fu-section-title"
             >
               Timeline
             </h2>
-            <p className="text-[17px] leading-snug">{journey.lead}</p>
+            <p className="text-[18px] leading-snug">{journey.lead}</p>
           </div>
           <div className="flex flex-wrap items-end gap-4">
             <ModelSwitch model={model} setModel={setModel} />
@@ -189,7 +189,7 @@ const Journey = ({ projects }) => {
         </div>
 
         <p
-          className="max-w-[860px] font-mono text-[13px] leading-relaxed text-graphite"
+          className="max-w-[860px] font-mono text-[14px] leading-relaxed text-graphite"
           aria-live="polite"
         >
           {MODELS.find((m) => m.id === model).note}
@@ -359,9 +359,9 @@ const Journey = ({ projects }) => {
                     key={c.title}
                     className="flex flex-col gap-1 border-t border-ink pt-3"
                   >
-                    <span className="font-mono text-[13px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</span>
+                    <span className="font-mono text-[14px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</span>
                     <span className="text-[18px] font-bold">{c.title}</span>
-                    <span className="text-[15px] leading-snug">{c.text}</span>
+                    <span className="text-[16px] leading-snug">{c.text}</span>
                   </li>
                 ))}
               </ol>
@@ -407,16 +407,16 @@ const Journey = ({ projects }) => {
                     key={c.title}
                     className="border-l-2 border-olive pb-6 pl-4"
                   >
-                    <p className="font-mono text-[13px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</p>
+                    <p className="font-mono text-[14px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</p>
                     <h3 className="text-[20px] font-bold">{c.title}</h3>
                     <p className="mt-1 text-[16px] leading-snug">{c.text}</p>
                     <ul className="mt-3 flex flex-col gap-2">
                       {items.map((it) => (
                         <li
                           key={it.kind + it.label}
-                          className="flex gap-3 text-[15px] leading-snug"
+                          className="flex gap-3 text-[16px] leading-snug"
                         >
-                          <span className="w-[64px] shrink-0 font-mono text-[13px] text-graphite">
+                          <span className="w-[64px] shrink-0 font-mono text-[14px] text-graphite">
                             {it.kind}
                           </span>
                           {it.href ? (
@@ -429,7 +429,7 @@ const Journey = ({ projects }) => {
                           ) : (
                             <span>
                               <span className="font-semibold">{it.label}</span>{" "}
-                              <span className="font-mono text-[13px] text-graphite">
+                              <span className="font-mono text-[14px] text-graphite">
                                 {it.dates}
                               </span>
                             </span>

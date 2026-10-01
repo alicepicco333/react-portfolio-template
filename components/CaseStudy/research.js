@@ -56,7 +56,7 @@ export function Interviews({ data }) {
                 </li>
               ))}
             </ul>
-            <ul className="mt-auto flex flex-col gap-2 border-t border-ink pt-3 text-[15px] leading-snug">
+            <ul className="mt-auto flex flex-col gap-2 border-t border-ink pt-3 text-[16px] leading-snug">
               {s.findings.map((f) => (
                 <li key={f} className="flex gap-2">
                   <span aria-hidden="true" className="text-olive">→</span>
@@ -86,7 +86,7 @@ export function Interviews({ data }) {
                   onClick={() => setQuote(i)}
                   aria-pressed={i === quote}
                   aria-label={`Quote ${i + 1} of ${quotes.length}, ${item.who}`}
-                  className={`h-8 w-8 border border-ink text-[13px] font-medium ${
+                  className={`h-8 w-8 border border-ink text-[14px] font-medium ${
                     i === quote ? "bg-ink text-bone" : "hover:bg-paper"
                   }`}
                 >
@@ -106,7 +106,7 @@ export function Interviews({ data }) {
               <li key={t.title} className="flex flex-col gap-2">
                 <span className="fu-meta text-fieldgrey">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-lg font-semibold leading-snug">{t.title}</span>
-                <span className="text-[15px] leading-relaxed text-graphite">{t.text}</span>
+                <span className="text-[16px] leading-relaxed text-graphite">{t.text}</span>
                 <span className="mt-1 border-t border-concrete pt-2 text-[14px] leading-snug">
                   <span className="font-semibold text-olive">Design → </span>
                   {t.design}
@@ -194,22 +194,22 @@ function Protagonist({ m, traits }) {
         <div className="flex flex-col gap-1">
           <span className="fu-meta text-olive">Protagonist · “{m.scenario}”</span>
           <h3 className="fu-display text-[40px] leading-none">{m.name}</h3>
-          <span className="text-[15px] text-graphite">
+          <span className="text-[16px] text-graphite">
             {m.age} · {m.job} · {m.segment}
           </span>
         </div>
       </div>
       <div className="flex flex-col gap-5">
         <blockquote className="border-l-4 border-olive pl-4 text-xl leading-snug">“{m.quote}”</blockquote>
-        <p className="text-[15px] leading-relaxed">{m.summary}</p>
+        <p className="text-[16px] leading-relaxed">{m.summary}</p>
         {m.useCase && (
-          <p className="text-[15px] leading-relaxed text-graphite">
+          <p className="text-[16px] leading-relaxed text-graphite">
             <span className="font-semibold text-ink">Use case. </span>
             {m.useCase}
           </p>
         )}
         <div className="grid items-center gap-5 border-t border-ink pt-4 laptop:grid-cols-[minmax(0,1fr)_240px]">
-          <ul className="flex flex-col gap-2 text-[15px]">
+          <ul className="flex flex-col gap-2 text-[16px]">
             {m.needs.map((need) => (
               <li key={need} className="flex gap-2">
                 <span aria-hidden="true" className="text-olive">→</span>
@@ -244,11 +244,11 @@ function CastCard({ m, traits, protagonist, wide = false }) {
           <h4 className="text-xl font-semibold leading-tight">
             {m.name.split(" ")[0]}, {m.age}
           </h4>
-          <span className="text-[13px] leading-snug text-graphite">{m.job}</span>
+          <span className="text-[14px] leading-snug text-graphite">{m.job}</span>
         </div>
       </div>
       <span className="fu-meta self-start border border-ink px-2 py-1">{m.segment}</span>
-      <blockquote className="text-[17px] leading-snug">“{m.quote}”</blockquote>
+      <blockquote className="text-[18px] leading-snug">“{m.quote}”</blockquote>
       <p className="text-[14px] leading-relaxed text-graphite">{m.summary}</p>
       </div>
       <div
@@ -309,7 +309,7 @@ function CastChart({ members, traits, notes, clusters }) {
           series={series}
           className="mx-auto max-w-[460px]"
         />
-        <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-[13px] text-graphite">
+        <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-[14px] text-graphite">
           {traits.map((t) => (
             <div key={t} className="flex gap-1">
               <dt className="font-semibold text-ink">{t}:</dt>
@@ -368,7 +368,7 @@ function CastChart({ members, traits, notes, clusters }) {
           </p>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-[13px]">
+          <table className="w-full text-left text-[14px]">
             <caption className="sr-only">Personality traits per persona, 1 to 5</caption>
             <thead>
               <tr className="border-b border-ink">
@@ -450,7 +450,7 @@ export function Cast({ data }) {
           <SubHead meta="From the cast card">Requirements the cast adds up to</SubHead>
           <ol className="grid gap-x-6 tablet:grid-cols-2">
             {requirements.map((r) => (
-              <li key={r.id} className="grid grid-cols-[64px_1fr] gap-2 border-b border-concrete py-2 text-[15px]">
+              <li key={r.id} className="grid grid-cols-[64px_1fr] gap-2 border-b border-concrete py-2 text-[16px]">
                 <span className="fu-meta pt-[3px] text-fieldgrey">{r.id}</span>
                 <span>{r.title}</span>
               </li>
@@ -585,7 +585,7 @@ export function UrgencyExplorer({ data }) {
             <span />
             <span className="fu-meta flex items-center justify-center text-fieldgrey">Persistence →</span>
           </div>
-          <div className="flex flex-wrap gap-4 text-[13px] text-graphite">
+          <div className="flex flex-wrap gap-4 text-[14px] text-graphite">
             <span className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3 rounded-full bg-olive" /> Critical</span>
             <span className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3 rounded-full bg-ink" /> High</span>
             <span className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3 rounded-full border-2 border-ink" /> Medium or low</span>
@@ -594,7 +594,7 @@ export function UrgencyExplorer({ data }) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <p className="text-[15px] leading-relaxed">{version.note}</p>
+          <p className="text-[16px] leading-relaxed">{version.note}</p>
           <ol className="flex flex-col border-t border-ink">
             {version.issues.map((i) => {
               const on = active === i.id;
@@ -682,7 +682,7 @@ export function BeforeAfterPairs({ data }) {
             <figure key={kind} className="flex flex-col gap-3">
               <span className={`fu-meta ${kind === "after" ? "text-olive" : "text-fieldgrey"}`}>{label}</span>
               <Phone src={`${path}${kind}-${p.key}.jpg`} alt={`${p.label}, ${kind === "before" ? "original app" : "redesign"}`} />
-              <figcaption className="text-[14px] leading-snug text-graphite tablet:text-[15px]">{note}</figcaption>
+              <figcaption className="text-[14px] leading-snug text-graphite tablet:text-[16px]">{note}</figcaption>
             </figure>
           ))}
         </div>
@@ -720,7 +720,7 @@ export function DesignSystem({ data }) {
         <dl className="grid grid-cols-2 gap-4 tablet:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col-reverse gap-1 border-t border-ink pt-3">
-              <dt className="text-[15px] text-graphite">{s.label}</dt>
+              <dt className="text-[16px] text-graphite">{s.label}</dt>
               <dd className="fu-display text-[48px] leading-none">{s.value}</dd>
             </div>
           ))}
@@ -763,7 +763,7 @@ export function DesignSystem({ data }) {
                 <li key={p.label} className="flex flex-col gap-2 p-3" style={{ background: p.bg, color: p.fg, fontFamily: "'DM Sans', sans-serif" }}>
                   <span className="text-[28px] font-medium leading-none">Aa</span>
                   <span className="text-[12px] leading-tight">{p.label}</span>
-                  <span className="text-[13px] font-medium">
+                  <span className="text-[14px] font-medium">
                     {p.ratio} : 1 · {p.ratio >= 7 ? "AAA" : "AA"}
                   </span>
                 </li>
@@ -829,7 +829,7 @@ export function DesignSystem({ data }) {
       {illustrations?.items?.length > 0 && (
         <div className="flex flex-col gap-4">
           <SubHead meta={illustrations.meta}>Illustrations</SubHead>
-          {illustrations.lead && <p className="max-w-[720px] text-[15px] leading-relaxed text-graphite">{illustrations.lead}</p>}
+          {illustrations.lead && <p className="max-w-[720px] text-[16px] leading-relaxed text-graphite">{illustrations.lead}</p>}
           <ul className="grid gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
             {illustrations.items.map((it) => (
               <li key={it.name} className="flex flex-col gap-3 bg-paper p-3">
@@ -844,8 +844,8 @@ export function DesignSystem({ data }) {
                   />
                 </div>
                 <span className="flex items-baseline justify-between gap-3 px-1 pb-1">
-                  <span className="text-[15px] font-semibold">{it.name}</span>
-                  <span className="text-right text-[13px] text-graphite">{it.use}</span>
+                  <span className="text-[16px] font-semibold">{it.name}</span>
+                  <span className="text-right text-[14px] text-graphite">{it.use}</span>
                 </span>
               </li>
             ))}
@@ -863,8 +863,8 @@ export function DesignSystem({ data }) {
                   <img src={withBase(t.src)} alt={`${t.title}: ${t.caption}`} loading="lazy" width={t.w / 2} height={t.h / 2} className="h-auto w-full max-w-full" style={{ maxWidth: t.w / 2 }} />
                 </div>
                 <figcaption className="flex flex-col">
-                  <span className="text-[15px] font-semibold">{t.title}</span>
-                  <span className="text-[13px] text-graphite">{t.caption}</span>
+                  <span className="text-[16px] font-semibold">{t.title}</span>
+                  <span className="text-[14px] text-graphite">{t.caption}</span>
                 </figcaption>
               </figure>
             ))}

@@ -29,10 +29,10 @@ const ProjectGraph = ({ projectId }) => {
               className="flex min-h-[44px] w-full items-center justify-between border-b border-ink/30 text-left text-[16px] hover:text-olive"
             >
               <span className={picked === n.id ? "font-semibold text-olive" : ""}>{n.label}</span>
-              <span className="font-mono text-[13px] text-graphite">{clusterOf(n.id).label.toUpperCase()}</span>
+              <span className="font-mono text-[14px] text-graphite">{clusterOf(n.id).label.toUpperCase()}</span>
             </button>
             {picked === n.id && (
-              <div className="flex flex-col gap-1.5 border-b border-ink/30 py-3 text-[15px] leading-snug" aria-live="polite">
+              <div className="flex flex-col gap-1.5 border-b border-ink/30 py-3 text-[16px] leading-snug" aria-live="polite">
                 <span className="font-mono text-[14px] text-graphite">{n.tools.join(" · ")}</span>
                 {others.length > 0 && (
                   <span>

@@ -128,7 +128,7 @@ export default function ProjectPage({ project, number, next }) {
               <dl className="grid max-w-[980px] grid-cols-2 gap-x-6 gap-y-5 border-y border-ink py-5 laptop:grid-cols-4" aria-label="Key facts">
                 {project.facts.map(([value, label]) => (
                   <div key={label} className="flex flex-col-reverse gap-1">
-                    <dt className="text-[15px] leading-snug text-graphite">{label}</dt>
+                    <dt className="text-[16px] leading-snug text-graphite">{label}</dt>
                     <dd className="text-[30px] font-semibold leading-none tracking-[-0.02em] text-olive tabular-nums tablet:text-[36px]">{value}</dd>
                   </div>
                 ))}
@@ -152,7 +152,7 @@ export default function ProjectPage({ project, number, next }) {
                   .map(([label, value]) => (
                   <div key={label} className="flex flex-col gap-1">
                     <dt className="font-mono text-[14px] uppercase tracking-[0.1em] text-olive">{label}</dt>
-                    <dd className="text-[17px] leading-snug">{value}</dd>
+                    <dd className="text-[18px] leading-snug">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -171,11 +171,11 @@ export default function ProjectPage({ project, number, next }) {
                       <div className="flex flex-col gap-2">
                         <p className="text-[19px] font-semibold leading-snug">{d.choice}</p>
                         <dl className="grid gap-x-4 gap-y-1.5 text-[16px] leading-snug tablet:grid-cols-[80px_1fr]">
-                          <dt className="font-mono text-[13px] uppercase text-graphite tablet:pt-0.5">Why</dt>
+                          <dt className="font-mono text-[14px] uppercase text-graphite tablet:pt-0.5">Why</dt>
                           <dd>{d.why}</dd>
                           {d.result && (
                             <>
-                              <dt className="font-mono text-[13px] uppercase text-graphite tablet:pt-0.5">Result</dt>
+                              <dt className="font-mono text-[14px] uppercase text-graphite tablet:pt-0.5">Result</dt>
                               <dd>{d.result}</dd>
                             </>
                           )}

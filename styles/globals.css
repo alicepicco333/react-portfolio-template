@@ -126,6 +126,16 @@ html[data-motion="off"] ::after {
     line-height: 0.95;
     letter-spacing: -0.035em;
   }
+  /* every home-page section opens on the same title: phi3 on wide screens */
+  .fu-section-title {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+  }
+  @media (min-width: 768px) {
+    .fu-section-title { font-size: 68px; }
+  }
   .fu-title {
     font-weight: 600;
     line-height: 1.08;

@@ -63,12 +63,12 @@ const Home = () => {
         <WorkExplorer projects={finished} />
         <InProgress projects={wip} />
 
-        <section id="about" aria-labelledby="about-title" className="scroll-mt-16 bg-olive px-4 pb-20 pt-8 text-white tablet:px-8">
+        <section id="about" aria-labelledby="about-title" className="scroll-mt-16 bg-olive px-4 py-16 text-white tablet:px-8 tablet:py-24">
           <div className="grid gap-x-8 gap-y-10 laptop:grid-cols-4">
-            <h2 id="about-title" className="fu-reveal text-[28px] font-semibold tracking-[-0.02em]">About</h2>
+            <h2 id="about-title" className="fu-reveal fu-section-title">About</h2>
             <div className="flex flex-col gap-10 laptop:col-span-3">
-              <p className="fu-reveal max-w-[980px] text-[28px] font-medium leading-[1.2] tracking-[-0.01em] tablet:text-[40px]">{about.lead}</p>
-              <div className="fu-reveal grid max-w-[980px] gap-6 text-[17px] leading-relaxed tablet:grid-cols-2">
+              <p className="fu-reveal max-w-[980px] text-[28px] font-medium leading-[1.2] tracking-[-0.01em] tablet:text-phi2">{about.lead}</p>
+              <div className="fu-reveal grid max-w-[980px] gap-6 text-[18px] leading-relaxed tablet:grid-cols-2">
                 {about.paragraphs.map((text) => (
                   <p key={text.slice(0, 20)}>{text}</p>
                 ))}
@@ -77,7 +77,7 @@ const Home = () => {
                 {about.practice.map((p) => (
                   <div key={p.title} className="flex flex-col gap-2 border-t-2 border-white pt-3">
                     <span className="font-mono text-[14px] uppercase tracking-[0.12em]">{p.title}</span>
-                    <span className="text-[17px] leading-snug">{p.items}</span>
+                    <span className="text-[18px] leading-snug">{p.items}</span>
                   </div>
                 ))}
               </div>
