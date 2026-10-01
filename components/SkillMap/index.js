@@ -91,7 +91,8 @@ const STEP_KEYS = ["listening", "ordering", "counting", "shaping", "playing"];
 
 const SkillMap = ({ projects }) => {
   const router = useRouter();
-  // the map rests quietly: plain labels, no lines, no card, until a skill is hovered, focused or picked
+  // the map rests quietly: the whole network in grey with plain labels; a hovered, focused or picked skill
+  // lights its own lines and neighbours and opens its card
   const quiet = true;
   const [hovered, setHovered] = useState(null);
   const [pinned, setPinned] = useState(null);
@@ -158,6 +159,7 @@ const SkillMap = ({ projects }) => {
         const q = (sel) => Array.from(s.querySelectorAll(sel));
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
         tl.from(q(".map-intro > *"), { y: 26, duration: 0.9, stagger: 0.1 }, 0);
+        drawIn(gsap, q(".map-edge"), { at: 0.25, step: 0.035, duration: 0.7 });
         tl.from(q(".map-node"), { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.035, ease: "back.out(2.2)" }, 0.35);
         tl.from(q(".map-chip-g"), { opacity: 0, y: 6, duration: 0.5, stagger: 0.025 }, 0.7);
         q(".map-cluster").forEach((el, i) => scramble(gsap, el, 0.9 + i * 0.18));
@@ -280,7 +282,7 @@ const SkillMap = ({ projects }) => {
                       y2={y2}
                       style={{ stroke: hot ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "stroke .3s, stroke-width .3s, opacity .3s" }}
                       strokeWidth={hot ? 3 : 1}
-                      opacity={hot ? 1 : 0}
+                      opacity={hot ? 1 : active ? 0.22 : 0.4}
                     />
                   );
                 })}
@@ -373,7 +375,12 @@ const SkillMap = ({ projects }) => {
                         fontFamily="Inter Tight, sans-serif"
                         fontSize="18"
                         fontWeight={isActive ? 700 : isLit ? 600 : 400}
-                        style={{ fill: isActive ? "#fff" : hovered === n.id ? "rgb(var(--olive))" : quiet && !isLit ? "rgb(var(--graphite))" : "rgb(var(--ink))", transition: "fill .2s" }}
+                        style={{
+                          fill: isActive ? "#fff" : hovered === n.id ? "rgb(var(--olive))" : quiet && !isLit ? "rgb(var(--graphite))" : "rgb(var(--ink))",
+                          transition: "fill .2s",
+                          // a plain label (no chip) keeps the lines off its letters with a halo in the page colour
+                          ...(quiet && !isActive && !isLit && hovered !== n.id ? HALO : {}),
+                        }}
                       >
                         {n.label}
                       </text>
