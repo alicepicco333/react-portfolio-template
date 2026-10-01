@@ -3,7 +3,7 @@ import Link from "next/link";
 import portfolioData from "../../data/portfolio.json";
 import { CLUSTERS, skillsOfProject } from "../Graph/data";
 import { withBase } from "../../utils";
-import { textWidth, relaxRects } from "../../utils/layout";
+import { textWidth } from "../../utils/layout";
 
 // Two ways to read the timeline. Linear stays the default; the spiral is an opt-in view of the same
 // data, also available as a plain list for small screens and assistive tech.
@@ -59,11 +59,11 @@ const phaseOf = (skills) => {
 const STUDY_PHASE = { e1: "listening", e2: "ordering", e3: "listening", e4: "listening" };
 
 const SW = 1200;
-const SH = 1060;
+const SH = 1015;
 const SX = 600;
-const SY = 530;
+const SY = 555;
 const R0 = 62; // radius where the spiral starts
-const LAP = 88; // growth per lap
+const LAP = 96; // growth per lap
 const SECTOR = 360 / LOOP.length;
 const deg = (d) => (d * Math.PI) / 180;
 // an angle along the spiral, in degrees from the top, clockwise; 360 = one lap
@@ -104,20 +104,81 @@ const spiralData = (projects) => {
   return { items, chapters };
 };
 
-// label placement: start just outside the dot, then push apart until nothing overlaps
-const layoutLabels = (items, fixed) => {
-  const init = {};
-  items.forEach((it) => {
+// label placement: for each label, try positions around its dot and keep the one that overlaps nothing,
+// crosses the fewest turns of the spiral (label and leader), and stays closest to its dot
+const LH = 22;
+// which turn of the spiral a point lies past: an integer exactly on the curve
+const turnAt = (x, y, ref) => {
+  let th = (Math.atan2(x - SX, SY - y) * 180) / Math.PI;
+  while (th - ref > 180) th -= 360;
+  while (ref - th > 180) th += 360;
+  const r = Math.hypot(x - SX, y - SY);
+  return { u: (r - R0) / LAP - th / 360, th };
+};
+// how many drawn turns a polyline of points crosses
+const crossings = (pts, a0, a1) => {
+  const ref = (Math.atan2(pts[0][0] - SX, SY - pts[0][1]) * 180) / Math.PI;
+  let n = 0;
+  let prev = turnAt(pts[0][0], pts[0][1], ref);
+  for (let i = 1; i < pts.length; i += 1) {
+    const cur = turnAt(pts[i][0], pts[i][1], ref);
+    const f0 = Math.floor(prev.u);
+    const f1 = Math.floor(cur.u);
+    if (f0 !== f1) {
+      const k = Math.max(f0, f1);
+      const al = cur.th + 360 * k;
+      if (al >= a0 && al <= a1) n += 1;
+    }
+    prev = cur;
+  }
+  return n;
+};
+const hit = (A, B) => Math.max(0, Math.min(A[2], B[2]) - Math.max(A[0], B[0])) * Math.max(0, Math.min(A[3], B[3]) - Math.max(A[1], B[1]));
+
+const placeLabels = (items, fixed, a0, a1) => {
+  const placed = fixed.map((f) => [...f]);
+  const out = {};
+  const order = [...items].sort((p, q) => p.lap - q.lap || (p.kind === "project" ? 0 : 1) - (q.kind === "project" ? 0 : 1) || p.a - q.a);
+  order.forEach((it) => {
     const w = textWidth(it.label, 13) * 1.05 + 14;
-    const s = Math.sin(deg(it.a));
-    const c = -Math.cos(deg(it.a));
-    const ox = it.x + s * 16;
-    const oy = it.y + c * 14;
-    const l = s > 0.25 ? 0 : s < -0.25 ? -w : -w / 2;
-    init[it.key] = [ox, oy, l, -11, l + w, 11];
+    let best = null;
+    for (let dr = -LAP * 0.6; dr <= LAP * 0.62; dr += LAP / 10) {
+      for (let da = -24; da <= 24; da += 4) {
+        const r = rAt(it.a) + dr;
+        if (r < R0 * 0.6) continue;
+        const [cx, cy] = xy(it.a + da, r);
+        [cx - w / 2, cx - w, cx].forEach((x0) => {
+          const R = [x0, cy - LH / 2, x0 + w, cy + LH / 2];
+          if (R[0] < 6 || R[2] > SW - 6 || R[1] < 6 || R[3] > SH - 6) return;
+          let score = 0;
+          const P = [R[0] - 4, R[1] - 4, R[2] + 4, R[3] + 4];
+          placed.forEach((F) => {
+            const o = hit(P, F);
+            if (o) score += 10000 + o;
+          });
+          if (score >= 10000 && best && best.score < 10000) return;
+          items.forEach((o) => {
+            if (o.x > R[0] - 7 && o.x < R[2] + 6 && o.y > R[1] - 6 && o.y < R[3] + 6) score += 600;
+          });
+          // spiral lines through the label: walk its middle and its two long edges
+          const n = Math.max(3, Math.ceil(w / 8));
+          [R[1] + 2, cy, R[3] - 2].forEach((yy) => {
+            score += 170 * crossings(Array.from({ length: n + 1 }, (_, k) => [R[0] + (w * k) / n, yy]), a0, a1);
+          });
+          // the leader, from the dot to the nearest point of the label
+          const lx = Math.min(Math.max(it.x, R[0]), R[2]);
+          const ly = Math.min(Math.max(it.y, R[1]), R[3]);
+          const d = Math.hypot(lx - it.x, ly - it.y);
+          if (d > 2) score += 240 * crossings(Array.from({ length: 9 }, (_, k) => [it.x + ((lx - it.x) * k) / 8, it.y + ((ly - it.y) * k) / 8]), a0, a1);
+          score += d * 3 + Math.abs(da) * 0.4;
+          if (!best || score < best.score) best = { score, R };
+        });
+      }
+    }
+    placed.push(best.R);
+    out[it.key] = { x: best.R[0], y: (best.R[1] + best.R[3]) / 2, l: 0, w };
   });
-  const pos = relaxRects(init, { fixed, box: [8, 8, SW - 8, SH - 8], pad: 3, iters: 4000 });
-  return Object.fromEntries(items.map((it) => [it.key, { x: pos[it.key][0], y: pos[it.key][1], l: init[it.key][2], w: init[it.key][4] - init[it.key][2] }]));
+  return out;
 };
 
 export const Spiral = ({ projects }) => {
@@ -144,7 +205,7 @@ export const Spiral = ({ projects }) => {
     ...phaseBoxes.map((p) => [p.x - p.w / 2 - 4, p.y - 17, p.x + p.w / 2 + 4, p.y + 17]),
     [SX - 60, SY - 22, SX + 60, SY + 22],
   ];
-  const labels = useMemo(() => layoutLabels(items, fixed), [items]); // eslint-disable-line react-hooks/exhaustive-deps
+  const labels = useMemo(() => placeLabels(items, fixed, aStart, aNow + 70), [items]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -191,7 +252,7 @@ export const Spiral = ({ projects }) => {
             const cy = Math.min(Math.max(it.y, by), by + 22);
             const body = (
               <>
-                <line x1={it.x} y1={it.y} x2={cx} y2={cy} style={{ stroke: over ? "rgb(var(--olive))" : "rgb(var(--concrete))" }} strokeWidth="1" />
+                <line x1={it.x} y1={it.y} x2={cx} y2={cy} style={{ stroke: over ? "rgb(var(--olive))" : "rgb(var(--graphite))" }} strokeWidth="1" />
                 <circle
                   cx={it.x}
                   cy={it.y}
