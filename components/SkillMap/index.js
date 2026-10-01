@@ -361,7 +361,7 @@ const SkillMap = ({ projects }) => {
 
             <div className="map-intro absolute left-8 top-9 flex w-[640px] flex-col gap-3">
               <p className="text-[34px] font-medium leading-[1.16] tracking-[-0.015em]">
-                I&rsquo;m an HCI researcher and designer. I make complex, contested information clear enough to use and open enough to check, then test that it works.
+                I&rsquo;m an HCI researcher and designer. I make complex information easy to understand and trust, and I test it with the people who use it.
               </p>
             </div>
 
@@ -393,7 +393,7 @@ const SkillMap = ({ projects }) => {
         <div className="hero-glow pointer-events-none absolute -right-24 -top-24 h-[360px] w-[360px] rounded-full tablet:h-[520px] tablet:w-[520px]" aria-hidden="true" />
         <div className="map-intro relative flex max-w-[720px] flex-col gap-6">
           <p className="text-[34px] font-medium leading-[1.12] tracking-[-0.02em] tablet:text-[52px]">
-            I&rsquo;m an HCI researcher and designer. I make complex, contested information clear enough to use and open enough to check, then test that it works.
+            I&rsquo;m an HCI researcher and designer. I make complex information easy to understand and trust, and I test it with the people who use it.
           </p>
           <a href="#work" className="w-max border-b-2 border-olive pb-1 font-mono text-[14px] text-olive">
             see the work ↓
