@@ -749,7 +749,8 @@
                 "title": "Archival",
                 "text": "How can a community archive like Know Your Meme become a machine-readable research corpus while keeping the integrity of its folksonomy metadata?"
               }
-            ]
+            ],
+            "verb": "listening"
           },
           {
             "title": "Pipeline",
@@ -776,7 +777,8 @@
                 "title": "A public web platform",
                 "text": "D3.js visualizations of the whole corpus, D0 and the variants, alongside the ontology documentation, an in-browser SPARQL endpoint and the thesis text."
               }
-            ]
+            ],
+            "verb": "ordering"
           },
           {
             "title": "The ontology",
@@ -799,7 +801,8 @@
                 "alt": "Dataset page with three cards for the global dataset, the D0 sample and the variants",
                 "caption": "The three datasets, each browsable and filterable by format and platform."
               }
-            ]
+            ],
+            "verb": "ordering"
           },
           {
             "title": "Corpus visualizations",
@@ -834,7 +837,8 @@
                 "alt": "Sankey diagram from origin platform to format, image type and text presence",
                 "caption": "Property flow: every meme traced from platform to format, image type and text."
               }
-            ]
+            ],
+            "verb": "counting"
           },
           {
             "title": "Variants and transformation",
@@ -857,7 +861,8 @@
                 "alt": "Radial tree with the original meme at the centre and its variants on rings by transformation extent",
                 "caption": "Variant family tree: rings are transformation extent, sectors the main dimension; hovering a variant swaps it into the centre."
               }
-            ]
+            ],
+            "verb": "counting"
           },
           {
             "title": "Exploring the graph",
@@ -880,7 +885,8 @@
                 "alt": "Dot plot of CLIP confidence per image type with a threshold line",
                 "caption": "Classifier confidence: at a 0.80 threshold, 61.7% of CLIP labels would not survive."
               }
-            ]
+            ],
+            "verb": "playing"
           },
           {
             "title": "The thesis, online",
@@ -897,7 +903,8 @@
                 "alt": "Thesis reader showing search results for Panofsky",
                 "caption": "Full-text search: results grouped by section, and each hit highlighted in the text."
               }
-            ]
+            ],
+            "verb": "shaping"
           },
           {
             "title": "Visual identity",
@@ -924,7 +931,8 @@
                 "alt": "Thesis reader on a phone",
                 "caption": "Thesis reader"
               }
-            ]
+            ],
+            "verb": "shaping"
           },
           {
             "title": "Findings",
@@ -950,7 +958,8 @@
                 "title": "Folksonomy as evidence",
                 "text": "Using Wikidata’s publisher property for platform keeps community attributions as assertions rather than claims of objective provenance."
               }
-            ]
+            ],
+            "verb": "counting"
           }
         ],
         "reflection": [

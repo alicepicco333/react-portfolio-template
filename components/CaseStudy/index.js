@@ -1,16 +1,18 @@
 import { Fragment, useEffect, useState } from "react";
 import { usePrefersReducedMotion, withBase } from "../../utils";
 import { BeforeAfterPairs, Cast, DesignSystem, Interviews, UrgencyExplorer } from "./research";
+import MethodStrip, { verbOf } from "../Method";
 
 // Long-form case study, rendered when a project in portfolio.json has a `caseStudy` block.
 // Every block is optional so the data can grow or shrink without touching this file.
 
 // On wide screens the left column follows the reader: this section's title, then every section,
 // with the current one marked. Each section carries its own copy, so no scroll tracking is needed.
-function Section({ id, index, title, toc = [], children }) {
+function Section({ id, index, title, verb, toc = [], children }) {
   return (
     <section id={id} className="scroll-mt-[132px] grid gap-x-4 gap-y-6 border-t border-ink px-4 py-14 tablet:px-10 laptop:grid-cols-4 laptop:py-[88px]">
       <div className="flex flex-col gap-1 laptop:sticky laptop:top-[140px] laptop:self-start">
+        {verb && <MethodStrip current={verb} arrows={false} className="mb-3 hidden text-[12px] laptop:flex" />}
         <span className="fu-meta text-fieldgrey">{index}</span>
         <h2 className="fu-title text-phi1">{title}</h2>
         {toc.length > 4 && (
@@ -26,7 +28,8 @@ function Section({ id, index, title, toc = [], children }) {
                       className={`-ml-px flex gap-2 border-l-2 py-1 pl-3 text-[14px] leading-snug ${here ? "border-olive font-semibold text-ink" : "border-transparent text-graphite hover:text-ink"}`}
                     >
                       <span className="font-mono text-[12px] tabular-nums text-fieldgrey">{t.index}</span>
-                      {t.title}
+                      <span className="flex-1">{t.title}</span>
+                      {t.verb && <span className={`font-mono text-[11px] ${here ? "text-olive" : "text-fieldgrey"}`}>{verbOf(t.verb)}</span>}
                     </a>
                   </li>
                 );
@@ -53,6 +56,12 @@ function Fold({ label, children }) {
   );
 }
 const FOLDED = { interviews: "the interviews", cast: "the personas", persona: "the persona", system: "the design system" };
+// which step of the method each built block belongs to (reflection and links stand outside it)
+const BLOCK_VERB = {
+  context: "listening", methods: "listening", interviews: "listening", cast: "listening", persona: "listening",
+  findings: "counting", results: "counting", recommendations: "ordering", system: "ordering",
+  flows: "shaping", pairs: "shaping", motion: "shaping", beforeAfter: "shaping", prototype: "playing", iterations: "playing",
+};
 
 function Lead({ children }) {
   return <p className="max-w-[68ch] text-lg leading-relaxed">{children}</p>;
@@ -127,9 +136,9 @@ function PrototypeEmbed({ src, poster }) {
 // Generic, data-driven section used by research case studies (e.g. The Meme Ontology).
 // kind: "cards" (numbered text cards) · "figures" (screens with captions) · "phones" · "list" · "text"
 function FlexibleSection({ id, index, toc, section }) {
-  const { title, lead, kind = "text", items = [], columns = 2, note } = section;
+  const { title, lead, kind = "text", items = [], columns = 2, note, verb } = section;
   return (
-    <Section id={id} index={index} title={title} toc={toc}>
+    <Section id={id} index={index} title={title} verb={verb} toc={toc}>
       {lead && <Lead>{lead}</Lead>}
       {kind === "cards" && (
         <div className={`grid gap-4 tablet:grid-cols-2 ${columns === 3 ? "laptop:grid-cols-3" : ""}`}>
@@ -518,14 +527,14 @@ export default function CaseStudy({ data }) {
   // the contents list, in reading order: built blocks, with the free-form sections after "context"
   const slug = (t) => `cs-${t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
   const toc = [];
-  const tocAdd = (title) => toc.push({ id: slug(title), index: String(toc.length + 1).padStart(2, "0"), title });
-  if (!visible.includes("context")) sections.forEach((sec) => tocAdd(sec.title));
+  const tocAdd = (title, verb) => toc.push({ id: slug(title), index: String(toc.length + 1).padStart(2, "0"), title, verb });
+  if (!visible.includes("context")) sections.forEach((sec) => tocAdd(sec.title, sec.verb));
   visible.forEach((k) => {
-    tocAdd(blocks[k][2]);
-    if (k === "context") sections.forEach((sec) => tocAdd(sec.title));
+    tocAdd(blocks[k][2], BLOCK_VERB[k]);
+    if (k === "context") sections.forEach((sec) => tocAdd(sec.title, sec.verb));
   });
   const renderBlock = (k) => (
-    <Section key={k} id={slug(blocks[k][2])} index={next()} title={blocks[k][2]} toc={FOLDED[k] ? [] : toc}>
+    <Section key={k} id={slug(blocks[k][2])} index={next()} title={blocks[k][2]} verb={BLOCK_VERB[k]} toc={FOLDED[k] ? [] : toc}>
       {FOLDED[k] ? <Fold label={FOLDED[k]}>{blocks[k][3]()}</Fold> : blocks[k][3]()}
     </Section>
   );
@@ -538,7 +547,7 @@ export default function CaseStudy({ data }) {
         <section className="grid grid-cols-2 gap-x-4 gap-y-8 px-4 py-14 tablet:px-10 laptop:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col gap-2 border-t border-ink pt-3">
-              <span className="fu-display text-[48px] tablet:text-phi3">{s.value}</span>
+              <span className="fu-display text-[48px] tabular-nums tablet:text-phi3">{s.value}</span>
               <span className="max-w-[240px] text-[15px] leading-snug text-graphite">{s.label}</span>
             </div>
           ))}

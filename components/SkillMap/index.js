@@ -78,6 +78,11 @@ function fanLayout(id, works) {
   return { leafPts: leaves.pts };
 }
 
+// a plain key press inside this section, not typing in a field and not a browser shortcut
+const plainKey = (e) => !(e.metaKey || e.ctrlKey || e.altKey) && !/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName);
+// 1 to 5 select the first skill of each step of the method: listen, order, count, shape, play
+const STEP_KEYS = ["listening", "ordering", "counting", "shaping", "playing"];
+
 const SkillMap = ({ projects }) => {
   const router = useRouter();
   const [hovered, setHovered] = useState(null);
@@ -210,7 +215,17 @@ const SkillMap = ({ projects }) => {
   const [ax, ay] = active ? MAP.pos[active] : [0, 0];
 
   return (
-    <section id="map" aria-labelledby="map-title" className="relative scroll-mt-16 bg-bone">
+    <section
+      id="map"
+      aria-labelledby="map-title"
+      className="relative scroll-mt-16 bg-bone"
+      onKeyDown={(e) => {
+        const i = "12345".indexOf(e.key);
+        if (i < 0 || !plainKey(e)) return;
+        const c = CLUSTERS.find((x) => x.id === STEP_KEYS[i]);
+        if (c) setPinned(c.skills[0]);
+      }}
+    >
       <h2 id="map-title" className="sr-only">Skill map</h2>
       {/* ——— desktop and tablet: the fixed stage ——— */}
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>

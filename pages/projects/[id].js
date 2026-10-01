@@ -6,6 +6,7 @@ import portfolioData from "../../data/portfolio.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CaseStudy from "../../components/CaseStudy";
+import MethodStrip, { stepsOf } from "../../components/Method";
 import ProjectGraph from "../../components/ProjectGraph";
 import { byDateDesc, categoryMeta, withBase, projectStyle } from "../../utils";
 
@@ -103,13 +104,14 @@ export default function ProjectPage({ project, number, next }) {
               </span>
             </h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
+            <MethodStrip used={stepsOf(project.id)} />
           </div>
         </section>
 
         {/* the work itself, before any numbers */}
         {project.highlightImage && (
           <figure className="px-4 tablet:px-10">
-            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="max-h-[78vh] w-full border border-ink object-cover" fetchpriority="high" />
+            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className={`${typeof document !== "undefined" && document.documentElement.dataset.vt ? "" : "hero-reveal "}max-h-[78vh] w-full border border-ink object-cover`} style={{ viewTransitionName: "project-hero" }} fetchpriority="high" />
             {project.highlightCaption && <figcaption className="mt-3 max-w-[720px] text-[16px] leading-snug text-graphite">{project.highlightCaption}</figcaption>}
           </figure>
         )}
@@ -126,14 +128,13 @@ export default function ProjectPage({ project, number, next }) {
                 {project.facts.map(([value, label]) => (
                   <div key={label} className="flex flex-col-reverse gap-1">
                     <dt className="text-[15px] leading-snug text-graphite">{label}</dt>
-                    <dd className="text-[30px] font-semibold leading-none tracking-[-0.02em] text-olive tablet:text-[36px]">{value}</dd>
+                    <dd className="text-[30px] font-semibold leading-none tracking-[-0.02em] text-olive tabular-nums tablet:text-[36px]">{value}</dd>
                   </div>
                 ))}
               </dl>
             )}
             {project.shows && (
               <p className="max-w-[68ch] text-[19px] leading-snug">
-                <span className="mb-1 block font-mono text-[14px] uppercase tracking-[0.1em] text-olive">What it shows</span>
                 {project.shows}
               </p>
             )}

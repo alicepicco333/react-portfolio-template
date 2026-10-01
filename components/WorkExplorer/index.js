@@ -20,6 +20,9 @@ const curated = (a, b) => (a.rank ?? 99) - (b.rank ?? 99) || newestFirst(a, b);
 const shortTitle = (t) => t.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
 const VIEWS = ["Grid", "Wheel"];
+// a plain key press inside this section, not typing in a field and not a browser shortcut
+const plainKey = (e) => !(e.metaKey || e.ctrlKey || e.altKey) && !/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName);
+
 
 
 // ——— wheel: projects pulled towards the skills they use (RadViz) ———
@@ -235,7 +238,17 @@ const WorkExplorer = ({ projects: given }) => {
   });
 
   return (
-    <section id="work" aria-labelledby="work-title" ref={rootRef} className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8">
+    <section
+      id="work"
+      aria-labelledby="work-title"
+      ref={rootRef}
+      className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8"
+      onKeyDown={(e) => {
+        if (!plainKey(e)) return;
+        if (e.key === "g" || e.key === "G") setView("Grid");
+        if ((e.key === "w" || e.key === "W") && window.matchMedia("(min-width: 1280px)").matches) setView("Wheel");
+      }}
+    >
       <div className="flex flex-col gap-6 pb-6 desktop:flex-row desktop:items-end desktop:justify-between">
         <div className="fu-reveal flex flex-col gap-2">
           <h2 id="work-title" className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>

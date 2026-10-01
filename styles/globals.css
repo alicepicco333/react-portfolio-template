@@ -147,7 +147,7 @@ html[data-motion="off"] ::after {
     padding: 0 18px;
     font-size: 14px;
     font-weight: 600;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.2s, transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   .fu-btn-primary {
     background: rgb(var(--ink));
@@ -164,6 +164,49 @@ html[data-motion="off"] ::after {
     background: rgb(var(--ink));
     color: rgb(var(--bone));
   }
+}
+
+/* pressable things answer the press */
+.fu-btn:active,
+button:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+/* card to case study: the thumbnail grows into the hero image */
+::view-transition-group(project-hero) {
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+::view-transition-old(project-hero),
+::view-transition-new(project-hero) {
+  height: 100%;
+  object-fit: cover;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* on a project page the mark draws in as that project's constellation */
+  html:not([data-motion="off"]) .mark-project {
+    transition: opacity 420ms ease-out, transform 520ms cubic-bezier(0.23, 1, 0.32, 1), filter 420ms ease-out;
+  }
+  @starting-style {
+    html:not([data-motion="off"]) .mark-project {
+      opacity: 0;
+      transform: scale(0.8) rotate(-30deg);
+      filter: blur(2px);
+    }
+  }
+  /* a case study's hero image opens once, top to bottom (skipped when it arrives by the morph) */
+  html:not([data-motion="off"]) .hero-reveal {
+    animation: hero-reveal 700ms cubic-bezier(0.77, 0, 0.175, 1) both;
+  }
+}
+@keyframes hero-reveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
 /* ——— Motion ——— */

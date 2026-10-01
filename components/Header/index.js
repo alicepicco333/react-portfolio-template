@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import data from "../../data/portfolio.json";
 import GraphMark from "../GraphMark";
+import Sigil from "../Sigil";
+import { skillsOfProject } from "../Graph/data";
 import A11yControls from "../A11yControls";
 import { useActiveSection } from "../../utils";
 
@@ -16,8 +18,10 @@ export const SECTIONS = [
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { email, name } = data;
-  const { pathname } = useRouter();
+  const { pathname, query } = useRouter();
   const onHome = pathname === "/";
+  // on a project page the mark redraws as that project's constellation: the skills it used, on the ring
+  const projectSkills = pathname === "/projects/[id]" && query.id ? skillsOfProject(String(query.id)).map((n) => n.id) : null;
   const { active } = useActiveSection(onHome ? [...SECTIONS.map((s) => s.id), "in-progress", "journey"] : []);
   const current = (id) => onHome && (active === id || (id === "work" && active === "in-progress") || (id === "about" && active === "journey"));
 
@@ -25,7 +29,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-ink bg-bone text-ink">
       <div className="flex h-16 items-center gap-6 px-4 tablet:px-8">
         <Link href="/" className="-m-2 flex items-center gap-3 p-2" aria-label={`${name}, home`}>
-          <GraphMark size={34} />
+          {projectSkills?.length ? <Sigil skills={projectSkills} size={34} width={1.6} className="mark-project" /> : <GraphMark size={34} />}
           <span className="text-[17px] font-semibold lowercase tracking-[-0.01em]" aria-hidden="true">
             {name}
           </span>
