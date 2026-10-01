@@ -91,13 +91,10 @@ const STEP_KEYS = ["listening", "ordering", "counting", "shaping", "playing"];
 
 const SkillMap = ({ projects }) => {
   const router = useRouter();
-  // `?preview=quiet`: a calmer map to compare with the current one
-  const [quiet, setQuiet] = useState(false);
-  useEffect(() => {
-    setQuiet(new URLSearchParams(window.location.search).get("preview") === "quiet");
-  }, []);
+  // the map rests quietly: plain labels, no lines, no card, until a skill is hovered, focused or picked
+  const quiet = true;
   const [hovered, setHovered] = useState(null);
-  const [pinned, setPinned] = useState("ixd");
+  const [pinned, setPinned] = useState(null);
   const [chipW, setChipW] = useState({});
   const labelRefs = useRef({});
   const [fit, setFit] = useState(null);
@@ -161,11 +158,9 @@ const SkillMap = ({ projects }) => {
         const q = (sel) => Array.from(s.querySelectorAll(sel));
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
         tl.from(q(".map-intro > *"), { y: 26, duration: 0.9, stagger: 0.1 }, 0);
-        drawIn(gsap, q(".map-edge"), { at: 0.25, step: 0.035, duration: 0.7 });
         tl.from(q(".map-node"), { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.035, ease: "back.out(2.2)" }, 0.35);
         tl.from(q(".map-chip-g"), { opacity: 0, y: 6, duration: 0.5, stagger: 0.025 }, 0.7);
         q(".map-cluster").forEach((el, i) => scramble(gsap, el, 0.9 + i * 0.18));
-        tl.from(q(".map-card"), { x: 60, opacity: 0, duration: 0.8 }, 1.4);
       }
       const n = narrowRef.current;
       if (n && n.offsetParent !== null) {
@@ -239,7 +234,15 @@ const SkillMap = ({ projects }) => {
           className="absolute left-1/2 top-1/2"
           style={{ width: MAP.W * (fit || 1), height: MAP.H * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
         >
-          <div ref={stageRef} className="absolute left-0 top-0 origin-top-left" style={{ width: MAP.W, height: MAP.H, transform: `scale(${fit || 1})` }}>
+          <div
+            ref={stageRef}
+            className="absolute left-0 top-0 origin-top-left"
+            style={{ width: MAP.W, height: MAP.H, transform: `scale(${fit || 1})` }}
+            onMouseLeave={() => setPinned(null)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setPinned(null);
+            }}
+          >
             <svg viewBox={`0 0 ${MAP.W} ${MAP.H}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
               <defs>
               </defs>
@@ -277,7 +280,7 @@ const SkillMap = ({ projects }) => {
                       y2={y2}
                       style={{ stroke: hot ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "stroke .3s, stroke-width .3s, opacity .3s" }}
                       strokeWidth={hot ? 3 : 1}
-                      opacity={hot ? 1 : active ? 0.22 : 0.4}
+                      opacity={hot ? 1 : 0}
                     />
                   );
                 })}
@@ -316,9 +319,15 @@ const SkillMap = ({ projects }) => {
                     key={n.id}
                     {...nodeProps(skillLabel(n.id), () => toggle(n.id))}
                     aria-pressed={pinned === n.id}
-                    onMouseEnter={() => setHovered(n.id)}
+                    onMouseEnter={() => {
+                      setHovered(n.id);
+                      setPinned(n.id);
+                    }}
                     onMouseLeave={() => setHovered(null)}
-                    onFocus={() => setHovered(n.id)}
+                    onFocus={() => {
+                      setHovered(n.id);
+                      setPinned(n.id);
+                    }}
                     onBlur={() => setHovered(null)}
                   >
                     <circle cx={x} cy={y} r="22" fill="transparent" />
@@ -408,8 +417,10 @@ const SkillMap = ({ projects }) => {
               </p>
             </div>
 
-            <div className="map-card absolute bottom-3 left-[1020px] flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]" aria-live="polite">
-              {activeNode ? (
+            {/* always in the page (it is the live region), shown only while a skill is selected */}
+            <div className={`map-card absolute bottom-3 left-[1020px] flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))] ${activeNode ? "" : "invisible"}`} aria-live="polite">
+              {activeNode && (
+
                 <>
                   <span className="text-[26px] font-bold leading-tight">{activeNode.label}</span>
                   <span>{SKILL_NOTES[active]}</span>
@@ -425,8 +436,6 @@ const SkillMap = ({ projects }) => {
                     ))}
                   </span>
                 </>
-              ) : (
-                <span className="font-mono text-[14px] text-graphite">Select a skill to pin it here.</span>
               )}
             </div>
 
