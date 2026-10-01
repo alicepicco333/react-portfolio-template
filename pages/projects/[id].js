@@ -76,16 +76,13 @@ export default function ProjectPage({ project, number, next }) {
       <Header />
 
       <main id="main-content" tabIndex={-1}>
-        <section className="grid gap-x-4 gap-y-8 px-4 pb-16 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">
+        <section className="grid gap-x-4 gap-y-8 px-4 pb-8 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-10 laptop:pt-10">
           <div className="flex flex-col gap-1">
             <Link href="/#work" className="fu-meta text-fieldgrey hover:text-ink">
               ← Selected work
             </Link>
             <span className="fu-meta pt-4 text-fieldgrey">{number}</span>
             <span className="fu-title text-xl">{short}</span>
-            <div className="mt-8 hidden laptop:block">
-              <ProjectGraph projectId={project.id} />
-            </div>
           </div>
           <div className="flex flex-col gap-8 laptop:col-span-3">
             <h1 className="fu-display max-w-[980px] text-[44px] tablet:text-phi3">
@@ -106,6 +103,24 @@ export default function ProjectPage({ project, number, next }) {
               </span>
             </h1>
             <p className="max-w-[720px] text-xl leading-snug tablet:text-phi1 tablet:leading-[1.15]">{project.introText}</p>
+          </div>
+        </section>
+
+        {/* the work itself, before any numbers */}
+        {project.highlightImage && (
+          <figure className="px-4 tablet:px-10">
+            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="max-h-[78vh] w-full border border-ink object-cover" fetchpriority="high" />
+            {project.highlightCaption && <figcaption className="mt-3 max-w-[720px] text-[16px] leading-snug text-graphite">{project.highlightCaption}</figcaption>}
+          </figure>
+        )}
+
+        <section className="grid gap-x-4 gap-y-8 px-4 pb-16 pt-12 tablet:px-10 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-16">
+          <div className="hidden laptop:block">
+            <div className="sticky top-24">
+              <ProjectGraph projectId={project.id} />
+            </div>
+          </div>
+          <div className="flex flex-col gap-8 laptop:col-span-3">
             {project.facts?.length > 0 && (
               <dl className="grid max-w-[980px] grid-cols-2 gap-x-6 gap-y-5 border-y border-ink py-5 laptop:grid-cols-4" aria-label="Key facts">
                 {project.facts.map(([value, label]) => (
@@ -117,7 +132,7 @@ export default function ProjectPage({ project, number, next }) {
               </dl>
             )}
             {project.shows && (
-              <p className="max-w-[820px] border-l-4 border-olive pl-4 text-[19px] leading-snug">
+              <p className="max-w-[68ch] text-[19px] leading-snug">
                 <span className="mb-1 block font-mono text-[14px] uppercase tracking-[0.1em] text-olive">What it shows</span>
                 {project.shows}
               </p>
@@ -192,13 +207,6 @@ export default function ProjectPage({ project, number, next }) {
             )}
           </div>
         </section>
-
-        {project.highlightImage && (
-          <figure className="px-4 tablet:px-10">
-            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="max-h-[80vh] w-full object-cover" />
-            {project.highlightCaption && <figcaption className="mt-3 max-w-[720px] text-[16px] leading-snug text-graphite">{project.highlightCaption}</figcaption>}
-          </figure>
-        )}
 
         {project.embed && (
           <figure className="px-4 pt-10 tablet:px-10">

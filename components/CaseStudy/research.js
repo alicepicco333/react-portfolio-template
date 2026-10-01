@@ -34,7 +34,7 @@ export function Interviews({ data }) {
   const q = quotes[quote];
   return (
     <>
-      {lead && <p className="max-w-[720px] text-lg leading-relaxed">{lead}</p>}
+      {lead && <p className="max-w-[68ch] text-lg leading-relaxed">{lead}</p>}
 
       <div className="grid gap-4 laptop:grid-cols-3">
         {segments.map((s) => (
@@ -422,7 +422,7 @@ export function Cast({ data }) {
   const protagonist = members.find((m) => m.role === "Protagonist");
   return (
     <>
-      {lead && <p className="max-w-[720px] text-lg leading-relaxed">{lead}</p>}
+      {lead && <p className="max-w-[68ch] text-lg leading-relaxed">{lead}</p>}
       {protagonist && <Protagonist m={protagonist} traits={traits} />}
 
       {ROLE_GROUPS.map((g) => {
@@ -514,7 +514,7 @@ export function UrgencyExplorer({ data }) {
 
   return (
     <div className="flex flex-col gap-5">
-      {lead && <p className="max-w-[720px] text-lg leading-relaxed">{lead}</p>}
+      {lead && <p className="max-w-[68ch] text-lg leading-relaxed">{lead}</p>}
       <div role="tablist" aria-label="Design version" className="flex flex-wrap gap-2">
         {versions.map((v, idx) => (
           <button
@@ -654,7 +654,7 @@ export function BeforeAfterPairs({ data }) {
   };
   return (
     <div className="flex flex-col gap-5">
-      {lead && <p className="max-w-[720px] text-lg leading-relaxed">{lead}</p>}
+      {lead && <p className="max-w-[68ch] text-lg leading-relaxed">{lead}</p>}
       <div role="tablist" aria-label="Screen" className="flex flex-wrap gap-2">
         {pairs.map((pair, idx) => (
           <button
@@ -715,7 +715,7 @@ export function DesignSystem({ data }) {
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
       </Head>
-      {text && <p className="max-w-[720px] text-lg leading-relaxed">{text}</p>}
+      {text && <p className="max-w-[68ch] text-lg leading-relaxed">{text}</p>}
       {stats.length > 0 && (
         <dl className="grid grid-cols-2 gap-4 tablet:grid-cols-4">
           {stats.map((s) => (

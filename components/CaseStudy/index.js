@@ -5,20 +5,57 @@ import { BeforeAfterPairs, Cast, DesignSystem, Interviews, UrgencyExplorer } fro
 // Long-form case study, rendered when a project in portfolio.json has a `caseStudy` block.
 // Every block is optional so the data can grow or shrink without touching this file.
 
-function Section({ index, title, children }) {
+// On wide screens the left column follows the reader: this section's title, then every section,
+// with the current one marked. Each section carries its own copy, so no scroll tracking is needed.
+function Section({ id, index, title, toc = [], children }) {
   return (
-    <section className="grid gap-x-4 gap-y-6 border-t border-ink px-4 py-14 tablet:px-10 laptop:grid-cols-4 laptop:py-[88px]">
-      <div className="flex flex-col gap-1">
+    <section id={id} className="scroll-mt-[132px] grid gap-x-4 gap-y-6 border-t border-ink px-4 py-14 tablet:px-10 laptop:grid-cols-4 laptop:py-[88px]">
+      <div className="flex flex-col gap-1 laptop:sticky laptop:top-[140px] laptop:self-start">
         <span className="fu-meta text-fieldgrey">{index}</span>
         <h2 className="fu-title text-phi1">{title}</h2>
+        {toc.length > 4 && (
+          <nav aria-label="Case study sections" className="mt-6 hidden laptop:block">
+            <ol className="flex flex-col border-l border-concrete">
+              {toc.map((t) => {
+                const here = t.id === id;
+                return (
+                  <li key={t.id}>
+                    <a
+                      href={`#${t.id}`}
+                      aria-current={here ? "location" : undefined}
+                      className={`-ml-px flex gap-2 border-l-2 py-1 pl-3 text-[14px] leading-snug ${here ? "border-olive font-semibold text-ink" : "border-transparent text-graphite hover:text-ink"}`}
+                    >
+                      <span className="font-mono text-[12px] tabular-nums text-fieldgrey">{t.index}</span>
+                      {t.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
       </div>
       <div className="flex min-w-0 flex-col gap-8 laptop:col-span-3">{children}</div>
     </section>
   );
 }
 
+// Long, optional detail stays one click away instead of in the reading path.
+function Fold({ label, children }) {
+  return (
+    <details className="cs-fold group">
+      <summary className="fu-btn fu-btn-secondary w-max cursor-pointer list-none">
+        <span className="group-open:hidden">Show {label}</span>
+        <span className="hidden group-open:inline">Hide {label}</span>
+      </summary>
+      <div className="mt-8 flex flex-col gap-8">{children}</div>
+    </details>
+  );
+}
+const FOLDED = { interviews: "the interviews", cast: "the personas", persona: "the persona", system: "the design system" };
+
 function Lead({ children }) {
-  return <p className="max-w-[720px] text-lg leading-relaxed">{children}</p>;
+  return <p className="max-w-[68ch] text-lg leading-relaxed">{children}</p>;
 }
 
 function Figure({ src, alt, caption, className = "" }) {
@@ -89,10 +126,10 @@ function PrototypeEmbed({ src, poster }) {
 
 // Generic, data-driven section used by research case studies (e.g. The Meme Ontology).
 // kind: "cards" (numbered text cards) · "figures" (screens with captions) · "phones" · "list" · "text"
-function FlexibleSection({ index, section }) {
+function FlexibleSection({ id, index, toc, section }) {
   const { title, lead, kind = "text", items = [], columns = 2, note } = section;
   return (
-    <Section index={index} title={title}>
+    <Section id={id} index={index} title={title} toc={toc}>
       {lead && <Lead>{lead}</Lead>}
       {kind === "cards" && (
         <div className={`grid gap-4 tablet:grid-cols-2 ${columns === 3 ? "laptop:grid-cols-3" : ""}`}>
@@ -138,7 +175,7 @@ function FlexibleSection({ index, section }) {
         </ol>
       )}
       {kind === "text" && (
-        <div className="flex max-w-[720px] flex-col gap-4 text-lg leading-relaxed">
+        <div className="flex max-w-[68ch] flex-col gap-4 text-lg leading-relaxed">
           {items.map((p) => (
             <p key={p}>{p}</p>
           ))}
@@ -451,7 +488,7 @@ export default function CaseStudy({ data }) {
       </>
     )],
     reflection: ["always", reflection.length > 0, "Reflection", () => (
-      <div className="flex max-w-[720px] flex-col gap-4 text-lg leading-relaxed">
+      <div className="flex max-w-[68ch] flex-col gap-4 text-lg leading-relaxed">
         {reflection.map((p) => (
           <p key={p}>{p}</p>
         ))}
@@ -478,13 +515,22 @@ export default function CaseStudy({ data }) {
 
   let n = 0;
   const next = () => String(++n).padStart(2, "0");
+  // the contents list, in reading order: built blocks, with the free-form sections after "context"
+  const slug = (t) => `cs-${t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+  const toc = [];
+  const tocAdd = (title) => toc.push({ id: slug(title), index: String(toc.length + 1).padStart(2, "0"), title });
+  if (!visible.includes("context")) sections.forEach((sec) => tocAdd(sec.title));
+  visible.forEach((k) => {
+    tocAdd(blocks[k][2]);
+    if (k === "context") sections.forEach((sec) => tocAdd(sec.title));
+  });
   const renderBlock = (k) => (
-    <Section key={k} index={next()} title={blocks[k][2]}>
-      {blocks[k][3]()}
+    <Section key={k} id={slug(blocks[k][2])} index={next()} title={blocks[k][2]} toc={FOLDED[k] ? [] : toc}>
+      {FOLDED[k] ? <Fold label={FOLDED[k]}>{blocks[k][3]()}</Fold> : blocks[k][3]()}
     </Section>
   );
 
-  const flexible = () => sections.map((section) => <FlexibleSection key={section.title} index={next()} section={section} />);
+  const flexible = () => sections.map((section) => <FlexibleSection key={section.title} id={slug(section.title)} toc={toc} index={next()} section={section} />);
 
   return (
     <div>

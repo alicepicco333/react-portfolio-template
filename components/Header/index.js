@@ -18,8 +18,8 @@ const Header = () => {
   const { email, name } = data;
   const { pathname } = useRouter();
   const onHome = pathname === "/";
-  const { active } = useActiveSection(onHome ? [...SECTIONS.map((s) => s.id), "in-progress", "record"] : []);
-  const current = (id) => onHome && (active === id || (id === "work" && active === "in-progress") || (id === "about" && active === "record"));
+  const { active } = useActiveSection(onHome ? [...SECTIONS.map((s) => s.id), "in-progress", "journey"] : []);
+  const current = (id) => onHome && (active === id || (id === "work" && active === "in-progress") || (id === "about" && active === "journey"));
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-ink bg-bone text-ink">

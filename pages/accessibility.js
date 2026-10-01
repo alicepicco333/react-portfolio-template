@@ -47,7 +47,7 @@ const Accessibility = () => (
           <ul className="mt-4 list-disc space-y-2 pl-5 text-[17px] leading-relaxed">
             <li>Body text and labels reach a contrast ratio of at least 4.5:1; large headings at least 3:1.</li>
             <li>A &ldquo;Skip to main content&rdquo; link is the first thing you reach with the keyboard.</li>
-            <li>Every interactive element, including the nodes of the skill map and the work compass and wheel, can be reached and used with the keyboard, with a visible focus ring.</li>
+            <li>Every interactive element, including the nodes of the skill map and the work wheel, can be reached and used with the keyboard, with a visible focus ring.</li>
             <li>Each page has one main heading and a consistent heading order, inside header, main, navigation and footer landmarks.</li>
             <li>Buttons and toggles have text labels and announce their state; images have text alternatives.</li>
             <li>The skill map and the work charts also exist as plain text: the skill card, the project grid and every project page.</li>
@@ -61,7 +61,7 @@ const Accessibility = () => (
           </h2>
           <p className="mt-4 text-[17px] leading-relaxed">
             Some project screenshots show interfaces with small text; the same information is written out on each project page.
-            The compass and wheel views are shown on large screens only; smaller screens get the project grid.
+            The wheel view is shown on large screens only; smaller screens get the project grid.
           </p>
         </section>
 

@@ -108,7 +108,6 @@ html[data-contrast="high"] .hero-glow { display: none; }
 html[data-contrast="high"] .nav-glow:hover,
 html[data-contrast="high"] .nav-glow.is-active { text-shadow: none; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 html[data-contrast="high"] a { text-decoration-thickness: 2px; }
-html[data-contrast="high"] .compass-quadrant,
 html[data-contrast="high"] .wheel-cluster { fill: rgb(var(--ink)) !important; }
 html[data-motion="off"] {
   scroll-behavior: auto;
@@ -168,7 +167,7 @@ html[data-motion="off"] ::after {
 }
 
 /* ——— Motion ——— */
-/* the selected point on the compass and the wheel: a slow, breathing glow */
+/* the selected point on the wheel: a slow, breathing glow */
 .glow-pulse {
   transform-box: fill-box;
   transform-origin: center;

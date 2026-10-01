@@ -13,7 +13,7 @@ import {
   SKILL_NOTES,
   MAP,
 } from "../Graph/data";
-import { useIsomorphicLayoutEffect } from "../../utils";
+import { useIsomorphicLayoutEffect, withBase } from "../../utils";
 import { textWidth, overlapArea } from "../../utils/layout";
 import { scramble, drawIn, motionOn } from "../../utils/motion";
 
@@ -371,10 +371,13 @@ const SkillMap = ({ projects }) => {
                   <span className="text-[26px] font-bold leading-tight">{activeNode.label}</span>
                   <span>{SKILL_NOTES[active]}</span>
                   <span className="font-mono text-[14px] text-graphite">{activeNode.tools.join(" · ")}</span>
-                  <span className="flex flex-wrap gap-x-3 font-semibold">
-                    {activeWork.map((w) => (
-                      <Link key={w.id} href={`/projects/${w.id}`} className="text-olive underline underline-offset-2 hover:text-ink">
-                        {mapTitle(w)}
+                  <span className="mt-1 grid grid-cols-3 gap-2">
+                    {activeWork.slice(0, 3).map((w) => (
+                      <Link key={w.id} href={`/projects/${w.id}`} className="group flex flex-col gap-1 text-[13px] font-semibold leading-tight text-olive">
+                        {(w.cardWebp || w.cardImage) && (
+                          <img src={withBase(w.cardWebp || w.cardImage)} alt="" className="aspect-[4/3] w-full border border-ink object-cover transition-transform duration-200 group-hover:-translate-y-0.5" loading="lazy" draggable={false} />
+                        )}
+                        <span className="underline underline-offset-2 group-hover:text-ink">{mapTitle(w)}</span>
                       </Link>
                     ))}
                   </span>
@@ -390,13 +393,23 @@ const SkillMap = ({ projects }) => {
 
       {/* ——— phones and tablets: the statement only; the map needs a wide screen ——— */}
       <div ref={narrowRef} className="relative overflow-hidden px-4 pb-16 pt-14 tablet:px-8 tablet:pb-24 tablet:pt-20 map:hidden">
-        <div className="hero-glow pointer-events-none absolute -right-24 -top-24 h-[360px] w-[360px] rounded-full tablet:h-[520px] tablet:w-[520px]" aria-hidden="true" />
         <div className="map-intro relative flex max-w-[720px] flex-col gap-6">
           <p className="text-[34px] font-medium leading-[1.12] tracking-[-0.02em] tablet:text-[52px]">
             I&rsquo;m an HCI researcher and designer. I make complex information easy to understand and trust, and I test it with the people who use it.
           </p>
+          {/* the work, straight away: the three projects that lead Selected work */}
+          <ul className="grid grid-cols-3 gap-3">
+            {[...projects].sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99)).slice(0, 3).map((w) => (
+              <li key={w.id}>
+                <Link href={`/projects/${w.id}`} className="flex flex-col gap-1.5 text-[14px] font-semibold leading-tight">
+                  <img src={withBase(w.cardWebp || w.cardImage)} alt="" className="aspect-[4/3] w-full border border-ink object-cover" loading="eager" draggable={false} />
+                  <span>{mapTitle(w)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
           <a href="#work" className="w-max border-b-2 border-olive pb-1 font-mono text-[14px] text-olive">
-            see the work ↓
+            see all the work ↓
           </a>
         </div>
       </div>

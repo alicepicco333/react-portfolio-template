@@ -8,9 +8,6 @@ import { relaxRects, textWidth } from "../../utils/layout";
 import { scramble, drawIn, motionOn } from "../../utils/motion";
 import portfolioData from "../../data/portfolio.json";
 
-// CV roles, placed on the compass by the skills each role used
-const ROLES = portfolioData.resume.experiences.filter((r) => r.skills?.length);
-const roleKey = (r) => `r${r.id}`;
 
 const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6, strokeLinejoin: "round" };
 const skillIds = (id) => skillsOfProject(id).map((n) => n.id);
@@ -22,51 +19,8 @@ const newestFirst = (a, b) => yearOf(b).localeCompare(yearOf(a)) || (b.date || "
 const curated = (a, b) => (a.rank ?? 99) - (b.rank ?? 99) || newestFirst(a, b);
 const shortTitle = (t) => t.split(" - ")[0];
 const mapTitle = (p) => p.short || shortTitle(p.title);
-const VIEWS = ["Grid", "Compass", "Wheel"];
+const VIEWS = ["Grid", "Wheel"];
 
-// ——— compass: left = understanding, right = making; up = people, down = information ———
-const MAKE = { ux: 1, vis: 1, ixd: 1, cc: 1, live: 1, perf: 1, dv: 0.6, anth: -1, ur: -0.6, hci: -0.3, cult: -0.8, sem: -0.7, onto: -0.9, arch: -0.6, dh: -0.8 };
-const PEOP = { anth: 1, ur: 1, hci: 0.8, ux: 0.7, ixd: 0.6, perf: 0.8, live: 0.3, vis: 0.2, cc: -0.3, dv: -0.6, cult: -0.3, sem: -1, onto: -1, arch: -0.6, dh: -0.4 };
-const C = { W: 1376, H: 960, PW: 1020 };
-C.cx = C.PW / 2;
-C.cy = C.H / 2;
-C.sx = C.PW * 0.4;
-C.sy = C.H * 0.4;
-const QUADRANTS = [
-  ["Field work", 24, 70, "start"],
-  ["Interfaces", C.PW - 24, 70, "end"],
-  ["Structures", 24, C.H - 40, "start"],
-  ["Instruments", C.PW - 24, C.H - 40, "end"],
-];
-
-const placeOf = (s) => [C.cx + (s.reduce((a, k) => a + MAKE[k], 0) / s.length) * C.sx, C.cy - (s.reduce((a, k) => a + PEOP[k], 0) / s.length) * C.sy];
-
-function compassLayout(projects) {
-  const items = {};
-  projects.forEach((p) => {
-    const [x, y] = placeOf(skillIds(p.id));
-    items[p.id] = [x, y, -(12 + textWidth(mapTitle(p), 17) * 0.55), -18, 12 + textWidth(mapTitle(p), 17) * 0.55, 18];
-  });
-  // roles take part in the layout even when hidden, so projects do not jump when they appear
-  ROLES.forEach((r) => {
-    const [x, y] = placeOf(r.skills);
-    const half = 10 + textWidth(r.short, 15) * 0.55;
-    items[roleKey(r)] = [x, y, -half, -14, half, 8];
-  });
-  const fixed = [
-    [0, C.cy - 26, 190, C.cy + 4],
-    [C.PW - 110, C.cy - 26, C.PW, C.cy + 4],
-    [C.cx, 0, C.cx + 110, 32],
-    [C.cx, C.H - 32, C.cx + 140, C.H],
-    [0, 20, 300, 90],
-    [C.PW - 300, 20, C.PW, 90],
-    [0, C.H - 100, 300, C.H - 20],
-    [C.PW - 330, C.H - 100, C.PW, C.H - 20],
-    [C.cx - 3, 0, C.cx + 3, C.H],
-    [0, C.cy - 3, C.PW, C.cy + 3],
-  ];
-  return relaxRects(items, { fixed, box: [10, 10, C.PW - 10, C.H - 10] });
-}
 
 // ——— wheel: projects pulled towards the skills they use (RadViz) ———
 const Wh = { W: 1376, H: 1040, CX: 520, CY: 500, R: 360 };
@@ -96,7 +50,7 @@ function wheelLayout(projects) {
   return relaxRects(items, { fixed: CLUSTER_TEXT.map((c) => c.box), box: [Wh.CX - inner, Wh.CY - inner, Wh.CX + inner, Wh.CY + inner], pad: 7 });
 }
 
-// stillOnly: the grid always shows the still; the compass and wheel cards play the loop unless motion is off
+// stillOnly: the grid always shows the still; the wheel card plays the loop unless motion is off
 const Media = ({ project, className = "", stillOnly = false }) => {
   const reduced = usePrefersReducedMotion() || !motionOn();
   const motion = project.tileMotion && !reduced && !stillOnly ? project.tileMotion : null;
@@ -118,7 +72,7 @@ const teamOf = (p) => {
   return `Team of ${p.collaborators.length + 1}${p.reworkNote ? " · solo rework" : ""}`;
 };
 
-// the card beside the compass and the wheel
+// the card beside the wheel
 const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
     <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
@@ -155,27 +109,6 @@ const Uses = ({ project, row = false, children }) => (
   </figure>
 );
 
-// the compass again, small, with only the selected project marked
-const MiniCompass = ({ at }) => (
-  <svg viewBox={`0 0 ${C.PW} ${C.H}`} className="h-auto w-full" aria-hidden="true">
-    <rect x="0" y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.09)" }} />
-    <rect x={C.cx} y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.16)" }} />
-    <rect x="0" y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--ink) / 0.06)" }} />
-    <rect x={C.cx} y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.04)" }} />
-    <g style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="2">
-      {Array.from({ length: 9 }, (_, i) => i + 1).map((i) => (
-        <React.Fragment key={i}>
-          <line x1={(C.PW * i) / 10} y1="0" x2={(C.PW * i) / 10} y2={C.H} />
-          <line x1="0" y1={(C.H * i) / 10} x2={C.PW} y2={(C.H * i) / 10} />
-        </React.Fragment>
-      ))}
-    </g>
-    <rect x="0" y="0" width={C.PW} height={C.H} fill="none" style={{ stroke: "rgb(var(--ink))" }} strokeWidth="3" />
-    <line x1={C.cx} y1="0" x2={C.cx} y2={C.H} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="4" />
-    <line x1="0" y1={C.cy} x2={C.PW} y2={C.cy} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="4" />
-    <circle cx={at[0]} cy={at[1]} r="26" style={{ fill: "rgb(var(--olive))" }} />
-  </svg>
-);
 
 const Select = ({ label, value, onChange, options }) => (
   <label className="flex min-w-[150px] flex-1 flex-col gap-1 font-mono text-[13px] text-graphite desktop:flex-none">
@@ -202,18 +135,12 @@ const WorkExplorer = ({ projects: given }) => {
   const [year, setYear] = useState("all");
   const [picked, setPicked] = useState(null);
   const [hot, setHot] = useState(null);
-  const [showRoles, setShowRoles] = useState(false);
-  const [role, setRole] = useState(null);
   const rootRef = useRef(null);
-  const chx = useRef(null);
-  const chy = useRef(null);
-  const readout = useRef(null);
 
   const years = [...new Set(projects.map(yearOf))].sort().reverse();
   const matches = (p) => (skill === "all" || skillIds(p.id).includes(skill)) && (type === "all" ? p.category !== "Live Coding" : p.category === type) && (year === "all" || yearOf(p) === year);
   const shown = projects.filter(matches);
   const selected = shown.find((p) => p.id === picked) || shown[0] || projects[0];
-  const compass = useMemo(() => compassLayout(projects), [projects]);
   const wheel = useMemo(() => wheelLayout(projects), [projects]);
   const filtered = skill !== "all" || year !== "all";
 
@@ -227,13 +154,6 @@ const WorkExplorer = ({ projects: given }) => {
       const q = (s) => Array.from(root.querySelectorAll(s));
       if (view === "Grid") {
         gsap.from(q(".work-card"), { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out", clearProps: "transform,opacity" });
-      }
-      if (view === "Compass") {
-        drawIn(gsap, q(".compass-axis"), { duration: 0.9 });
-        q(".compass-pt").forEach((el, i) =>
-          gsap.from(el, { x: C.cx - Number(el.dataset.x), y: C.cy - Number(el.dataset.y), opacity: 0, duration: 1.1, delay: 0.3 + i * 0.04, ease: "expo.out" })
-        );
-        q(".compass-quadrant").forEach((el, i) => scramble(gsap, el, 0.2 + i * 0.12));
       }
       if (view === "Wheel") {
         drawIn(gsap, q(".wheel-ring"), { duration: 1.2 });
@@ -268,9 +188,8 @@ const WorkExplorer = ({ projects: given }) => {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [view]);
-  // both plots at the same share of the space, a little under full width
+  // the wheel at a little under the full width beside its card
   const FIT = 0.88;
-  const cs = plotW ? Math.min(1.2, (plotW / C.PW) * FIT) : 0.8;
   const WW = Wh.CX * 2 + 40;
   const ws = plotW ? Math.min(1.2, (plotW / WW) * FIT) : 0.8;
 
@@ -288,31 +207,18 @@ const WorkExplorer = ({ projects: given }) => {
     measure();
     if (document.fonts?.ready) document.fonts.ready.then(measure);
     return undefined;
-  }, [view, selected.id, showRoles]);
+  }, [view, selected.id]);
   const widthOf = (key, text, px) => chipW[key] || textWidth(text, px) * 1.05;
 
-  const onCompassMove = (e) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - r.left) * C.PW) / r.width;
-    const y = ((e.clientY - r.top) * C.H) / r.height;
-    gsap.to(chx.current, { x, opacity: 0.8, duration: 0.25, ease: "power3.out", overwrite: true });
-    gsap.to(chy.current, { y, opacity: 0.8, duration: 0.25, ease: "power3.out", overwrite: true });
-    const mk = (x - C.cx) / C.sx;
-    const pp = (C.cy - y) / C.sy;
-    const f = (v) => `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(2)}`;
-    if (readout.current) readout.current.textContent = `${mk >= 0 ? "MAKING" : "UNDERSTANDING"} ${f(mk)} · ${pp >= 0 ? "PEOPLE" : "INFORMATION"} ${f(pp)}`;
-  };
-  const onCompassLeave = () => gsap.to([chx.current, chy.current], { opacity: 0, duration: 0.3 });
 
   const pointProps = (p) => ({
     tabIndex: matches(p) ? 0 : -1,
     role: "button",
-    "aria-pressed": !(view === "Compass" && showRoles && role) && selected.id === p.id,
+    "aria-pressed": selected.id === p.id,
     "aria-label": `${mapTitle(p)}, ${categoryMeta(p.category).short}, ${yearOf(p)}`,
     onClick: () => {
       if (!matches(p)) return;
       setPicked(p.id);
-      setRole(null);
     },
     onMouseEnter: () => matches(p) && setHot(p.id),
     onMouseLeave: () => setHot(null),
@@ -322,8 +228,7 @@ const WorkExplorer = ({ projects: given }) => {
       if (e.key === " ") {
         e.preventDefault();
         setPicked(p.id);
-        setRole(null);
-      }
+        }
       if (e.key === "Enter") window.location.assign(withBase(`/projects/${p.id}/`));
     },
     style: { cursor: matches(p) ? "pointer" : "default", opacity: matches(p) ? 1 : 0.15, transition: "opacity .3s" },
@@ -336,20 +241,6 @@ const WorkExplorer = ({ projects: given }) => {
           <h2 id="work-title" className="text-[40px] font-semibold leading-none tracking-[-0.02em]">Selected work</h2>
         </div>
         <div className="flex w-full flex-wrap items-end gap-3 desktop:w-auto">
-          {view === "Compass" && (
-            <button
-              type="button"
-              aria-pressed={showRoles}
-              onClick={() => {
-                setShowRoles((v) => !v);
-                setRole(null);
-              }}
-              className={`hidden min-h-[44px] items-center gap-2 self-end border border-ink px-4 font-mono text-[14px] desktop:flex ${showRoles ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
-            >
-              <span aria-hidden="true" className={`inline-block h-2.5 w-2.5 border border-current ${showRoles ? "bg-current" : ""}`} />
-              Show roles
-            </button>
-          )}
           {/* design and research together; live coding on its own */}
           <div className="flex flex-col gap-1 font-mono text-[13px] text-graphite">
             Show
@@ -432,169 +323,6 @@ const WorkExplorer = ({ projects: given }) => {
           </p>
         )}
       </div>
-
-      {/* ——— compass ——— */}
-      {view === "Compass" && (
-        <div ref={plotRef} className="hidden items-start gap-10 desktop:flex">
-            <svg
-              viewBox={`0 0 ${C.PW} ${C.H}`}
-              width={C.PW * cs}
-              height={C.H * cs}
-              className="shrink-0"
-              role="group"
-              aria-label="Work compass: left is understanding, right is making; up is people, down is information"
-              onMouseMove={onCompassMove}
-              onMouseLeave={onCompassLeave}
-            >
-              <defs>
-                <radialGradient id="work-glow">
-                  <stop offset="0%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.5" />
-                  <stop offset="50%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.18" />
-                  <stop offset="100%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0" />
-                </radialGradient>
-              </defs>
-              <g aria-hidden="true">
-                <rect x="0" y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.09)" }} />
-                <rect x={C.cx} y="0" width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.16)" }} />
-                <rect x="0" y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--ink) / 0.06)" }} />
-                <rect x={C.cx} y={C.cy} width={C.cx} height={C.cy} style={{ fill: "rgb(var(--olive) / 0.04)" }} />
-                <g style={{ stroke: "rgb(var(--concrete))" }} strokeWidth="0.7">
-                  {Array.from({ length: 19 }, (_, i) => i + 1).map((i) => (
-                    <React.Fragment key={i}>
-                      <line x1={(C.PW * i) / 20} y1="0" x2={(C.PW * i) / 20} y2={C.H} />
-                      <line x1="0" y1={(C.H * i) / 20} x2={C.PW} y2={(C.H * i) / 20} />
-                    </React.Fragment>
-                  ))}
-                </g>
-              </g>
-              <rect x="0" y="0" width={C.PW} height={C.H} fill="none" style={{ stroke: "rgb(var(--ink))" }} />
-              <line className="compass-axis" x1={C.cx} y1="0" x2={C.cx} y2={C.H} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
-              <line className="compass-axis" x1="0" y1={C.cy} x2={C.PW} y2={C.cy} style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />
-              <g fontFamily="JetBrains Mono, monospace" fontSize="14" style={{ fill: "rgb(var(--graphite))" }} aria-hidden="true">
-                <text x="12" y={C.cy - 12}>← UNDERSTANDING</text>
-                <text x={C.PW - 12} y={C.cy - 12} textAnchor="end">
-                  MAKING →
-                </text>
-                <text x={C.cx + 10} y="24">↑ PEOPLE</text>
-                <text x={C.cx + 10} y={C.H - 12}>↓ INFORMATION</text>
-              </g>
-              {QUADRANTS.map(([n, x, y, a]) => (
-                <text key={n} className="compass-quadrant" x={x} y={y} textAnchor={a} fontFamily="JetBrains Mono, monospace" fontSize="30" fontWeight="500" letterSpacing="0.16em" style={{ fill: "rgb(var(--olive))" }} aria-hidden="true">
-                  {n.toUpperCase()}
-                </text>
-              ))}
-              <line ref={chx} x1="0" y1="0" x2="0" y2={C.H} style={{ stroke: "rgb(var(--olive))" }} strokeDasharray="3 3" opacity="0" aria-hidden="true" />
-              <line ref={chy} x1="0" y1="0" x2={C.PW} y2="0" style={{ stroke: "rgb(var(--olive))" }} strokeDasharray="3 3" opacity="0" aria-hidden="true" />
-              {projects.map((p) => {
-                const [x, y] = compass[p.id];
-                const on = !(showRoles && role) && selected.id === p.id;
-                return (
-                  <g key={p.id} className="compass-pt" data-x={x} data-y={y} {...pointProps(p)}>
-                    {on && <circle className="work-glow glow-pulse" cx={x} cy={y} r="46" fill="url(#work-glow)" />}
-                    <rect
-                      x={x - (widthOf(`c${p.id}`, mapTitle(p), 17) + 18) / 2}
-                      y={y - 14}
-                      width={widthOf(`c${p.id}`, mapTitle(p), 17) + 18}
-                      height="28"
-                      style={{ fill: on ? "rgb(var(--olive))" : hot === p.id ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "rgb(var(--paper))", stroke: on || hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
-                      strokeWidth={hot === p.id && !on ? 2.5 : 1}
-                    />
-                    <text data-chip={`c${p.id}`} x={x} y={y + 6} textAnchor="middle" fontFamily="Inter Tight, sans-serif" fontSize="17" fontWeight="500" style={{ fill: on ? "#fff" : hot === p.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}>
-                      {mapTitle(p)}
-                    </text>
-                  </g>
-                );
-              })}
-              {showRoles &&
-                ROLES.map((r) => {
-                  const [x, y] = compass[roleKey(r)];
-                  const on = role === r.id;
-                  const over = hot === roleKey(r);
-                  return (
-                    <g
-                      key={r.id}
-                      className="compass-role"
-                      tabIndex={0}
-                      role="button"
-                      aria-pressed={on}
-                      aria-label={`Role: ${r.position}, ${r.dates}`}
-                      onMouseEnter={() => setHot(roleKey(r))}
-                      onMouseLeave={() => setHot(null)}
-                      onFocus={() => setHot(roleKey(r))}
-                      onBlur={() => setHot(null)}
-                      onClick={() => setRole(r.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          setRole(r.id);
-                        }
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {on && <circle className="work-glow glow-pulse" cx={x} cy={y - 5} r="46" fill="url(#work-glow)" />}
-                      {(() => {
-                        const w = widthOf(`role${r.id}`, r.short, 15) + 12;
-                        return <rect x={x - w / 2} y={y - 15} width={w} height="21" style={{ fill: on ? "rgb(var(--olive))" : over ? "color-mix(in srgb, rgb(var(--olive)) 16%, #fff)" : "#fff", stroke: on || over ? "rgb(var(--olive))" : "rgb(var(--concrete))", transition: "fill .2s" }} strokeWidth="1.5" />;
-                      })()}
-                      <text
-                        data-chip={`role${r.id}`}
-                        x={x}
-                        y={y}
-                        textAnchor="middle"
-                        fontFamily="Inter Tight, sans-serif"
-                        fontSize="15"
-                        fontWeight="400"
-                        style={{ fill: on ? "#fff" : over ? "rgb(var(--olive))" : "rgb(var(--graphite))", transition: "fill .2s" }}
-                      >
-                        {r.short}
-                      </text>
-                    </g>
-                  );
-                })}
-            </svg>
-            <div className="sticky top-20 flex min-w-[400px] flex-1 flex-col gap-5 self-start">
-              {showRoles && role ? (
-                (() => {
-                  const r = ROLES.find((x) => x.id === role);
-                  return (
-                    <>
-                      <div className="work-side flex flex-col gap-2 border-2 border-ink bg-paper p-4 text-[16px] leading-snug">
-                        <span className="font-mono text-[13px] uppercase text-olive">
-                          Role · {r.dates}
-                        </span>
-                        <span className="text-[22px] font-bold leading-tight">{r.position}</span>
-                        <span>{r.bullets}</span>
-                        <span className="font-mono text-[13px] text-graphite">{r.type}</span>
-                        <Link href="/resume" className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
-                          View CV →
-                        </Link>
-                      </div>
-                      <figure className="flex flex-row items-start gap-4 border border-ink bg-paper p-4">
-                        <div className="w-[180px] shrink-0">
-                          <MiniCompass at={compass[roleKey(r)]} />
-                        </div>
-                        <dl className="grid flex-1 grid-cols-1 gap-y-1 text-[15px] leading-snug [&>dd]:mb-2">
-                          <dt className="font-mono text-[13px] uppercase text-olive">Disciplines</dt>
-                          <dd>{r.skills.map(labelOf).join(" · ")}</dd>
-                        </dl>
-                      </figure>
-                    </>
-                  );
-                })()
-              ) : (
-                <>
-                  <ProjectCard project={selected} skills={false} />
-                  <Uses project={selected} row>
-                    <MiniCompass at={compass[selected.id]} />
-                  </Uses>
-                </>
-              )}
-              <p ref={readout} className="font-mono text-[13px] text-olive" aria-hidden="true">
-                Move over the compass to read its axes
-              </p>
-            </div>
-        </div>
-      )}
 
       {/* ——— wheel ——— */}
       {view === "Wheel" && (
