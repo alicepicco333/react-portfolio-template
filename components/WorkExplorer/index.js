@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { NODES, RING, CLUSTERS, labelOf, skillsOfProject } from "../Graph/data";
@@ -75,6 +75,59 @@ const teamOf = (p) => {
   return `Team of ${p.collaborators.length + 1}${p.reworkNote ? " · solo rework" : ""}`;
 };
 
+// Selected work as an index of works: each title at display size between ink rules. On wide screens the
+// row under the pointer or keyboard focus shows its image in a sticky preview beside the list.
+const IndexList = ({ projects }) => {
+  const [active, setActive] = useState(projects[0]?.id);
+  const current = projects.find((p) => p.id === active) || projects[0];
+  return (
+    <div className="grid gap-x-10 laptop:grid-cols-12">
+      <ol className="border-b border-ink laptop:col-span-7">
+        {projects.map((p) => {
+          const on = current && p.id === current.id;
+          return (
+            <li key={p.id} className="border-t border-ink">
+              <Link
+                href={`/projects/${p.id}`}
+                onMouseEnter={() => setActive(p.id)}
+                onFocus={() => setActive(p.id)}
+                className="group grid gap-x-6 gap-y-2 py-5 laptop:grid-cols-[1fr_auto] laptop:py-6"
+              >
+                <div className="mb-2 aspect-[4/3] overflow-hidden border border-ink laptop:hidden">
+                  <Media project={p} stillOnly className="h-full w-full object-cover" />
+                </div>
+                <h3 className={`fu-display text-[34px] leading-[1.04] transition-colors duration-150 tablet:text-[44px] group-hover:text-olive ${on ? "laptop:text-olive" : ""}`}>
+                  {shortTitle(p.title)}
+                </h3>
+                <span className="font-mono text-[13px] leading-relaxed text-graphite laptop:row-span-2 laptop:pt-2 laptop:text-right">
+                  {categoryMeta(p.category).short} · {yearOf(p)}
+                  {teamOf(p) && <span className="block">{teamOf(p)}</span>}
+                </span>
+                <p className="max-w-[60ch] text-[16px] leading-snug text-ink/80">{p.description}</p>
+              </Link>
+            </li>
+          );
+        })}
+      </ol>
+      <div className="hidden laptop:col-span-5 laptop:block" aria-hidden="true">
+        <div className="sticky top-24">
+          <div className="relative aspect-[4/3] overflow-hidden border border-ink bg-paper">
+            {projects.map((p) => (
+              <Media
+                key={p.id}
+                project={p}
+                stillOnly
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[120ms] ease-out ${current && p.id === current.id ? "opacity-100" : "opacity-0"}`}
+              />
+            ))}
+          </div>
+          {current && <p className="mt-3 font-mono text-[13px] leading-relaxed text-graphite">{skillIds(current.id).map(labelOf).join(" · ")}</p>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // the card beside the wheel
 const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
@@ -143,6 +196,10 @@ const WorkExplorer = ({ projects: given }) => {
   const years = [...new Set(projects.map(yearOf))].sort().reverse();
   const matches = (p) => (skill === "all" || skillIds(p.id).includes(skill)) && (type === "all" ? p.category !== "Live Coding" : p.category === type) && (year === "all" || yearOf(p) === year);
   const shown = projects.filter(matches);
+  const [layout, setLayout] = useState("cards");
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("work") === "index") setLayout("index");
+  }, []);
   const selected = shown.find((p) => p.id === picked) || shown[0] || projects[0];
   const wheel = useMemo(() => wheelLayout(projects), [projects]);
   const filtered = skill !== "all" || year !== "all";
@@ -156,7 +213,7 @@ const WorkExplorer = ({ projects: given }) => {
       if (!motionOn()) return;
       const q = (s) => Array.from(root.querySelectorAll(s));
       if (view === "Grid") {
-        gsap.from(q(".work-card"), { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out", clearProps: "transform,opacity" });
+        if (q(".work-card").length) gsap.from(q(".work-card"), { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out", clearProps: "transform,opacity" });
       }
       if (view === "Wheel") {
         drawIn(gsap, q(".wheel-ring"), { duration: 1.2 });
@@ -296,7 +353,9 @@ const WorkExplorer = ({ projects: given }) => {
 
       {/* ——— grid (always on smaller screens) ——— */}
       <div className={view === "Grid" ? "" : "desktop:hidden"}>
-        {shown.length ? (
+        {shown.length && layout === "index" ? (
+          <IndexList projects={shown} />
+        ) : shown.length ? (
           <ul className="work-grid grid gap-5 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
             {shown.map((p) => (
               <li key={p.id} className="work-card">

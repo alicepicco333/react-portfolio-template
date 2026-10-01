@@ -110,8 +110,9 @@ export default function ProjectPage({ project, number, next }) {
 
         {/* the work itself, before any numbers */}
         {project.highlightImage && (
-          <figure className="px-4 tablet:px-10">
-            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="max-h-[78vh] w-full border border-ink object-cover" fetchpriority="high" />
+          <figure className="mx-auto w-fit max-w-full px-4 tablet:px-10">
+            {/* the whole image at its own shape, never cropped; the caption sits under it */}
+            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full border border-ink" fetchpriority="high" />
             {project.highlightCaption && <figcaption className="mt-3 max-w-[720px] text-[16px] leading-snug text-graphite">{project.highlightCaption}</figcaption>}
           </figure>
         )}
