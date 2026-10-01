@@ -6,11 +6,12 @@ import GraphMark from "../GraphMark";
 import A11yControls from "../A11yControls";
 import { useActiveSection } from "../../utils";
 
-// Sections of the home page (the nav follows the one on screen).
+// Sections of the home page in page order (the logo already leads to the top); the nav follows the one on screen.
 export const SECTIONS = [
-  { id: "map", label: "map" },
   { id: "work", label: "work" },
   { id: "about", label: "about" },
+  { id: "journey", label: "timeline" },
+  { id: "contact", label: "contact" },
 ];
 
 const Header = () => {
@@ -18,8 +19,8 @@ const Header = () => {
   const { email, name } = data;
   const { pathname } = useRouter();
   const onHome = pathname === "/";
-  const { active } = useActiveSection(onHome ? [...SECTIONS.map((s) => s.id), "in-progress", "journey"] : []);
-  const current = (id) => onHome && (active === id || (id === "work" && active === "in-progress") || (id === "about" && active === "journey"));
+  const { active } = useActiveSection(onHome ? ["map", "work", "in-progress", "about", "journey", "contact"] : []);
+  const current = (id) => onHome && (active === id || (id === "work" && active === "in-progress"));
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-ink bg-bone text-ink">
@@ -31,22 +32,26 @@ const Header = () => {
           </span>
         </Link>
 
-        <A11yControls compact className="ml-auto hidden flex-nowrap gap-0 border-r border-ink/20 pr-2 tablet:flex laptop:gap-2 laptop:pr-4" />
-        <nav className="hidden h-full items-center gap-4 text-[16px] tablet:ml-2 tablet:flex laptop:ml-4 laptop:gap-7" aria-label="Main">
-          {SECTIONS.map((s) => (
-            <Link
-              key={s.id}
-              href={`/#${s.id}`}
-              aria-current={current(s.id) ? "location" : undefined}
-              className={`nav-glow py-1 ${current(s.id) ? "is-active" : ""}`}
-            >
-              {s.label}
-            </Link>
-          ))}
-          <Link href="/resume" className={`cv-glow flex min-h-[44px] items-center px-4 text-white ${pathname === "/resume" ? "bg-ink" : "bg-olive"}`}>
+        {/* navigation first, the CV, then the display settings at the edge */}
+        <nav className="ml-auto hidden h-full items-center gap-5 text-[16px] tablet:flex laptop:gap-8" aria-label="Main">
+          {SECTIONS.map((s) => {
+            const on = current(s.id);
+            return (
+              <Link
+                key={s.id}
+                href={`/#${s.id}`}
+                aria-current={on ? "location" : undefined}
+                className={`py-1 underline-offset-[7px] transition-colors duration-150 hover:text-olive ${on ? "underline decoration-2" : ""}`}
+              >
+                {s.label}
+              </Link>
+            );
+          })}
+          <Link href="/resume" className={`flex min-h-[44px] items-center px-4 text-white ${pathname === "/resume" ? "bg-ink" : "bg-olive hover:bg-ink"}`}>
             cv
           </Link>
         </nav>
+        <A11yControls compact className="hidden flex-nowrap gap-0 border-l border-ink/20 pl-2 tablet:flex laptop:gap-2 laptop:pl-4" />
 
         <button
           type="button"
@@ -62,7 +67,7 @@ const Header = () => {
 
       {open && (
         <nav id="mobile-menu" className="border-t border-ink bg-bone px-4 pb-6 tablet:hidden" aria-label="Mobile">
-          {[...SECTIONS.filter((s) => s.id !== "map"), { id: "contact", label: "contact" }].map((s) => (
+          {SECTIONS.map((s) => (
             <Link key={s.id} href={`/#${s.id}`} onClick={() => setOpen(false)} className="block border-b border-ink/20 py-4 text-[32px] font-semibold tracking-[-0.02em]">
               {s.label}
             </Link>

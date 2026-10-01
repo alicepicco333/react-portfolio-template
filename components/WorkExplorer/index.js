@@ -196,9 +196,10 @@ const WorkExplorer = ({ projects: given }) => {
   const years = [...new Set(projects.map(yearOf))].sort().reverse();
   const matches = (p) => (skill === "all" || skillIds(p.id).includes(skill)) && (type === "all" ? p.category !== "Live Coding" : p.category === type) && (year === "all" || yearOf(p) === year);
   const shown = projects.filter(matches);
-  const [layout, setLayout] = useState("cards");
+  // the index of works is the default; `?work=cards` still shows the earlier card grid
+  const [layout, setLayout] = useState("index");
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("work") === "index") setLayout("index");
+    if (new URLSearchParams(window.location.search).get("work") === "cards") setLayout("cards");
   }, []);
   const selected = shown.find((p) => p.id === picked) || shown[0] || projects[0];
   const wheel = useMemo(() => wheelLayout(projects), [projects]);
@@ -302,7 +303,7 @@ const WorkExplorer = ({ projects: given }) => {
       className="scroll-mt-16 border-t border-ink px-4 pb-16 pt-8 tablet:px-8"
       onKeyDown={(e) => {
         if (!plainKey(e)) return;
-        if (e.key === "g" || e.key === "G") setView("Grid");
+        if (/^[igIG]$/.test(e.key)) setView("Grid");
         if ((e.key === "w" || e.key === "W") && window.matchMedia("(min-width: 1280px)").matches) setView("Wheel");
       }}
     >
@@ -343,7 +344,7 @@ const WorkExplorer = ({ projects: given }) => {
                   onClick={() => setView(v)}
                   className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] transition-colors ${view === v ? "bg-olive text-white" : "bg-paper text-ink hover:bg-bone"}`}
                 >
-                  {v}
+                  {v === "Grid" ? "Index" : v}
                 </button>
               ))}
             </div>

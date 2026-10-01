@@ -80,6 +80,12 @@ function fanLayout(id, works) {
 
 // a plain key press inside this section, not typing in a field and not a browser shortcut
 const plainKey = (e) => !(e.metaKey || e.ctrlKey || e.altKey) && !/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName);
+// the statement's phrases, each opening the part of the map it names
+const PHRASES = [
+  ["complex information", "dv"],
+  ["easy to understand and trust", "ux"],
+  ["test it with the people who use it", "ur"],
+];
 // 1 to 5 select the first skill of each step of the method: listen, order, count, shape, play
 const STEP_KEYS = ["listening", "ordering", "counting", "shaping", "playing"];
 
@@ -186,11 +192,6 @@ const SkillMap = ({ projects }) => {
         ease: "expo.out",
       });
       drawIn(gsap, Array.from(s.querySelectorAll(".fan-line")), { duration: 0.45 });
-      gsap.fromTo(
-        s.querySelectorAll(".map-glow"),
-        { scale: 0.75, opacity: 0.55, transformOrigin: "50% 50%" },
-        { scale: 1.12, opacity: 1, duration: 1.8, repeat: -1, yoyo: true, ease: "sine.inOut" }
-      );
     });
     return () => mm.revert();
   }, [active, fit]);
@@ -236,14 +237,6 @@ const SkillMap = ({ projects }) => {
           <div ref={stageRef} className="absolute left-0 top-0 origin-top-left" style={{ width: MAP.W, height: MAP.H, transform: `scale(${fit || 1})` }}>
             <svg viewBox={`0 0 ${MAP.W} ${MAP.H}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
               <defs>
-                <radialGradient id="map-glow-fill">
-                  <stop offset="0%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.55" />
-                  <stop offset="45%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0.22" />
-                  <stop offset="100%" style={{ stopColor: "rgb(var(--olive))" }} stopOpacity="0" />
-                </radialGradient>
-                <filter id="map-glow-blur" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="10" />
-                </filter>
               </defs>
               <g aria-hidden="true">
                 {CLUSTERS.map((c) => (
@@ -324,7 +317,8 @@ const SkillMap = ({ projects }) => {
                     onBlur={() => setHovered(null)}
                   >
                     <circle cx={x} cy={y} r="22" fill="transparent" />
-                    {isActive && <circle className="map-glow" cx={x} cy={y} r="78" fill="url(#map-glow-fill)" filter="url(#map-glow-blur)" />}
+                    {/* the selected skill: a crisp ink ring around the node, no glow */}
+                    {isActive && <circle className="map-ring" cx={x} cy={y} r="21" fill="none" style={{ stroke: "rgb(var(--ink))" }} strokeWidth="1.5" />}
                     <circle
                       className="map-node"
                       cx={x}
@@ -376,7 +370,35 @@ const SkillMap = ({ projects }) => {
 
             <div className="map-intro absolute left-8 top-9 flex w-[640px] flex-col gap-3">
               <p className="text-[34px] font-medium leading-[1.16] tracking-[-0.015em]">
-                I&rsquo;m an HCI researcher and designer. I make complex information easy to understand and trust, and I test it with the people who use it.
+                  <>
+                    I&rsquo;m an HCI researcher and designer. I make{" "}
+                    {PHRASES.map(([text, id], i) => (
+                      <React.Fragment key={id}>
+                        {i === 1 && " "}
+                        {i === 2 && ", and I "}
+                        {/* a span, not a <button>: buttons cannot wrap mid-phrase, and the sentence must read as one */}
+                        <span
+                          role="button"
+                          tabIndex={0}
+                          aria-pressed={active === id}
+                          aria-label={`${text}: show ${labelOf(id)} in the map`}
+                          onMouseEnter={() => setPinned(id)}
+                          onFocus={() => setPinned(id)}
+                          onClick={() => setPinned(id)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              setPinned(id);
+                            }
+                          }}
+                          className={`cursor-pointer underline decoration-2 underline-offset-[6px] transition-[text-decoration-color,color] duration-150 hover:text-olive ${active === id ? "text-olive decoration-olive" : "decoration-ink/25"}`}
+                        >
+                          {text}
+                        </span>
+                      </React.Fragment>
+                    ))}
+                    .
+                  </>
               </p>
             </div>
 
@@ -424,7 +446,7 @@ const SkillMap = ({ projects }) => {
             ))}
           </ul>
           <a href="#work" className="w-max border-b-2 border-olive pb-1 font-mono text-[14px] text-olive">
-            see all the work ↓
+            All work
           </a>
         </div>
       </div>

@@ -105,8 +105,6 @@ html[data-contrast="high"] .map-edge:not([stroke-width="3"]) { stroke-width: 1.5
 html[data-contrast="high"] .map-glow,
 html[data-contrast="high"] .work-glow,
 html[data-contrast="high"] .hero-glow { display: none; }
-html[data-contrast="high"] .nav-glow:hover,
-html[data-contrast="high"] .nav-glow.is-active { text-shadow: none; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 html[data-contrast="high"] a { text-decoration-thickness: 2px; }
 html[data-contrast="high"] .wheel-cluster { fill: rgb(var(--ink)) !important; }
 html[data-motion="off"] {
@@ -182,22 +180,6 @@ button:not(:disabled):active {
 @keyframes glow-pulse {
   from { transform: scale(0.75); opacity: 0.55; }
   to { transform: scale(1.15); opacity: 1; }
-}
-/* nav links glow instead of carrying an underline */
-.nav-glow {
-  transition: color 0.2s, text-shadow 0.35s;
-}
-.nav-glow:hover,
-.nav-glow.is-active {
-  color: rgb(var(--olive));
-  text-shadow: 0 0 12px rgb(var(--olive) / 0.3), 0 0 26px rgb(var(--olive) / 0.18);
-}
-.cv-glow {
-  transition: box-shadow 0.35s;
-}
-.cv-glow:hover,
-.cv-glow:focus-visible {
-  box-shadow: 0 0 14px rgb(var(--olive) / 0.6), 0 0 32px rgb(var(--olive) / 0.35);
 }
 /* a soft blue glow with a radial blur, breathing */
 .hero-glow {
