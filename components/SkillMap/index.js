@@ -94,6 +94,13 @@ const SkillMap = ({ projects }) => {
   // the map rests quietly: the whole network in grey with plain labels; a hovered, focused or picked skill
   // lights its own lines and neighbours and opens its card
   const quiet = true;
+  // `?hero=band` / `?hero=caption`: two placements of the statement to compare
+  const [heroMode, setHeroMode] = useState("now");
+  const bandRef = useRef(null);
+  useEffect(() => {
+    const m = new URLSearchParams(window.location.search).get("hero");
+    if (m === "band" || m === "caption") setHeroMode(m);
+  }, []);
   const [hovered, setHovered] = useState(null);
   const [pinned, setPinned] = useState(null);
   const [chipW, setChipW] = useState({});
@@ -117,15 +124,16 @@ const SkillMap = ({ projects }) => {
     const measure = () => {
       const el = frameRef.current;
       if (!el) return;
-      const room = Math.max(480, window.innerHeight - 64);
+      const room = Math.max(480, window.innerHeight - 64 - (bandRef.current?.offsetHeight || 0));
       const f = Math.min(el.clientWidth / MAP.W, Math.max(0.8, room / MAP.H));
       setFit(f);
       setFrameH(Math.max(room, MAP.H * f));
     };
     measure();
+    if (document.fonts?.ready) document.fonts.ready.then(measure);
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+  }, [heroMode]);
 
   // size each skill chip to its label once the fonts are in
   useEffect(() => {
@@ -199,6 +207,39 @@ const SkillMap = ({ projects }) => {
   }, [active, fit]);
 
   const toggle = (id) => setPinned((current) => (current === id ? null : id));
+  const statement = (
+    <>
+                  <>
+                    I&rsquo;m an HCI researcher and designer. I make{" "}
+                    {PHRASES.map(([text, id], i) => (
+                      <React.Fragment key={id}>
+                        {i === 1 && " "}
+                        {i === 2 && ", and I "}
+                        {/* a span, not a <button>: buttons cannot wrap mid-phrase, and the sentence must read as one */}
+                        <span
+                          role="button"
+                          tabIndex={0}
+                          aria-pressed={active === id}
+                          aria-label={`${text}: show ${labelOf(id)} in the map`}
+                          onMouseEnter={() => setPinned(id)}
+                          onFocus={() => setPinned(id)}
+                          onClick={() => setPinned(id)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              setPinned(id);
+                            }
+                          }}
+                          className={`cursor-pointer underline decoration-2 underline-offset-[6px] transition-[text-decoration-color,color] duration-150 hover:text-olive ${active === id ? "text-olive decoration-olive" : "decoration-ink/25"}`}
+                        >
+                          {text}
+                        </span>
+                      </React.Fragment>
+                    ))}
+                    .
+                  </>
+</>
+  );
   const skillLabel = (id) => `${labelOf(id)}: ${nodeOf(id).tools.join(", ")}; used in ${workOf(id).length} projects`;
   const nodeProps = (label, onSelect) => ({
     tabIndex: 0,
@@ -230,6 +271,11 @@ const SkillMap = ({ projects }) => {
       }}
     >
       <h2 id="map-title" className="sr-only">Skill map</h2>
+      {heroMode === "band" && (
+        <div ref={bandRef} className="map-intro hidden px-8 pb-2 pt-10 map:block">
+          <p className="fu-display max-w-[1180px] text-[52px] leading-[1.04]">{statement}</p>
+        </div>
+      )}
       {/* ——— desktop and tablet: the fixed stage ——— */}
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
@@ -390,39 +436,11 @@ const SkillMap = ({ projects }) => {
               })}
             </svg>
 
-            <div className="map-intro absolute left-8 top-9 flex w-[640px] flex-col gap-3">
-              <p className="text-[34px] font-medium leading-[1.16] tracking-[-0.015em]">
-                  <>
-                    I&rsquo;m an HCI researcher and designer. I make{" "}
-                    {PHRASES.map(([text, id], i) => (
-                      <React.Fragment key={id}>
-                        {i === 1 && " "}
-                        {i === 2 && ", and I "}
-                        {/* a span, not a <button>: buttons cannot wrap mid-phrase, and the sentence must read as one */}
-                        <span
-                          role="button"
-                          tabIndex={0}
-                          aria-pressed={active === id}
-                          aria-label={`${text}: show ${labelOf(id)} in the map`}
-                          onMouseEnter={() => setPinned(id)}
-                          onFocus={() => setPinned(id)}
-                          onClick={() => setPinned(id)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                              e.preventDefault();
-                              setPinned(id);
-                            }
-                          }}
-                          className={`cursor-pointer underline decoration-2 underline-offset-[6px] transition-[text-decoration-color,color] duration-150 hover:text-olive ${active === id ? "text-olive decoration-olive" : "decoration-ink/25"}`}
-                        >
-                          {text}
-                        </span>
-                      </React.Fragment>
-                    ))}
-                    .
-                  </>
-              </p>
-            </div>
+            {heroMode !== "band" && (
+              <div className={`map-intro absolute left-8 top-9 flex flex-col gap-3 ${heroMode === "caption" ? "w-[470px]" : "w-[640px]"}`}>
+                <p className={heroMode === "caption" ? "text-phi1 font-medium leading-[1.25] tracking-[-0.01em]" : "text-[34px] font-medium leading-[1.16] tracking-[-0.015em]"}>{statement}</p>
+              </div>
+            )}
 
             {/* always in the page (it is the live region), shown only while a skill is selected */}
             <div className={`map-card absolute bottom-3 left-[1020px] flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))] ${activeNode ? "" : "invisible"}`} aria-live="polite">
