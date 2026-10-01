@@ -457,7 +457,14 @@
       "rank": 11,
       "embed": "https://player.vimeo.com/video/980415428?dnt=1",
       "cardWebp": "/images/projects/5-card-v3-800.webp",
-      "embedCaption": "The full recording, published by the Institute of Network Cultures."
+      "embedCaption": "The full recording, published by the Institute of Network Cultures.",
+      "decisions": [
+        {
+          "choice": "Write the visuals live in Hydra rather than play prepared material.",
+          "why": "So they could respond to Karolis Lasys’s sound as it happened.",
+          "result": "An 18-minute performance in dialogue, recorded and published by the Institute of Network Cultures."
+        }
+      ]
     },
     {
       "id": "10",
@@ -506,10 +513,17 @@
           "Hackers & Designers summer program"
         ]
       ],
-      "shows": "Teaching and facilitation: introducing newcomers to real-time interactive programming.",
+      "shows": "Teaching as opening the tools up: newcomers writing and performing real-time visuals in one afternoon.",
       "cardImage": "/images/projects/10-card-v2.jpg",
       "rank": 12,
-      "cardWebp": "/images/projects/10-card-v2-800.webp"
+      "cardWebp": "/images/projects/10-card-v2-800.webp",
+      "decisions": [
+        {
+          "choice": "Start from Hydra’s primitives, then close with a collective live jam.",
+          "why": "Most participants were new to live coding; a few building blocks were enough to start making visuals.",
+          "result": "Up to fifteen newcomers made visuals from scratch and performed together the same afternoon."
+        }
+      ]
     },
     {
       "id": "11",
@@ -567,16 +581,16 @@
       },
       "facts": [
         [
-          "2",
-          "languages: English and Dutch"
+          "2 languages",
+          "on every page, filter and label"
         ],
         [
-          "5",
-          "sections: collection, archive, history, about, contact"
+          "Now + then",
+          "the current collection and the archive, browsed apart"
         ],
         [
           "1972",
-          "where the label's timeline starts"
+          "to today: the label’s history as a timeline"
         ]
       ],
       "shows": "A client commission taken from Figma to a working bilingual site, built around how visitors browse a label’s collection and its history.",
@@ -1078,7 +1092,7 @@
           "code projected with the visuals"
         ]
       ],
-      "shows": "Building and operating a real-time interactive system under live conditions, with the code open to the audience.",
+      "shows": "The same openness in performance: the code projected beside the visuals, so the audience can see how every change is made.",
       "cardImage": "/images/projects/14-card-v3.jpg",
       "rank": 10,
       "cardWebp": "/images/projects/14-card-v3-800.webp",
@@ -1089,7 +1103,8 @@
       "decisions": [
         {
           "choice": "Project the code alongside the visuals.",
-          "why": "So the room could watch the patches being typed, changed and broken as the music moved."
+          "why": "So the room could watch the patches being typed, changed and broken as the music moved.",
+          "result": "Nothing about how the visuals are made is hidden: the audience reads the system while it runs."
         }
       ]
     },
@@ -2952,7 +2967,7 @@
     ]
   },
   "about": {
-    "lead": "I design for information that is complex, contested or easy to misread, so that people can understand it, trust it and check it for themselves.",
+    "lead": "I design for information that’s complicated or easy to misread, so people can understand it, trust it and check it themselves.",
     "paragraphs": [
       "That shapes how I work. Research comes first, from a background in cultural anthropology and digital humanities: interviews, usability tests, fieldwork and data analysis. I show the evidence behind what an interface claims: its sources, its data, how far to trust a result. And I test whether it worked, with people and with the data: in my Unobravo redesign, the usability score rose from 75 to 91.25.",
       "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers program with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
