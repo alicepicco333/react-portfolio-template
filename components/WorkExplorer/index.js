@@ -112,6 +112,13 @@ const Media = ({ project, className = "", stillOnly = false }) => {
   );
 };
 
+// who made it, at a glance: solo, or the team size (and a solo rework when there is one)
+const teamOf = (p) => {
+  if (!Array.isArray(p.collaborators)) return null;
+  if (!p.collaborators.length) return "Solo";
+  return `Team of ${p.collaborators.length + 1}${p.reworkNote ? " · solo rework" : ""}`;
+};
+
 // the card beside the compass and the wheel
 const ProjectCard = ({ project, skills = true }) => (
   <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
@@ -121,6 +128,7 @@ const ProjectCard = ({ project, skills = true }) => (
         <span className="text-olive">
           {categoryMeta(project.category).short.toUpperCase()} · {yearOf(project)}
         </span>
+        {teamOf(project) && <span className="text-graphite">{teamOf(project)}</span>}
       </div>
       <span className="text-[22px] font-bold leading-tight">{shortTitle(project.title)}</span>
       <span>{project.description}</span>
@@ -375,10 +383,11 @@ const WorkExplorer = ({ projects: given }) => {
                     <Media project={p} stillOnly className="h-full w-full object-cover" />
                   </div>
                   <div className="flex flex-grow flex-col gap-1.5 px-3.5 pb-3.5 pt-3">
-                    <div className="flex items-center justify-between font-mono text-[13px]">
-                      <span className="text-olive">
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 font-mono text-[13px]">
+                      <span className="whitespace-nowrap text-olive">
                         {categoryMeta(p.category).short.toUpperCase()} · {yearOf(p)}
                       </span>
+                      {teamOf(p) && <span className="whitespace-nowrap text-graphite">{teamOf(p)}</span>}
                     </div>
                     <h3 className="text-[18px] font-bold leading-tight">{shortTitle(p.title)}</h3>
                     <p className="text-[15px] leading-snug text-ink/85">{p.description}</p>

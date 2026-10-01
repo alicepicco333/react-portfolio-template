@@ -140,6 +140,35 @@ export default function ProjectPage({ project, number, next }) {
                 ))}
               </dl>
             )}
+            {project.decisions?.length > 0 && (
+              <section aria-labelledby="decisions-title" className="max-w-[900px] border-t-4 border-olive pt-4">
+                <h2 id="decisions-title" className="font-mono text-[14px] uppercase tracking-[0.1em] text-olive">
+                  Key decisions
+                </h2>
+                <ol className="mt-3 flex flex-col">
+                  {project.decisions.map((d, i) => (
+                    <li key={d.choice} className="grid gap-x-5 gap-y-2 border-t border-ink py-4 first:border-t-0 first:pt-1 tablet:grid-cols-[40px_1fr]">
+                      <span className="font-mono text-[14px] text-olive" aria-hidden="true">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className="flex flex-col gap-2">
+                        <p className="text-[19px] font-semibold leading-snug">{d.choice}</p>
+                        <dl className="grid gap-x-4 gap-y-1.5 text-[16px] leading-snug tablet:grid-cols-[80px_1fr]">
+                          <dt className="font-mono text-[13px] uppercase text-graphite tablet:pt-0.5">Why</dt>
+                          <dd>{d.why}</dd>
+                          {d.result && (
+                            <>
+                              <dt className="font-mono text-[13px] uppercase text-graphite tablet:pt-0.5">Result</dt>
+                              <dd>{d.result}</dd>
+                            </>
+                          )}
+                        </dl>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
             <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[16px] tablet:grid-cols-[140px_1fr]">
               <dt className="text-fieldgrey">Date</dt>
               <dd>{project.dateLabel}</dd>

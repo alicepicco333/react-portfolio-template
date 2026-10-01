@@ -103,11 +103,18 @@
           "ways through: timeline, conquests, geography"
         ]
       ],
-      "shows": "Information architecture for difficult, contested content, and a public interface built end to end.",
+      "shows": "Contested history made readable: every claim shown with its sources, at the depth the visitor chooses.",
       "cardImage": "/images/projects/0-card-v4.jpg",
       "rank": 3,
       "accentHC": "#75210c",
-      "cardWebp": "/images/projects/0-card-v4-800.webp"
+      "cardWebp": "/images/projects/0-card-v4-800.webp",
+      "decisions": [
+        {
+          "choice": "Give every object three positions, how it left, who claims it and who holds it, each with its sources.",
+          "why": "The objects are contested: the exhibition asks who was able to take them, who keeps them and who has managed to get them back.",
+          "result": "Visitors read each claim beside its evidence, not a single museum’s label."
+        }
+      ]
     },
     {
       "id": "1",
@@ -175,11 +182,23 @@
           "Friulian legends recovered from Pagine friulane"
         ]
       ],
-      "shows": "Turning scholarly source material into something people can search and read side by side.",
+      "shows": "Scholarly sources made readable side by side, with the edition’s own uncertainties marked.",
       "cardImage": "/images/projects/1-card-v4.jpg",
       "rank": 9,
       "accentHC": "#1b1bbe",
-      "cardWebp": "/images/projects/1-card-v4-800.webp"
+      "cardWebp": "/images/projects/1-card-v4-800.webp",
+      "decisions": [
+        {
+          "choice": "Align the dialect text, the Italian and an English translation passage by passage.",
+          "why": "Calvino’s retellings are hard to read against the dialect versions he drew on.",
+          "result": "56 passages can be read side by side and compared tale type by tale type, north and south."
+        },
+        {
+          "choice": "List the dialect readings still to be checked by a speaker.",
+          "why": "The transcriptions of Friulian and Sicilian need a speaker’s check.",
+          "result": "The edition marks what it is not yet sure of."
+        }
+      ]
     },
     {
       "id": "2",
@@ -258,11 +277,23 @@
           "people in the team"
         ]
       ],
-      "shows": "Structured knowledge modeling in a team, and testing a model against its own requirements.",
+      "shows": "Testing a model against its own requirements, and reporting what it cannot answer.",
       "cardImage": "/images/projects/2-card-v4.jpg",
       "rank": 4,
       "accentHC": "#111111",
-      "cardWebp": "/images/projects/2-card-v4-800.webp"
+      "cardWebp": "/images/projects/2-card-v4-800.webp",
+      "decisions": [
+        {
+          "choice": "Run every competency question as SPARQL against the group’s OWL files, instead of trusting the documentation.",
+          "why": "Competency questions are the requirements an ontology has to answer.",
+          "result": "Only 12 of the 24 written queries answered their question as written; fixed and completed, 37 of 47 questions are answered by the files, 7 in part, and 3 ask about things the files do not record."
+        },
+        {
+          "choice": "Check language-model output against the domain before modelling from it.",
+          "why": "ChatGPT and Gemini were used early on for definitions, scenarios and user stories.",
+          "result": "It showed where their answers helped and where they had to be corrected."
+        }
+      ]
     },
     {
       "id": "3",
@@ -344,11 +375,28 @@
           "open mashup datasets"
         ]
       ],
-      "shows": "Open-data research with a quality, legal and ethics review, and a research question answered with the data rather than illustrated.",
+      "shows": "A research question answered with the data rather than illustrated, with a plain reading of how far to trust each result.",
       "cardImage": "/images/projects/3-card-v5.jpg",
       "rank": 5,
       "accentHC": "#701e3c",
-      "cardWebp": "/images/projects/3-card-v5-800.webp"
+      "cardWebp": "/images/projects/3-card-v5-800.webp",
+      "decisions": [
+        {
+          "choice": "Answer the research question with rank correlations for every year, rather than illustrate it.",
+          "why": "The project asked whether women’s representation lines up across roles and countries; headcounts alone cannot say.",
+          "result": "The answer is looser than the question hoped: in 2022 only two of twelve pairs of roles from different areas line up more than chance would give."
+        },
+        {
+          "choice": "Compare each body’s top level with the level just below it.",
+          "why": "A body can look close to parity overall while its top seats stay male.",
+          "result": "In six of eight bodies, women hold a smaller share of the top seats than of the level below."
+        },
+        {
+          "choice": "Recompute every share from the headcounts and check it against EIGE’s own percentages.",
+          "why": "Assessing the quality of the merged open data was part of the brief.",
+          "result": "The mashup datasets are released under CC BY 4.0."
+        }
+      ]
     },
     {
       "id": "5",
@@ -600,7 +648,7 @@
           "interactive visualizations"
         ]
       ],
-      "shows": "Data modeling and knowledge-graph construction at scale: scraping, ontology design, semi-automatic classification and a queryable SPARQL endpoint.",
+      "shows": "A messy cultural archive made queryable, with the limits of its automatic classification stated.",
       "cardImage": "/images/projects/12-card-v4.jpg",
       "rank": 8,
       "accentHC": "#3a3733",
@@ -893,7 +941,19 @@
             "href": "https://github.com/alicepicco333/memo"
           }
         ]
-      }
+      },
+      "decisions": [
+        {
+          "choice": "Separate the meme template from its variants, following FRBR.",
+          "why": "Treating every image as the same kind of thing flattens how variants transform their template.",
+          "result": "It made the decoupling of views and variants visible, and led to a transformation typology that neither FRBR nor iconography provides."
+        },
+        {
+          "choice": "Label all 5,000 images with CLIP, and annotate only 50 variants by hand.",
+          "why": "Hand annotation cannot scale to the corpus; zero-shot labels can.",
+          "result": "The automatic layer proved the weakest: next time I would keep only the labels several prompts agree on, and flag the rest for review."
+        }
+      ]
     },
     {
       "id": "13",
@@ -1000,7 +1060,13 @@
       "embed": "https://odysee.com/$/embed/@alicepicco:0/5pic3_livingFull:d",
       "embedAspect": "4 / 3",
       "embedTitle": "full set",
-      "embedCaption": "The full set, recorded at Fulfillment Music Center (Odysee)."
+      "embedCaption": "The full set, recorded at Fulfillment Music Center (Odysee).",
+      "decisions": [
+        {
+          "choice": "Project the code alongside the visuals.",
+          "why": "So the room could watch the patches being typed, changed and broken as the music moved."
+        }
+      ]
     },
     {
       "id": "15",
@@ -1082,11 +1148,28 @@
           "has a how-to line and a data table"
         ]
       ],
-      "shows": "Data storytelling for everyone: fair measures, findings stated plainly, and charts that explain how to read them.",
+      "shows": "Data storytelling anyone can check: fair measures, findings stated plainly and a data table behind every chart.",
       "cardImage": "/images/projects/15-card-v4.jpg",
       "rank": 2,
       "accentHC": "#18309d",
-      "cardWebp": "/images/projects/15-card-v4-800.webp"
+      "cardWebp": "/images/projects/15-card-v4-800.webp",
+      "decisions": [
+        {
+          "choice": "Show libraries per inhabitant beside the raw counts.",
+          "why": "Raw counts of libraries and museums mostly show where people live, not how well they are served.",
+          "result": "The charts compare access rather than population size."
+        },
+        {
+          "choice": "Measure the straight-line distance from every municipality without a library to the nearest one.",
+          "why": "To test whether distance is what keeps people from libraries.",
+          "result": "It rarely is: the widest gap is in how libraries are used, with southern libraries lending a fraction of what northern ones do."
+        },
+        {
+          "choice": "Give every chart its finding in one sentence, a plain line on how to read it, and a data table.",
+          "why": "So the story can be followed without decoding the chart, and every number can be checked.",
+          "result": "A comprehension test plan for the charts is published with the code."
+        }
+      ]
     },
     {
       "id": "17",
@@ -2468,11 +2551,33 @@
           "participants finished every task, no errors"
         ]
       ],
-      "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
+      "shows": "Trust through transparency: research, three iterations and a measured gain in usability.",
       "cardImage": "/images/projects/20-card-v11.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v11-800.webp"
+      "cardWebp": "/images/projects/20-card-v11-800.webp",
+      "decisions": [
+        {
+          "choice": "Separate explaining the service from starting the test, instead of tidying the existing “How it works” page.",
+          "why": "No tested user could explain how Unobravo works, and the calls to action dropped people into the questionnaire when they expected an explanation.",
+          "result": "One structural change fixed three critical issues at once; in the final test every participant understood the service in about a minute and a half."
+        },
+        {
+          "choice": "Always offer three therapists, each with a “why we chose this therapist for you” explanation.",
+          "why": "Matching was opaque: the promised three profiles never arrived, and users had to retake the test.",
+          "result": "Participants singled out the explanation as what made the matching feel trustworthy."
+        },
+        {
+          "choice": "Let people change their schedule or preferences without retaking the questionnaire.",
+          "why": "Users repeated the whole test just to change their availability.",
+          "result": "Changing therapist for scheduling took about 25 seconds, with no errors."
+        },
+        {
+          "choice": "Replace the app’s sidebar with a tab bar and a dashboard.",
+          "why": "Navigation was hidden in the sidebar, and there was nowhere to see the next appointment or the therapy so far.",
+          "result": "Comparing and changing therapist, a task every user failed on the original app, took about 30 seconds."
+        }
+      ]
     },
     {
       "id": "21",
@@ -2544,11 +2649,27 @@
           "passages translated into English"
         ]
       ],
-      "shows": "Encoding, linking and presenting texts so a theme can be followed across authors and centuries.",
+      "shows": "Following a theme across five centuries, with every editorial choice kept visible.",
       "cardImage": "/images/projects/21-card-v5.jpg",
       "rank": 7,
       "accentHC": "#70223d",
-      "cardWebp": "/images/projects/21-card-v5-800.webp"
+      "cardWebp": "/images/projects/21-card-v5-800.webp",
+      "decisions": [
+        {
+          "choice": "Review every untagged occurrence of a concept word in context, and keep my tags apart from the original encoders’.",
+          "why": "The 2023 encoding left occurrences untagged, and the original team’s reading should stay visible.",
+          "result": "128 more passages tagged, with the reasons the other 59 were left out recorded."
+        },
+        {
+          "choice": "Highlight up to four concepts at once, never by colour alone.",
+          "why": "Colour alone fails readers who cannot tell the colours apart.",
+          "result": "Concepts can be compared within a passage without relying on colour vision."
+        },
+        {
+          "choice": "Translate all 127 French and Italian passages into English.",
+          "why": "So a concept can be followed across authors and languages in one reading."
+        }
+      ]
     }
   ],
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
@@ -2806,9 +2927,9 @@
     ]
   },
   "about": {
-    "lead": "Research comes first: I start from how people actually use technology, test ideas with them, and turn what I learn into clear, inclusive interfaces, data visualizations and working prototypes.",
+    "lead": "I design for information that is complex, contested or easy to misread, so that people can understand it, trust it and check it for themselves.",
     "paragraphs": [
-      "My background is in cultural anthropology and digital humanities, so research comes first: interviews, usability tests, fieldwork and data analysis. From there I design and build, in Figma and in code.",
+      "That shapes how I work. Research comes first, from a background in cultural anthropology and digital humanities: interviews, usability tests, fieldwork and data analysis. I show the evidence behind what an interface claims: its sources, its data, how far to trust a result. And I test whether it worked, with people and with the data: in my Unobravo redesign, the usability score rose from 75 to 91.25.",
       "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers program with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
     ],
     "practice": [
