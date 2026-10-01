@@ -295,7 +295,7 @@ export const Spiral = ({ projects }) => {
           return (
             <li key={c.title} className="border-l-2 border-olive pl-4">
               <h3 className="text-[20px] font-bold">
-                {c.title} <span className="font-mono text-[14px] font-normal text-graphite">· {c.from}–{c.to > 2026 ? "now" : c.to}</span>
+                {c.title} <span className="font-mono text-[14px] font-normal text-graphite">· {c.from}-{c.to > 2026 ? "now" : c.to}</span>
               </h3>
               <ul className="mt-2 flex flex-col gap-2">
                 {LOOP.map((ph) => {

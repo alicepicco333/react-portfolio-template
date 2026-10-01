@@ -50,7 +50,7 @@ const Home = () => {
 
   return (
     <div id="top" className="min-h-screen bg-bone text-ink">
-      <Seo title="Alice Picco — HCI researcher & designer" description={about.lead} />
+      <Seo title="Alice Picco, HCI researcher & designer" description={about.lead} />
       <Head>
         <meta name="theme-color" content="#D5D6DB" />
       </Head>
@@ -58,7 +58,7 @@ const Home = () => {
       <Header />
 
       <main id="main-content" tabIndex={-1}>
-        <h1 className="sr-only">Alice Picco — HCI researcher and designer</h1>
+        <h1 className="sr-only">Alice Picco, HCI researcher and designer</h1>
         <SkillMap projects={finished} />
         <WorkExplorer projects={finished} />
         <InProgress projects={wip} />

@@ -121,7 +121,7 @@ const IndexList = ({ projects }) => {
               />
             ))}
           </div>
-          {current && <p className="mt-3 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(current.id).map(labelOf).join(" · ")}</p>}
+          {current && <p className="mt-3 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(current.id).map(labelOf).join(", ")}</p>}
         </div>
       </div>
     </div>
@@ -141,7 +141,7 @@ const ProjectCard = ({ project, skills = true }) => (
       </div>
       <span className="text-[22px] font-bold leading-tight">{shortTitle(project.title)}</span>
       <span>{project.description}</span>
-      {skills && <span className="font-mono text-[14px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(" · ")}</span>}
+      {skills && <span className="font-mono text-[14px] leading-relaxed text-graphite">{skillIds(project.id).map(labelOf).join(", ")}</span>}
       <Link href={`/projects/${project.id}`} className="font-semibold text-olive underline underline-offset-2 hover:text-ink">
         View project →
       </Link>
@@ -154,7 +154,7 @@ const Uses = ({ project, row = false, children }) => (
     {row ? <div className="w-[180px] shrink-0">{children}</div> : children}
     <dl className={`grid flex-1 gap-x-3 text-[16px] leading-snug ${row ? "grid-cols-1 gap-y-1 [&>dd]:mb-2" : "grid-cols-[112px_1fr] gap-y-2"}`}>
       <dt className="font-mono text-[14px] uppercase text-olive">Disciplines</dt>
-      <dd>{skillIds(project.id).map(labelOf).join(" · ")}</dd>
+      <dd>{skillIds(project.id).map(labelOf).join(", ")}</dd>
       {project.summary?.stack && (
         <>
           <dt className="font-mono text-[14px] uppercase text-olive">Technologies</dt>
@@ -373,7 +373,7 @@ const WorkExplorer = ({ projects: given }) => {
                     </div>
                     <h3 className="text-[18px] font-bold leading-tight">{shortTitle(p.title)}</h3>
                     <p className="text-[16px] leading-snug text-ink/85">{p.description}</p>
-                    <p className="mt-auto pt-1.5 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(" · ")}</p>
+                    <p className="mt-auto pt-1.5 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(p.id).map(labelOf).join(", ")}</p>
                   </div>
                 </Link>
               </li>

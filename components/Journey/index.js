@@ -241,7 +241,7 @@ const Journey = ({ projects }) => {
                           fontSize="13"
                           style={{ fill: "rgb(var(--graphite))" }}
                         >
-                          {`${c.from}–${c.to > 2026 ? "now" : c.to}`}
+                          {`${c.from}-${c.to > 2026 ? "now" : c.to}`}
                         </text>
                       </g>
                     );
@@ -359,7 +359,7 @@ const Journey = ({ projects }) => {
                     key={c.title}
                     className="flex flex-col gap-1 border-t border-ink pt-3"
                   >
-                    <span className="font-mono text-[14px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</span>
+                    <span className="font-mono text-[14px] text-graphite">{`${c.from}-${c.to > 2026 ? "now" : c.to}`}</span>
                     <span className="text-[18px] font-bold">{c.title}</span>
                     <span className="text-[16px] leading-snug">{c.text}</span>
                   </li>
@@ -407,7 +407,7 @@ const Journey = ({ projects }) => {
                     key={c.title}
                     className="border-l-2 border-olive pb-6 pl-4"
                   >
-                    <p className="font-mono text-[14px] text-graphite">{`${c.from}–${c.to > 2026 ? "now" : c.to}`}</p>
+                    <p className="font-mono text-[14px] text-graphite">{`${c.from}-${c.to > 2026 ? "now" : c.to}`}</p>
                     <h3 className="text-[20px] font-bold">{c.title}</h3>
                     <p className="mt-1 text-[16px] leading-snug">{c.text}</p>
                     <ul className="mt-3 flex flex-col gap-2">

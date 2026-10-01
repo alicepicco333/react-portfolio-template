@@ -24,7 +24,7 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-bone text-ink">
-      <Seo title={`CV — ${name}`} description={resume.description || resume.tagline} path="/resume/" />
+      <Seo title={`CV | ${name}`} description={resume.description || resume.tagline} path="/resume/" />
 
       <Header />
 
@@ -78,7 +78,7 @@ const Resume = () => {
               {resume.skills.map((row) => (
                 <div key={row.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr] tablet:gap-4">
                   <dt className="fu-meta text-fieldgrey">{row.group}</dt>
-                  <dd className="text-[18px] leading-snug">{row.items.join(" · ")}</dd>
+                  <dd className="text-[18px] leading-snug">{row.items.join(", ")}</dd>
                 </div>
               ))}
             </dl>

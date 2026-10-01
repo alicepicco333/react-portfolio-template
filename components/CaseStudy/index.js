@@ -346,7 +346,7 @@ export default function CaseStudy({ data }) {
         <>
           <Lead>
             Assessment, expert review and preliminary testing surfaced nine usability issues, each scored for impact
-            and persistence (1–5).
+            and persistence (1-5).
           </Lead>
           <ol className="flex flex-col">
             {issues.map((issue) => (
@@ -470,7 +470,7 @@ export default function CaseStudy({ data }) {
               <span className="text-right font-semibold">{s.value}</span>
             </div>
           ))}
-          <span className="fu-meta text-fieldgrey">System Usability Scale, 0–100</span>
+          <span className="fu-meta text-fieldgrey">System Usability Scale, 0-100</span>
         </div>
         <div className="max-w-[720px] overflow-x-auto">
           <table className="w-full text-left text-[16px]">

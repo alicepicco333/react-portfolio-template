@@ -91,6 +91,11 @@ const STEP_KEYS = ["listening", "ordering", "counting", "shaping", "playing"];
 
 const SkillMap = ({ projects }) => {
   const router = useRouter();
+  // `?preview=quiet`: a calmer map to compare with the current one
+  const [quiet, setQuiet] = useState(false);
+  useEffect(() => {
+    setQuiet(new URLSearchParams(window.location.search).get("preview") === "quiet");
+  }, []);
   const [hovered, setHovered] = useState(null);
   const [pinned, setPinned] = useState("ixd");
   const [chipW, setChipW] = useState({});
@@ -284,7 +289,7 @@ const SkillMap = ({ projects }) => {
                     <g key={`w-${p.id}`} className="fan-item" data-x={x} data-y={y} {...nodeProps(`Open ${mapTitle(p)}`, () => goTo(p.id))} role="link">
                       <line className="fan-line" x1={ax} y1={ay} x2={x} y2={y} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" />
                       <circle cx={x} cy={y} r="6" style={{ fill: "rgb(var(--olive))" }} />
-                      <text
+                      {!quiet && <text
                         x={right ? x + 14 : x - 14}
                         y={y + 5}
                         textAnchor={right ? "start" : "end"}
@@ -295,7 +300,7 @@ const SkillMap = ({ projects }) => {
                         style={{ fill: "rgb(var(--ink))", ...HALO }}
                       >
                         {mapTitle(p)} ↗
-                      </text>
+                      </text>}
                     </g>
                   ))}
                 </g>
@@ -332,7 +337,8 @@ const SkillMap = ({ projects }) => {
                       strokeWidth="1.5"
                     />
                     <g className="map-chip-g">
-                      {(() => {
+                      {/* quiet: only the selected skill and its neighbours wear a chip; the rest read as plain grey labels */}
+                      {!(quiet && !isActive && !isLit && hovered !== n.id) && (() => {
                         const tw = (chipW[n.id] || textWidth(n.label, 18)) * (isActive || isLit ? 1.05 : 1);
                         const left = anchor === "end" ? x + dx - tw : x + dx;
                         return (
@@ -358,7 +364,7 @@ const SkillMap = ({ projects }) => {
                         fontFamily="Inter Tight, sans-serif"
                         fontSize="18"
                         fontWeight={isActive ? 700 : isLit ? 600 : 400}
-                        style={{ fill: isActive ? "#fff" : hovered === n.id ? "rgb(var(--olive))" : "rgb(var(--ink))", transition: "fill .2s" }}
+                        style={{ fill: isActive ? "#fff" : hovered === n.id ? "rgb(var(--olive))" : quiet && !isLit ? "rgb(var(--graphite))" : "rgb(var(--ink))", transition: "fill .2s" }}
                       >
                         {n.label}
                       </text>
@@ -407,7 +413,7 @@ const SkillMap = ({ projects }) => {
                 <>
                   <span className="text-[26px] font-bold leading-tight">{activeNode.label}</span>
                   <span>{SKILL_NOTES[active]}</span>
-                  <span className="font-mono text-[14px] text-graphite">{activeNode.tools.join(" · ")}</span>
+                  <span className="font-mono text-[14px] text-graphite">{activeNode.tools.join(", ")}</span>
                   <span className="mt-1 grid grid-cols-3 gap-2">
                     {activeWork.slice(0, 3).map((w) => (
                       <Link key={w.id} href={`/projects/${w.id}`} className="group flex flex-col gap-1 text-[13px] font-semibold leading-tight text-olive">

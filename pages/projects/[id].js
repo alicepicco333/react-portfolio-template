@@ -67,7 +67,7 @@ export default function ProjectPage({ project, number, next }) {
   return (
     <div className={`min-h-screen bg-bone text-ink ${project.accent ? "project-theme" : ""}`} style={projectStyle(project.accent, project.accentHC)}>
       <Seo
-        title={`${project.title} — Alice Picco`}
+        title={`${project.title} | Alice Picco`}
         description={project.description}
         path={`/projects/${project.id}/`}
         image={project.cardImage || project.imageSrc || undefined}
@@ -244,7 +244,7 @@ export default function ProjectPage({ project, number, next }) {
               <figure key={src} className="flex flex-col gap-3">
                 <img
                   src={withBase(src)}
-                  alt={caption || `${project.title} — image ${index + 1}`}
+                  alt={caption || `${project.title}, image ${index + 1}`}
                   className="w-full border border-concrete"
                   loading="lazy"
                 />

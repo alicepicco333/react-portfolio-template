@@ -6,7 +6,7 @@ import Seo from "../components/Seo";
 
 const NotFound = () => (
   <div className="min-h-screen bg-bone text-ink">
-    <Seo title="Page not found — Alice Picco" description="This page does not exist. Find selected work, the CV and contact details on the home page." path="/404/" />
+    <Seo title="Page not found | Alice Picco" description="This page does not exist. Find selected work, the CV and contact details on the home page." path="/404/" />
     <Header />
     <main id="main-content" tabIndex={-1} className="px-4 pb-32 pt-16 tablet:px-10">
       <p className="font-mono text-[14px] text-graphite">404</p>

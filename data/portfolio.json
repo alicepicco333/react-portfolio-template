@@ -83,7 +83,7 @@
         "role": "Information modeling and web development; the 2026 redesign on my own.",
         "method": "A metadata model for 30 objects; 810 texts across 3 tours, 3 lengths and 3 reading levels; maps, floor plans and 3D views.",
         "outcome": "A virtual exhibition of 30 objects in 13 rooms on two floors, each with the claims, holdings and sources behind it.",
-        "stack": "HTML · CSS · JavaScript · Leaflet · three.js · RDF"
+        "stack": "HTML, CSS, JavaScript, Leaflet, three.js, RDF"
       },
       "facts": [
         [
@@ -148,7 +148,7 @@
           "caption": "The structured reading of each tale: tale type, places in order, people, supernatural figures and resolution."
         }
       ],
-      "middleText": "Each tale is encoded in TEI XML: the dialect text, the Italian translation and an English working translation, aligned passage by passage, with a glossary of dialect words and narrators, collectors and places linked to Wikidata. For every tale the edition records its source, narrators, ATU tale type and a Propp-based reading of its places, people and outcome. In 2026 I added five Friulian legends from the magazine Pagine friulane (1890–94), including the origin of buckwheat, the subject of Calvino’s fourth Friulian tale, for which no source had been found, and three more Sicilian tales from Pitrè, all transcribed from the page images and linked to them.",
+      "middleText": "Each tale is encoded in TEI XML: the dialect text, the Italian translation and an English working translation, aligned passage by passage, with a glossary of dialect words and narrators, collectors and places linked to Wikidata. For every tale the edition records its source, narrators, ATU tale type and a Propp-based reading of its places, people and outcome. In 2026 I added five Friulian legends from the magazine Pagine friulane (1890-94), including the origin of buckwheat, the subject of Calvino’s fourth Friulian tale, for which no source had been found, and three more Sicilian tales from Pitrè, all transcribed from the page images and linked to them.",
       "highlightImage": "/images/projects/1-hl-v4.jpg",
       "conclusionText": "The 2026 version makes the edition usable and comparable: a search across every passage in three languages, the TEI of any passage on request, maps of the places of collection, a table of the tale types told both in Friuli and in Sicily (the proud smith, St Peter’s mother, the jests of Christ and Peter), an Italian readability index, and a list of the dialect readings still to be checked by a speaker.",
       "imageSrc": "/images/projects/1.jpg",
@@ -171,7 +171,7 @@
         "role": "Edition design and web development; the 2026 rework on my own.",
         "method": "TEI XML with the dialect text, Italian and English aligned passage by passage; ATU types and a structural reading for each tale; Wikidata links.",
         "outcome": "A searchable edition of 11 Jesus-and-Peter tales from Friuli and Sicily: 56 passages aligned in three languages and compared by tale type.",
-        "stack": "TEI · Python · JavaScript · D3.js · Wikidata"
+        "stack": "TEI, Python, JavaScript, D3.js, Wikidata"
       },
       "facts": [
         [
@@ -187,7 +187,7 @@
           "tale types compared north and south"
         ],
         [
-          "1890–1894",
+          "1890-1894",
           "Friulian legends recovered from Pagine friulane"
         ]
       ],
@@ -266,7 +266,7 @@
         "role": "Four of the sixteen ontologies (bias blind spot, confabulation, naive cynicism and naive realism), in a team of four; the 2026 explorer on my own.",
         "method": "eXtreme Design: user stories, competency questions, ontology design patterns and alignment to Framester; in 2026, every competency question tested as SPARQL.",
         "outcome": "16 OWL ontologies (119 classes, 52 object properties) and an explorer that walks through each story and tests all 47 competency questions: 37 are answered by the files.",
-        "stack": "OWL · RDF · SPARQL · Python (rdflib, owlready2) · JavaScript · Oxigraph"
+        "stack": "OWL, RDF, SPARQL, Python (rdflib, owlready2), JavaScript, Oxigraph"
       },
       "facts": [
         [
@@ -364,7 +364,7 @@
         "role": "Idea, data retrieval, visualization, quality and legal analysis, website; the 2026 rework on my own.",
         "method": "EIGE datasets for six areas merged into mashups; shares computed from headcounts and checked against EIGE's own percentages; Spearman rank correlations across the EU-27 for every year.",
         "outcome": "No area reaches parity; roles line up only loosely across countries, and in six of eight bodies the top level has fewer women than the level below.",
-        "stack": "D3.js · JavaScript · Python · EIGE open data"
+        "stack": "D3.js, JavaScript, Python, EIGE open data"
       },
       "facts": [
         [
@@ -564,7 +564,7 @@
       ],
       "highlightCaption": "Collection page: ready-to-wear pieces, filtered by category and material and sorted by price.",
       "date": "2026-05-01",
-      "dateLabel": "2025 – 2026",
+      "dateLabel": "2025 - 2026",
       "context": "Commission for Teigetje & Woelrat, Amsterdam",
       "collaborators": [],
       "accent": "#111111",
@@ -573,7 +573,7 @@
         "role": "Design in Figma and front-end development.",
         "method": "Collection and archive pages with filters, the label's history as a timeline, English and Dutch throughout.",
         "outcome": "A bilingual site for the label's collection and archive.",
-        "stack": "Figma · React · TypeScript · Vite"
+        "stack": "Figma, React, TypeScript, Vite"
       },
       "facts": [
         [
@@ -663,7 +663,7 @@
         "role": "Sole researcher: data collection, ontology, classification and visualization.",
         "method": "About 5,000 Know Your Meme entries scraped; an OWL ontology informed by FRBR; CLIP for semi-automatic classification.",
         "outcome": "A published ontology (206,923 triples) with documentation, eleven interactive visualizations, a SPARQL explorer linked to Wikidata and the full thesis as an indexed reader.",
-        "stack": "Python · CLIP · OWL 2 / Protégé · SPARQL (Comunica) · D3.js"
+        "stack": "Python, CLIP, OWL 2 / Protégé, SPARQL (Comunica), D3.js"
       },
       "facts": [
         [
@@ -700,7 +700,7 @@
           },
           {
             "label": "Timeline",
-            "value": "Research 2025–2026 · thesis Session I, A.Y. 2025–2026"
+            "value": "Research 2025-2026 · thesis Session I, A.Y. 2025-2026"
           },
           {
             "label": "Methods",
@@ -1002,7 +1002,7 @@
     {
       "id": "13",
       "title": "Archivio Fondazione Luki Massa",
-      "description": "Digitization and cataloging of an archive of lesbian and feminist activism in Bologna, 1976–2015.",
+      "description": "Digitization and cataloging of an archive of lesbian and feminist activism in Bologna, 1976-2015.",
       "introText": "Digitization of the archive of Luki Massa, which documents lesbian and feminist activism from 1976 to 2015 and was inventoried by Emanuela Fiorletta in 2023.",
       "gridImages": [],
       "middleText": "The work covers five of the archive's series: political groups, lesbian and feminist conferences, seminars and demonstrations, other lesbian, feminist and LGBTQI+ groups, the lesbian and feminist press, and Luki Massa's own notes and writings. Every scan follows a shared nomenclature (archive, series, subseries, file, documentary unit, page), and spreadsheets record the title, date, medium, material and a short description of each unit.",
@@ -1016,7 +1016,7 @@
         "Digitization"
       ],
       "date": "2026-09-03",
-      "dateLabel": "2026 –",
+      "dateLabel": "2026 -",
       "context": "Archivio Luki Massa, Bologna",
       "collaborators": null,
       "summary": {
@@ -1033,7 +1033,7 @@
           "series being digitized"
         ],
         [
-          "1976–2015",
+          "1976-2015",
           "years of activism documented"
         ]
       ],
@@ -1145,7 +1145,7 @@
         },
         {
           "src": "/images/projects/15-g8.jpg",
-          "caption": "Reading from 2011 to 2021: the north–south gap narrowed because the north read less, not because the south read more."
+          "caption": "Reading from 2011 to 2021: the north-south gap narrowed because the north read less, not because the south read more."
         },
         {
           "src": "/images/projects/15-g5.jpg",
@@ -1177,7 +1177,7 @@
         "role": "Data visualization and web development; the 2026 rework on my own.",
         "method": "ISTAT and Ministry of Culture open data, with rates per inhabitant, distances and 2023 population wherever the data allows.",
         "outcome": "A data story: one municipality in four has no library, southern libraries lend a fraction of what northern ones do, and reading fell almost everywhere from 2011 to 2021.",
-        "stack": "D3.js · GeoJSON · Python"
+        "stack": "D3.js, GeoJSON, Python"
       },
       "facts": [
         [
@@ -1308,7 +1308,7 @@
           },
           {
             "label": "Timeline",
-            "value": "Research autumn 2025 · ver0 Jan 2026 · final version Mar 2026"
+            "value": "Research autumn 2025, ver0 Jan 2026, final version Mar 2026"
           },
           {
             "label": "Methods",
@@ -1336,7 +1336,7 @@
           {
             "meta": "Age × readiness to change",
             "title": "Segmentation",
-            "text": "Three age groups (25–34, 35–44, 45–55) crossed with the Stages of Change model. The focus segment: young adults in the Preparation stage."
+            "text": "Three age groups (25-34, 35-44, 45-55) crossed with the Stages of Change model. The focus segment: young adults in the Preparation stage."
           },
           {
             "meta": "8 interviews · 3 age groups",
@@ -1368,7 +1368,7 @@
           "lead": "Eight one-on-one interviews of about 30 minutes, held in Italian and recorded with consent, one or more in each segment. They covered how people look for a therapist, what makes a platform feel trustworthy and what stops them from starting.",
           "segments": [
             {
-              "segment": "Young adults · 25–34",
+              "segment": "Young adults · 25-34",
               "stage": "Preparation",
               "count": 4,
               "people": [
@@ -1385,7 +1385,7 @@
               ]
             },
             {
-              "segment": "Mid-career adults · 35–44",
+              "segment": "Mid-career adults · 35-44",
               "stage": "Contemplation",
               "count": 2,
               "people": [
@@ -1400,7 +1400,7 @@
               ]
             },
             {
-              "segment": "Mature adults · 45–55",
+              "segment": "Mature adults · 45-55",
               "stage": "Precontemplation",
               "count": 2,
               "people": [
@@ -1472,7 +1472,7 @@
           ]
         },
         "cast": {
-          "lead": "One protagonist and seven supporting personas, built from the interviews and spread across the three age segments and stages of change. Each is rated 1–5 on six traits, so the cast shows where the design has to stretch.",
+          "lead": "One protagonist and seven supporting personas, built from the interviews and spread across the three age segments and stages of change. Each is rated 1-5 on six traits, so the cast shows where the design has to stretch.",
           "traits": [
             "Technical",
             "Domain",
@@ -1551,7 +1551,7 @@
               "job": "Freelance videographer, Florence",
               "scenario": "Unsure but interested",
               "photo": "/images/projects/unobravo/cast/alessandro.jpg",
-              "quote": "The hardest part isn’t talking — it’s believing that it’s safe to begin.",
+              "quote": "The hardest part isn’t talking, it’s believing that it’s safe to begin.",
               "summary": "Digitally skilled but emotionally cautious. He opens the app, reads testimonials and closes it again. One bad first interaction could push him away for years.",
               "needs": [
                 "Signals that he can stop at any time",
@@ -1863,7 +1863,7 @@
           }
         ],
         "urgency": {
-          "lead": "Every issue is plotted by impact and persistence (1–5). The upper-right corner is where the redesign had to start. Switch versions to see how the problems shrank after the first iteration.",
+          "lead": "Every issue is plotted by impact and persistence (1-5). The upper-right corner is where the redesign had to start. Switch versions to see how the problems shrank after the first iteration.",
           "versions": [
             {
               "key": "original",
@@ -2567,7 +2567,7 @@
         }
       },
       "date": "2026-03-08",
-      "dateLabel": "2025 – 2026",
+      "dateLabel": "2025 - 2026",
       "context": "HCI course project, MA Digital Humanities and Digital Knowledge, University of Bologna",
       "collaborators": [],
       "accent": "#a4341f",
@@ -2576,7 +2576,7 @@
         "role": "Solo: research, UX and UI design, prototyping and testing.",
         "method": "Interviews, expert review and think-aloud tests; three design iterations; a summative usability test.",
         "outcome": "SUS rose from 75 to 91.25, with 100% task success and zero errors (4 participants).",
-        "stack": "Figma · prototyping · SUS"
+        "stack": "Figma, prototyping, SUS"
       },
       "facts": [
         [
@@ -2674,7 +2674,7 @@
         "role": "In a team of four: the TEI encoding of Claude Cahun’s L’Androgyne and Simone de Beauvoir’s Mémoires d’une jeune fille rangée, and work on the website; the 2026 rework on my own.",
         "method": "TEI XML excerpts linked to VIAF, Wikidata and WorldCat; 300 passages tagged with 27 concepts, 128 of them in a 2026 review of every occurrence.",
         "outcome": "A reading edition of nine authors from 1558 to 1958 that follows each concept across texts.",
-        "stack": "TEI · Python · JavaScript · Wikidata"
+        "stack": "TEI, Python, JavaScript, Wikidata"
       },
       "facts": [
         [
@@ -2682,7 +2682,7 @@
           "women authors"
         ],
         [
-          "1558–1958",
+          "1558-1958",
           "first editions"
         ],
         [
@@ -2980,15 +2980,15 @@
     "practice": [
       {
         "title": "Research",
-        "items": "Interviews · usability testing (SUS, think-aloud) · ethnography · personas · data analysis"
+        "items": "Interviews, usability testing (SUS, think-aloud), ethnography, personas, data analysis"
       },
       {
         "title": "Design",
-        "items": "Information architecture · interaction and visual design · prototyping in Figma"
+        "items": "Information architecture, interaction and visual design, prototyping in Figma"
       },
       {
         "title": "Build",
-        "items": "React · D3.js · Leaflet · Python · RDF, SPARQL and OWL · Hydra"
+        "items": "React, D3.js, Leaflet, Python, RDF, SPARQL and OWL, Hydra"
       }
     ]
   },

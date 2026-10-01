@@ -441,7 +441,7 @@ export function Cast({ data }) {
       })}
 
       <div className="flex flex-col gap-4">
-        <SubHead meta="Six traits, rated 1–5">Cumulative chart of personality traits</SubHead>
+        <SubHead meta="Six traits, rated 1-5">Cumulative chart of personality traits</SubHead>
         <CastChart members={members} traits={traits} notes={traitNotes} clusters={clusters} />
       </div>
 
@@ -623,7 +623,7 @@ export function UrgencyExplorer({ data }) {
               );
             })}
           </ol>
-          <span className="fu-meta text-fieldgrey">Scores: impact / persistence, 1–5. Select an issue for details.</span>
+          <span className="fu-meta text-fieldgrey">Scores: impact / persistence, 1-5. Select an issue for details.</span>
         </div>
       </div>
     </div>

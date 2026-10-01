@@ -33,7 +33,7 @@ const ProjectGraph = ({ projectId }) => {
             </button>
             {picked === n.id && (
               <div className="flex flex-col gap-1.5 border-b border-ink/30 py-3 text-[16px] leading-snug" aria-live="polite">
-                <span className="font-mono text-[14px] text-graphite">{n.tools.join(" · ")}</span>
+                <span className="font-mono text-[14px] text-graphite">{n.tools.join(", ")}</span>
                 {others.length > 0 && (
                   <span>
                     Also in:{" "}

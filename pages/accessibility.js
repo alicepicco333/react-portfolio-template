@@ -8,7 +8,7 @@ import data from "../data/portfolio.json";
 const Accessibility = () => (
   <div className="min-h-screen bg-bone text-ink">
     <Seo
-      title="Accessibility statement — Alice Picco"
+      title="Accessibility statement | Alice Picco"
       description="How this portfolio aims to meet WCAG 2.1 AA, and the controls it offers for motion and contrast."
       path="/accessibility/"
     />
