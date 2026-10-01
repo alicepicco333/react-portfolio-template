@@ -532,41 +532,37 @@
       "introText": "A collection website for Teigetje & Woelrat, an Amsterdam label working across fashion, design and interior art. I designed it in Figma and built it as a React site.",
       "gridImages": [
         {
-          "src": "/images/projects/11-g1.jpg",
-          "caption": "Collection pieces, each with its name, category and year."
+          "src": "/images/projects/11-v2-g1.jpg",
+          "caption": "Collection pieces, each with its name, category and price."
         },
         {
-          "src": "/images/projects/11-g2.jpg",
-          "caption": "More of the collection: each piece with its name, category and price."
-        },
-        {
-          "src": "/images/projects/11-g3.jpg",
+          "src": "/images/projects/11-v2-g2.jpg",
           "caption": "Archived Pieces: garments from past collections, with their own filters."
         },
         {
-          "src": "/images/projects/11-g4.jpg",
+          "src": "/images/projects/11-v2-g3.jpg",
           "caption": "History page: how the label began."
         },
         {
-          "src": "/images/projects/11-g5.jpg",
-          "caption": "The label's timeline, from 1972 to 2001."
+          "src": "/images/projects/11-v2-g4.jpg",
+          "caption": "The label's timeline, from 1972 onwards."
         },
         {
-          "src": "/images/projects/11-g6.jpg",
+          "src": "/images/projects/11-v2-g5.jpg",
           "caption": "Home page."
         }
       ],
       "middleText": "The site has a collection page of ready-to-wear pieces with filters, an archive of pieces from past collections, a history of the label told as a timeline from 1972 onwards, an about page and a contact page, all in English and Dutch.",
-      "highlightImage": "/images/projects/11-hl.jpg",
+      "highlightImage": "/images/projects/11-hl-v2.jpg",
       "conclusionText": "Built with React, TypeScript and Vite from the Figma design.",
-      "imageSrc": "/images/projects/11.jpg",
-      "url": "",
+      "imageSrc": "/images/projects/11-v2.jpg",
+      "url": "https://teigetje-en-woelrat.netlify.app/",
       "category": "Design",
       "tags": [
         "UX Design",
         "Web Development"
       ],
-      "highlightCaption": "Collection page, with filters for browsing the pieces.",
+      "highlightCaption": "Collection page: ready-to-wear pieces, filtered by category and material and sorted by price.",
       "date": "2026-05-01",
       "dateLabel": "2025 – 2026",
       "context": "Commission for Teigetje & Woelrat, Amsterdam",
@@ -594,10 +590,10 @@
         ]
       ],
       "shows": "A client commission taken from Figma to a working bilingual site, built around how visitors browse a label’s collection and its history.",
-      "cardImage": "/images/projects/11-card-v2.jpg",
+      "cardImage": "/images/projects/11-card-v3.jpg",
       "rank": 6,
       "accentHC": "#111111",
-      "cardWebp": "/images/projects/11-card-v2-800.webp",
+      "cardWebp": "/images/projects/11-card-v3-800.webp",
       "decisions": [
         {
           "choice": "Keep the current collection and the archive of past pieces apart, each with its own filters.",
