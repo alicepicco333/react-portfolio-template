@@ -79,7 +79,7 @@ export default function ProjectPage({ project, number, next }) {
       <main id="main-content" tabIndex={-1}>
         <section className="grid gap-x-4 gap-y-8 px-4 pb-8 pt-6 tablet:px-10 laptop:grid-cols-4 laptop:pb-10 laptop:pt-10">
           <div className="flex flex-col gap-1">
-            <Link href="/#work" className="fu-meta text-fieldgrey hover:text-ink">
+            <Link href="/#work" className="fu-meta -my-2 inline-flex min-h-[40px] w-max items-center text-fieldgrey hover:text-ink">
               ← Selected work
             </Link>
             <span className="fu-meta pt-4 text-fieldgrey">{number}</span>
@@ -127,7 +127,7 @@ export default function ProjectPage({ project, number, next }) {
             {project.facts?.length > 0 && (
               <dl className="grid max-w-[980px] grid-cols-2 gap-x-6 gap-y-5 border-y border-ink py-5 laptop:grid-cols-4" aria-label="Key facts">
                 {project.facts.map(([value, label]) => (
-                  <div key={label} className="flex flex-col-reverse gap-1">
+                  <div key={label} className="flex flex-col-reverse justify-end gap-1">
                     <dt className="text-[16px] leading-snug text-graphite">{label}</dt>
                     <dd className="text-[30px] font-semibold leading-none tracking-[-0.02em] text-olive tabular-nums tablet:text-[36px]">{value}</dd>
                   </div>
@@ -226,7 +226,7 @@ export default function ProjectPage({ project, number, next }) {
           </figure>
         )}
 
-        {project.caseStudy && <CaseStudy data={project.caseStudy} />}
+        {project.caseStudy && <CaseStudy data={project.caseStudy} showStats={!project.facts?.length} />}
 
         {!project.caseStudy && (project.middleText || project.conclusionText) && (
           <section className="grid gap-x-4 gap-y-6 px-4 py-16 tablet:px-10 laptop:grid-cols-4 laptop:py-[110px]">

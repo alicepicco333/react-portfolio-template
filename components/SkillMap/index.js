@@ -132,7 +132,7 @@ const SkillMap = ({ projects }) => {
   useEffect(() => {
     const measure = () => {
       const el = frameRef.current;
-      if (!el) return;
+      if (!el || !el.clientWidth) return; // hidden on phones: nothing to fit
       const band = bandRef.current?.offsetHeight || 0;
       const room = window.innerHeight - (document.querySelector("header")?.offsetHeight || 65) - band;
       const h = MAP.H - (heroMode === "band" ? 70 : 0);
@@ -483,7 +483,7 @@ const SkillMap = ({ projects }) => {
               </li>
             ))}
           </ul>
-          <a href="#work" className="w-max border-b-2 border-olive pb-1 font-mono text-[14px] text-olive">
+          <a href="#work" className="inline-flex min-h-[44px] w-max items-center border-b-2 border-olive font-mono text-[14px] text-olive">
             All work
           </a>
         </div>

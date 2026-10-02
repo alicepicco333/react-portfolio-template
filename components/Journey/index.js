@@ -192,7 +192,8 @@ const Journey = ({ projects }) => {
           className="max-w-[860px] font-mono text-[14px] leading-relaxed text-graphite"
           aria-live="polite"
         >
-          {MODELS.find((m) => m.id === model).note}
+          <span className="hidden desktop:inline">{MODELS.find((m) => m.id === model).note}</span>
+          <span className="desktop:hidden">{model === "linear" ? "Top to bottom, oldest to newest: the usual way to read a career." : MODELS.find((m) => m.id === model).note}</span>
         </p>
 
         {model === "spiral" && <Spiral projects={projects} />}

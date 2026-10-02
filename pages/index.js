@@ -30,7 +30,16 @@ const Home = () => {
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       if (!motionOn()) return;
       gsap.utils.toArray(".fu-reveal").forEach((el) => {
+        if (el.querySelector(".fu-section-title") || el.classList.contains("fu-section-title")) return;
         gsap.from(el, { opacity: 0, y: 24, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
+      });
+      // the big section titles rise out of their own baseline as the section arrives
+      gsap.utils.toArray(".fu-section-title").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { clipPath: "inset(0 0 100% 0)", y: "0.35em" },
+          { clipPath: "inset(0 0 -20% 0)", y: 0, duration: 0.9, ease: "expo.out", clearProps: "clipPath,transform", scrollTrigger: { trigger: el, start: "top 90%", once: true } }
+        );
       });
 
     });

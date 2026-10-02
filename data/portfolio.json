@@ -17,7 +17,7 @@
   "socials": [
     {
       "id": "1",
-      "title": "Github",
+      "title": "GitHub",
       "link": "https://github.com/alicepicco333"
     },
     {
@@ -1117,7 +1117,7 @@
       "id": "15",
       "title": "Culture4All",
       "description": "A data story on unequal access to culture in Italy, from ISTAT and Ministry of Culture open data: follow your region through every chart, from libraries and distance to reading over ten years.",
-      "introText": "Culture for All maps access to culture across Italy: where libraries, archives and museums are, how far people live from a library, how libraries are used, and how reading habits differ and change from region to region.",
+      "introText": "Culture4All maps access to culture across Italy: where libraries, archives and museums are, how far people live from a library, how libraries are used, and how reading habits differ and change from region to region.",
       "gridImages": [
         {
           "src": "/images/projects/15-g1.jpg",
@@ -1170,7 +1170,7 @@
         "Corrado Consiglio",
         "Salvatore Di Marzo"
       ],
-      "reworkNote": "Culture for All began as a group project with Corrado Consiglio and Salvatore Di Marzo for Information Visualization (2023/24). I reworked it independently in 2026; the version shown here is that rework.",
+      "reworkNote": "Culture4All began as a group project with Corrado Consiglio and Salvatore Di Marzo for Information Visualization (2023/24). I reworked it independently in 2026; the version shown here is that rework.",
       "accent": "#1f3fd1",
       "summary": {
         "brief": "Access to culture in Italy is unequal, but raw counts of libraries and museums mostly show where people live.",
@@ -1259,7 +1259,7 @@
       "id": "20",
       "title": "Unobravo Redesign",
       "description": "A research-led redesign of Unobravo's website and app that makes starting online therapy easier to understand, compare and trust.",
-      "introText": "Unobravo connects people with therapists over video call. Its website tried to be a marketing page, a guide and an onboarding flow at once, and the app offered no explanation of the service at all. I redesigned both, from interviews to a tested Figma prototype.",
+      "introText": "Unobravo connects people with therapists over video call. Its website tried to be a marketing page, a guide and an onboarding flow at once, and the app offered no explanation of the service at all. I redesigned both, from interviews to a tested Figma prototype. A concept redesign made for an HCI course; not affiliated with Unobravo.",
       "gridImages": [
         "/images/projects/20-a.jpg",
         "/images/projects/20-b.jpg",
@@ -2500,7 +2500,7 @@
             "design": {
               "part": "Part 1",
               "title": "The design",
-              "text": "The final app: six flows, motion, a clickable prototype and the design system behind it."
+              "text": "The final app: seven flows, motion, a clickable prototype and the design system behind it."
             },
             "research": {
               "part": "Part 2",
@@ -2720,7 +2720,7 @@
   "aboutpara": "I'm Alice, an anthropologist and digital humanities expert based in Amsterdam, blending critical research with creative technologies across cultural analysis, web development, and interactive design.",
   "resume": {
     "tagline": "HCI researcher & designer · user research, accessibility, interaction design, data visualization",
-    "description": "I'm an HCI researcher and designer based in Amsterdam. I start from how people actually use technology, test ideas with them, and turn what I learn into clear, inclusive interfaces, data visualizations and working prototypes. My background is in cultural anthropology and digital humanities; I'm now doing an MSc in Human-Computer Interaction at the University of Amsterdam.",
+    "description": "I'm an HCI researcher and designer based in Amsterdam. I start from how people actually use technology, test ideas with them, and turn what I learn into clear, inclusive interfaces, data visualizations and working prototypes. My background is in cultural anthropology and digital humanities; I'm now doing an MSc in Information Studies (Human-Computer Interaction) at the University of Amsterdam.",
     "experiences": [
       {
         "id": "1",
@@ -2974,7 +2974,7 @@
   "about": {
     "lead": "I design for information that’s complicated or easy to misread, so people can understand it, trust it and check it themselves.",
     "paragraphs": [
-      "That shapes how I work. Research comes first, from a background in cultural anthropology and digital humanities: interviews, usability tests, fieldwork and data analysis. I show the evidence behind what an interface claims: its sources, its data, how far to trust a result. And I test whether it worked, with people and with the data: in my Unobravo redesign, the usability score rose from 75 to 91.25.",
+      "That shapes how I work. Research comes first, from a background in cultural anthropology and digital humanities: interviews, usability tests, fieldwork and data analysis. I show the evidence behind what an interface claims: its sources, its data, how far to trust a result. And I test whether it worked, with people and with the data: in my Unobravo redesign, the usability score rose from 75 to 91.25 in a four-person summative test.",
       "I've worked as a UX researcher and designer at BrainBite, an AI tutoring platform for children, on support for neurodiverse learners; done practice-based research as a visiting research fellow at the Institute of Network Cultures; and taken part in The Hmm's Voices of Makers program with DEN. My projects deal with museum collections, archives, public data and online therapy, and I care that the result is inclusive, well evidenced and easy to use."
     ],
     "practice": [
@@ -3006,7 +3006,7 @@
         "from": 2022,
         "to": 2024,
         "title": "Digital humanities",
-        "text": "An MA in digital humanities: data, the semantic web and visualization, applied to archives, texts and open data.",
+        "text": "The heart of an MA in digital humanities (Bologna, 2022-2026): data, the semantic web and visualization, applied to archives, texts and open data.",
         "short": "Digital humanities"
       },
       {
@@ -3020,7 +3020,7 @@
         "from": 2025,
         "to": 2027,
         "title": "HCI and UX",
-        "text": "UX research and design for BrainBite and Unobravo, freelance work, and now an MSc in Human-Computer Interaction in Amsterdam.",
+        "text": "UX research and design at BrainBite, freelance work, an HCI course redesign of Unobravo, and now an MSc in Information Studies (Human-Computer Interaction) in Amsterdam.",
         "short": "HCI & UX"
       }
     ]

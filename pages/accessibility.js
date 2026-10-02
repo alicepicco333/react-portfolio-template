@@ -51,7 +51,7 @@ const Accessibility = () => (
             <li>Each page has one main heading and a consistent heading order, inside header, main, navigation and footer landmarks.</li>
             <li>Buttons and toggles have text labels and announce their state; images have text alternatives.</li>
             <li>The skill map and the work charts also exist as plain text: the skill card, the project grid and every project page.</li>
-            <li>Touch targets are at least 44 by 44 pixels.</li>
+            <li>Buttons and controls are at least 44 pixels tall; every other link or target is at least 24 by 24 pixels, or sits inline in a sentence.</li>
             <li>Two keyboard shortcuts work only while focus is inside their section: in the skill map, keys 1 to 5 jump to listen, order, count, shape and play; in Selected work, I and W switch between the index and the wheel.</li>
           </ul>
         </section>

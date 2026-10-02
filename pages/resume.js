@@ -33,7 +33,11 @@ const Resume = () => {
         <div className="hidden print:block">
           <p className="fu-display text-[40px]">{name}</p>
           <p className="mt-2 font-mono text-[12px] text-graphite">
-            {email} · alicepicco333.github.io/react-portfolio-template · linkedin.com/in/alice-picco-791157114 · github.com/alicepicco333
+            {[email, "alicepicco333.github.io/react-portfolio-template", "linkedin.com/in/alice-picco-791157114", "github.com/alicepicco333"].map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </p>
         </div>
         <div className="grid gap-x-4 gap-y-8 pb-16 pt-6 print:!pb-6 print:!pt-4 laptop:grid-cols-4 laptop:pb-[110px] laptop:pt-10">

@@ -16,7 +16,8 @@ function Section({ id, index, title, verb, toc = [], children }) {
         <span className="fu-meta text-fieldgrey">{index}</span>
         <h2 className="fu-title text-phi1">{title}</h2>
         {toc.length > 4 && (
-          <nav aria-label="Case study sections" className="mt-6 hidden laptop:block">
+          // every section repeats the list so it stays beside the reader; only the first copy is a landmark and in the tab order
+          <nav aria-label="Case study sections" aria-hidden={id === toc[0].id ? undefined : true} className="mt-6 hidden laptop:block">
             <ol className="flex flex-col border-l border-concrete">
               {toc.map((t) => {
                 const here = t.id === id;
@@ -24,12 +25,13 @@ function Section({ id, index, title, verb, toc = [], children }) {
                   <li key={t.id}>
                     <a
                       href={`#${t.id}`}
+                      tabIndex={id === toc[0].id ? undefined : -1}
                       aria-current={here ? "location" : undefined}
                       className={`-ml-px flex gap-2 border-l-2 py-1 pl-3 text-[14px] leading-snug ${here ? "border-olive font-semibold text-ink" : "border-transparent text-graphite hover:text-ink"}`}
                     >
                       <span className="font-mono text-[12px] tabular-nums text-fieldgrey">{t.index}</span>
                       <span className="flex-1">{t.title}</span>
-                      {t.verb && <span className={`font-mono text-[11px] ${here ? "text-olive" : "text-fieldgrey"}`}>{verbOf(t.verb)}</span>}
+                      {t.verb && <span className={`font-mono text-[12px] ${here ? "text-olive" : "text-fieldgrey"}`}>{verbOf(t.verb)}</span>}
                     </a>
                   </li>
                 );
@@ -234,7 +236,7 @@ function PartHeader({ part, title, text }) {
   );
 }
 
-export default function CaseStudy({ data }) {
+export default function CaseStudy({ data, showStats = true }) {
   const {
     stats = [],
     overview = [],
@@ -410,7 +412,7 @@ export default function CaseStudy({ data }) {
     )],
     flows: ["design", flows.length > 0, "Final design", () => (
       <>
-        <Lead>{data.flowsLead || "83 screens across six flows, built from 29 components and 34 design tokens."}</Lead>
+        <Lead>{data.flowsLead || "86 screens across seven flows, built from 34 components and 34 design tokens."}</Lead>
         {flows.map((f) => (
           <Figure key={f.src} {...f} />
         ))}
@@ -543,7 +545,7 @@ export default function CaseStudy({ data }) {
 
   return (
     <div>
-      {stats.length > 0 && (
+      {showStats && stats.length > 0 && (
         <section className="grid grid-cols-2 gap-x-4 gap-y-8 px-4 py-14 tablet:px-10 laptop:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="flex flex-col gap-2 border-t border-ink pt-3">

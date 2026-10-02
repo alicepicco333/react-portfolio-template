@@ -72,7 +72,7 @@ const Media = ({ project, className = "", stillOnly = false }) => {
 const teamOf = (p) => {
   if (!Array.isArray(p.collaborators)) return null;
   if (!p.collaborators.length) return "Solo";
-  return `Team of ${p.collaborators.length + 1}${p.reworkNote ? " · solo rework" : ""}`;
+  return `Team of ${p.collaborators.length + 1}${p.reworkNote ? ", reworked solo" : ""}`;
 };
 
 // Selected work as an index of works: each title at display size between ink rules. On wide screens the
@@ -96,7 +96,7 @@ const IndexList = ({ projects }) => {
                 <div className="mb-2 aspect-[4/3] overflow-hidden border border-ink laptop:hidden">
                   <Media project={p} stillOnly className="h-full w-full object-cover" />
                 </div>
-                <h3 className={`fu-display text-[34px] leading-[1.04] transition-colors duration-150 tablet:text-phi2 group-hover:text-olive ${on ? "laptop:text-olive" : ""}`}>
+                <h3 className={`index-title fu-display text-[34px] leading-[1.04] tablet:text-phi2 group-hover:text-olive ${on ? "is-on laptop:text-olive" : ""}`}>
                   {shortTitle(p.title)}
                 </h3>
                 <span className="font-mono text-[14px] leading-relaxed text-graphite laptop:row-span-2 laptop:pt-2 laptop:text-right">
@@ -112,14 +112,16 @@ const IndexList = ({ projects }) => {
       <div className="hidden laptop:col-span-5 laptop:block" aria-hidden="true">
         <div className="sticky top-24">
           <div className="relative aspect-[4/3] overflow-hidden border border-ink bg-paper">
-            {projects.map((p) => (
-              <Media
-                key={p.id}
-                project={p}
-                stillOnly
-                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[120ms] ease-out ${current && p.id === current.id ? "opacity-100" : "opacity-0"}`}
-              />
-            ))}
+            {projects.map((p, i) => {
+              const at = projects.indexOf(current);
+              // above the current row: rolled away upwards; below it: waiting underneath
+              const clip = i === at ? "inset(0 0 0 0)" : i < at ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)";
+              return (
+                <div key={p.id} className="index-shot absolute inset-0" style={{ clipPath: clip, zIndex: i === at ? 2 : 1 }}>
+                  <Media project={p} stillOnly className="h-full w-full object-cover" />
+                </div>
+              );
+            })}
           </div>
           {current && <p className="mt-3 font-mono text-[14px] leading-relaxed text-graphite">{skillIds(current.id).map(labelOf).join(", ")}</p>}
         </div>
@@ -224,7 +226,7 @@ const WorkExplorer = ({ projects: given }) => {
         );
         q(".wheel-cluster").forEach((el, i) => scramble(gsap, el, 0.4 + i * 0.12));
       }
-      if (view !== "Grid") gsap.from(q(".work-side"), { x: 50, opacity: 0, duration: 0.8, delay: 0.5, ease: "power3.out" });
+      if (view !== "Grid" && q(".work-side").length) gsap.from(q(".work-side"), { x: 50, opacity: 0, duration: 0.8, delay: 0.5, ease: "power3.out" });
     });
     return () => mm.revert();
   }, [view]);

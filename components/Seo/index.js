@@ -5,7 +5,11 @@ import Head from "next/head";
 // Previews need absolute URLs, so they point at the published site.
 export const SITE = "https://alicepicco333.github.io/react-portfolio-template";
 
-const Seo = ({ title, description, path = "/", image = "/og-image.jpg", type = "website" }) => {
+// search results show about 155 characters: cut longer descriptions at a word
+const trim = (t = "") => (t.length <= 155 ? t : `${t.slice(0, 152).replace(/\s+\S*$/, "")}...`);
+
+const Seo = ({ title, description: full, path = "/", image = "/og-image.jpg", type = "website" }) => {
+  const description = trim(full);
   const url = `${SITE}${path}`;
   const img = image.startsWith("http") ? image : `${SITE}${image}`;
   return (

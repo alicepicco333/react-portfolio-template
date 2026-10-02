@@ -195,7 +195,7 @@ function Protagonist({ m, traits }) {
           <span className="fu-meta text-olive">Protagonist · “{m.scenario}”</span>
           <h3 className="fu-display text-[40px] leading-none">{m.name}</h3>
           <span className="text-[16px] text-graphite">
-            {m.age} · {m.job} · {m.segment}
+            {m.age}, {m.job}, {m.segment}
           </span>
         </div>
       </div>
@@ -572,7 +572,7 @@ export function UrgencyExplorer({ data }) {
                     onFocus={() => setActive(p.id)}
                     aria-pressed={on}
                     aria-label={`${p.id}: ${p.title}. Impact ${p.impact}, persistence ${p.persistence}. ${SEVERITY_LABEL[sev]}.`}
-                    className={`urgency-point absolute flex h-6 w-6 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full text-[10px] font-semibold tablet:h-8 tablet:w-8 tablet:text-[11px] transition-transform ${
+                    className={`urgency-point absolute flex h-7 w-7 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full text-[10px] font-semibold tablet:h-8 tablet:w-8 tablet:text-[11px] transition-transform ${
                       sev === "critical" ? "bg-olive text-bone" : sev === "high" ? "bg-ink text-bone" : "border-2 border-ink bg-bone text-ink"
                     } ${on ? "z-10 scale-125 ring-2 ring-ink ring-offset-2 ring-offset-bone" : ""}`}
                     style={{ left: pct(p.x), bottom: pct(p.y), animationDelay: reduced ? "0ms" : `${i * 60}ms` }}
@@ -735,7 +735,7 @@ export function DesignSystem({ data }) {
               <li key={p.name} className="flex flex-col gap-1">
                 <span className="block aspect-[4/3] w-full border border-ink/10" style={{ background: p.hex }} />
                 <span className="text-[12px] font-medium leading-tight">{p.name}</span>
-                <span className="font-mono text-[11px] text-fieldgrey">{p.hex}</span>
+                <span className="font-mono text-[12px] text-fieldgrey">{p.hex}</span>
               </li>
             ))}
           </ul>
