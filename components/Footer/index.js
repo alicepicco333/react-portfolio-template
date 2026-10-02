@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import data from "../../data/portfolio.json";
-import ContactForm from "../ContactForm";
 
 const Footer = () => {
   const { email, socials, name } = data;
+  const { pathname } = useRouter();
 
   return (
     <footer id="contact" aria-labelledby="contact-title" className="bg-ink px-4 pb-6 pt-16 text-bone tablet:px-8 tablet:pt-24">
@@ -17,7 +18,9 @@ const Footer = () => {
           <a href={`mailto:${email}`} className="break-all text-[30px] font-semibold tracking-[-0.02em] underline decoration-olive decoration-4 underline-offset-8 hover:decoration-bone tablet:break-normal tablet:text-[48px] laptopl:text-[60px]">
             {email}
           </a>
-          <ContactForm email={email} />
+          {pathname !== "/contact" && <Link href="/contact" className="inline-flex min-h-[44px] w-max items-center font-mono text-[14px] text-bone underline decoration-olive decoration-2 underline-offset-4 hover:decoration-bone">
+            Or send a message →
+          </Link>}
         </div>
         <ul className="flex flex-col gap-2 font-mono text-[14px]">
           {socials.map((social) => (

@@ -11,7 +11,7 @@ export const SECTIONS = [
   { id: "work", label: "work" },
   { id: "about", label: "about" },
   { id: "journey", label: "timeline" },
-  { id: "contact", label: "contact" },
+  { id: "contact", label: "contact", href: "/contact" },
 ];
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
   const { pathname } = useRouter();
   const onHome = pathname === "/";
   const { active } = useActiveSection(onHome ? ["map", "work", "in-progress", "about", "journey", "contact"] : []);
-  const current = (id) => onHome && (active === id || (id === "work" && active === "in-progress"));
+  const current = (id) => (id === "contact" && pathname === "/contact") || (onHome && id !== "contact" && (active === id || (id === "work" && active === "in-progress")));
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-ink bg-bone text-ink">
@@ -39,8 +39,8 @@ const Header = () => {
             return (
               <Link
                 key={s.id}
-                href={`/#${s.id}`}
-                aria-current={on ? "location" : undefined}
+                href={s.href || `/#${s.id}`}
+                aria-current={on ? (s.href ? "page" : "location") : undefined}
                 className={`py-1 underline-offset-[7px] transition-colors duration-150 hover:text-olive ${on ? "underline decoration-2" : ""}`}
               >
                 {s.label}
@@ -68,7 +68,7 @@ const Header = () => {
       {open && (
         <nav id="mobile-menu" className="border-t border-ink bg-bone px-4 pb-6 tablet:hidden" aria-label="Mobile">
           {SECTIONS.map((s) => (
-            <Link key={s.id} href={`/#${s.id}`} onClick={() => setOpen(false)} className="block border-b border-ink/20 py-4 text-[32px] font-semibold tracking-[-0.02em]">
+            <Link key={s.id} href={s.href || `/#${s.id}`} onClick={() => setOpen(false)} className="block border-b border-ink/20 py-4 text-[32px] font-semibold tracking-[-0.02em]">
               {s.label}
             </Link>
           ))}
