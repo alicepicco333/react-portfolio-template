@@ -72,22 +72,21 @@ export const SKILL_NOTES = {
 export const MAP = {
   W: 1440,
   H: 920,
+  // spread over the whole stage: Listening top left, Shaping top right, Ordering bottom left,
+  // Counting in the middle, Playing bottom right
   pos: {
-    anth: [130, 330], ur: [360, 300], hci: [590, 270], ux: [840, 150], vis: [1130, 190], ixd: [860, 370],
-    cc: [1040, 500], live: [1250, 560], perf: [1300, 380], dv: [640, 590], cult: [360, 520],
-    dh: [150, 470], arch: [110, 660], sem: [300, 790], onto: [520, 840],
+    anth: [150, 200], ur: [400, 165], hci: [650, 215], ux: [930, 140], vis: [1200, 205], ixd: [900, 400],
+    cc: [1100, 610], live: [1290, 790], perf: [1300, 450], dv: [700, 640], cult: [420, 480],
+    dh: [170, 440], arch: [130, 700], sem: [360, 830], onto: [640, 860],
   },
   label: {
     anth: [22, 6, "start"], ur: [22, 6, "start"], hci: [22, 6, "start"], ux: [22, 6, "start"], vis: [22, 6, "start"],
-    ixd: [22, 6, "start"], cc: [22, 6, "start"], live: [22, 6, "start"], perf: [-22, 6, "end"], dv: [22, 6, "start"],
+    ixd: [22, 6, "start"], cc: [22, 6, "start"], live: [-22, 6, "end"], perf: [-22, 6, "end"], dv: [22, 6, "start"],
     cult: [22, 6, "start"], dh: [22, 6, "start"], arch: [22, 6, "start"], sem: [22, 6, "start"], onto: [22, 6, "start"],
   },
-  clusters: { listening: [400, 425], shaping: [980, 110], playing: [1085, 452], counting: [390, 730], ordering: [40, 850] },
-  // areas kept clear for the statement and the card
-  reserved: [
-    [24, 24, 660, 250],
-    [1010, 620, 1420, 912],
-  ],
+  clusters: { listening: [330, 330], shaping: [1010, 290], playing: [1130, 530], counting: [480, 720], ordering: [40, 900] },
+  // the cropped top strip above the graph: nothing is placed there
+  reserved: [[0, 0, 1440, 100]],
 };
 
 // Rotate a 3D point and project it onto a W×H canvas.

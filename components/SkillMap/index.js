@@ -446,7 +446,7 @@ const SkillMap = ({ projects }) => {
             )}
 
             {/* always in the page (it is the live region), shown only while a skill is selected */}
-            <div className={`map-card absolute bottom-3 left-[1020px] flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))] ${activeNode ? "" : "invisible"}`} aria-live="polite">
+            <div className={`map-card absolute bottom-3 ${activeNode && MAP.pos[active][0] > 720 ? "left-[30px]" : "left-[1020px]"} flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))] ${activeNode ? "" : "invisible"}`} aria-live="polite">
               {activeNode && (
 
                 <>
