@@ -22,19 +22,24 @@ const mapTitle = (p) => p.short || shortTitle(p.title);
 const HALO = { paintOrder: "stroke", stroke: "rgb(var(--bone))", strokeWidth: 6, strokeLinejoin: "round" };
 
 // ——— desktop geometry ———
+// The stage spreads sideways to the room it gets: x is stretched by SX, y and text sizes are not.
+let SX = 1;
+const pos = (id) => [MAP.pos[id][0] * SX, MAP.pos[id][1]];
+const clusterPos = (id) => [MAP.clusters[id][0] * SX, MAP.clusters[id][1]];
+const stageW = () => MAP.W * SX;
 function labelBox(id) {
-  const [x, y] = MAP.pos[id];
+  const [x, y] = pos(id);
   const [dx, dy, anchor] = MAP.label[id];
   const w = textWidth(labelOf(id), 18) * 1.1;
   const left = anchor === "end" ? x + dx - w : x + dx;
   return [left - 10, y + dy - 18, left + w + 10, y + dy + 7];
 }
-const nodeBox = (id) => [MAP.pos[id][0] - 15, MAP.pos[id][1] - 15, MAP.pos[id][0] + 15, MAP.pos[id][1] + 15];
+const nodeBox = (id) => [pos(id)[0] - 15, pos(id)[1] - 15, pos(id)[0] + 15, pos(id)[1] + 15];
 const clusterBox = (c) => {
-  const [x, y] = MAP.clusters[c.id];
+  const [x, y] = clusterPos(c.id);
   return [x, y - 22, x + textWidth(c.label, 22, true) * 1.2, y + 4];
 };
-const STATIC_BOXES = [...NODES.map((n) => labelBox(n.id)), ...NODES.map((n) => nodeBox(n.id)), ...CLUSTERS.map(clusterBox), ...MAP.reserved];
+const staticBoxes = () => [...NODES.map((n) => labelBox(n.id)), ...NODES.map((n) => nodeBox(n.id)), ...CLUSTERS.map(clusterBox), [0, 0, stageW(), 100]];
 
 // Put a skill's tools (inner arc) and projects (outer arc) on the side of the node with the
 // most free room: every direction is scored by how much it would cover or leave the frame.
@@ -42,7 +47,7 @@ const grow = ([a, b, c, d], m) => [a - m, b - m, c + m, d + m];
 const cost = (boxes, obstacles) => {
   let score = 0;
   boxes.forEach((b, i) => {
-    if (b[0] < 8 || b[1] < 8 || b[2] > MAP.W - 8 || b[3] > MAP.H - 8) score += 1e6;
+    if (b[0] < 8 || b[1] < 8 || b[2] > stageW() - 8 || b[3] > MAP.H - 8) score += 1e6;
     obstacles.forEach((o) => {
       score += overlapArea(b, o);
     });
@@ -56,7 +61,8 @@ const cost = (boxes, obstacles) => {
 // Projects fan out from the selected skill: try every direction, radius and spread and keep
 // the one that covers nothing.
 function fanLayout(id, works) {
-  const [ox, oy] = MAP.pos[id];
+  const [ox, oy] = pos(id);
+  const boxes = staticBoxes();
   let leaves = null;
   for (let deg = 0; deg < 360; deg += 5) {
     const a = (deg * Math.PI) / 180;
@@ -70,7 +76,7 @@ function fanLayout(id, works) {
           const w = textWidth(`${mapTitle(p)} ↗`, 17) * 1.12 + 6;
           return { p, x, y, right, box: grow(right ? [x - 19, y - 20, x + 26 + w, y + 20] : [x - 26 - w, y - 20, x + 19, y + 20], 6) };
         });
-        const score = cost(pts.map((o) => o.box), STATIC_BOXES);
+        const score = cost(pts.map((o) => o.box), boxes);
         if (!leaves || score < leaves.score) leaves = { score, pts };
       });
     });
@@ -109,6 +115,7 @@ const SkillMap = ({ projects }) => {
   const labelRefs = useRef({});
   const [fit, setFit] = useState(null);
   const [frameH, setFrameH] = useState(null);
+  const [sx, setSx] = useState(1);
   const frameRef = useRef(null);
   const stageRef = useRef(null);
   const narrowRef = useRef(null);
@@ -129,6 +136,8 @@ const SkillMap = ({ projects }) => {
       const room = Math.max(480, window.innerHeight - 64 - (bandRef.current?.offsetHeight || 0));
       const h = MAP.H - (heroMode === "band" ? 70 : 0);
       const f = Math.min(el.clientWidth / MAP.W, Math.max(heroMode === "band" ? 0.7 : 0.8, room / h));
+      SX = Math.min(1.6, Math.max(1, el.clientWidth / (MAP.W * f)));
+      setSx(SX);
       setFit(f);
       setFrameH(Math.max(room, h * f));
     };
@@ -156,7 +165,7 @@ const SkillMap = ({ projects }) => {
   const workOf = (id) => nodeOf(id).work.map((pid) => projects.find((p) => p.id === pid)).filter(Boolean);
   const activeNode = active ? nodeOf(active) : null;
   const activeWork = activeNode ? workOf(active) : [];
-  const fan = useMemo(() => (activeNode ? fanLayout(active, activeWork) : null), [active]); // eslint-disable-line react-hooks/exhaustive-deps
+  const fan = useMemo(() => (activeNode ? fanLayout(active, activeWork) : null), [active, sx]); // eslint-disable-line react-hooks/exhaustive-deps
   const lit = activeNode ? new Set(neighbours(active)) : new Set();
 
   // ——— motion ———
@@ -194,7 +203,7 @@ const SkillMap = ({ projects }) => {
       if (!motionOn()) return;
       const s = stageRef.current;
       if (!s) return;
-      const [x, y] = MAP.pos[active];
+      const [x, y] = pos(active);
       gsap.from(s.querySelectorAll(".fan-item"), {
         x: (i, el) => x - Number(el.dataset.x),
         y: (i, el) => y - Number(el.dataset.y),
@@ -259,7 +268,7 @@ const SkillMap = ({ projects }) => {
     className: "map-focus",
   });
   const goTo = (id) => router.push(`/projects/${id}`);
-  const [ax, ay] = active ? MAP.pos[active] : [0, 0];
+  const [ax, ay] = active ? pos(active) : [0, 0];
 
   return (
     <section
@@ -283,18 +292,18 @@ const SkillMap = ({ projects }) => {
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
           className="absolute left-1/2 top-1/2"
-          style={{ width: MAP.W * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
+          style={{ width: MAP.W * sx * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
         >
           <div
             ref={stageRef}
             className="absolute left-0 top-0 origin-top-left"
-            style={{ width: MAP.W, height: SH, transform: `scale(${fit || 1})` }}
+            style={{ width: MAP.W * sx, height: SH, transform: `scale(${fit || 1})` }}
             onMouseLeave={() => setPinned(null)}
             onKeyDown={(e) => {
               if (e.key === "Escape") setPinned(null);
             }}
           >
-            <svg viewBox={`0 ${TOP} ${MAP.W} ${SH}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
+            <svg viewBox={`0 ${TOP} ${MAP.W * sx} ${SH}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
               <defs>
               </defs>
               <g aria-hidden="true">
@@ -302,7 +311,7 @@ const SkillMap = ({ projects }) => {
                   <text
                     key={c.id}
                     className="map-cluster"
-                    x={MAP.clusters[c.id][0]}
+                    x={clusterPos(c.id)[0]}
                     y={MAP.clusters[c.id][1]}
                     fontFamily="JetBrains Mono, monospace"
                     fontSize="22"
@@ -319,8 +328,8 @@ const SkillMap = ({ projects }) => {
               <g aria-hidden="true">
                 {EDGES.map(([a, b]) => {
                   const hot = active && (a === active || b === active);
-                  const [x1, y1] = MAP.pos[a];
-                  const [x2, y2] = MAP.pos[b];
+                  const [x1, y1] = pos(a);
+                  const [x2, y2] = pos(b);
                   return (
                     <line
                       key={`${a}-${b}`}
@@ -361,7 +370,7 @@ const SkillMap = ({ projects }) => {
               )}
 
               {NODES.map((n) => {
-                const [x, y] = MAP.pos[n.id];
+                const [x, y] = pos(n.id);
                 const [dx, dy, anchor] = MAP.label[n.id];
                 const isActive = active === n.id;
                 const isLit = lit.has(n.id);
