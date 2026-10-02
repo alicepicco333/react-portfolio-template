@@ -134,8 +134,8 @@ const SkillMap = ({ projects }) => {
       const el = frameRef.current;
       if (!el || !el.clientWidth) return; // hidden on phones: nothing to fit
       const band = bandRef.current?.offsetHeight || 0;
-      // band: air around the graph, the page's 32 px gutter at the sides and 48 px under the header
-      const AIR = heroMode === "band" ? { x: 32, top: 48 } : { x: 0, top: 0 };
+      // band: air around the graph, the page's 32 px gutter at the sides and a little under the header
+      const AIR = heroMode === "band" ? { x: 32, top: 16 } : { x: 0, top: 0 };
       const room = window.innerHeight - (document.querySelector("header")?.offsetHeight || 65) - band - AIR.top;
       const availW = el.clientWidth - 2 * AIR.x;
       const h = MAP.H - (heroMode === "band" ? 70 : 0);
@@ -292,7 +292,7 @@ const SkillMap = ({ projects }) => {
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
           className="absolute left-1/2"
-          style={{ top: heroMode === "band" ? "calc(50% + 24px)" : "50%", width: MAP.W * sx * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
+          style={{ top: heroMode === "band" ? "calc(50% + 8px)" : "50%", width: MAP.W * sx * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
         >
           <div
             ref={stageRef}

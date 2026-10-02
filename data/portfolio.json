@@ -1238,7 +1238,7 @@
       "collaborators": null,
       "summary": {
         "brief": "Conversational interfaces are everywhere, but they rarely enrich a visit inside the museum.",
-        "role": "Team member, MSc Information Studies Data Systems Project.",
+        "role": "Designer and researcher in a team, MSc Information Studies Data Systems Project.",
         "method": "Research into what makes a rich visit and which interface attributes support it, with Q42 and Curamando.",
         "outcome": "In progress (2026/27)."
       },
@@ -2776,9 +2776,9 @@
         "id": "4",
         "dates": "Mar 2024 - Jun 2024",
         "type": "Funded program",
-        "position": "UX Consultant at The Hmm",
+        "position": "Digital Maker/Consultant at The Hmm",
         "bullets": "Selected for Voices of Makers, with DEN (Cultural Knowledge Institute): mapping digital cultural spaces, exploring emerging technologies and co-developing strategies for the digital transformation of the Dutch cultural sector.",
-        "short": "UX consultant · The Hmm",
+        "short": "Digital maker · The Hmm",
         "org": "The Hmm",
         "skills": [
           "hci",
@@ -2967,6 +2967,14 @@
           "Figma",
           "Git and GitHub",
           "OBS"
+        ]
+      },
+      {
+        "id": "languages",
+        "group": "Languages",
+        "items": [
+          "Italian (native)",
+          "English (C1)"
         ]
       }
     ]
