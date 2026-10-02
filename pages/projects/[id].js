@@ -112,7 +112,7 @@ export default function ProjectPage({ project, number, next }) {
         {project.highlightImage && (
           <figure className="mx-auto w-fit max-w-full px-4 tablet:px-10">
             {/* the whole image at its own shape, never cropped; the caption sits under it */}
-            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full border border-ink" fetchpriority="high" />
+            <img src={withBase(project.highlightImage)} alt={project.highlightCaption || project.title} className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full fu-lift" fetchpriority="high" />
             {project.highlightCaption && <figcaption className="mt-3 max-w-[720px] text-[16px] leading-snug text-graphite">{project.highlightCaption}</figcaption>}
           </figure>
         )}
@@ -125,7 +125,7 @@ export default function ProjectPage({ project, number, next }) {
           </div>
           <div className="flex flex-col gap-8 laptop:col-span-3">
             {project.facts?.length > 0 && (
-              <dl className="grid max-w-[980px] grid-cols-2 gap-x-6 gap-y-5 border-y border-ink py-5 laptop:grid-cols-4" aria-label="Key facts">
+              <dl className="grid max-w-[980px] grid-cols-2 gap-x-6 gap-y-5 py-2 laptop:grid-cols-4" aria-label="Key facts">
                 {project.facts.map(([value, label]) => (
                   <div key={label} className="flex flex-col-reverse justify-end gap-1">
                     <dt className="text-[16px] leading-snug text-graphite">{label}</dt>
@@ -140,7 +140,7 @@ export default function ProjectPage({ project, number, next }) {
               </p>
             )}
             {project.summary && (
-              <dl className="grid max-w-[900px] gap-x-6 gap-y-5 border-t-4 border-olive pt-4 tablet:grid-cols-2 laptopl:grid-cols-3">
+              <dl className="grid max-w-[900px] gap-x-6 gap-y-5 bg-paper p-6 tablet:grid-cols-2 laptopl:grid-cols-3">
                 {[
                   ["Brief", project.summary.brief],
                   ["Role", project.summary.role],
@@ -158,13 +158,13 @@ export default function ProjectPage({ project, number, next }) {
               </dl>
             )}
             {project.decisions?.length > 0 && (
-              <section aria-labelledby="decisions-title" className="max-w-[900px] border-t-4 border-olive pt-4">
+              <section aria-labelledby="decisions-title" className="max-w-[900px] pt-6">
                 <h2 id="decisions-title" className="font-mono text-[14px] uppercase tracking-[0.1em] text-olive">
                   Key decisions
                 </h2>
                 <ol className="mt-3 flex flex-col">
                   {project.decisions.map((d, i) => (
-                    <li key={d.choice} className="grid gap-x-5 gap-y-2 border-t border-ink py-4 first:border-t-0 first:pt-1 tablet:grid-cols-[40px_1fr]">
+                    <li key={d.choice} className="grid gap-x-5 gap-y-2 py-5 first:pt-2 tablet:grid-cols-[40px_1fr]">
                       <span className="font-mono text-[14px] text-olive" aria-hidden="true">
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -186,7 +186,7 @@ export default function ProjectPage({ project, number, next }) {
                 </ol>
               </section>
             )}
-            <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[16px] tablet:grid-cols-[140px_1fr]">
+            <dl className="grid max-w-[720px] gap-x-4 gap-y-2 pt-4 text-[16px] tablet:grid-cols-[140px_1fr]">
               <dt className="text-fieldgrey">Date</dt>
               <dd>{project.dateLabel}</dd>
               {project.context && (
@@ -205,14 +205,14 @@ export default function ProjectPage({ project, number, next }) {
               <dd>{project.category}</dd>
             </dl>
             {project.reworkNote && (
-              <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[16px] leading-snug text-graphite">{project.reworkNote}</p>
+              <p className="max-w-[720px] text-[16px] leading-snug text-graphite">{project.reworkNote}</p>
             )}
           </div>
         </section>
 
         {project.embed && (
           <figure className="px-4 pt-10 tablet:px-10">
-            <div className="relative w-full max-w-[1200px] border border-ink bg-ink" style={{ aspectRatio: project.embedAspect || "16 / 9" }}>
+            <div className="relative w-full max-w-[1200px] bg-ink fu-lift" style={{ aspectRatio: project.embedAspect || "16 / 9" }}>
               <iframe
                 src={project.embed}
                 title={`${project.title}: ${project.embedTitle || "performance recording"}`}
@@ -245,7 +245,7 @@ export default function ProjectPage({ project, number, next }) {
                 <img
                   src={withBase(src)}
                   alt={caption || `${project.title}, image ${index + 1}`}
-                  className="w-full border border-concrete"
+                  className="w-full fu-lift"
                   loading="lazy"
                 />
                 {caption && (

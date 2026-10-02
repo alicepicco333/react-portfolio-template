@@ -82,18 +82,18 @@ const IndexList = ({ projects }) => {
   const current = projects.find((p) => p.id === active) || projects[0];
   return (
     <div className="grid gap-x-10 laptop:grid-cols-12">
-      <ol className="border-b border-ink laptop:col-span-7">
+      <ol className="border-b border-ink/15 laptop:col-span-7">
         {projects.map((p) => {
           const on = current && p.id === current.id;
           return (
-            <li key={p.id} className="border-t border-ink">
+            <li key={p.id} className="border-t border-ink/15 first:border-ink">
               <Link
                 href={`/projects/${p.id}`}
                 onMouseEnter={() => setActive(p.id)}
                 onFocus={() => setActive(p.id)}
                 className="group grid gap-x-6 gap-y-2 py-5 laptop:grid-cols-[1fr_auto] laptop:py-6"
               >
-                <div className="mb-2 aspect-[4/3] overflow-hidden border border-ink laptop:hidden">
+                <div className="mb-2 aspect-[4/3] overflow-hidden fu-lift laptop:hidden">
                   <Media project={p} stillOnly className="h-full w-full object-cover" />
                 </div>
                 <h3 className={`index-title fu-display text-[34px] leading-[1.04] tablet:text-phi2 group-hover:text-olive ${on ? "is-on laptop:text-olive" : ""}`}>
@@ -111,7 +111,7 @@ const IndexList = ({ projects }) => {
       </ol>
       <div className="hidden laptop:col-span-5 laptop:block" aria-hidden="true">
         <div className="sticky top-24">
-          <div className="relative aspect-[4/3] overflow-hidden border border-ink bg-paper">
+          <div className="relative aspect-[4/3] overflow-hidden bg-paper fu-lift">
             {projects.map((p, i) => {
               const at = projects.indexOf(current);
               // above the current row: rolled away upwards; below it: waiting underneath
@@ -132,8 +132,8 @@ const IndexList = ({ projects }) => {
 
 // the card beside the wheel
 const ProjectCard = ({ project, skills = true }) => (
-  <div className="work-side flex flex-col border border-ink bg-paper text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))]">
-    <Media project={project} className="aspect-[4/3] w-full border-b border-ink object-cover" />
+  <div className="work-side flex flex-col bg-paper text-[16px] leading-snug fu-lift">
+    <Media project={project} className="aspect-[4/3] w-full object-cover" />
     <div className="flex flex-col gap-2 px-4 py-3">
       <div className="flex items-center justify-between font-mono text-[14px]">
         <span className="text-olive">
@@ -152,7 +152,7 @@ const ProjectCard = ({ project, skills = true }) => (
 );
 
 const Uses = ({ project, row = false, children }) => (
-  <figure className={`flex gap-4 border border-ink bg-paper p-4 ${row ? "flex-row items-start" : "flex-col"}`}>
+  <figure className={`flex gap-4 bg-paper p-4 ${row ? "flex-row items-start" : "flex-col"}`}>
     {row ? <div className="w-[180px] shrink-0">{children}</div> : children}
     <dl className={`grid flex-1 gap-x-3 text-[16px] leading-snug ${row ? "grid-cols-1 gap-y-1 [&>dd]:mb-2" : "grid-cols-[112px_1fr] gap-y-2"}`}>
       <dt className="font-mono text-[14px] uppercase text-olive">Disciplines</dt>
@@ -317,7 +317,7 @@ const WorkExplorer = ({ projects: given }) => {
           {/* design and research together; live coding on its own */}
           <div className="flex flex-col gap-1 font-mono text-[14px] text-graphite">
             Show
-            <div className="flex" role="group" aria-label="Show">
+            <div className="fu-seg" role="group" aria-label="Show">
               {[
                 ["all", "Projects"],
                 ["Live Coding", "Live coding"],
@@ -327,7 +327,7 @@ const WorkExplorer = ({ projects: given }) => {
                   type="button"
                   aria-pressed={type === v}
                   onClick={() => setType(v)}
-                  className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] transition-colors ${type === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
+                  className={`min-h-[40px] px-4 font-mono text-[14px] transition-colors ${type === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
                 >
                   {t}
                 </button>
@@ -337,14 +337,14 @@ const WorkExplorer = ({ projects: given }) => {
           <Select label="Year" value={year} onChange={setYear} options={[["all", "All years"], ...years.map((y) => [y, y])]} />
           <div className="hidden flex-col gap-1 font-mono text-[14px] text-graphite desktop:flex">
             View
-            <div className="flex" role="group" aria-label="View">
+            <div className="fu-seg" role="group" aria-label="View">
               {VIEWS.map((v) => (
                 <button
                   key={v}
                   type="button"
                   aria-pressed={view === v}
                   onClick={() => setView(v)}
-                  className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] transition-colors ${view === v ? "bg-olive text-white" : "bg-paper text-ink hover:bg-bone"}`}
+                  className={`min-h-[40px] px-4 font-mono text-[14px] transition-colors ${view === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
                 >
                   {v === "Grid" ? "Index" : v}
                 </button>
@@ -362,8 +362,8 @@ const WorkExplorer = ({ projects: given }) => {
           <ul className="work-grid grid gap-5 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
             {shown.map((p) => (
               <li key={p.id} className="work-card">
-                <Link href={`/projects/${p.id}`} className="flex h-full flex-col border border-ink bg-paper">
-                  <div className="aspect-[4/3] overflow-hidden border-b border-ink">
+                <Link href={`/projects/${p.id}`} className="flex h-full flex-col bg-paper fu-lift">
+                  <div className="aspect-[4/3] overflow-hidden">
                     <Media project={p} stillOnly className="h-full w-full object-cover" />
                   </div>
                   <div className="flex flex-grow flex-col gap-1.5 px-3.5 pb-3.5 pt-3">

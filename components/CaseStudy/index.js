@@ -10,7 +10,7 @@ import MethodStrip, { verbOf } from "../Method";
 // with the current one marked. Each section carries its own copy, so no scroll tracking is needed.
 function Section({ id, index, title, verb, toc = [], children }) {
   return (
-    <section id={id} className="scroll-mt-[132px] grid gap-x-4 gap-y-6 border-t border-ink px-4 py-14 tablet:px-10 laptop:grid-cols-4 laptop:py-[88px]">
+    <section id={id} className="scroll-mt-[132px] grid gap-x-4 gap-y-6 border-t border-ink/15 px-4 py-14 tablet:px-10 laptop:grid-cols-4 laptop:py-[88px]">
       <div className="flex flex-col gap-1 laptop:sticky laptop:top-[140px] laptop:self-start">
         {verb && <MethodStrip current={verb} arrows={false} className="mb-3 hidden text-[12px] laptop:flex" />}
         <span className="fu-meta text-fieldgrey">{index}</span>
@@ -120,7 +120,7 @@ function PhoneVideo({ src, poster, caption }) {
 function PrototypeEmbed({ src, poster }) {
   const [active, setActive] = useState(false);
   return (
-    <div className="relative aspect-[4/5] w-full overflow-hidden border border-ink bg-paper tablet:aspect-[16/10]">
+    <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper fu-lift tablet:aspect-[16/10]">
       {active ? (
         <iframe title="Unobravo interactive prototype" src={src} className="h-full w-full" allowFullScreen />
       ) : (
@@ -145,7 +145,7 @@ function FlexibleSection({ id, index, toc, section }) {
       {kind === "cards" && (
         <div className={`grid gap-4 tablet:grid-cols-2 ${columns === 3 ? "laptop:grid-cols-3" : ""}`}>
           {items.map((c) => (
-            <div key={c.title} className="flex flex-col gap-2 border-t-4 border-olive bg-paper p-5">
+            <div key={c.title} className="flex flex-col gap-2 bg-paper p-5">
               {c.meta && <span className="fu-meta text-fieldgrey">{c.meta}</span>}
               <h3 className="fu-title text-xl">{c.title}</h3>
               <p className="text-[16px] leading-relaxed text-graphite">{c.text}</p>
@@ -175,7 +175,7 @@ function FlexibleSection({ id, index, toc, section }) {
       {kind === "list" && (
         <ol className="flex max-w-[820px] flex-col">
           {items.map((it, i) => (
-            <li key={it.title} className="grid gap-2 border-t border-concrete py-4 tablet:grid-cols-[56px_1fr] tablet:gap-4">
+            <li key={it.title} className="grid gap-2 py-4 tablet:grid-cols-[56px_1fr] tablet:gap-4">
               <span className="fu-meta pt-1 text-fieldgrey">{it.id || String(i + 1).padStart(2, "0")}</span>
               <div className="flex flex-col gap-1">
                 <span className="text-lg font-semibold leading-snug">{it.title}</span>
@@ -192,7 +192,7 @@ function FlexibleSection({ id, index, toc, section }) {
           ))}
         </div>
       )}
-      {note && <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[16px] leading-snug text-graphite">{note}</p>}
+      {note && <p className="max-w-[720px] text-[16px] leading-snug text-graphite">{note}</p>}
     </Section>
   );
 }
@@ -202,7 +202,7 @@ const VIEW_LABELS = { all: "Everything", design: "Design", research: "Research" 
 
 function ViewSwitcher({ view, setView, views }) {
   return (
-    <div className="sticky top-[65px] z-20 border-y border-ink bg-bone/95 px-4 py-3 backdrop-blur tablet:px-10">
+    <div className="sticky top-[65px] z-20 border-b border-ink/15 bg-bone/95 px-4 py-3 backdrop-blur tablet:px-10">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <span className="fu-meta text-fieldgrey" id="cs-view-label">
           Show
@@ -228,7 +228,7 @@ function ViewSwitcher({ view, setView, views }) {
 
 function PartHeader({ part, title, text }) {
   return (
-    <div className="border-t border-ink bg-ink px-4 py-10 text-bone tablet:px-10">
+    <div className="bg-ink px-4 py-10 text-bone tablet:px-10">
       <span className="fu-meta text-bone/70">{part}</span>
       <h2 className="fu-display mt-1 text-[40px] leading-none tablet:text-phi2">{title}</h2>
       {text && <p className="mt-3 max-w-[640px] text-[18px] leading-relaxed text-bone/80">{text}</p>}
@@ -286,7 +286,7 @@ export default function CaseStudy({ data, showStats = true }) {
       <>
         {context?.text && <Lead>{context.text}</Lead>}
         {overview.length > 0 && (
-          <dl className="grid max-w-[720px] gap-x-4 gap-y-2 border-t border-ink pt-4 text-[16px] tablet:grid-cols-[160px_1fr]">
+          <dl className="grid max-w-[720px] gap-x-4 gap-y-2 pt-2 text-[16px] tablet:grid-cols-[160px_1fr]">
             {overview.map((row) => (
               <div key={row.label} className="contents">
                 <dt className="text-fieldgrey">{row.label}</dt>
@@ -310,7 +310,7 @@ export default function CaseStudy({ data, showStats = true }) {
     methods: ["research", methods.length > 0, "Research", () => (
       <div className="grid gap-4 tablet:grid-cols-2">
         {methods.map((m) => (
-          <div key={m.title} className="flex flex-col gap-2 border-t border-ink pt-3">
+          <div key={m.title} className="flex flex-col gap-2">
             <span className="fu-meta text-fieldgrey">{m.meta}</span>
             <h3 className="fu-title text-xl">{m.title}</h3>
             <p className="text-[16px] leading-relaxed text-graphite">{m.text}</p>
@@ -330,7 +330,7 @@ export default function CaseStudy({ data, showStats = true }) {
         </div>
         <div className="flex flex-col gap-3">
           <p className="text-[16px] leading-relaxed">{persona.story}</p>
-          <ul className="flex flex-col gap-2 border-t border-ink pt-3 text-[16px]">
+          <ul className="flex flex-col gap-2 text-[16px]">
             {persona.needs.map((need) => (
               <li key={need} className="flex gap-2">
                 <span aria-hidden="true">→</span>
@@ -352,7 +352,7 @@ export default function CaseStudy({ data, showStats = true }) {
           </Lead>
           <ol className="flex flex-col">
             {issues.map((issue) => (
-              <li key={issue.id} className="grid gap-2 border-t border-concrete py-4 tablet:grid-cols-[56px_1fr_auto] tablet:gap-4">
+              <li key={issue.id} className="grid gap-2 py-4 tablet:grid-cols-[56px_1fr_auto] tablet:gap-4">
                 <span className="fu-meta pt-1 text-fieldgrey">{issue.id}</span>
                 <div className="flex flex-col gap-1">
                   <span className="text-lg font-semibold leading-snug">{issue.title}</span>
@@ -391,7 +391,7 @@ export default function CaseStudy({ data, showStats = true }) {
     iterations: ["research", iterations.length > 0, "Iterations", () => (
       <ol className="grid gap-4 tablet:grid-cols-3">
         {iterations.map((it) => (
-          <li key={it.name} className="flex flex-col gap-2 border-t-4 border-ink pt-3">
+          <li key={it.name} className="flex flex-col gap-2">
             <span className="fu-meta text-fieldgrey">{it.date}</span>
             <h3 className="fu-title text-xl">{it.name}</h3>
             <span className="text-[16px] font-medium">{it.evaluation}</span>
@@ -487,7 +487,7 @@ export default function CaseStudy({ data, showStats = true }) {
             </thead>
             <tbody>
               {results.tasks.map((t) => (
-                <tr key={t.task} className="border-b border-concrete">
+                <tr key={t.task} className="border-b border-ink/10">
                   <td className="py-2 pr-4">{t.task}</td>
                   <td className="py-2 pr-4">{t.time}</td>
                   <td className="py-2 pr-4">{t.success}</td>
@@ -549,7 +549,7 @@ export default function CaseStudy({ data, showStats = true }) {
       {showStats && stats.length > 0 && (
         <section className="grid grid-cols-2 gap-x-4 gap-y-8 px-4 py-14 tablet:px-10 laptop:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="flex flex-col gap-2 border-t border-ink pt-3">
+            <div key={s.label} className="flex flex-col gap-2">
               <span className="fu-display text-[48px] tabular-nums tablet:text-phi3">{s.value}</span>
               <span className="max-w-[240px] text-[16px] leading-snug text-graphite">{s.label}</span>
             </div>

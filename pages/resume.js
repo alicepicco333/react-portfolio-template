@@ -64,7 +64,7 @@ const Resume = () => {
         <Section label="Experience">
           <ol>
             {resume.experiences.map((exp) => (
-              <li key={exp.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-5 print:py-3 tablet:grid-cols-[200px_1fr_130px] tablet:gap-4">
+              <li key={exp.id} className="grid break-inside-avoid gap-1 py-5 print:py-3 tablet:grid-cols-[200px_1fr_130px] tablet:gap-4">
                 <span className="fu-meta text-fieldgrey">{exp.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-lg font-semibold">{exp.position}</span>
@@ -80,7 +80,7 @@ const Resume = () => {
           <Section label="Skills">
             <dl>
               {resume.skills.map((row) => (
-                <div key={row.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr] tablet:gap-4">
+                <div key={row.id} className="grid break-inside-avoid gap-1 py-4 print:py-2 tablet:grid-cols-[200px_1fr] tablet:gap-4">
                   <dt className="fu-meta text-fieldgrey">{row.group}</dt>
                   <dd className="text-[18px] leading-snug">{row.items.join(", ")}</dd>
                 </div>
@@ -92,7 +92,7 @@ const Resume = () => {
         <Section label="Education">
           <ol>
             {resume.educationList.map((edu) => (
-              <li key={edu.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-5 print:py-3 tablet:grid-cols-[200px_1fr] tablet:gap-4">
+              <li key={edu.id} className="grid break-inside-avoid gap-1 py-5 print:py-3 tablet:grid-cols-[200px_1fr] tablet:gap-4">
                 <span className="fu-meta text-fieldgrey">{edu.dates}</span>
                 <span className="flex flex-col gap-1">
                   <span className="text-lg font-semibold">{edu.name}</span>
@@ -107,7 +107,7 @@ const Resume = () => {
           <Section label="Certifications">
             <ol>
               {resume.certifications.map((c) => (
-                <li key={c.id} className="grid break-inside-avoid gap-1 border-b border-concrete py-4 print:py-2 tablet:grid-cols-[200px_1fr_220px] tablet:gap-4">
+                <li key={c.id} className="grid break-inside-avoid gap-1 py-4 print:py-2 tablet:grid-cols-[200px_1fr_220px] tablet:gap-4">
                   <span className="fu-meta text-fieldgrey">{c.date}</span>
                   <span className="text-[18px] font-semibold leading-snug">{c.name}</span>
                   <span className="fu-meta text-graphite tablet:text-right">{c.issuer}</span>

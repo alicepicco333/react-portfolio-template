@@ -84,7 +84,7 @@ const Home = () => {
               </div>
               <div className="fu-reveal grid max-w-[980px] gap-6 tablet:grid-cols-3" role="group" aria-label="How I work">
                 {about.practice.map((p) => (
-                  <div key={p.title} className="flex flex-col gap-2 border-t-2 border-white pt-3">
+                  <div key={p.title} className="flex flex-col gap-2">
                     <span className="font-mono text-[14px] uppercase tracking-[0.12em]">{p.title}</span>
                     <span className="text-[18px] leading-snug">{p.items}</span>
                   </div>

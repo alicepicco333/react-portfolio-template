@@ -19,7 +19,7 @@ const colorOf = (id) => PERSONA_COLORS[id] || "rgb(var(--ink))";
 
 function SubHead({ children, meta }) {
   return (
-    <div className="flex flex-col gap-1 border-t border-ink pt-3">
+    <div className="flex flex-col gap-1">
       {meta && <span className="fu-meta text-fieldgrey">{meta}</span>}
       <h3 className="fu-title text-2xl">{children}</h3>
     </div>
@@ -56,7 +56,7 @@ export function Interviews({ data }) {
                 </li>
               ))}
             </ul>
-            <ul className="mt-auto flex flex-col gap-2 border-t border-ink pt-3 text-[16px] leading-snug">
+            <ul className="mt-auto flex flex-col gap-2 pt-3 text-[16px] leading-snug">
               {s.findings.map((f) => (
                 <li key={f} className="flex gap-2">
                   <span aria-hidden="true" className="text-olive">→</span>
@@ -86,8 +86,8 @@ export function Interviews({ data }) {
                   onClick={() => setQuote(i)}
                   aria-pressed={i === quote}
                   aria-label={`Quote ${i + 1} of ${quotes.length}, ${item.who}`}
-                  className={`h-8 w-8 border border-ink text-[14px] font-medium ${
-                    i === quote ? "bg-ink text-bone" : "hover:bg-paper"
+                  className={`h-8 w-8 text-[14px] font-medium ${
+                    i === quote ? "bg-ink text-bone" : "bg-paper hover:bg-bone"
                   }`}
                 >
                   {i + 1}
@@ -107,7 +107,7 @@ export function Interviews({ data }) {
                 <span className="fu-meta text-fieldgrey">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-lg font-semibold leading-snug">{t.title}</span>
                 <span className="text-[16px] leading-relaxed text-graphite">{t.text}</span>
-                <span className="mt-1 border-t border-concrete pt-2 text-[14px] leading-snug">
+                <span className="mt-1 pt-2 text-[14px] leading-snug">
                   <span className="font-semibold text-olive">Design → </span>
                   {t.design}
                 </span>
@@ -208,7 +208,7 @@ function Protagonist({ m, traits }) {
             {m.useCase}
           </p>
         )}
-        <div className="grid items-center gap-5 border-t border-ink pt-4 laptop:grid-cols-[minmax(0,1fr)_240px]">
+        <div className="grid items-center gap-5 pt-4 laptop:grid-cols-[minmax(0,1fr)_240px]">
           <ul className="flex flex-col gap-2 text-[16px]">
             {m.needs.map((need) => (
               <li key={need} className="flex gap-2">
@@ -247,12 +247,12 @@ function CastCard({ m, traits, protagonist, wide = false }) {
           <span className="text-[14px] leading-snug text-graphite">{m.job}</span>
         </div>
       </div>
-      <span className="fu-meta self-start border border-ink px-2 py-1">{m.segment}</span>
+      <span className="fu-meta self-start bg-paper px-2 py-1">{m.segment}</span>
       <blockquote className="text-[18px] leading-snug">“{m.quote}”</blockquote>
       <p className="text-[14px] leading-relaxed text-graphite">{m.summary}</p>
       </div>
       <div
-        className={`mt-auto grid items-center gap-3 border-t border-ink pt-3 ${
+        className={`mt-auto grid items-center gap-3 pt-3 ${
           wide ? "grid-cols-[minmax(0,1fr)_200px] tablet:mt-0 tablet:self-stretch" : "grid-cols-[minmax(0,1fr)_128px]"
         }`}
       >
@@ -386,7 +386,7 @@ function CastChart({ members, traits, notes, clusters }) {
               {members.map((m) => (
                 <tr
                   key={m.id}
-                  className={`border-b border-concrete ${visible(m.id) ? "" : "text-fieldgrey"}`}
+                  className={`border-b border-ink/10 ${visible(m.id) ? "" : "text-fieldgrey"}`}
                   onMouseEnter={() => setHover(m.id)}
                   onMouseLeave={() => setHover(null)}
                 >
@@ -450,7 +450,7 @@ export function Cast({ data }) {
           <SubHead meta="From the cast card">Requirements the cast adds up to</SubHead>
           <ol className="grid gap-x-6 tablet:grid-cols-2">
             {requirements.map((r) => (
-              <li key={r.id} className="grid grid-cols-[64px_1fr] gap-2 border-b border-concrete py-2 text-[16px]">
+              <li key={r.id} className="grid grid-cols-[64px_1fr] gap-2 border-b border-ink/10 py-2 text-[16px]">
                 <span className="fu-meta pt-[3px] text-fieldgrey">{r.id}</span>
                 <span>{r.title}</span>
               </li>
@@ -595,11 +595,11 @@ export function UrgencyExplorer({ data }) {
 
         <div className="flex flex-col gap-4">
           <p className="text-[16px] leading-relaxed">{version.note}</p>
-          <ol className="flex flex-col border-t border-ink">
+          <ol className="flex flex-col border-t border-ink/15">
             {version.issues.map((i) => {
               const on = active === i.id;
               return (
-                <li key={i.id} className="border-b border-concrete">
+                <li key={i.id} className="border-b border-ink/10">
                   <button
                     type="button"
                     onClick={() => setActive(on ? null : i.id)}
@@ -686,7 +686,7 @@ export function BeforeAfterPairs({ data }) {
             </figure>
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-ink pt-4">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 pt-4">
           <span className="fu-meta text-fieldgrey">
             {i + 1} / {pairs.length} · answers {p.issues}
           </span>
@@ -719,7 +719,7 @@ export function DesignSystem({ data }) {
       {stats.length > 0 && (
         <dl className="grid grid-cols-2 gap-4 tablet:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="flex flex-col-reverse gap-1 border-t border-ink pt-3">
+            <div key={s.label} className="flex flex-col-reverse gap-1">
               <dt className="text-[16px] text-graphite">{s.label}</dt>
               <dd className="fu-display text-[48px] leading-none">{s.value}</dd>
             </div>
@@ -778,7 +778,7 @@ export function DesignSystem({ data }) {
           <SubHead meta={data.typeMeta || "Type scale"}>Type</SubHead>
           <ul className="flex flex-col bg-paper px-5">
             {type.map((t) => (
-              <li key={t.name} className="grid items-baseline gap-2 border-b border-concrete py-4 last:border-b-0 tablet:grid-cols-[180px_1fr]">
+              <li key={t.name} className="grid items-baseline gap-2 border-b border-ink/10 py-4 last:border-b-0 tablet:grid-cols-[180px_1fr]">
                 <span className="flex flex-col">
                   <span className="text-[14px] font-medium">{t.name}</span>
                   <span className="fu-meta text-fieldgrey">
