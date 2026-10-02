@@ -1976,10 +1976,10 @@
           "poster": "/images/projects/unobravo/hero.jpg"
         },
         "system": {
-          "text": "Behind the screens is a small design system: 43 variables, 14 text styles, 34 components, 47 icons and ten illustrations. Fourteen primitives feed fifteen semantic tokens, and every fill has exactly one job: coral is the only action colour, a coral tint marks selection, clay holds information, sage means something went well, and crimson is kept for errors. Screens sit on flat paper, with no gradient.",
+          "text": "Behind the screens is a small design system: 46 variables, 14 text styles, 34 components, 47 icons and ten illustrations. Fifteen primitives feed seventeen semantic tokens, and every fill has exactly one job: coral is the only action colour, a coral tint marks selection, clay holds information, sage means something went well, and crimson is kept for errors. Icons are drawn in warm clay and ink, like the text around them, and only turn coral when active. Screens sit on flat paper, with no gradient.",
           "stats": [
             {
-              "value": "43",
+              "value": "46",
               "label": "variables"
             },
             {
@@ -2039,6 +2039,10 @@
             {
               "name": "neutral/200",
               "hex": "#EDE3DB"
+            },
+            {
+              "name": "neutral/300",
+              "hex": "#E4D6CA"
             },
             {
               "name": "neutral/500",
@@ -2166,6 +2170,19 @@
                   "neutral/200"
                 ]
               ]
+            },
+            {
+              "group": "Icons",
+              "tokens": [
+                [
+                  "icon/base",
+                  "neutral/300"
+                ],
+                [
+                  "icon/detail",
+                  "neutral/600"
+                ]
+              ]
             }
           ],
           "type": [
@@ -2269,7 +2286,7 @@
             {
               "src": "/images/projects/unobravo/system/tile-nav-icons.png",
               "title": "Navigation icons",
-              "caption": "Soft two-tone icons for the tab bar, inactive and active",
+              "caption": "Clay and ink at rest, a white icon on the coral pill when active",
               "w": 848,
               "h": 324
             },
