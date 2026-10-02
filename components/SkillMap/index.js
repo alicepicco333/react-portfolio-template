@@ -343,7 +343,7 @@ const SkillMap = ({ projects }) => {
                     <g key={`w-${p.id}`} className="fan-item" data-x={x} data-y={y} {...nodeProps(`Open ${mapTitle(p)}`, () => goTo(p.id))} role="link">
                       <line className="fan-line" x1={ax} y1={ay} x2={x} y2={y} style={{ stroke: "rgb(var(--olive))" }} strokeWidth="1.5" />
                       <circle cx={x} cy={y} r="6" style={{ fill: "rgb(var(--olive))" }} />
-                      {!quiet && <text
+                      {<text
                         x={right ? x + 14 : x - 14}
                         y={y + 5}
                         textAnchor={right ? "start" : "end"}
@@ -445,27 +445,10 @@ const SkillMap = ({ projects }) => {
               </div>
             )}
 
-            {/* always in the page (it is the live region), shown only while a skill is selected */}
-            <div className={`map-card absolute bottom-3 ${activeNode && MAP.pos[active][0] > 720 ? "left-[30px]" : "left-[1020px]"} flex w-[390px] flex-col gap-2 border border-ink bg-paper px-5 py-4 text-[16px] leading-snug shadow-[6px_6px_0_rgb(var(--olive))] ${activeNode ? "" : "invisible"}`} aria-live="polite">
-              {activeNode && (
-
-                <>
-                  <span className="text-[26px] font-bold leading-tight">{activeNode.label}</span>
-                  <span>{SKILL_NOTES[active]}</span>
-                  <span className="font-mono text-[14px] text-graphite">{activeNode.tools.join(", ")}</span>
-                  <span className="mt-1 grid grid-cols-3 gap-2">
-                    {activeWork.slice(0, 3).map((w) => (
-                      <Link key={w.id} href={`/projects/${w.id}`} className="group flex flex-col gap-1 text-[13px] font-semibold leading-tight text-olive">
-                        {(w.cardWebp || w.cardImage) && (
-                          <img src={withBase(w.cardWebp || w.cardImage)} alt="" className="aspect-[4/3] w-full border border-ink object-cover transition-transform duration-200 group-hover:-translate-y-0.5" loading="lazy" draggable={false} />
-                        )}
-                        <span className="underline underline-offset-2 group-hover:text-ink">{mapTitle(w)}</span>
-                      </Link>
-                    ))}
-                  </span>
-                </>
-              )}
-            </div>
+            {/* no card: the projects are the labels at the ends of the lines; screen readers hear the skill */}
+            <p className="sr-only" aria-live="polite">
+              {activeNode ? `${activeNode.label}. ${SKILL_NOTES[active]} Tools: ${activeNode.tools.join(", ")}.` : ""}
+            </p>
 
           </div>
         </div>
