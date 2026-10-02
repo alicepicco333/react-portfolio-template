@@ -120,7 +120,7 @@ function PhoneVideo({ src, poster, caption }) {
 function PrototypeEmbed({ src, poster }) {
   const [active, setActive] = useState(false);
   return (
-    <div className="relative aspect-[4/5] w-full overflow-hidden bg-paper fu-lift tablet:aspect-[16/10]">
+    <div className="relative aspect-[4/5] w-full overflow-hidden border border-ink bg-paper tablet:aspect-[16/10]">
       {active ? (
         <iframe title="Unobravo interactive prototype" src={src} className="h-full w-full" allowFullScreen />
       ) : (
@@ -192,7 +192,7 @@ function FlexibleSection({ id, index, toc, section }) {
           ))}
         </div>
       )}
-      {note && <p className="max-w-[720px] text-[16px] leading-snug text-graphite">{note}</p>}
+      {note && <p className="max-w-[720px] border-l-2 border-olive pl-4 text-[16px] leading-snug text-graphite">{note}</p>}
     </Section>
   );
 }

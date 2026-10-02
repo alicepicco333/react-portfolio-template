@@ -165,7 +165,7 @@ const Journey = ({ projects }) => {
             <ModelSwitch model={model} setModel={setModel} />
             {model !== "spiral" && (
               <div
-                className="fu-seg"
+                className="flex"
                 role="group"
                 aria-label="Show on the timeline"
               >
@@ -178,7 +178,7 @@ const Journey = ({ projects }) => {
                     type="button"
                     aria-pressed={layer === v}
                     onClick={() => setLayer(v)}
-                    className={`min-h-[40px] px-4 font-mono text-[14px] ${layer === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
+                    className={`-mr-px min-h-[44px] border border-ink px-4 font-mono text-[14px] ${layer === v ? "bg-ink text-bone" : "bg-paper text-ink hover:bg-bone"}`}
                   >
                     {t}
                   </button>
@@ -406,7 +406,7 @@ const Journey = ({ projects }) => {
                 return (
                   <li
                     key={c.title}
-                    className="pb-6"
+                    className="border-l-2 border-olive pb-6 pl-4"
                   >
                     <p className="font-mono text-[14px] text-graphite">{`${c.from}-${c.to > 2026 ? "now" : c.to}`}</p>
                     <h3 className="text-[20px] font-bold">{c.title}</h3>

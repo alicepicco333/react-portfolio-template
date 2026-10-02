@@ -147,14 +147,14 @@ html[data-motion="off"] ::after {
     font-weight: 500;
     letter-spacing: 0.005em;
   }
-  /* one button language site-wide: mono, no outline; primary is ink, secondary is paper */
+  /* one button language site-wide: mono, a 1px ink rule; primary is ink, secondary is paper */
   .fu-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     min-height: 44px;
     padding: 0 16px;
-    border: 0;
+    border: 1px solid rgb(var(--ink));
     font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 14px;
     font-weight: 500;
@@ -166,14 +166,14 @@ html[data-motion="off"] ::after {
   }
   .fu-btn-primary:hover {
     background: rgb(var(--olive));
+    border-color: rgb(var(--olive));
   }
   .fu-btn-secondary {
     background: rgb(var(--paper));
     color: rgb(var(--ink));
   }
   .fu-btn-secondary:hover {
-    background: rgb(var(--ink));
-    color: rgb(var(--bone));
+    background: rgb(var(--bone));
   }
 }
 
@@ -181,18 +181,6 @@ html[data-motion="off"] ::after {
 .fu-btn:active,
 button:not(:disabled):active {
   transform: scale(0.97);
-}
-
-/* fewer borders: images and cards lift off the page with a soft, offset shadow instead of a frame */
-.fu-lift {
-  box-shadow: 0 1px 2px rgb(var(--ink) / 0.08), 0 14px 32px -16px rgb(var(--ink) / 0.35);
-}
-/* toggles sit together on one paper track; the chosen one is filled */
-.fu-seg {
-  display: inline-flex;
-  gap: 4px;
-  padding: 4px;
-  background: rgb(var(--paper));
 }
 
 /* ——— index of works ——— */

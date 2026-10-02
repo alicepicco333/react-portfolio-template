@@ -86,8 +86,8 @@ export function Interviews({ data }) {
                   onClick={() => setQuote(i)}
                   aria-pressed={i === quote}
                   aria-label={`Quote ${i + 1} of ${quotes.length}, ${item.who}`}
-                  className={`h-8 w-8 text-[14px] font-medium ${
-                    i === quote ? "bg-ink text-bone" : "bg-paper hover:bg-bone"
+                  className={`h-8 w-8 border border-ink text-[14px] font-medium ${
+                    i === quote ? "bg-ink text-bone" : "hover:bg-paper"
                   }`}
                 >
                   {i + 1}
@@ -247,7 +247,7 @@ function CastCard({ m, traits, protagonist, wide = false }) {
           <span className="text-[14px] leading-snug text-graphite">{m.job}</span>
         </div>
       </div>
-      <span className="fu-meta self-start bg-paper px-2 py-1">{m.segment}</span>
+      <span className="fu-meta self-start border border-ink px-2 py-1">{m.segment}</span>
       <blockquote className="text-[18px] leading-snug">“{m.quote}”</blockquote>
       <p className="text-[14px] leading-relaxed text-graphite">{m.summary}</p>
       </div>
