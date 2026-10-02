@@ -69,8 +69,8 @@ export function Interviews({ data }) {
       </div>
 
       {q && (
-        <figure className="flex flex-col gap-4 border-l-4 border-olive pl-5 tablet:pl-8">
-          <blockquote aria-live="polite" className="max-w-[760px] text-2xl leading-snug tablet:text-[28px]">
+        <figure className="flex flex-col gap-4">
+          <blockquote aria-live="polite" className="max-w-[760px] -indent-[0.42em] text-2xl leading-snug tablet:text-[28px]">
             “{q.text}”
           </blockquote>
           <figcaption className="flex flex-wrap items-center gap-x-4 gap-y-3">
@@ -200,7 +200,7 @@ function Protagonist({ m, traits }) {
         </div>
       </div>
       <div className="flex flex-col gap-5">
-        <blockquote className="border-l-4 border-olive pl-4 text-xl leading-snug">“{m.quote}”</blockquote>
+        <blockquote className="-indent-[0.42em] text-xl leading-snug">“{m.quote}”</blockquote>
         <p className="text-[16px] leading-relaxed">{m.summary}</p>
         {m.useCase && (
           <p className="text-[16px] leading-relaxed text-graphite">
@@ -729,7 +729,7 @@ export function DesignSystem({ data }) {
 
       {primitives.length > 0 && (
         <div className="flex flex-col gap-4">
-          <SubHead meta="10 primitives → 13 semantic tokens">Colour</SubHead>
+          <SubHead meta={`${primitives.length} primitives → ${semantic.reduce((n, g) => n + g.tokens.length, 0)} semantic tokens`}>Colour</SubHead>
           <ul className="grid grid-cols-5 gap-2 laptop:grid-cols-10">
             {primitives.map((p) => (
               <li key={p.name} className="flex flex-col gap-1">
@@ -833,7 +833,7 @@ export function DesignSystem({ data }) {
           <ul className="grid gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
             {illustrations.items.map((it) => (
               <li key={it.name} className="flex flex-col gap-3 bg-paper p-3">
-                <div className="rounded-[20px] bg-[#FFF6F2] px-4 py-5">
+                <div className="rounded-[20px] bg-[#FAF6F2] px-4 py-5">
                   <img
                     src={withBase(it.src)}
                     alt={`${it.name} illustration`}
