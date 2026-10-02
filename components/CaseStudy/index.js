@@ -278,7 +278,7 @@ export default function CaseStudy({ data }) {
           <span className="fu-meta text-fieldgrey">{persona.segment}</span>
           <h3 className="fu-display text-[40px]">{persona.name}</h3>
           <p className="text-[15px] text-graphite">{persona.facts}</p>
-          <blockquote className="border-l-4 border-ink pl-4 text-xl leading-snug">“{persona.quote}”</blockquote>
+          <blockquote className="-indent-[0.42em] text-xl leading-snug">“{persona.quote}”</blockquote>
         </div>
         <div className="flex flex-col gap-3">
           <p className="text-[15px] leading-relaxed">{persona.story}</p>
@@ -374,9 +374,10 @@ export default function CaseStudy({ data }) {
     motion: ["design", motion.length > 0, "Motion", () => (
       <>
         <Lead>
-          Motion makes the app feel alive without raising the pulse. Every illustration breathes on a slow loop, every
-          screen rises in with a short stagger, and moments that ask something of the user are acknowledged: booking the
-          first session and finishing a questionnaire section end with a check that springs in and softly pulses. In the prototype, screens
+          Motion makes the app feel alive without raising the pulse. The figures in every illustration sway on a slow
+          loop, every screen rises in with a short stagger, and moments that ask something of the user are acknowledged:
+          booking the first session ends with a check that springs in, and each finished questionnaire section blooms
+          one more petal until the Unobravo mark is whole. In the prototype, screens
           morph into each other with gentle springs, the tab bar pill slides between tabs and answers pop when chosen.
         </Lead>
         <div className={`grid gap-8 tablet:grid-cols-2 ${motion.length === 4 ? "laptop:grid-cols-4" : "laptop:grid-cols-3"}`}>

@@ -1951,12 +1951,12 @@
           {
             "src": "/images/projects/unobravo/motion-section.mp4",
             "poster": "/images/projects/unobravo/motion-section-poster.jpg",
-            "caption": "Section completed: the badge pops with a pulse and the finished step bumps into place"
+            "caption": "Section completed: the next petal blooms in, and after the third section the Unobravo mark is whole"
           },
           {
             "src": "/images/projects/unobravo/motion-medita.mp4",
             "poster": "/images/projects/unobravo/motion-medita-poster.jpg",
-            "caption": "Living illustrations: suns breathe, stars twinkle and leaves sway on a slow three-second loop"
+            "caption": "Living illustrations: the figures sway, heads bob and the breath rises on a slow three-second loop"
           },
           {
             "src": "/images/projects/unobravo/motion-booked.mp4",
@@ -1976,10 +1976,10 @@
           "poster": "/images/projects/unobravo/hero.jpg"
         },
         "system": {
-          "text": "Behind the screens is a small design system: 36 variables, 14 text styles, 34 components, 47 icons and six calm illustrations. Eleven primitive colours feed fourteen semantic tokens; the neutrals are warm so they sit comfortably next to the coral, and a soft coral carries quiet accents like inactive icons.",
+          "text": "Behind the screens is a small design system: 43 variables, 14 text styles, 34 components, 47 icons and ten illustrations. Fourteen primitives feed fifteen semantic tokens, and every fill has exactly one job: coral is the only action colour, a coral tint marks selection, clay holds information, sage means something went well, and crimson is kept for errors. Screens sit on flat paper, with no gradient.",
           "stats": [
             {
-              "value": "36",
+              "value": "43",
               "label": "variables"
             },
             {
@@ -1997,36 +1997,48 @@
           ],
           "primitives": [
             {
-              "name": "coral/50",
-              "hex": "#FFFAF8"
-            },
-            {
               "name": "coral/100",
-              "hex": "#FFEDE6"
+              "hex": "#FBE6DC"
             },
             {
               "name": "coral/300",
               "hex": "#F4A582"
             },
             {
+              "name": "coral/500",
+              "hex": "#E06B3E"
+            },
+            {
               "name": "coral/700",
               "hex": "#B83D0C"
             },
             {
-              "name": "lime/300",
-              "hex": "#CAF189"
+              "name": "sage/100",
+              "hex": "#E4EEE7"
             },
             {
-              "name": "red/500",
-              "hex": "#E7000B"
+              "name": "sage/700",
+              "hex": "#46705A"
+            },
+            {
+              "name": "crimson/600",
+              "hex": "#A11D33"
             },
             {
               "name": "neutral/0",
               "hex": "#FFFFFF"
             },
             {
+              "name": "neutral/50",
+              "hex": "#FAF6F2"
+            },
+            {
               "name": "neutral/100",
-              "hex": "#F3ECE6"
+              "hex": "#F1E8E0"
+            },
+            {
+              "name": "neutral/200",
+              "hex": "#EDE3DB"
             },
             {
               "name": "neutral/500",
@@ -2044,21 +2056,15 @@
           "pairs": [
             {
               "fg": "#2B211C",
-              "bg": "#FFFFFF",
+              "bg": "#FAF6F2",
               "label": "fg/primary on bg/page",
-              "ratio": 15.7
+              "ratio": 14.6
             },
             {
               "fg": "#5C4A40",
-              "bg": "#FFFFFF",
+              "bg": "#FAF6F2",
               "label": "fg/secondary on bg/page",
-              "ratio": 8.4
-            },
-            {
-              "fg": "#B83D0C",
-              "bg": "#FFEDE6",
-              "label": "fg/brand on bg/brand-subtle",
-              "ratio": 5.0
+              "ratio": 7.8
             },
             {
               "fg": "#FFFFFF",
@@ -2067,16 +2073,22 @@
               "ratio": 5.7
             },
             {
-              "fg": "#2B211C",
-              "bg": "#CAF189",
-              "label": "fg/primary on bg/accent",
-              "ratio": 12.3
+              "fg": "#B83D0C",
+              "bg": "#FBE6DC",
+              "label": "fg/brand on bg/selected",
+              "ratio": 4.7
             },
             {
-              "fg": "#E7000B",
-              "bg": "#FFFFFF",
+              "fg": "#46705A",
+              "bg": "#E4EEE7",
+              "label": "fg/positive on bg/positive",
+              "ratio": 4.7
+            },
+            {
+              "fg": "#A11D33",
+              "bg": "#FAF6F2",
               "label": "fg/error on bg/page",
-              "ratio": 4.8
+              "ratio": 7.1
             }
           ],
           "semantic": [
@@ -2085,31 +2097,31 @@
               "tokens": [
                 [
                   "bg/page",
-                  "neutral/0"
+                  "neutral/50"
                 ],
                 [
-                  "bg/surface",
-                  "coral/50"
+                  "bg/card",
+                  "neutral/0"
                 ],
                 [
                   "bg/brand",
                   "coral/700"
                 ],
                 [
-                  "bg/brand-subtle",
+                  "bg/selected",
                   "coral/100"
+                ],
+                [
+                  "bg/info",
+                  "neutral/100"
+                ],
+                [
+                  "bg/positive",
+                  "sage/100"
                 ],
                 [
                   "bg/brand-muted",
                   "coral/300"
-                ],
-                [
-                  "bg/accent",
-                  "lime/300"
-                ],
-                [
-                  "bg/neutral",
-                  "neutral/100"
                 ]
               ]
             },
@@ -2133,8 +2145,12 @@
                   "neutral/0"
                 ],
                 [
+                  "fg/positive",
+                  "sage/700"
+                ],
+                [
                   "fg/error",
-                  "red/500"
+                  "crimson/600"
                 ]
               ]
             },
@@ -2147,7 +2163,7 @@
                 ],
                 [
                   "border/subtle",
-                  "neutral/100"
+                  "neutral/200"
                 ]
               ]
             }
@@ -2246,7 +2262,7 @@
             {
               "src": "/images/projects/unobravo/system/tile-controls.png",
               "title": "Controls",
-              "caption": "Buttons, badges, tags, chips and text field",
+              "caption": "Buttons, tone-coded badges, tags, chips and text field",
               "w": 712,
               "h": 698
             },
@@ -2281,23 +2297,43 @@
           ],
           "typeMeta": "Fraunces for display and headings, DM Sans for everything else",
           "illustrations": {
-            "meta": "Six calm scenes in the brand palette",
-            "lead": "Flat, layered shapes in coral, peach and lime, echoing the landscapes of the original app. Each scene floats on a soft island or floor shadow with no background of its own, so it sits on any surface in the app without a hard edge or crop.",
+            "meta": "Petali: ten scenes built from the Unobravo mark",
+            "lead": "The logo is two people: two dot heads over two leaning teardrop bodies, darker where they overlap. Every illustration is made from those three things only, bodies, heads and overprinted overlaps, in four tones of coral. No suns, plants or mugs: each scene is a small arrangement of people, and the questionnaire ends with the mark itself assembling.",
             "items": [
               {
                 "src": "/images/projects/unobravo/illustrations/colline.svg",
-                "name": "Colline",
-                "use": "Welcome, pricing, payment"
+                "name": "Benvenuto",
+                "use": "Welcome, login, empty Home"
               },
               {
                 "src": "/images/projects/unobravo/illustrations/sentiero.svg",
-                "name": "Sentiero",
-                "use": "Questionnaire sections, search"
+                "name": "Passi",
+                "use": "Questionnaire intros, no results"
+              },
+              {
+                "src": "/images/projects/unobravo/illustrations/fiore1.svg",
+                "name": "Fiore 1",
+                "use": "Section 1 completed"
+              },
+              {
+                "src": "/images/projects/unobravo/illustrations/fiore2.svg",
+                "name": "Fiore 2",
+                "use": "Section 2 completed"
+              },
+              {
+                "src": "/images/projects/unobravo/illustrations/fiore3.svg",
+                "name": "Fiore 3",
+                "use": "Section 3 completed: the mark"
               },
               {
                 "src": "/images/projects/unobravo/illustrations/tazze.svg",
-                "name": "Tazze",
-                "use": "First meeting, login"
+                "name": "Ascolto",
+                "use": "Portal, pricing"
+              },
+              {
+                "src": "/images/projects/unobravo/illustrations/cura.svg",
+                "name": "Cura",
+                "use": "Payment completed"
               },
               {
                 "src": "/images/projects/unobravo/illustrations/respiro.svg",
@@ -2307,12 +2343,12 @@
               {
                 "src": "/images/projects/unobravo/illustrations/notte.svg",
                 "name": "Notte",
-                "use": "Sleep practices, offline state"
+                "use": "Sleep practices, offline"
               },
               {
                 "src": "/images/projects/unobravo/illustrations/crescita.svg",
                 "name": "Crescita",
-                "use": "Progress and statistics"
+                "use": "Progress"
               }
             ]
           }
@@ -2469,10 +2505,10 @@
         ]
       ],
       "shows": "End-to-end UX: research, iteration and a measured improvement in usability.",
-      "cardImage": "/images/projects/20-card-v11.jpg",
+      "cardImage": "/images/projects/20-card-v12.jpg",
       "rank": 1,
       "accentHC": "#712316",
-      "cardWebp": "/images/projects/20-card-v11-800.webp"
+      "cardWebp": "/images/projects/20-card-v12-800.webp"
     },
     {
       "id": "21",
