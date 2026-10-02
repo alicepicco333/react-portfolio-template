@@ -134,14 +134,17 @@ const SkillMap = ({ projects }) => {
       const el = frameRef.current;
       if (!el || !el.clientWidth) return; // hidden on phones: nothing to fit
       const band = bandRef.current?.offsetHeight || 0;
-      const room = window.innerHeight - (document.querySelector("header")?.offsetHeight || 65) - band;
+      // band: air around the graph, the page's 32 px gutter at the sides and 48 px under the header
+      const AIR = heroMode === "band" ? { x: 32, top: 48 } : { x: 0, top: 0 };
+      const room = window.innerHeight - (document.querySelector("header")?.offsetHeight || 65) - band - AIR.top;
+      const availW = el.clientWidth - 2 * AIR.x;
       const h = MAP.H - (heroMode === "band" ? 70 : 0);
       // band: the first screen is fitted exactly, however short the window; the earlier placements keep their floor
-      const f = heroMode === "band" ? Math.min(el.clientWidth / MAP.W, Math.max(0.4, room / h)) : Math.min(el.clientWidth / MAP.W, Math.max(0.8, Math.max(480, room) / h));
-      SX = Math.min(1.6, Math.max(1, el.clientWidth / (MAP.W * f)));
+      const f = heroMode === "band" ? Math.min(availW / MAP.W, Math.max(0.4, room / h)) : Math.min(el.clientWidth / MAP.W, Math.max(0.8, Math.max(480, room) / h));
+      SX = Math.min(1.6, Math.max(1, availW / (MAP.W * f)));
       setSx(SX);
       setFit(f);
-      setFrameH(heroMode === "band" ? room : Math.max(Math.max(480, room), h * f));
+      setFrameH(heroMode === "band" ? room + AIR.top : Math.max(Math.max(480, room), h * f));
     };
     measure();
     if (document.fonts?.ready) document.fonts.ready.then(measure);
@@ -288,8 +291,8 @@ const SkillMap = ({ projects }) => {
       {/* ——— desktop and tablet: the fixed stage ——— */}
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
-          className="absolute left-1/2 top-1/2"
-          style={{ width: MAP.W * sx * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
+          className="absolute left-1/2"
+          style={{ top: heroMode === "band" ? "calc(50% + 24px)" : "50%", width: MAP.W * sx * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
         >
           <div
             ref={stageRef}
@@ -462,7 +465,7 @@ const SkillMap = ({ projects }) => {
 
       {/* the statement closes the first screen, just above the fold */}
       {heroMode === "band" && (
-        <div ref={bandRef} className="map-intro hidden px-8 pb-8 pt-2 map:block">
+        <div ref={bandRef} className="map-intro hidden px-8 pb-8 pt-6 map:block">
           <p className="fu-display max-w-[1320px] leading-[1.08]" style={{ fontSize: "clamp(30px, 5.4vh, 42px)" }}>{statement}</p>
         </div>
       )}
