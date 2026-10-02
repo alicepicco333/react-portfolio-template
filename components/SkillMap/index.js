@@ -94,12 +94,14 @@ const SkillMap = ({ projects }) => {
   // the map rests quietly: the whole network in grey with plain labels; a hovered, focused or picked skill
   // lights its own lines and neighbours and opens its card
   const quiet = true;
-  // `?hero=band` / `?hero=caption`: two placements of the statement to compare
-  const [heroMode, setHeroMode] = useState("now");
+  // the statement as a headline above the graph; `?hero=now` / `?hero=caption` show the earlier placements
+  const [heroMode, setHeroMode] = useState("band");
   const bandRef = useRef(null);
+  const TOP = heroMode === "band" ? 70 : 0; // band: the empty strip above the graph is cropped
+  const SH = MAP.H - TOP;
   useEffect(() => {
     const m = new URLSearchParams(window.location.search).get("hero");
-    if (m === "band" || m === "caption") setHeroMode(m);
+    if (m === "now" || m === "caption") setHeroMode(m);
   }, []);
   const [hovered, setHovered] = useState(null);
   const [pinned, setPinned] = useState(null);
@@ -125,9 +127,10 @@ const SkillMap = ({ projects }) => {
       const el = frameRef.current;
       if (!el) return;
       const room = Math.max(480, window.innerHeight - 64 - (bandRef.current?.offsetHeight || 0));
-      const f = Math.min(el.clientWidth / MAP.W, Math.max(0.8, room / MAP.H));
+      const h = MAP.H - (heroMode === "band" ? 70 : 0);
+      const f = Math.min(el.clientWidth / MAP.W, Math.max(heroMode === "band" ? 0.7 : 0.8, room / h));
       setFit(f);
-      setFrameH(Math.max(room, MAP.H * f));
+      setFrameH(Math.max(room, h * f));
     };
     measure();
     if (document.fonts?.ready) document.fonts.ready.then(measure);
@@ -272,26 +275,26 @@ const SkillMap = ({ projects }) => {
     >
       <h2 id="map-title" className="sr-only">Skill map</h2>
       {heroMode === "band" && (
-        <div ref={bandRef} className="map-intro hidden px-8 pb-2 pt-10 map:block">
-          <p className="fu-display max-w-[1180px] text-[52px] leading-[1.04]">{statement}</p>
+        <div ref={bandRef} className="map-intro hidden px-8 pt-8 map:block">
+          <p className="fu-display max-w-[1320px] text-phi2 leading-[1.08]">{statement}</p>
         </div>
       )}
       {/* ——— desktop and tablet: the fixed stage ——— */}
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
           className="absolute left-1/2 top-1/2"
-          style={{ width: MAP.W * (fit || 1), height: MAP.H * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
+          style={{ width: MAP.W * (fit || 1), height: SH * (fit || 1), transform: "translate(-50%, -50%)", visibility: fit ? "visible" : "hidden" }}
         >
           <div
             ref={stageRef}
             className="absolute left-0 top-0 origin-top-left"
-            style={{ width: MAP.W, height: MAP.H, transform: `scale(${fit || 1})` }}
+            style={{ width: MAP.W, height: SH, transform: `scale(${fit || 1})` }}
             onMouseLeave={() => setPinned(null)}
             onKeyDown={(e) => {
               if (e.key === "Escape") setPinned(null);
             }}
           >
-            <svg viewBox={`0 0 ${MAP.W} ${MAP.H}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
+            <svg viewBox={`0 ${TOP} ${MAP.W} ${SH}`} className="absolute inset-0 h-full w-full" role="group" aria-label="Skills, linked where they feed into each other. Select one to see its tools and projects.">
               <defs>
               </defs>
               <g aria-hidden="true">
