@@ -133,13 +133,15 @@ const SkillMap = ({ projects }) => {
     const measure = () => {
       const el = frameRef.current;
       if (!el) return;
-      const room = Math.max(480, window.innerHeight - 64 - (bandRef.current?.offsetHeight || 0));
+      const band = bandRef.current?.offsetHeight || 0;
+      const room = window.innerHeight - (document.querySelector("header")?.offsetHeight || 65) - band;
       const h = MAP.H - (heroMode === "band" ? 70 : 0);
-      const f = Math.min(el.clientWidth / MAP.W, Math.max(heroMode === "band" ? 0.7 : 0.8, room / h));
+      // band: the first screen is fitted exactly, however short the window; the earlier placements keep their floor
+      const f = heroMode === "band" ? Math.min(el.clientWidth / MAP.W, Math.max(0.4, room / h)) : Math.min(el.clientWidth / MAP.W, Math.max(0.8, Math.max(480, room) / h));
       SX = Math.min(1.6, Math.max(1, el.clientWidth / (MAP.W * f)));
       setSx(SX);
       setFit(f);
-      setFrameH(Math.max(room, h * f));
+      setFrameH(heroMode === "band" ? room : Math.max(Math.max(480, room), h * f));
     };
     measure();
     if (document.fonts?.ready) document.fonts.ready.then(measure);
@@ -283,11 +285,6 @@ const SkillMap = ({ projects }) => {
       }}
     >
       <h2 id="map-title" className="sr-only">Skill map</h2>
-      {heroMode === "band" && (
-        <div ref={bandRef} className="map-intro hidden px-8 pt-8 map:block">
-          <p className="fu-display max-w-[1320px] text-phi2 leading-[1.08]">{statement}</p>
-        </div>
-      )}
       {/* ——— desktop and tablet: the fixed stage ——— */}
       <div ref={frameRef} className="relative hidden h-[calc(100svh-64px)] w-full map:block" style={frameH ? { height: frameH } : undefined}>
         <div
@@ -463,6 +460,12 @@ const SkillMap = ({ projects }) => {
         </div>
       </div>
 
+      {/* the statement closes the first screen, just above the fold */}
+      {heroMode === "band" && (
+        <div ref={bandRef} className="map-intro hidden px-8 pb-8 pt-2 map:block">
+          <p className="fu-display max-w-[1320px] leading-[1.08]" style={{ fontSize: "clamp(30px, 5.4vh, 42px)" }}>{statement}</p>
+        </div>
+      )}
       {/* ——— phones and tablets: the statement only; the map needs a wide screen ——— */}
       <div ref={narrowRef} className="relative overflow-hidden px-4 pb-16 pt-14 tablet:px-8 tablet:pb-24 tablet:pt-20 map:hidden">
         <div className="map-intro relative flex max-w-[720px] flex-col gap-6">
